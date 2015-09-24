@@ -1,0 +1,7 @@
+---
+layout: default
+title: About
+---
+
+{% capture about %}{% include about.md %}{% endcapture %}
+{{ about  | markdownify }}
