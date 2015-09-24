@@ -5,7 +5,7 @@ title: JsonTransformer
 
 ###Functional JSON Transformation for Java 8
 
-Java has a ton of libraries for JSON. However, the focus of almost all of these libraries is serialization and deserialization. Their goal is to take your JSON and turn it into objects and take your objects and turn it into JSON. Many of these libraries (ex. gson), provide ways to deal with JSON as a generic structure, but actual transformations of these structures involves painful type casting and constant conditionals. JsonTransformers goal is to eliminate all of that boilerplate.
+Java has a ton of libraries for JSON. However, the focus of almost all of these libraries is serialization and deserialization. Their goal is to take your JSON and turn it into objects and take your objects and turn it into JSON. Many of these libraries (ex. gson), provide ways to deal with JSON as a generic structure, but actual transformations of these structures involves painful type casting and constant conditionals. [JsonTransformers](http://jimmyhmiller.github.io/json-transformer/) goal is to eliminate all of that boilerplate.
 {% highlight java %}
 JsonValue transformed = new JsonTransformer(json)
         .mapRescursiveIf((String s) -> s.equals("change me"), (String s) -> "changed")
