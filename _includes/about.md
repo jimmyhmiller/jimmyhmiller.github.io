@@ -29,3 +29,8 @@ After Clojure I found SICP.  I found Haskell. I discovered type theory. I began 
 * Scala is something I have done a bit, but would love to do more.
 * Type Theory. I'd love to see a purely oop langauge with fully immutable objects, type inference, and row polymorphism instead of subtyping.
 * Idris is a depedently type language. I have no idea where to start writing real programs in it.
+
+###Contact
+Email is the best way to contact me. I never really got into the whole social media thing.  
+Email: [jimmyhmiller@gmail.com](mailto:jimmyhmiller@gmail.com)
+
