@@ -63,11 +63,11 @@ function multi(fn) {
     }
     dispatcher.method = (value, f) => {
         m.set(hash.sha1(value), f);
-        return this;
+        return dispatcher;
     }
     dispatcher.defaultMethod = (f) => {
         defaultMethod = f;
-        return this;
+        return dispatcher;
     } 
     return dispatcher;
 }
