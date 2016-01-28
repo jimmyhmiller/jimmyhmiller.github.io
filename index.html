@@ -12,8 +12,7 @@ title: Home
   		        <h2>{{ post.title }}</h2>
             </a>
             <time>{{ post.date | date: "%d %B %Y" }}</time>
-            <div>{{ post.content  | split:'<!--break-->' | first }}</div>
-            <a href="{{ post.url }}">Read More</a>
+            <div>{{ post.content }}</div>
     		  </li>
     		{% endfor %}
     		</ul>
