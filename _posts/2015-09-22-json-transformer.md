@@ -3,7 +3,7 @@ layout: post_page
 title: JsonTransformer
 ---
 
-###Functional JSON Transformation for Java 8
+### Functional JSON Transformation for Java 8
 
 Java has a ton of libraries for JSON. However, the focus of almost all of these libraries is serialization and deserialization. Their goal is to take your JSON and turn it into objects and take your objects and turn it into JSON. Many of these libraries (ex. gson), provide ways to deal with JSON as a generic structure, but actual transformations of these structures involves painful type casting and constant conditionals. [JsonTransformers](http://jimmyhmiller.github.io/json-transformer/) goal is to eliminate all of that boilerplate.
 {% highlight java %}
@@ -19,7 +19,7 @@ JsonValue transformed = new JsonTransformer(json)
 
 Transformations like the one above are incredibly hard using traditional methods provided by Java JSON libraries. However, there is also no point in throwing away all the work by others. That's why rather than creating yet another way of parsing JSON, JsonTransformer uses the wonderful javax.json library. JsonTransformer does one job and tries to do it well.
 
-###The Journey
+### The Journey
 
 JsonTransformer was born out of pure need and frustration. The JSON I'm dealing with doesn't have a flat structure that can easily be turned into objects. It is a series of nested rest calls following href's wherever they may lead and plucking out the important pieces and parts.
 
@@ -27,7 +27,7 @@ I started by implementing a function to deal with recursing over a JSON structur
 
 I eventually did get it all to work, but with a hefty dose of type conversions. At that point, I decided to tackle the problem in a different language to get some perspective. Of course, this would be trivial in JavaScript and probably just as trivial in any dynamically typed language (for instance Clojure), so I wanted to do my experiments in a strongly typed language. Scala was on my list of languages to play with, so it seemed a perfect candidate.
 
-###The Real Answer
+### The Real Answer
 
 About an hour after I began my first Scala code, I had solved the problem. I had a working program that did exactly what my painfully coded java program did. I was impressed. What made it so easy? Discriminated union types and pattern matching. These were already familiar to me having used Haskell. But seeing them in a more mainstream language was a breath of fresh air.
 
@@ -35,7 +35,7 @@ Due to its functional nature and pattern matching capabilities, every Scala JSON
 
 At this point, it would be great if I could say, “So I changed languages!” Unfortunately, my company has vetoed Scala. So how can I accomplish this in Java? Well, I started doing some readings and while there are some ways do "pattern matching" in java, they don't get anywhere as quickly as I need, nor are they very readable. So I went back to the proverbial drawing board.
 
-###The Compromise
+### The Compromise
 
 One of the ways I like to write software is to imagine my ideal API and work backward. Often times, this requires compromise on the way down, but it usually ends up with a nice, usable product. JsonTransformer was designed exactly in this way. Ideally (in java), this is what I would like to write.
 
@@ -59,7 +59,7 @@ public JsonTransformer mapRecursive(Function<JsonObject, Object> f) {}
 
 Unfortunately, this won't compile in Java. These methods have the same "type erasure". In Java, generics are erased at run time, meaning as far as Java is concerned, these methods both just take Function. Ultimately, this means that there is no way to distinguish them.
 
-###The Hacks
+### The Hacks
 
 Alas, my grand vision would not work… at least not without hacks. In order to write the methods above and not run into the same erasure problem, I had to write this:
 
@@ -73,7 +73,7 @@ public JsonTransformer mapRecursive(FunctionFromJsonObjectToObject f) {}
 
 What I've done is hidden the fact that these are referring to the exact same erasure. By creating a new interface, it gives the types different names and we can therefore overload. This feels wrong, but it is an unfortunate reality when using generics in Java.
 
-###Giving up Full Type Safety
+### Giving up Full Type Safety
 
 One last compromise I made was the decision to give up full type safety. You may notice that the functions above both return Object. This is rather unfortunate. It would be wonderful if we could keep full type safety here. Technically we can, but at the loss of expressivity.
 
@@ -89,6 +89,6 @@ public JsonTransformer mapRecursive(Function<String, String | JsonValue | Intege
 
 Of course now to remain type safe, each of these cases needs to be checked. However, we now have a much more expressive way to say what we'd like. If Java did support this, I think this would be the way to go.
 
-###Experience Report
+### Experience Report
 
 This my first public java library. I think it turned out fairly well. The experience wasn't without its frustrations, but thanks to Java 8 Lambdas, I was able to implement an api that isn't half bad. There are more features that need to be added of course. Better testing (I might write about this a bit later) and better code organization are needed. However, this library represents the lack of expressivity of Java. While you can certainly get things done in Java, it takes a long time to express what you want.
