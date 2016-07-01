@@ -45,7 +45,6 @@ This is the power of multi-methods. They allow massive extensibility with very l
 "use strict";
 
 var hash = require("object-hash");
-var _ = require("lodash");
 
 function multi(fn) {
     var m = new Map();
