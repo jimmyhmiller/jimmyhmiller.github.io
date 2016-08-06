@@ -1,8 +1,8 @@
 ---
-layout: post_page
+published: false
 title: Multi-Methods in Javascript
+layout: post
 ---
-
 I recently released a [micro-library on npm](https://github.com/jimmyhmiller/multiple-methods) that implements multi-methods in javascript. Multi-methods aren't a very common feature, but conceptually they are incredibly simple, they add extensibility to functions. In order to understand multi-methods better, let's look at an example and then take a peek at the implementation.
 
 In order to prevent us from coming up with some contrived example that works for multi-methods but would never be encountered in the real world, I'm going to borrow an example from an unrelated project, Redux. Here's the example:
