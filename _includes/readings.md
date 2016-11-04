@@ -1,4 +1,4 @@
-##Readings
+## Readings
 
 Here are some of the my favorite papers, books, and I've decided to even include talks that I've found fascinating, thought provoking, or useful in some way. 
 
