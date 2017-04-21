@@ -1,59 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <title>{% if page.title %} {{ page.title }} {% endif %} - Jimmy Miller</title>
-        <!-- For responsive site
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <link rel="author" href="/humans.txt">
-        <meta name="description" content="Description Goes Here">
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" type="text/css" href="/css/solarized.css">
-        <!--[if IE 7]>
-            <html class="ie7"> 
-            <link rel="stylesheet" type="text/css" href="/css/font-awesome-ie7.min.css">
-        <![endif]-->
-        <!--[if IE 8]><html class="ie8"> <![endif]-->        
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+<html>
+<head>
 
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
-        <link rel="shortcut icon" href="ico/favicon.png">        
-    </head>
-    <body>
-        <div class="main">
-              <div class="container">
-                <header>
-                    <section>
-                      <h1>Jimmy Miller</h1>
-                      <nav>
-                        <a href="/">Home</a>
-                        <a href="/about">About</a>
-                        <a href="/readings">Readings</a>
-                      </nav>
-                    </section>
-                    <hr />
-                </header>
-                <main class="content">
-                    {{ content }}
-                </main>
-            </div>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width">
 
-            <footer>
-                <div class="container">
-                    <a href="http://richbray.me/frap/">Frappuccino</a>
-                </div>
-            </footer>
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-            <script src="/js/jquery.min.js"></script>
-            <script src="/js/custom.js"></script>
+  <link href="/assets/css/style.css" rel="stylesheet" />
+  <link href="/assets/css/colors-dark.css" rel="stylesheet" />
 
-           </div>
-    </body>
+</head>
+
+<body>
+
+
+
+  <header id="header">
+    <h1><a href="/"><i class="icon-sun"></i> {{ site.name }}</a></h1>
+    <p>{{ site.description }}</p>
+  </header>
+
+
+
+  <div id="page">
+
+
+
+    <div id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/archives">Archive</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="http://twitter.com/jimmyhmiller">Twitter</a></li>
+          <li><a href="/feed.xml">RSS Feed</a></li>
+        </ul>
+      </nav>
+    </div>
+
+
+
+    <div id="content">
+      {{ content }}
+    </div>
+
+
+
+  </div>
+
+
+
+  <footer id="footer">
+    <p class="copyright">Copyright &copy; {{ site.time | date: '%Y' }} {{ site.name }}. Powered by <a href="http://jekyllrb.com">Jekyll</a>, theme by <a href="http://www.webmaster-source.com">Matt Harzewski</a></p>
+  </footer>
+
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="/assets/js/jquery.mobilemenu.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $('#sidebar nav ul').mobileMenu({'topOptionText': 'Menu', 'prependTo': '#sidebar nav'});
+    });
+  </script>
+
+
+
+</body>
 </html>

@@ -1,7 +1,7 @@
 ---
 published: true
 title: Multi-Methods in Javascript
-layout: post_page
+layout: post
 ---
 I recently released a [micro-library on npm](https://github.com/jimmyhmiller/multiple-methods) that implements multi-methods in javascript. Multi-methods aren't a very common feature, but conceptually they are incredibly simple, they add extensibility to functions. In order to understand multi-methods better, let's look at an example and then take a peek at the implementation.
 
