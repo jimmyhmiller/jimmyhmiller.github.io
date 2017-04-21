@@ -47,7 +47,8 @@ a:hover {
 	color: #000000;
 }
 
-p, pre { margin-bottom: 15px; }
+p { margin-bottom: 15px; }
+pre { margin-bottom: 0 }
 ul, ol { padding: 0 0 18px 30px; }
 ol li, ul li { margin-top: 10px; margin-bottom: 10px; }
 em, i { font-style: italic; }
@@ -116,7 +117,7 @@ h3 {
 
 #header {
 	width: 500px;
-	margin: 40px auto 50px auto;
+	margin: 40px auto 30px auto;
 }
 #header h1 {
 	font-size: 32px;
