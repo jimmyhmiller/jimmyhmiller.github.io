@@ -4,7 +4,7 @@ title: Side Effects, Complecting a la Carte
 layout: post
 ---
 
-There are many concepts we learn as we continue our adventure in programming languages. Objects, polymorphism, inheritance, and a whole host of others. Often these concepts are taught with the goal of making our code simpler, yet more often than not, they makes our code more complex, in other words, they [complect]({{ site.baseurl }}{% post_url 2017-04-09-beautiful-code-simplicity %}) them. In these post we dive into where most of the inessential complexity of our programs come from, side effects.
+There are many concepts we learn as we continue our adventure in programming languages. Objects, polymorphism, inheritance, and a whole host of others. Often these concepts are taught with the goal of making our code simpler, yet more often than not, they makes our code more complex, in other words, they [complect]({{ site.baseurl }}{% post_url 2017-04-09-beautiful-code-simplicity %}) them. In this post we dive into the largest source of inessential complexity in our programs, side effects.
 
 ## Programming Functions are Algebraic Functions
 
