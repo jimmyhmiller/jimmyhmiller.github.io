@@ -1,0 +1,19 @@
+{
+  "name": "jimmyhmiller.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:jimmyhmiller/jimmyhmiller.github.io.git",
+  "author": "<jimmy@healthfinch.com>",
+  "license": "MIT",
+  "dependencies": {
+    "next": "^6.1.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  }
+}
