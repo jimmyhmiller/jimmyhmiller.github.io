@@ -150,9 +150,11 @@ export const GlobalLayout = ({ children }) =>
     <Container>
       <div style={{position: "relative"}}>
           <AbsolutePosition right={0} top={0}>
-          <Heading
-             color="#999"
-             text="Jimmy Miller"/>
+          <a href="/" style={{textDecoration: "none"}}>
+            <Heading
+               color="#999"
+               text="Jimmy Miller"/>
+          </a>
           </AbsolutePosition>
       </div>
       <Padding top={70}>
