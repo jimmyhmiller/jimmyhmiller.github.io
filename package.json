@@ -8,12 +8,16 @@
   "dependencies": {
     "next": "^6.1.1",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "react-syntax-highlighter": "^8.0.1"
   },
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
     "export": "next export"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-do-expressions": "^7.0.0-rc.1"
   }
 }

@@ -1,17 +1,4 @@
-export const Lorem = () =>
-  <>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fringilla viverra facilisis. Sed non ipsum metus. Morbi eleifend felis in maximus placerat. Proin gravida lacus risus, et convallis lectus venenatis sit amet. Mauris non erat felis. Nullam gravida non tortor vel sodales. In euismod est vitae neque dapibus, et elementum nunc porta. Aenean lobortis neque ut ligula pellentesque consequat vel at enim. Ut sem ipsum, malesuada at ex vel, varius ornare justo. Suspendisse neque urna, accumsan id malesuada eget, mattis et erat. Vivamus mi metus, placerat non convallis at, efficitur ut purus. Maecenas ut est sed lectus lobortis molestie. Nulla bibendum efficitur mollis. Sed nulla turpis, ullamcorper in tellus et, sodales tristique sapien. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc id dictum lorem.</p>
-
-    <p>Vivamus vestibulum tempus purus, ut luctus nulla maximus nec. Proin in faucibus diam. Nulla vel elementum dui. Proin sit amet placerat nisl. Nam tristique venenatis ipsum quis porta. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut scelerisque ligula a gravida convallis. Fusce eget mauris magna. Nam pharetra tempus ex, ut dictum arcu vestibulum ac. In quis odio eget sapien tempor fermentum id sed justo. Vivamus bibendum pellentesque ullamcorper. Donec gravida euismod ligula ultrices iaculis. Curabitur porta odio at urna faucibus porttitor. Mauris viverra elit arcu, non faucibus velit lobortis ac.</p>
-
-    <p>Fusce vel purus sed ante elementum ornare convallis a nisl. Nunc et tincidunt nulla. Praesent congue felis ut enim accumsan semper. Quisque laoreet vel odio at interdum. Quisque imperdiet sem nisi. Phasellus ac pharetra justo, et eleifend diam. Quisque vel faucibus elit. Integer posuere quis est in aliquam. Phasellus aliquet ante vehicula mauris ullamcorper egestas. Donec suscipit dapibus augue sit amet tincidunt.</p>
-
-    <p>Vestibulum iaculis vitae mi suscipit luctus. Suspendisse eleifend vestibulum sem, ac volutpat nibh. Suspendisse sodales, ligula in gravida iaculis, ipsum libero mollis risus, eu egestas massa tortor quis diam. Aliquam eget malesuada nisi. Mauris eu enim sed turpis posuere congue vitae a est. Maecenas interdum sem sit amet congue aliquet. Proin vitae purus sed turpis dignissim euismod. Nullam eu fringilla ligula, vel posuere tellus. Duis condimentum mattis nulla, eget aliquam dui vestibulum at. Vestibulum porta sit amet nulla nec fringilla. Integer dapibus quam at tortor vulputate, quis facilisis ligula finibus.</p>
-
-    <p>Nam erat dui, bibendum ut ipsum at, posuere placerat ante. Curabitur molestie dui quis odio scelerisque, in dapibus mi maximus. Cras imperdiet tempor ullamcorper. Mauris gravida viverra sem ut vehicula. Curabitur ut justo vitae justo hendrerit tempus. Nulla ac tortor libero. Morbi egestas elementum libero in hendrerit. Pellentesque vulputate diam sed consequat dictum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum in sem tincidunt, laoreet nibh et, dapibus ex. Curabitur mattis ultricies dui, non posuere nisi faucibus sit amet. Aenean condimentum tortor egestas nibh venenatis, suscipit suscipit nulla efficitur.</p>
-  </>
-
-
+import Head from 'next/head';
 
 export const AbsolutePosition = ({ children, right, top, left, buttom}) =>
    <div style={{ position: "absolute", right, left, top,left}}>
@@ -37,3 +24,141 @@ export const Margin = ({ children, top, left, right, bottom }) =>
    }}>
       {children}
    </div>
+
+const removeFirst = (arr) => {
+  arr.shift();
+  return arr
+}
+
+export const detectIndent = source => 
+  source ? / +/.exec(source)[0].length : 0;
+
+export const removeIndent = (indent, source) =>
+  removeFirst(source.split("\n"))
+        .map(s => s.substring(indent, s.length))
+        .join("\n")
+
+
+export const formatCode = (source) => {
+  const spaces = detectIndent(source);
+  return removeIndent(spaces, source)
+}
+
+import { solarizedlight } from 'react-syntax-highlighter/styles/prism';
+
+export const modifiedSolarizedLight = {
+  ...solarizedlight,
+  "pre[class*=\"language-\"]": {
+    ...solarizedlight["pre[class*=\"language-\"]"],
+    backgroundColor: "#fff",
+  },
+}
+
+
+import SyntaxHighlighter from 'react-syntax-highlighter/prism';
+
+export const Code = ({ source, language }) => {
+  return (
+    <SyntaxHighlighter
+      showLineNumbers
+      language={language}
+      style={modifiedSolarizedLight}
+    >
+      {formatCode(source)}
+    </SyntaxHighlighter>
+  )
+}
+
+export const Javascript = ({ children }) => 
+  <Code
+    language="javascript"
+    source={children} />
+
+export const Haskell = ({ children }) => 
+  <Code
+    language="haskell"
+    source={children} />
+
+const GlobalStyles = () => 
+   <style global jsx>
+   {`
+      body {
+        font-family: helvetica, sans-serif;
+        color: #333;
+        line-height: 1.5;
+      }
+      a {
+        color: #333;
+      }
+   `}
+   </style>
+
+const Container = ({children}) =>
+   <div style={{
+      margin: "0 auto",
+      maxWidth: 700,
+   }}>
+      {children}
+   </div>
+
+const ListItem = ({ href, text, Elem }) =>
+  <li key={href}>
+    <Elem>
+      <a href={href}>
+        {text}
+      </a>
+    </Elem>
+  </li>
+
+export const LinkList = ({ items, Elem }) =>
+  <ul>
+    {items.map(item => ListItem({...item, Elem}))}
+  </ul>
+
+export const Heading = ({ color, text, size=1 }) => do {
+  const sizeToElem = {1: "h1", 2: "h2", 3: "h3", "4": "h4"}
+  const Elem = sizeToElem[size];
+  <Elem style={{ color }}>
+    {text}
+  </Elem>
+}
+
+export const Term = ({children}) =>
+  <code style={{
+    backgroundColor: "rgba(27,31,35,0.05)",
+    padding: "0.2em 0.4em",
+    borderRadius: 3
+  }}>
+    {children}
+  </code>
+
+export const BlockQuote = ({children}) =>
+  <blockquote style={{
+    paddingLeft: 20,
+    margin: 0,
+    borderLeft: "0.25em solid #dfe2e5",
+  }}>
+    {children}
+  </blockquote>
+
+export const GlobalLayout = ({ children }) =>
+  <>
+    <Head>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </Head>
+    <GlobalStyles />
+    <Container>
+      <div style={{position: "relative"}}>
+          <AbsolutePosition right={0} top={0}>
+          <Heading
+             color="#999"
+             text="Jimmy Miller"/>
+          </AbsolutePosition>
+      </div>
+      <Padding top={70}>
+        {children}
+      </Padding>
+    </Container>
+  </>
+
+
