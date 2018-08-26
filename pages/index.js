@@ -8,11 +8,11 @@ import {
 const posts = [
   {
     text: "Variants Explained",
-    href: "/variants-explained",
+    href: "/variants-explained/",
   },
   {
     text: "Variants and Protocols",
-    href: "/variants-and-protocols",
+    href: "/variants-and-protocols/",
   },
 ]
 
