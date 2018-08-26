@@ -109,7 +109,12 @@ const ListItem = ({ href, text, Elem }) =>
     </Elem>
   </li>
 
-export const LinkList = ({ items, Elem="h2", title }) =>
+export const LargeText = ({ children }) => 
+  <p style={{fontSize: "1.5em"}}>
+    {children}
+  </p>
+
+export const LinkList = ({ items, Elem=LargeText, title }) =>
   <>
     <Heading text={title} />
     <ul>
