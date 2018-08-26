@@ -109,10 +109,13 @@ const ListItem = ({ href, text, Elem }) =>
     </Elem>
   </li>
 
-export const LinkList = ({ items, Elem }) =>
-  <ul>
-    {items.map(item => ListItem({...item, Elem}))}
-  </ul>
+export const LinkList = ({ items, Elem="h2", title }) =>
+  <>
+    <Heading text={title} />
+    <ul>
+      {items.map(item => ListItem({...item, Elem}))}
+    </ul>
+  </>
 
 export const Heading = ({ color, text, size=1 }) => do {
   const sizeToElem = {1: "h1", 2: "h2", 3: "h3", "4": "h4"}
