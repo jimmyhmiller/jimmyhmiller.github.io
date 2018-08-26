@@ -10,6 +10,10 @@ const links = [
     text: "Variants Explained",
     href: "/variants-explained",
   },
+  {
+    text: "Variants and Protocols",
+    href: "/variants-and-protocols",
+  },
 ]
 
 

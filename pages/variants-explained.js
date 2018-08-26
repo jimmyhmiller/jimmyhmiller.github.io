@@ -5,11 +5,12 @@ import {
   BlockQuote,
   Term,
   GlobalLayout,
+  Title,
 } from "../utils.js";
 
 export default () => (
   <GlobalLayout>
-    <Heading text="Variants Explained" />
+    <Title text="Variants Explained" />
     <p>
       Imagine you have the following request for a product you are building:
     </p>
@@ -299,7 +300,7 @@ export default () => (
 
     <p>
       Variants are an extremely expressive way to state the assumptions behind
-      our code. They force us to be expiclit and handle cases individual. Yet,
+      our code. They force us to be explicit and handle cases individual. Yet,
       they also give a means of abstraction, a point at which we can define
       common interfaces and ignored the particularities underneath. In future
       posts we will take up this notion in more depth, showing how <Term>protocols</Term>

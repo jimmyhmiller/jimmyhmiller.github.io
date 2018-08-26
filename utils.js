@@ -60,7 +60,6 @@ import SyntaxHighlighter from 'react-syntax-highlighter/prism';
 export const Code = ({ source, language }) => {
   return (
     <SyntaxHighlighter
-      showLineNumbers
       language={language}
       style={modifiedSolarizedLight}
     >
@@ -140,6 +139,15 @@ export const BlockQuote = ({children}) =>
   }}>
     {children}
   </blockquote>
+
+export const Title = ({ text }) => 
+  <>
+    <Head>
+      <title>{text}</title>
+    </Head>
+    <Heading text={text} size={1} />
+  </>
+
 
 export const GlobalLayout = ({ children }) =>
   <>
