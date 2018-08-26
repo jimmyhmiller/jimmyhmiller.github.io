@@ -100,8 +100,11 @@ export default () => (
       exactly like lists, a function is applied to every element, but with trees
       the structure is branched, so recursion needs to happen on both sides.
     </p>
-    <Haskell>{`data Identity = Id(x)
-`}</Haskell>
+    <Haskell>
+    {`
+      data Identity = Id(x)
+    `}
+    </Haskell>
     <Javascript>
     {`
       fn map {
