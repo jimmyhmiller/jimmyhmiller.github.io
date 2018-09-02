@@ -16,7 +16,7 @@ export default () => (
       we had a language very much like javascript but with variants and protocols.
       Unfortunately, that language isn't real, but that doesn't mean we can't
       sneak some of those ideas into our javascript. Today we are going to explore
-      protocols further using a library called <Term>Protomorphism</Term> that
+      protocols further using a library called <a href="https://github.com/airportyh/protomorphism">Protomorphism</a> that
       adds protocols into javascript.{" "}
     </p>
     <Javascript>
