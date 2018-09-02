@@ -69,6 +69,13 @@ const slides = [
   }
 ]
 
+const project = [
+  {
+    text: "One Hundred Lines or Less",
+    href: "https://github.com/jimmyhmiller/one-hundred-lines-or-less"
+  }
+]
+
 export default () =>
   <GlobalLayout>
     <LinkList
@@ -86,5 +93,9 @@ export default () =>
     <LinkList
       title="Slides"
       items={slides}
+    />
+    <LinkList
+      title="Projects"
+      items={project}
     />
   </GlobalLayout>
