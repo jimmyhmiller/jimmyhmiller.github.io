@@ -10,7 +10,7 @@ import {
 
 export default () => (
   <GlobalLayout>
-    <Heading size="1" text="Protomorphism" />
+    <Title size="1" text="Protomorphism" />
     <p>
       The last two posts ventured off into the hypothetical world. In that world
       we had a language very much like javascript but with variants and protocols.
