@@ -18,6 +18,10 @@ const posts = [
     text: "Protomorphism",
     href: "/protomorphism",
   },
+  {
+    text: "Beautiful Code Through Simplicity",
+    href: "/beautiful-code",
+  },
 ]
 
 const utilities = [
