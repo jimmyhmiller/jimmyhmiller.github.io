@@ -15,7 +15,7 @@ export default () => (
       Beautiful code is not about text. It isn't about the function it serves. It
       isn't line count. It isn't whitespace. It isn't how easy it was to write.
       Beautiful code is about one thing, structure. Simplicity of structure
-      creates beautiful code, code that breaths, that hides no secrets; code that
+      creates beautiful code, code that breathes, that hides no secrets; code that
       is readable, changeable, and comprehensible. If simplicity is to achieve
       these ends, it must be something a bit more than ease.
     </p>
