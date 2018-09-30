@@ -22,6 +22,10 @@ const posts = [
     text: "Beautiful Code Through Simplicity",
     href: "/beautiful-code",
   },
+  {
+    text: "OOP from the Ground Up",
+    href: "/oop-ground-up",
+  },
 ]
 
 const utilities = [
