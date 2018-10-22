@@ -26,22 +26,27 @@ export const Margin = ({ children, top, left, right, bottom }) =>
    </div>
 
 const removeFirst = (arr) => {
-  arr.shift();
-  return arr
+  if (arr.length > 1) {
+    arr.shift();
+  }
+  return arr;
 }
 
-export const detectIndent = source => 
-  source ? / +/.exec(source)[0].length : 0;
+export const detectIndent = source =>
+  /^ */.exec(source)[0].length
 
-export const removeIndent = (indent, source) =>
-  removeFirst(source.split("\n"))
-        .map(s => s.substring(indent, s.length))
-        .join("\n")
+export const removeIndent = (source) => do {
+  console.log(source)
+  const lines = removeFirst(source.split("\n"))
+  const indent = detectIndent(lines[0])
+  lines
+    .map(s => s.substring(indent, s.length))
+    .join("\n")
+}
 
 
 export const formatCode = (source) => {
-  const spaces = detectIndent(source);
-  return removeIndent(spaces, source)
+  return removeIndent(source)
 }
 
 import { solarizedlight } from 'react-syntax-highlighter/styles/prism';

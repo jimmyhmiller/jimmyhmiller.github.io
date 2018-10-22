@@ -26,6 +26,10 @@ const posts = [
     text: "OOP from the Ground Up",
     href: "/oop-ground-up",
   },
+  {
+    text: "Side Effects, Complecting a la Carte",
+    href: "/side-effects-complect",
+  },
 ]
 
 const utilities = [
