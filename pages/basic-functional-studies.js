@@ -38,7 +38,6 @@ export default () => (
       add2ToList([1,2,3])
     `}
     </Javascript>
-    <p />
     <p>
       This function most certainly works. It does precisely what we asked. But it
       isn't very flexible. What if I want to add 3 to each item in the list? Well,
@@ -115,7 +114,6 @@ export default () => (
       // "hello jimmy"
     `}
     </Javascript>
-    <p />
     <p>
       Map is that function. Map is a fairly interesting function, because one of
       its arguments is itself a function. This function is then applied to every
@@ -288,7 +286,6 @@ export default () => (
       // [5,6,7]
     `}
     </Javascript>
-    <p />
     <p>
       Here we took our map function and curried it. Now with our curried add we
       can combine the two, giving us a new function, something that maps and adds
