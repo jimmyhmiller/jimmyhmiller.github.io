@@ -30,6 +30,10 @@ const posts = [
     text: "Side Effects, Complecting a la Carte",
     href: "/side-effects-complect",
   },
+  {
+    text: "Basic Functional Studies",
+    href: "/basic-functional-studies",
+  },
 ]
 
 const utilities = [

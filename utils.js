@@ -36,7 +36,6 @@ export const detectIndent = source =>
   /^ */.exec(source)[0].length
 
 export const removeIndent = (source) => do {
-  console.log(source)
   const lines = removeFirst(source.split("\n"))
   const indent = detectIndent(lines[0])
   lines
