@@ -29,7 +29,7 @@ export default () => (
     {`
       function add2ToList (list) {
           let temp = [];
-          for (let i = 0; i &lt; list.length; i++) {
+          for (let i = 0; i < list.length; i++) {
               temp.push(list[i] + 2);
           }
           return temp;
@@ -49,7 +49,7 @@ export default () => (
     {`
       function addNToList (n, list) {
           let temp = [];
-          for (let i = 0; i &lt; list.length; i++) {
+          for (let i = 0; i < list.length; i++) {
               temp.push(list[i] + n);
           }
           return temp;
@@ -68,12 +68,12 @@ export default () => (
     {`
       function concatFrontList (s, list) {
           let temp = [];
-          for (let i = 0; i &lt; list.length; i++) {
+          for (let i = 0; i < list.length; i++) {
               temp.push(s + list[i]);
           }
           return temp;
       }
-      concatFrontList(&quot;hello, &quot;, [&quot;jimmy&quot;])
+      concatFrontList("hello, ", ["jimmy"])
     `}
     </Javascript>
     <p>
@@ -88,7 +88,7 @@ export default () => (
     {`
       const map = function (f, list) {
           let temp = [];
-          for (let i = 0; i &lt; list.length; i++) {
+          for (let i = 0; i < list.length; i++) {
               temp.push(f(list[i));
           }
           return temp;
@@ -103,7 +103,7 @@ export default () => (
       }
 
       const greet = function (s) {
-          return &quot;hello &quot; + s;
+          return "hello " + s;
       }
 
       map(add2, [1,2,3]);
@@ -111,8 +111,8 @@ export default () => (
       map(add3, [1,2,3]);
       // [4,5,6]
 
-      map(greet, [&quot;jimmy&quot;]);
-      // &quot;hello jimmy&quot;
+      map(greet, ["jimmy"]);
+      // "hello jimmy"
     `}
     </Javascript>
     <p />
@@ -121,8 +121,8 @@ export default () => (
       its arguments is itself a function. This function is then applied to every
       element of the list. What we've done is extract out the essence of what we
       were doing in those other functions and made it reusable. This use of
-      functions as arguments to other functions is called &quot;higher order
-      functions&quot;.
+      functions as arguments to other functions is called "higher order
+      functions".
     </p>
     <Heading size="2" text="Partial application" />
     <p>
@@ -196,11 +196,11 @@ export default () => (
       Okay, now this probably seems a bit weird, what is this bind thing and why
       are you passing null as the first argument? Unfortunately, javascript
       doesn't support a beautiful way to do partial application, so we can use
-      bind. Binds first argument is the &quot;this&quot; value of the function.
-      Since we aren't using &quot;this&quot;, we can set it to null. The rest of
-      the arguments allow us to &quot;bind&quot; a value to one of the arguments
+      bind. Binds first argument is the "this" value of the function.
+      Since we aren't using "this", we can set it to null. The rest of
+      the arguments allow us to "bind" a value to one of the arguments
       of our function. In other words, when we say <Term>add.bind(null, 2)</Term>{" "}
-      we are setting the &quot;a&quot; variable in add to 2 and then we are
+      we are setting the "a" variable in add to 2 and then we are
       getting back a function that takes the rest of the arguments. In other words
       bind takes any function and turns it into a function that returns functions!
     </p>
@@ -221,10 +221,10 @@ export default () => (
     </Javascript>
     <p>
       Now with partial application I can do all sorts of things, I can bind to
-      &quot;a&quot;, bind to &quot;a&quot; and &quot;b&quot;, I could even bind to
+      "a", bind to "a" and "b", I could even bind to
       all three. But in order to do that, I have to explicitly call bind each
-      time. So let's say I want to first bind &quot;a&quot; and then later
-      &quot;b&quot;, what will that look like.
+      time. So let's say I want to first bind "a" and then later
+      "b", what will that look like.
     </p>
     <Javascript>
     {`
@@ -234,8 +234,8 @@ export default () => (
     </Javascript>
     <p>
       Not very pretty if you ask me. This also creates some weird cases, what will
-      I get back if I call &quot;add2(1)&quot;? Since I only passed in one
-      argument instead of the two remaining arguments &quot;c&quot; is undefined
+      I get back if I call "add2(1)"? Since I only passed in one
+      argument instead of the two remaining arguments "c" is undefined
       and thus the whole thing is. What I'd really love is to be able to pass in
       as many or as few arguments as I'd like and get back a function that takes
       the rest of them. This idea is called currying.
@@ -273,7 +273,7 @@ export default () => (
     {`
       let map = function (fn, list) {
           let temp = [];
-          for (let i = 0; i &lt; list.length; i++) {
+          for (let i = 0; i < list.length; i++) {
               temp.push(f(list[i));
           }
           return temp;
