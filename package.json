@@ -6,7 +6,7 @@
   "author": "<jimmy@healthfinch.com>",
   "license": "MIT",
   "dependencies": {
-    "next": "^6.1.1",
+    "next": "^7.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-syntax-highlighter": "^8.0.1"

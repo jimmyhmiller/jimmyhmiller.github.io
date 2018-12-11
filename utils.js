@@ -1,4 +1,6 @@
 import Head from 'next/head';
+import Link from 'next/link';
+
 
 export const AbsolutePosition = ({ children, right, top, left, buttom}) =>
    <div style={{ position: "absolute", right, left, top,left}}>
@@ -107,9 +109,9 @@ const Container = ({children}) =>
 const ListItem = ({ href, text, Elem }) =>
   <li key={href}>
     <Elem>
-      <a href={href}>
+      <Link href={href} as={href + "/"}>
         {text}
-      </a>
+      </Link>
     </Elem>
   </li>
 
