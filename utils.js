@@ -110,7 +110,7 @@ const ListItem = ({ href, text, Elem }) =>
   <li key={href}>
     <Elem>
       <Link href={href} as={href + "/"}>
-        {text}
+        <a>{text}</a>
       </Link>
     </Elem>
   </li>
@@ -149,6 +149,7 @@ export const BlockQuote = ({children}) =>
   <blockquote style={{
     paddingLeft: 20,
     margin: 0,
+    marginLeft: 20,
     borderLeft: "0.25em solid #dfe2e5",
   }}>
     {children}

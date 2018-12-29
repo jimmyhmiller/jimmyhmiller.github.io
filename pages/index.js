@@ -2,7 +2,7 @@ import {
   Code,
   Heading,
   GlobalLayout,
-  LinkList
+  LinkList,
 } from '../utils.js';
 
 const posts = [
@@ -34,6 +34,10 @@ const posts = [
     text: "Basic Functional Studies",
     href: "/basic-functional-studies",
   },
+  {
+    text: "Defending the Incommunicability of Programs",
+    href: "/incommunicability"
+  }
 ]
 
 const utilities = [
