@@ -148,7 +148,8 @@ export default () => (
       
       const baseReducer = (state, action) => state;
       
-      const initialState = prev => init => (state, action) => prev(state || init, action);
+      const initialState = prev => init => (state, action) =>
+        prev(state || init, action);
       
       const reduce = prev => (type, f) => (state, action) => {
         if (action && action.type === type) {
@@ -244,3 +245,5 @@ export default () => (
     </p>
   </GlobalLayout>
 )
+
+
