@@ -37,6 +37,10 @@ const posts = [
   {
     text: "Defending the Incommunicability of Programs",
     href: "/incommunicability"
+  },
+  {
+    text: "Named Function Composition",
+    href: "/named-function-composition"
   }
 ]
 

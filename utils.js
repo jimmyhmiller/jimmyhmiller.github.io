@@ -84,6 +84,11 @@ export const Haskell = ({ children }) =>
     language="haskell"
     source={children} />
 
+export const Clojure = ({ children }) => 
+  <Code
+    language="clojure"
+    source={children} />
+
 const GlobalStyles = () => 
    <style global jsx>
    {`
