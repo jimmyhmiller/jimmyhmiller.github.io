@@ -56,7 +56,11 @@ const utilities = [
   {
     text: "EsLint Fixit",
     href: "https://github.com/jimmyhmiller/eslint-fixit"
-  }
+  },
+  {
+    text: "Zoom Launcher",
+    href: "https://github.com/jimmyhmiller/zoom-cli"
+  },
 ]
 
 const libraries = [
@@ -67,7 +71,7 @@ const libraries = [
   {
     text: "React Redux Connected",
     href: "https://github.com/jimmyhmiller/react-redux-connected"
-  }
+  },
 ]
 
 const slides = [
