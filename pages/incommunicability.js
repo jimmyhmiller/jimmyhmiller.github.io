@@ -170,7 +170,7 @@ export default () => (
       While not the originator of the idea, Ryle offers a spirited defense of
       the distinction between knowing how and knowing that. Roughing speaking to
       "know how", is to have the ability to perform an action. Whereas "knowing
-      that" is to justifiably believe a true fact. In
+      that" is to justifiably believe a true fact. In{" "}
       <em>The Concept of Mind</em>, Ryle intends to defend two claims concerning
       these types of knowledge. First, "knowing how" and "knowing that" are not
       reducible to each other, they are two distinct forms of knowing. Secondly,
@@ -184,7 +184,7 @@ export default () => (
       that of a juggler. We are led to imagine a skilled juggler, who with ease
       can juggle various objects in various amounts. His hands rise and fall in
       perfect time with the objects. This is a perfect example of "knowing how",
-      our juggler has a certain intuitive understand of the objects he is
+      our juggler has a certain intuitive understanding of the objects he is
       manipulating. He knows how high to throw an object, how quickly to move
       his hands to catch them as they fall; his knowledge is made evident by his
       performance.
@@ -270,7 +270,7 @@ export default () => (
       theory in its full.
     </p>
     <p>
-      As we inherit code bases writen by others, we encounter the same things,
+      As we inherit code bases written by others, we encounter the same things,
       code bases whose theory are gone to time or locked away in a location
       unaccessible to us. Programs that have been modified under many different
       theories, often incompatible ones. Bugs begin to find their way in, often
