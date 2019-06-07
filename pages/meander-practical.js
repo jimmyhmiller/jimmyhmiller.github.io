@@ -20,9 +20,9 @@ export default () => (
       playing computer in our heads.
     </p>
     <p>
-      In this tutorial we are going to build up slowly to understand how Meander
+      In this tutorial, we are going to build up slowly to understand how Meander
       can be used to solve practical data transformation problems. We will start
-      with simple examples and move to move complicated ones, hopefully choosing
+      with simple examples and move to more complicated ones, hopefully choosing
       problems that reflect the sorts of menial data transformation tasks we all
       encounter in our day jobs. Let's start with some vanilla Clojure code.
     </p>
@@ -50,12 +50,13 @@ export default () => (
       Here we have a pretty decent Clojure function that converts between two
       different address formats. This sort of code is fairly common when we need
       to convert from the data requirements of one system to another. Honestly,
-      with this simple example, the code is fairly start forward. Our data
+      with this simple example, the code is fairly straight forward. Our data
       requirements are simple and so our code isn't difficult. Let's look at how
       to accomplish this same task in Meander.
     </p>
     <Clojure>
     {`
+    (require '[meander.match.delta :as m])
     (defn reformat-preferred-address [person]
       (m/match person
         {:preferred-address 
@@ -74,8 +75,8 @@ export default () => (
     </Clojure>
     <p>
       Here is code that does the same thing written with Meander. One obvious
-      thing to note here is that the Meander version is much longer. Judging
-      code based on number of lines is not something we are going to do.{" "}
+      thing to note is that the Meander version is much longer. Judging
+      code based on number of lines is not something we are going to do.
     </p>
     <p>
       Let's explain what is going on. First we are using the Meander's{" "}
@@ -122,7 +123,7 @@ export default () => (
       In the example above we left out some things. A person has a preferred
       address, but they also have other addresses. We have a few different
       things we want to do with this data. First we want to find all the
-      distinct zip-codes that a person has.
+      distinct zip codes that a person has.
     </p>
     <Clojure>
     {`
@@ -152,16 +153,16 @@ export default () => (
     </Clojure>
     <p>
       Here is the exact same function, but we've introduced two new concepts.
-      The first are memory variables, in this case <Term>!zip</Term>. Memory
+      The first one is memory variables, in this case <Term>!zip</Term>. Memory
       variables start with <Term>!</Term> and remember all the values they match
       with. The next concept is the zero or more operator (<Term>…</Term>). The
       zero or more operator says to repeat the pattern to its left zero or more
       times. In this case <Term>{"{:zip !zips}"}</Term>. Using these two, we can
-      declaratively gather up all the zip-codes in this data structure.
+      declaratively gather up all the zip codes in this data structure.
     </p>
     <Heading size="3" text="Minor Modifications" />
     <p>
-      What happens if one of our zipcodes is nil? Well for both of our
+      What happens if one of our zip codes is nil? Well for both of our
       functions, nil gets returned in the output. That is probably not what we
       want. Let's fix that in both versions.
     </p>
@@ -280,9 +281,9 @@ export default () => (
       I apologize for the amount of room this takes up on the screen, but real
       world examples are much larger. I want to try and make something that
       approaches realistic and in order to do that our input needs to be a bit
-      bigger. Okay, so what we want do now is given a zip-code, find all people
-      that have an address with that zip-code, and for each of the addresses
-      that match that zip-code, return a map of
+      bigger. Okay, so what we want do now is given a zip code, find all people
+      that have an address with that zip code, and for each of the addresses
+      that match that zip code, return a map of
       <Term>{"{:name <name> :address <address>}"}</Term>. So in this case if we
       asked for zip <Term>86753</Term> we should get the following response:
     </p>
@@ -353,7 +354,7 @@ export default () => (
     `}
     </Clojure>
     <p>
-      This is actually incredibly straight foward even if unfamiliar. We are now
+      This is actually incredibly straight forward even if unfamiliar. We are now
       using <Term>search</Term> to find multiple answers. Also note{" "}
       <Term>~zip</Term>. The <Term>~</Term> here let's us splice in variables
       that are in scope. And finally, we can name our whole map using the{" "}
@@ -414,11 +415,11 @@ export default () => (
     <p>
       Here we have some much more realistic data than anything we've seen
       before. We have a map with three top level keys. These represent data we
-      have gathered from various sources. The first <Term>:people</Term> is our
+      have gathered from various sources. The first key <Term>:people</Term> is our
       collection of people with names and ids. The next are the{" "}
       <Term>:addresses</Term> of these people, indexed by id for efficient
-      lookup. And finally we have <Term>:visits</Term>. This represents the
-      dates that the users visited our site, again indexed by user-id.{" "}
+      lookup. And finally we have <Term>:visits</Term>, this represents the
+      dates that the users visited our site, again indexed by user-id.
     </p>
     <p>
       Here's the mock scenario, we've seen suspicious activity on our site and
