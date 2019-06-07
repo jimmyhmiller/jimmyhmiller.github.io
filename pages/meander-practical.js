@@ -236,7 +236,7 @@ export default () => (
       that I needed to refactor to get here. It took me a little bit to think
       this way. Ideally, small changes to output should not require us to
       restructure our code. In this case the change is minor. But if we have to
-      change our structure in such small cases, won't the we have to change it
+      change our structure in such small cases, won't we have to change it
       even more in larger cases?
     </p>
     <Heading size="2" text="Searching with Meander" />
