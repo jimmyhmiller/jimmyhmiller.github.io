@@ -1,5 +1,30 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-light";
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
+import haskell from 'react-syntax-highlighter/dist/cjs/languages/prism/haskell';
+import clojure from 'react-syntax-highlighter/dist/cjs/languages/prism/clojure';
+import { solarizedlight } from 'react-syntax-highlighter/dist/styles/prism';
+
+// Super ugly hack to override prism languages
+// I really should make a modern prism, but I will
+// never find time to do that. Warning to future me
+// this causes some weird stuff with hot reloading when changed.
+const clojure2 = (Prism) => {
+  clojure(Prism);
+  Prism.languages.clojure = {
+    ...Prism.languages.clojure,
+    number: /\b-?(0x)?\d*\.?\d+\b/g,
+    logicVariable: /(\?|!)[a-zA-Z][a-zA-Z0-9-]+/,
+  }
+}
+clojure2.displayName = 'clojure'
+clojure2.aliases = []
+
+SyntaxHighlighter.registerLanguage('javascript', js);
+SyntaxHighlighter.registerLanguage('haskell', haskell);
+SyntaxHighlighter.registerLanguage('clojure', clojure2)
+
 
 
 export const AbsolutePosition = ({ children, right, top, left, buttom}) =>
@@ -50,18 +75,20 @@ export const formatCode = (source) => {
   return removeIndent(source)
 }
 
-import { solarizedlight } from 'react-syntax-highlighter/styles/prism';
 
 export const modifiedSolarizedLight = {
   ...solarizedlight,
+  "operator": {
+    color: "#cb4b16"
+  },
+  "logicVariable": {
+    color: "#2aa198"
+  },
   "pre[class*=\"language-\"]": {
     ...solarizedlight["pre[class*=\"language-\"]"],
     backgroundColor: "#fff",
   },
 }
-
-
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
 
 export const Code = ({ source, language }) => {
   return (

@@ -41,7 +41,11 @@ const posts = [
   {
     text: "Named Function Composition",
     href: "/named-function-composition"
-  }
+  },
+  {
+    text: "Meander for Practical Data Transformation",
+    href: "/meander-practical"
+  },
 ]
 
 const utilities = [

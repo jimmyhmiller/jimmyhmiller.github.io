@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:jimmyhmiller/jimmyhmiller.github.io.git",
-  "author": "<jimmy@healthfinch.com>",
+  "author": "<jimmy@jimmyhmiller@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "next": "^7.0.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-syntax-highlighter": "^8.0.1"
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-syntax-highlighter": "10.3.0"
   },
   "scripts": {
     "dev": "next",
