@@ -20,7 +20,7 @@ export default () => (
       playing computer in our heads.
     </p>
     <p>
-      In this tutorial, we are going to build up slowly to understand how Meander
+      In this tutorial, we are going to build up slowly to understand how <a href="https://github.com/noprompt/meander/">Meander</a>{" "}
       can be used to solve practical data transformation problems. We will start
       with simple examples and move to more complicated ones, hopefully choosing
       problems that reflect the sorts of menial data transformation tasks we all
