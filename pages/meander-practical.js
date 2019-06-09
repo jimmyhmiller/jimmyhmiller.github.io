@@ -179,8 +179,8 @@ export default () => (
     {`
     (defn distinct-zip-codes [person]
       (m/match person
-        {:preferred-address {:zip (pred some? !zips)}
-         :other-addresses [{:zip (pred some? !zips)} ...]}
+        {:preferred-address {:zip (or nil !zips)}
+         :other-addresses [{:zip (or nil !zips)} ...]}
         (distinct !zips)))
     `}
     </Clojure>
@@ -188,9 +188,11 @@ export default () => (
       These two functions aren't that different. In Meander we could have used{" "}
       <Term>filter</Term> in the exact same way if we wanted. But it's nice that
       we can set these conditions on the input, which is really more closely
-      stating our intent. Here we used the <Term>pred</Term> operator which says
-      to match something only if the predicate we give it returns true. Before
-      we move on to more complex examples, let's consider one more modification.
+      stating our intent. Here we used <Term>or</Term> a short-circuiting operator which says that we should 
+      match one of these patterns. Our first pattern is just the literal nil. 
+      If it is nil, the pattern will match, but it won't be saved anywhere.
+      If the value isn't nil, it will be saved in our memory variable <Term>!zips</Term>.
+      Before we move on to more complex examples, let's consider one more modification.
       This time we want a distinct list of non-nil zips and cities output in a
       map like this <Term>{"{:zips [] :cities []}"}</Term>.
     </p>
@@ -209,10 +211,10 @@ export default () => (
     {`
     (defn distinct-zips-and-cities [person]
       (m/match person
-        {:preferred-address {:zip (pred some? !zips)
-                             :city (pred some? !cities)}
-         :other-addresses [{:zip (pred some? !zips)
-                            :city (pred some? !cities)} ...]}
+        {:preferred-address {:zip (or nil !zips)
+                             :city (or nil !cities)}
+         :other-addresses [{:zip (or nil !zips)
+                            :city (or nil !cities)} ...]}
         {:zips (distinct !zips)
          :cities (distinct !cities)}))
     `}

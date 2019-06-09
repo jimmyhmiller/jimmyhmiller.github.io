@@ -175,6 +175,7 @@ export const Term = ({children}) =>
     borderRadius: 3,
     fontFamily: "Monaco, monospace",
     fontSize: 13,
+    whiteSpace: "nowrap",
   }}>
     {children}
   </code>
