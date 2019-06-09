@@ -57,6 +57,7 @@ export default () => (
     <Clojure>
     {`
     (require '[meander.match.delta :as m])
+
     (defn reformat-preferred-address [person]
       (m/match person
         {:preferred-address 

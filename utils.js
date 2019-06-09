@@ -172,7 +172,9 @@ export const Term = ({children}) =>
   <code style={{
     backgroundColor: "rgba(27,31,35,0.05)",
     padding: "0.2em 0.4em",
-    borderRadius: 3
+    borderRadius: 3,
+    fontFamily: "Monaco, monospace",
+    fontSize: 13,
   }}>
     {children}
   </code>
