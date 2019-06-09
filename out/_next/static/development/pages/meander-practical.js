@@ -20268,52 +20268,52 @@ var _jsxFileName = "/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/pa
       lineNumber: 57
     },
     __self: this
-  }, "\n    (require '[meander.match.delta :as m])\n    (defn reformat-preferred-address [person]\n      (m/match person\n        {:preferred-address \n         {:address1 ?address1\n          :address2 ?address2\n          :city ?city\n          :state ?state\n          :zip ?zip}}\n        \n        {:address {:line1 ?address1\n                   :line2 ?address2}\n         :city-info {:city ?city\n                     :state ?state\n                     :zipcode ?zip}}))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, "\n    (require '[meander.match.delta :as m])\n    \n    (defn reformat-preferred-address [person]\n      (m/match person\n        {:preferred-address \n         {:address1 ?address1\n          :address2 ?address2\n          :city ?city\n          :state ?state\n          :zip ?zip}}\n        \n        {:address {:line1 ?address1\n                   :line2 ?address2}\n         :city-info {:city ?city\n                     :state ?state\n                     :zipcode ?zip}}))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 77
     },
     __self: this
   }, "Here is code that does the same thing written with Meander. One obvious thing to note is that the Meander version is much longer. Judging code based on number of lines is not something we are going to do."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81
+      lineNumber: 82
     },
     __self: this
   }, "Let's explain what is going on. First we are using the Meander's", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 84
     },
     __self: this
   }, "match"), " feature. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 84
     },
     __self: this
   }, "match"), " takes the thing that we are matching on (", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 85
     },
     __self: this
   }, "person"), "), a pattern to try to match, and the output. Our pattern here is in the exact shape of the person map we passed in. In order to extract out pieces of this map, we use logic variables (", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 88
     },
     __self: this
   }, "?address1"), ", ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 88
     },
     __self: this
   }, "?address2"), ", etc). Logic variables are just symbols that start with ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 89
     },
     __self: this
   }, "?"), ". We can assign values in our data to any logic variables we'd like and then use those logic variables in our output. One thing I love about this simple Meander example, is that you can see the exact shape of the input immediately."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
@@ -20321,73 +20321,73 @@ var _jsxFileName = "/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/pa
     text: "Making Our Example Harder",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93
+      lineNumber: 94
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 95
     },
     __self: this
   }, "This example while somewhat realistic is very limited. While I like the fact that Meander's match shows us the shape of our data, for simple examples like this, Clojure does pretty well. Let's make things harder."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 100
     },
     __self: this
   }, "\n    (def person\n      {:name \"jimmy\"\n       :preferred-address\n       {:address1 \"123 street ave\"\n        :address2 \"apt 2\"\n        :city \"Townville\"\n        :state \"IN\"\n        :zip \"46203\"}\n       :other-addresses \n       [{:address1 \"432 street ave\"\n         :address2 \"apt 7\"\n         :city \"Cityvillage\"\n         :state \"New York\"\n         :zip \"12345\"}\n        {:address1 \"534 street ave\"\n         :address2 \"apt 5\"\n         :city \"Township\"\n         :state \"IN\"\n         :zip \"46203\"}]})\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 123
     },
     __self: this
   }, "In the example above we left out some things. A person has a preferred address, but they also have other addresses. We have a few different things we want to do with this data. First we want to find all the distinct zip codes that a person has."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 128
+      lineNumber: 129
     },
     __self: this
   }, "\n    (defn distinct-zip-codes [person]\n      (let [preferred-address-zip (get-in person [:preferred-address :zip])\n            other-zips (map :zip (:other-addresses person))]\n        (distinct (cons preferred-address-zip other-zips))))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136
+      lineNumber: 137
     },
     __self: this
   }, "Here is some pretty straight forward Clojure code for doing exactly that. I'm sure some people could have minor quibbles about how this is written, but I doubt other solutions would be much different. One thing to note here is that we have lost a little bit the structure of our input data. We could maybe change that up a bit. Maybe using distructuring is the right approach? Regardless, this is a simple and reasonable Clojure function. Now, let's look at the Meander version."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 146
     },
     __self: this
   }, "\n    (defn distinct-zip-codes [person]\n      (m/match person\n        {:preferred-address {:zip !zips}\n         :other-addresses [{:zip !zips} ...]}\n        (distinct !zips)))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 154
+      lineNumber: 155
     },
     __self: this
   }, "Here is the exact same function, but we've introduced two new concepts. The first one is memory variables, in this case ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 156
+      lineNumber: 157
     },
     __self: this
   }, "!zip"), ". Memory variables start with ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 157
+      lineNumber: 158
     },
     __self: this
   }, "!"), " and remember all the values they match with. The next concept is the zero or more operator (", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 158
+      lineNumber: 159
     },
     __self: this
   }, "\u2026"), "). The zero or more operator says to repeat the pattern to its left zero or more times. In this case ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 160
+      lineNumber: 161
     },
     __self: this
   }, "{:zip !zips}"), ". Using these two, we can declaratively gather up all the zip codes in this data structure."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
@@ -20395,79 +20395,79 @@ var _jsxFileName = "/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/pa
     text: "Minor Modifications",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 163
+      lineNumber: 164
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 164
+      lineNumber: 165
     },
     __self: this
   }, "What happens if one of our zip codes is nil? Well for both of our functions, nil gets returned in the output. That is probably not what we want. Let's fix that in both versions."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 169
+      lineNumber: 170
     },
     __self: this
   }, "\n    (defn distinct-zip-codes [person]\n      (let [preferred-address-zip (get-in person [:preferred-address :zip])\n            other-zips (map :zip (:other-addresses person))]\n        (filter some? (distinct (cons preferred-address-zip other-zips)))))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 177
+      lineNumber: 178
     },
     __self: this
   }, "\n    (defn distinct-zip-codes [person]\n      (m/match person\n        {:preferred-address {:zip (pred some? !zips)}\n         :other-addresses [{:zip (pred some? !zips)} ...]}\n        (distinct !zips)))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 186
+      lineNumber: 187
     },
     __self: this
   }, "These two functions aren't that different. In Meander we could have used", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 188
+      lineNumber: 189
     },
     __self: this
   }, "filter"), " in the exact same way if we wanted. But it's nice that we can set these conditions on the input, which is really more closely stating our intent. Here we used the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 190
+      lineNumber: 191
     },
     __self: this
   }, "pred"), " operator which says to match something only if the predicate we give it returns true. Before we move on to more complex examples, let's consider one more modification. This time we want a distinct list of non-nil zips and cities output in a map like this ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 194
+      lineNumber: 195
     },
     __self: this
   }, "{:zips [] :cities []}"), "."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 196
+      lineNumber: 197
     },
     __self: this
   }, "\n    (defn distinct-zips-and-cities [person]\n      (let [preferred-address-zip (get-in person [:preferred-address :zip])\n            preferred-address-city (get-in person [:preferred-address :city])\n            other-zips (map :zip (:other-addresses person))\n            other-cities (map :city (:other-addresses person))]\n        {:zips (filter some? (distinct (cons preferred-address-zip other-zips)))\n         :cities (filter some? (distinct (cons preferred-address-city other-cities)))}))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 207
+      lineNumber: 208
     },
     __self: this
   }, "\n    (defn distinct-zips-and-cities [person]\n      (m/match person\n        {:preferred-address {:zip (pred some? !zips)\n                             :city (pred some? !cities)}\n         :other-addresses [{:zip (pred some? !zips)\n                            :city (pred some? !cities)} ...]}\n        {:zips (distinct !zips)\n         :cities (distinct !cities)}))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 219
+      lineNumber: 220
     },
     __self: this
   }, "With both of these examples, I extended them in the most obvious way I could think of. I think the Meander held up pretty well, but I wouldn't have written the plain Clojure function that way. Here's what I probably would have done instead."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 225
+      lineNumber: 226
     },
     __self: this
   }, "\n    (defn distinct-zips-and-cities [person]\n      (let [addresses (cons (:preferred-address person) \n                            (:other-addresses person))]\n        {:zips (filter some? (distinct (map :zip addresses)))\n         :cities (filter some? (distinct (map :city addresses)))}))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 234
+      lineNumber: 235
     },
     __self: this
   }, "I think this is a pretty good function. But what I find interesting is that I needed to refactor to get here. It took me a little bit to think this way. Ideally, small changes to output should not require us to restructure our code. In this case the change is minor. But if we have to change our structure in such small cases, won't we have to change it even more in larger cases?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
@@ -20475,115 +20475,115 @@ var _jsxFileName = "/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/pa
     text: "Searching with Meander",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 242
+      lineNumber: 243
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 243
+      lineNumber: 244
     },
     __self: this
   }, "All our examples up until this point have had one answer. Yes, that answer might have been a collection, but there was only one way for our pattern to match. This isn't always the case. To see an example of that, let's write some functions using this data structure."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 249
+      lineNumber: 250
     },
     __self: this
   }, "\n    (def people\n      [{:name \"jimmy\"\n        :addresses [{:address1 \"123 street ave\"\n                     :address2 \"apt 2\"\n                     :city \"Townville\"\n                     :state \"IN\"\n                     :zip \"46203\"\n                     :preferred true}\n                    {:address1 \"534 street ave\",\n                     :address2 \"apt 5\",\n                     :city \"Township\",\n                     :state \"IN\",\n                     :zip \"46203\"\n                     :preferred false}\n                    {:address1 \"543 Other St\",\n                     :address2 \"apt 50\",\n                     :city \"Town\",\n                     :state \"CA\",\n                     :zip \"86753\"\n                     :preferred false}]}\n       {:name \"joel\"\n        :addresses [{:address1 \"2026 park ave\"\n                     :address2 \"apt 200\"\n                     :city \"Town\"\n                     :state \"CA\"\n                     :zip \"86753\"\n                     :preferred true}]}])\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 280
+      lineNumber: 281
     },
     __self: this
   }, "I apologize for the amount of room this takes up on the screen, but real world examples are much larger. I want to try and make something that approaches realistic and in order to do that our input needs to be a bit bigger. Okay, so what we want do now is given a zip code, find all people that have an address with that zip code, and for each of the addresses that match that zip code, return a map of", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 287
+      lineNumber: 288
     },
     __self: this
   }, "{:name <name> :address <address>}"), ". So in this case if we asked for zip ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 288
+      lineNumber: 289
     },
     __self: this
   }, "86753"), " we should get the following response:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 290
+      lineNumber: 291
     },
     __self: this
   }, "\n    ({:name \"jimmy\",\n      :address\n      {:address1 \"543 Other St\",\n       :address2 \"apt 50\",\n       :city \"Town\",\n       :state \"CA\",\n       :zip \"86753\",\n       :preferred false}}\n     {:name \"joel\",\n      :address\n      {:address1 \"2026 park ave\",\n       :address2 \"apt 200\",\n       :city \"Town\",\n       :state \"CA\",\n       :zip \"86753\",\n       :preferred true}})\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 310
+      lineNumber: 311
     },
     __self: this
   }, "Okay let's start with the vanilla Clojure example."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 311
+      lineNumber: 312
     },
     __self: this
   }, "\n    (defn find-people-with-zip [people zip]\n      (for [person people\n            address (:addresses person)\n            :when (= (:zip address) zip)]\n        {:name (:name person)\n         :address address}))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 321
+      lineNumber: 322
     },
     __self: this
   }, "This code might not be very idiomatic. I almost never use ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 322
+      lineNumber: 323
     },
     __self: this
   }, "for"), " ", "in actual code. But honestly this was the most succinct way I could think to write it. We could also have written something like this:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 326
+      lineNumber: 327
     },
     __self: this
   }, "\n    (defn person-with-address-comb [person]\n      (map (fn [address]\n             {:name (:name person)\n              :address address})\n           (:addresses person)))\n    \n    (defn find-people-with-zip [people zip]\n      (->> people\n           (mapcat person-with-address-comb)\n           (filter (comp #{zip} :zip :address))))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 340
+      lineNumber: 341
     },
     __self: this
   }, "It seems like there is a better way I'm overlooking. But regardless I think any of these solutions will be a tiny bit complicated. We've definitely lost the shape of the input data. We have some imperative stuff going on here. Let's contrast this with the Meander implementation."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 346
+      lineNumber: 347
     },
     __self: this
   }, "\n    (defn find-people-with-zip [people zip]\n      (m/search people\n        (scan {:name ?name\n               :addresses (scan {:zip ~zip :as ?address})})\n        {:name ?name\n         :address ?address}))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 356
+      lineNumber: 357
     },
     __self: this
   }, "This is actually incredibly straight forward even if unfamiliar. We are now using ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 358
+      lineNumber: 359
     },
     __self: this
   }, "search"), " to find multiple answers. Also note", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 359
+      lineNumber: 360
     },
     __self: this
   }, "~zip"), ". The ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 359
+      lineNumber: 360
     },
     __self: this
   }, "~"), " here let's us splice in variables that are in scope. And finally, we can name our whole map using the", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 361
+      lineNumber: 362
     },
     __self: this
   }, ":as"), " pattern. This code reads like what we conceptually want to do, scan people's addresses looking for zips that match the one passed in. We do not have to think at all about how this code runs."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
@@ -20591,85 +20591,85 @@ var _jsxFileName = "/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/pa
     text: "One Final Example",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 365
+      lineNumber: 366
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 366
+      lineNumber: 367
     },
     __self: this
   }, "For our final example of how Meander can be used to perform data manipulation, will show one feature of logic variables that we have left off so far. To do so we need some more complex data."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 371
+      lineNumber: 372
     },
     __self: this
   }, "\n    (def data\n      {:people \n       [{:name \"jimmy\" :id 1}\n        {:name \"joel\" :id 2}\n        {:name \"tim\" :id 3}]\n       :addresses\n       {1 [{:address1 \"123 street ave\"\n            :address2 \"apt 2\"\n            :city \"Townville\"\n            :state \"IN\"\n            :zip \"46203\"\n            :preferred true}\n           {:address1 \"534 street ave\",\n            :address2 \"apt 5\",\n            :city \"Township\",\n            :state \"IN\",\n            :zip \"46203\"\n            :preferred false}]\n        2 [{:address1 \"2026 park ave\"\n            :address2 \"apt 200\"\n            :city \"Town\"\n            :state \"CA\"\n            :zip \"86753\"\n            :preferred true}]\n        3 [{:address1 \"1448 street st\"\n            :address2 \"apt 1\"\n            :city \"City\"\n            :state \"WA\"\n            :zip \"92456\"\n            :preferred true}]}\n       :visits {1 [{:date \"12-31-1900\"\n                    :geo-location {:zip \"46203\"}}]\n                2 [{:date \"1-1-1970\"\n                    :geo-location {:zip \"12345\"}}\n                   {:date \"1-1-1970\"\n                    :geo-location {:zip \"86753\"}}]\n                3 [{:date \"4-4-4444\"\n                    :geo-location {:zip \"54221\"}}\n                   {:date \"4-4-4444\"\n                    :geo-location {:zip \"92456\"}}]}})\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 415
+      lineNumber: 416
     },
     __self: this
   }, "Here we have some much more realistic data than anything we've seen before. We have a map with three top level keys. These represent data we have gathered from various sources. The first key ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 418
+      lineNumber: 419
     },
     __self: this
   }, ":people"), " is our collection of people with names and ids. The next are the", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 420
+      lineNumber: 421
     },
     __self: this
   }, ":addresses"), " of these people, indexed by id for efficient lookup. And finally we have ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 421
+      lineNumber: 422
     },
     __self: this
   }, ":visits"), ", this represents the dates that the users visited our site, again indexed by user-id."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 424
+      lineNumber: 425
     },
     __self: this
   }, "Here's the mock scenario, we've seen suspicious activity on our site and we aren't quite sure how to narrow it down. We are going to start our investigation by finding any users who had visits that were not in the same zip as their preferred address. Because of the nature of our application, we happen to know that it is typically used at the preferred location. Once we know the users affected, we need to return their name, id, the date of access, and the zip code that didn't match. But I want to show that despite this somewhat complicated scenario, we can easily express this using Meander. Before we get there, the Clojure implementation."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 436
+      lineNumber: 437
     },
     __self: this
   }, "\n    \n    (defn find-non-matching-visits [address visits]\n      (filter (comp (complement #{(:zip address)}) :zip :geo-location) visits))\n    \n    (defn find-bad-visits-for-person [addresses visits person]\n      (let [preferred-address (first (filter :preferred addresses))\n            non-matching (find-non-matching-visits preferred-address visits)]\n        (map (fn [visit] {:name (:name person)\n                          :id (:id person)\n                          :zip (get-in visit [:geo-location :zip])\n                          :date (:date visit)})\n            non-matching)))\n    \n    (defn find-potential-bad-visits [{:keys [addresses visits people]}]\n      (mapcat (fn [{:keys [id] :as person}] \n                (find-bad-visits-for-person \n                 (addresses id)\n                 (visits id) \n                 person))\n              people))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 460
+      lineNumber: 461
     },
     __self: this
   }, "I really wanted to come up with a better implementation. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 461
+      lineNumber: 462
     },
     __self: this
   }, "for"), " ", "might have been useful here. If any reader has a better implementation, I'm happy to replace this one. But honestly, I think no matter version we went with, it is going to have the features that make this one less than desirable. Just look at how much of this code is about telling the computer what to do. Let's look at the Meander version now."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Clojure"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 468
+      lineNumber: 469
     },
     __self: this
   }, "\n    (defn find-potential-bad-visits [data]\n      (m/search data\n        {:people (scan {:id ?id :name ?name})\n         :addresses {?id (scan {:preferred true :zip ?zip})}\n         :visits {?id (scan {:geo-location {:zip (and (not ?zip) ?bad-zip)}\n                             :date ?date})}}\n        {:name ?name\n         :id ?id\n         :zip ?bad-zip\n         :date ?date}))\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 482
+      lineNumber: 483
     },
     __self: this
   }, "This is where Meander shines. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 483
+      lineNumber: 484
     },
     __self: this
   }, "?id"), " is being used to join across data structures. We can now find an id in people and use that to index into other collections. This allows us to find out everything we need to know about a person easily. We can also search into any collection and match on data at any level. We don't need to rely on pulling things out into a higher scope by using let bindings, making helper functions to work on sub collections, or creating a series of transformations to get at the data we care about. Instead we declare our data needs and the relationships that need to hold between them."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
@@ -20677,19 +20677,19 @@ var _jsxFileName = "/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/pa
     text: "Conclusion",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 493
+      lineNumber: 494
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 494
+      lineNumber: 495
     },
     __self: this
   }, "I hope that this has been a good introduction to how Meander can be used for practical data transformation problems. In many of these examples, the vanilla Clojure made for pretty good code. But as the data requirements become more complex, we need tools to handle these. While we may be able to accomplish any of these tasks, the understanding of the structure of our code becomes lost. Looking at the example above, we know so much about what the data coming in looks like. Our code mirrors precisely the shape of data we get in."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 504
+      lineNumber: 505
     },
     __self: this
   }, "Now I do admit, my examples here are a bit contrived. But they are meant to be simple so we don't focus on the examples and instead focus on the code. In coming posts I will explore more directly various ways we can apply Meander for data transformation. Some ideas I have in mind are using Meander with honeysql to turn our data into sql, transforming a collection of data into hiccup for display as html, and using Meander to scrap the web. I'd also love to do more computer science examples. Using Meander to make little lisp interpreter, a CEK machine or basic arithmetic. And yet, Meander goes way beyond all of these things. Meander is about more than practical data manipulation. It is about a new away of programming, a new way of thinking about problems. Hopefully this introduction will help you to dive in and try it yourself."));
@@ -20919,7 +20919,7 @@ var GlobalStyles = function GlobalStyles() {
   return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(styled_jsx_style__WEBPACK_IMPORTED_MODULE_2___default.a, {
     id: "1541984143",
     __self: this
-  }, "body{font-family:helvetica,sans-serif;color:#333;line-height:1.5;}a{color:#333;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qaW1teWhtaWxsZXIvRG9jdW1lbnRzL0NvZGUvamltbXlobWlsbGVyLmdpdGh1Yi5pby91dGlscy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUF3SEksQUFHMkMsQUFLdkIsV0FDYixzQkFMYSxXQUNLLGdCQUNsQiIsImZpbGUiOiIvVXNlcnMvamltbXlobWlsbGVyL0RvY3VtZW50cy9Db2RlL2ppbW15aG1pbGxlci5naXRodWIuaW8vdXRpbHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgSGVhZCBmcm9tICduZXh0L2hlYWQnO1xuaW1wb3J0IExpbmsgZnJvbSAnbmV4dC9saW5rJztcbmltcG9ydCBTeW50YXhIaWdobGlnaHRlciBmcm9tIFwicmVhY3Qtc3ludGF4LWhpZ2hsaWdodGVyL2Rpc3QvY2pzL3ByaXNtLWxpZ2h0XCI7XG5pbXBvcnQganMgZnJvbSAncmVhY3Qtc3ludGF4LWhpZ2hsaWdodGVyL2Rpc3QvY2pzL2xhbmd1YWdlcy9wcmlzbS9qYXZhc2NyaXB0JztcbmltcG9ydCBoYXNrZWxsIGZyb20gJ3JlYWN0LXN5bnRheC1oaWdobGlnaHRlci9kaXN0L2Nqcy9sYW5ndWFnZXMvcHJpc20vaGFza2VsbCc7XG5pbXBvcnQgY2xvanVyZSBmcm9tICdyZWFjdC1zeW50YXgtaGlnaGxpZ2h0ZXIvZGlzdC9janMvbGFuZ3VhZ2VzL3ByaXNtL2Nsb2p1cmUnO1xuaW1wb3J0IHsgc29sYXJpemVkbGlnaHQgfSBmcm9tICdyZWFjdC1zeW50YXgtaGlnaGxpZ2h0ZXIvZGlzdC9zdHlsZXMvcHJpc20nO1xuXG4vLyBTdXBlciB1Z2x5IGhhY2sgdG8gb3ZlcnJpZGUgcHJpc20gbGFuZ3VhZ2VzXG4vLyBJIHJlYWxseSBzaG91bGQgbWFrZSBhIG1vZGVybiBwcmlzbSwgYnV0IEkgd2lsbFxuLy8gbmV2ZXIgZmluZCB0aW1lIHRvIGRvIHRoYXQuIFdhcm5pbmcgdG8gZnV0dXJlIG1lXG4vLyB0aGlzIGNhdXNlcyBzb21lIHdlaXJkIHN0dWZmIHdpdGggaG90IHJlbG9hZGluZyB3aGVuIGNoYW5nZWQuXG5jb25zdCBjbG9qdXJlMiA9IChQcmlzbSkgPT4ge1xuICBjbG9qdXJlKFByaXNtKTtcbiAgUHJpc20ubGFuZ3VhZ2VzLmNsb2p1cmUgPSB7XG4gICAgLi4uUHJpc20ubGFuZ3VhZ2VzLmNsb2p1cmUsXG4gICAgbnVtYmVyOiAvXFxiLT8oMHgpP1xcZCpcXC4/XFxkK1xcYi9nLFxuICAgIGxvZ2ljVmFyaWFibGU6IC8oXFw/fCEpW2EtekEtWl1bYS16QS1aMC05LV0rLyxcbiAgfVxufVxuY2xvanVyZTIuZGlzcGxheU5hbWUgPSAnY2xvanVyZSdcbmNsb2p1cmUyLmFsaWFzZXMgPSBbXVxuXG5TeW50YXhIaWdobGlnaHRlci5yZWdpc3Rlckxhbmd1YWdlKCdqYXZhc2NyaXB0JywganMpO1xuU3ludGF4SGlnaGxpZ2h0ZXIucmVnaXN0ZXJMYW5ndWFnZSgnaGFza2VsbCcsIGhhc2tlbGwpO1xuU3ludGF4SGlnaGxpZ2h0ZXIucmVnaXN0ZXJMYW5ndWFnZSgnY2xvanVyZScsIGNsb2p1cmUyKVxuXG5cblxuZXhwb3J0IGNvbnN0IEFic29sdXRlUG9zaXRpb24gPSAoeyBjaGlsZHJlbiwgcmlnaHQsIHRvcCwgbGVmdCwgYnV0dG9tfSkgPT5cbiAgIDxkaXYgc3R5bGU9e3sgcG9zaXRpb246IFwiYWJzb2x1dGVcIiwgcmlnaHQsIGxlZnQsIHRvcCxsZWZ0fX0+XG4gICAgICB7Y2hpbGRyZW59XG4gICA8L2Rpdj5cblxuZXhwb3J0IGNvbnN0IFBhZGRpbmcgPSAoeyBjaGlsZHJlbiwgdG9wLCBsZWZ0LCByaWdodCwgYm90dG9tIH0pID0+XG4gICA8ZGl2IHN0eWxlPXt7XG4gICAgICBwYWRkaW5nVG9wOiB0b3AsXG4gICAgICBwYWRkaW5nTGVmdDogbGVmdCxcbiAgICAgIHBhZGRpbmdSaWdodDogcmlnaHQsXG4gICAgICBwYWRkaW5nQm90dG9tOiBib3R0b20sXG4gICB9fT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgIDwvZGl2PlxuXG5leHBvcnQgY29uc3QgTWFyZ2luID0gKHsgY2hpbGRyZW4sIHRvcCwgbGVmdCwgcmlnaHQsIGJvdHRvbSB9KSA9PlxuICAgPGRpdiBzdHlsZT17e1xuICAgICAgbWFyZ2luVG9wOiB0b3AsXG4gICAgICBtYXJnaW5MZWZ0OiBsZWZ0LFxuICAgICAgbWFyZ2luUmlnaHQ6IHJpZ2h0LFxuICAgICAgbWFyZ2luQm90dG9tOiBib3R0b20sXG4gICB9fT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgIDwvZGl2PlxuXG5jb25zdCByZW1vdmVGaXJzdCA9IChhcnIpID0+IHtcbiAgaWYgKGFyci5sZW5ndGggPiAxKSB7XG4gICAgYXJyLnNoaWZ0KCk7XG4gIH1cbiAgcmV0dXJuIGFycjtcbn1cblxuZXhwb3J0IGNvbnN0IGRldGVjdEluZGVudCA9IHNvdXJjZSA9PlxuICAvXiAqLy5leGVjKHNvdXJjZSlbMF0ubGVuZ3RoXG5cbmV4cG9ydCBjb25zdCByZW1vdmVJbmRlbnQgPSAoc291cmNlKSA9PiBkbyB7XG4gIGNvbnN0IGxpbmVzID0gcmVtb3ZlRmlyc3Qoc291cmNlLnNwbGl0KFwiXFxuXCIpKVxuICBjb25zdCBpbmRlbnQgPSBkZXRlY3RJbmRlbnQobGluZXNbMF0pXG4gIGxpbmVzXG4gICAgLm1hcChzID0+IHMuc3Vic3RyaW5nKGluZGVudCwgcy5sZW5ndGgpKVxuICAgIC5qb2luKFwiXFxuXCIpXG59XG5cblxuZXhwb3J0IGNvbnN0IGZvcm1hdENvZGUgPSAoc291cmNlKSA9PiB7XG4gIHJldHVybiByZW1vdmVJbmRlbnQoc291cmNlKVxufVxuXG5cbmV4cG9ydCBjb25zdCBtb2RpZmllZFNvbGFyaXplZExpZ2h0ID0ge1xuICAuLi5zb2xhcml6ZWRsaWdodCxcbiAgXCJvcGVyYXRvclwiOiB7XG4gICAgY29sb3I6IFwiI2NiNGIxNlwiXG4gIH0sXG4gIFwibG9naWNWYXJpYWJsZVwiOiB7XG4gICAgY29sb3I6IFwiIzJhYTE5OFwiXG4gIH0sXG4gIFwicHJlW2NsYXNzKj1cXFwibGFuZ3VhZ2UtXFxcIl1cIjoge1xuICAgIC4uLnNvbGFyaXplZGxpZ2h0W1wicHJlW2NsYXNzKj1cXFwibGFuZ3VhZ2UtXFxcIl1cIl0sXG4gICAgYmFja2dyb3VuZENvbG9yOiBcIiNmZmZcIixcbiAgfSxcbn1cblxuZXhwb3J0IGNvbnN0IENvZGUgPSAoeyBzb3VyY2UsIGxhbmd1YWdlIH0pID0+IHtcbiAgcmV0dXJuIChcbiAgICA8U3ludGF4SGlnaGxpZ2h0ZXJcbiAgICAgIGxhbmd1YWdlPXtsYW5ndWFnZX1cbiAgICAgIHN0eWxlPXttb2RpZmllZFNvbGFyaXplZExpZ2h0fVxuICAgID5cbiAgICAgIHtmb3JtYXRDb2RlKHNvdXJjZSl9XG4gICAgPC9TeW50YXhIaWdobGlnaHRlcj5cbiAgKVxufVxuXG5leHBvcnQgY29uc3QgSmF2YXNjcmlwdCA9ICh7IGNoaWxkcmVuIH0pID0+IFxuICA8Q29kZVxuICAgIGxhbmd1YWdlPVwiamF2YXNjcmlwdFwiXG4gICAgc291cmNlPXtjaGlsZHJlbn0gLz5cblxuZXhwb3J0IGNvbnN0IEhhc2tlbGwgPSAoeyBjaGlsZHJlbiB9KSA9PiBcbiAgPENvZGVcbiAgICBsYW5ndWFnZT1cImhhc2tlbGxcIlxuICAgIHNvdXJjZT17Y2hpbGRyZW59IC8+XG5cbmV4cG9ydCBjb25zdCBDbG9qdXJlID0gKHsgY2hpbGRyZW4gfSkgPT4gXG4gIDxDb2RlXG4gICAgbGFuZ3VhZ2U9XCJjbG9qdXJlXCJcbiAgICBzb3VyY2U9e2NoaWxkcmVufSAvPlxuXG5jb25zdCBHbG9iYWxTdHlsZXMgPSAoKSA9PiBcbiAgIDxzdHlsZSBnbG9iYWwganN4PlxuICAge2BcbiAgICAgIGJvZHkge1xuICAgICAgICBmb250LWZhbWlseTogaGVsdmV0aWNhLCBzYW5zLXNlcmlmO1xuICAgICAgICBjb2xvcjogIzMzMztcbiAgICAgICAgbGluZS1oZWlnaHQ6IDEuNTtcbiAgICAgIH1cbiAgICAgIGEge1xuICAgICAgICBjb2xvcjogIzMzMztcbiAgICAgIH1cbiAgIGB9XG4gICA8L3N0eWxlPlxuXG5jb25zdCBDb250YWluZXIgPSAoe2NoaWxkcmVufSkgPT5cbiAgIDxkaXYgc3R5bGU9e3tcbiAgICAgIG1hcmdpbjogXCIwIGF1dG9cIixcbiAgICAgIG1heFdpZHRoOiA3MDAsXG4gICB9fT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgIDwvZGl2PlxuXG5jb25zdCBMaXN0SXRlbSA9ICh7IGhyZWYsIHRleHQsIEVsZW0gfSkgPT5cbiAgPGxpIGtleT17aHJlZn0+XG4gICAgPEVsZW0+XG4gICAgICA8TGluayBocmVmPXtocmVmfSBhcz17aHJlZiArIFwiL1wifT5cbiAgICAgICAgPGE+e3RleHR9PC9hPlxuICAgICAgPC9MaW5rPlxuICAgIDwvRWxlbT5cbiAgPC9saT5cblxuZXhwb3J0IGNvbnN0IExhcmdlVGV4dCA9ICh7IGNoaWxkcmVuIH0pID0+IFxuICA8cCBzdHlsZT17e2ZvbnRTaXplOiBcIjEuNWVtXCJ9fT5cbiAgICB7Y2hpbGRyZW59XG4gIDwvcD5cblxuZXhwb3J0IGNvbnN0IExpbmtMaXN0ID0gKHsgaXRlbXMsIEVsZW09TGFyZ2VUZXh0LCB0aXRsZSB9KSA9PlxuICA8PlxuICAgIDxIZWFkaW5nIHRleHQ9e3RpdGxlfSAvPlxuICAgIDx1bD5cbiAgICAgIHtpdGVtcy5tYXAoaXRlbSA9PiBMaXN0SXRlbSh7Li4uaXRlbSwgRWxlbX0pKX1cbiAgICA8L3VsPlxuICA8Lz5cblxuZXhwb3J0IGNvbnN0IEhlYWRpbmcgPSAoeyBjb2xvciwgdGV4dCwgc2l6ZT0xIH0pID0+IGRvIHtcbiAgY29uc3Qgc2l6ZVRvRWxlbSA9IHsxOiBcImgxXCIsIDI6IFwiaDJcIiwgMzogXCJoM1wiLCBcIjRcIjogXCJoNFwifVxuICBjb25zdCBFbGVtID0gc2l6ZVRvRWxlbVtzaXplXTtcbiAgPEVsZW0gc3R5bGU9e3sgY29sb3IgfX0+XG4gICAge3RleHR9XG4gIDwvRWxlbT5cbn1cblxuZXhwb3J0IGNvbnN0IFRlcm0gPSAoe2NoaWxkcmVufSkgPT5cbiAgPGNvZGUgc3R5bGU9e3tcbiAgICBiYWNrZ3JvdW5kQ29sb3I6IFwicmdiYSgyNywzMSwzNSwwLjA1KVwiLFxuICAgIHBhZGRpbmc6IFwiMC4yZW0gMC40ZW1cIixcbiAgICBib3JkZXJSYWRpdXM6IDNcbiAgfX0+XG4gICAge2NoaWxkcmVufVxuICA8L2NvZGU+XG5cbmV4cG9ydCBjb25zdCBCbG9ja1F1b3RlID0gKHtjaGlsZHJlbn0pID0+XG4gIDxibG9ja3F1b3RlIHN0eWxlPXt7XG4gICAgcGFkZGluZ0xlZnQ6IDIwLFxuICAgIG1hcmdpbjogMCxcbiAgICBtYXJnaW5MZWZ0OiAyMCxcbiAgICBib3JkZXJMZWZ0OiBcIjAuMjVlbSBzb2xpZCAjZGZlMmU1XCIsXG4gIH19PlxuICAgIHtjaGlsZHJlbn1cbiAgPC9ibG9ja3F1b3RlPlxuXG5leHBvcnQgY29uc3QgVGl0bGUgPSAoeyB0ZXh0IH0pID0+IFxuICA8PlxuICAgIDxIZWFkPlxuICAgICAgPHRpdGxlPnt0ZXh0fTwvdGl0bGU+XG4gICAgPC9IZWFkPlxuICAgIDxIZWFkaW5nIHRleHQ9e3RleHR9IHNpemU9ezF9IC8+XG4gIDwvPlxuXG5cbmV4cG9ydCBjb25zdCBHbG9iYWxMYXlvdXQgPSAoeyBjaGlsZHJlbiB9KSA9PlxuICA8PlxuICAgIDxIZWFkPlxuICAgICAgPG1ldGEgbmFtZT1cInZpZXdwb3J0XCIgY29udGVudD1cIndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xXCIgLz5cbiAgICAgIDxsaW5rIHJlbD1cImljb25cIiBocmVmPVwiZGF0YTo7YmFzZTY0LGlWQk9SdzBLR2dvPVwiIC8+XG4gICAgICA8bWV0YSBuYW1lPVwiYXV0aG9yXCIgY29udGVudD1cIkppbW15IE1pbGxlclwiIC8+XG4gICAgPC9IZWFkPlxuICAgIDxHbG9iYWxTdHlsZXMgLz5cbiAgICA8Q29udGFpbmVyPlxuICAgICAgPGRpdiBzdHlsZT17e3Bvc2l0aW9uOiBcInJlbGF0aXZlXCJ9fT5cbiAgICAgICAgICA8QWJzb2x1dGVQb3NpdGlvbiByaWdodD17MH0gdG9wPXswfT5cbiAgICAgICAgICA8YSBocmVmPVwiL1wiIHN0eWxlPXt7dGV4dERlY29yYXRpb246IFwibm9uZVwifX0+XG4gICAgICAgICAgICA8SGVhZGluZ1xuICAgICAgICAgICAgICAgY29sb3I9XCIjOTk5XCJcbiAgICAgICAgICAgICAgIHRleHQ9XCJKaW1teSBNaWxsZXJcIi8+XG4gICAgICAgICAgPC9hPlxuICAgICAgICAgIDwvQWJzb2x1dGVQb3NpdGlvbj5cbiAgICAgIDwvZGl2PlxuICAgICAgPFBhZGRpbmcgdG9wPXs3MH0+XG4gICAgICAgIHtjaGlsZHJlbn1cbiAgICAgIDwvUGFkZGluZz5cbiAgICA8L0NvbnRhaW5lcj5cbiAgPC8+XG5cblxuIl19 */\n/*@ sourceURL=/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/utils.js */");
+  }, "body{font-family:helvetica,sans-serif;color:#333;line-height:1.5;}a{color:#333;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qaW1teWhtaWxsZXIvRG9jdW1lbnRzL0NvZGUvamltbXlobWlsbGVyLmdpdGh1Yi5pby91dGlscy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUF3SEksQUFHMkMsQUFLdkIsV0FDYixzQkFMYSxXQUNLLGdCQUNsQiIsImZpbGUiOiIvVXNlcnMvamltbXlobWlsbGVyL0RvY3VtZW50cy9Db2RlL2ppbW15aG1pbGxlci5naXRodWIuaW8vdXRpbHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgSGVhZCBmcm9tICduZXh0L2hlYWQnO1xuaW1wb3J0IExpbmsgZnJvbSAnbmV4dC9saW5rJztcbmltcG9ydCBTeW50YXhIaWdobGlnaHRlciBmcm9tIFwicmVhY3Qtc3ludGF4LWhpZ2hsaWdodGVyL2Rpc3QvY2pzL3ByaXNtLWxpZ2h0XCI7XG5pbXBvcnQganMgZnJvbSAncmVhY3Qtc3ludGF4LWhpZ2hsaWdodGVyL2Rpc3QvY2pzL2xhbmd1YWdlcy9wcmlzbS9qYXZhc2NyaXB0JztcbmltcG9ydCBoYXNrZWxsIGZyb20gJ3JlYWN0LXN5bnRheC1oaWdobGlnaHRlci9kaXN0L2Nqcy9sYW5ndWFnZXMvcHJpc20vaGFza2VsbCc7XG5pbXBvcnQgY2xvanVyZSBmcm9tICdyZWFjdC1zeW50YXgtaGlnaGxpZ2h0ZXIvZGlzdC9janMvbGFuZ3VhZ2VzL3ByaXNtL2Nsb2p1cmUnO1xuaW1wb3J0IHsgc29sYXJpemVkbGlnaHQgfSBmcm9tICdyZWFjdC1zeW50YXgtaGlnaGxpZ2h0ZXIvZGlzdC9zdHlsZXMvcHJpc20nO1xuXG4vLyBTdXBlciB1Z2x5IGhhY2sgdG8gb3ZlcnJpZGUgcHJpc20gbGFuZ3VhZ2VzXG4vLyBJIHJlYWxseSBzaG91bGQgbWFrZSBhIG1vZGVybiBwcmlzbSwgYnV0IEkgd2lsbFxuLy8gbmV2ZXIgZmluZCB0aW1lIHRvIGRvIHRoYXQuIFdhcm5pbmcgdG8gZnV0dXJlIG1lXG4vLyB0aGlzIGNhdXNlcyBzb21lIHdlaXJkIHN0dWZmIHdpdGggaG90IHJlbG9hZGluZyB3aGVuIGNoYW5nZWQuXG5jb25zdCBjbG9qdXJlMiA9IChQcmlzbSkgPT4ge1xuICBjbG9qdXJlKFByaXNtKTtcbiAgUHJpc20ubGFuZ3VhZ2VzLmNsb2p1cmUgPSB7XG4gICAgLi4uUHJpc20ubGFuZ3VhZ2VzLmNsb2p1cmUsXG4gICAgbnVtYmVyOiAvXFxiLT8oMHgpP1xcZCpcXC4/XFxkK1xcYi9nLFxuICAgIGxvZ2ljVmFyaWFibGU6IC8oXFw/fCEpW2EtekEtWl1bYS16QS1aMC05LV0rLyxcbiAgfVxufVxuY2xvanVyZTIuZGlzcGxheU5hbWUgPSAnY2xvanVyZSdcbmNsb2p1cmUyLmFsaWFzZXMgPSBbXVxuXG5TeW50YXhIaWdobGlnaHRlci5yZWdpc3Rlckxhbmd1YWdlKCdqYXZhc2NyaXB0JywganMpO1xuU3ludGF4SGlnaGxpZ2h0ZXIucmVnaXN0ZXJMYW5ndWFnZSgnaGFza2VsbCcsIGhhc2tlbGwpO1xuU3ludGF4SGlnaGxpZ2h0ZXIucmVnaXN0ZXJMYW5ndWFnZSgnY2xvanVyZScsIGNsb2p1cmUyKVxuXG5cblxuZXhwb3J0IGNvbnN0IEFic29sdXRlUG9zaXRpb24gPSAoeyBjaGlsZHJlbiwgcmlnaHQsIHRvcCwgbGVmdCwgYnV0dG9tfSkgPT5cbiAgIDxkaXYgc3R5bGU9e3sgcG9zaXRpb246IFwiYWJzb2x1dGVcIiwgcmlnaHQsIGxlZnQsIHRvcCxsZWZ0fX0+XG4gICAgICB7Y2hpbGRyZW59XG4gICA8L2Rpdj5cblxuZXhwb3J0IGNvbnN0IFBhZGRpbmcgPSAoeyBjaGlsZHJlbiwgdG9wLCBsZWZ0LCByaWdodCwgYm90dG9tIH0pID0+XG4gICA8ZGl2IHN0eWxlPXt7XG4gICAgICBwYWRkaW5nVG9wOiB0b3AsXG4gICAgICBwYWRkaW5nTGVmdDogbGVmdCxcbiAgICAgIHBhZGRpbmdSaWdodDogcmlnaHQsXG4gICAgICBwYWRkaW5nQm90dG9tOiBib3R0b20sXG4gICB9fT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgIDwvZGl2PlxuXG5leHBvcnQgY29uc3QgTWFyZ2luID0gKHsgY2hpbGRyZW4sIHRvcCwgbGVmdCwgcmlnaHQsIGJvdHRvbSB9KSA9PlxuICAgPGRpdiBzdHlsZT17e1xuICAgICAgbWFyZ2luVG9wOiB0b3AsXG4gICAgICBtYXJnaW5MZWZ0OiBsZWZ0LFxuICAgICAgbWFyZ2luUmlnaHQ6IHJpZ2h0LFxuICAgICAgbWFyZ2luQm90dG9tOiBib3R0b20sXG4gICB9fT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgIDwvZGl2PlxuXG5jb25zdCByZW1vdmVGaXJzdCA9IChhcnIpID0+IHtcbiAgaWYgKGFyci5sZW5ndGggPiAxKSB7XG4gICAgYXJyLnNoaWZ0KCk7XG4gIH1cbiAgcmV0dXJuIGFycjtcbn1cblxuZXhwb3J0IGNvbnN0IGRldGVjdEluZGVudCA9IHNvdXJjZSA9PlxuICAvXiAqLy5leGVjKHNvdXJjZSlbMF0ubGVuZ3RoXG5cbmV4cG9ydCBjb25zdCByZW1vdmVJbmRlbnQgPSAoc291cmNlKSA9PiBkbyB7XG4gIGNvbnN0IGxpbmVzID0gcmVtb3ZlRmlyc3Qoc291cmNlLnNwbGl0KFwiXFxuXCIpKVxuICBjb25zdCBpbmRlbnQgPSBkZXRlY3RJbmRlbnQobGluZXNbMF0pXG4gIGxpbmVzXG4gICAgLm1hcChzID0+IHMuc3Vic3RyaW5nKGluZGVudCwgcy5sZW5ndGgpKVxuICAgIC5qb2luKFwiXFxuXCIpXG59XG5cblxuZXhwb3J0IGNvbnN0IGZvcm1hdENvZGUgPSAoc291cmNlKSA9PiB7XG4gIHJldHVybiByZW1vdmVJbmRlbnQoc291cmNlKVxufVxuXG5cbmV4cG9ydCBjb25zdCBtb2RpZmllZFNvbGFyaXplZExpZ2h0ID0ge1xuICAuLi5zb2xhcml6ZWRsaWdodCxcbiAgXCJvcGVyYXRvclwiOiB7XG4gICAgY29sb3I6IFwiI2NiNGIxNlwiXG4gIH0sXG4gIFwibG9naWNWYXJpYWJsZVwiOiB7XG4gICAgY29sb3I6IFwiIzJhYTE5OFwiXG4gIH0sXG4gIFwicHJlW2NsYXNzKj1cXFwibGFuZ3VhZ2UtXFxcIl1cIjoge1xuICAgIC4uLnNvbGFyaXplZGxpZ2h0W1wicHJlW2NsYXNzKj1cXFwibGFuZ3VhZ2UtXFxcIl1cIl0sXG4gICAgYmFja2dyb3VuZENvbG9yOiBcIiNmZmZcIixcbiAgfSxcbn1cblxuZXhwb3J0IGNvbnN0IENvZGUgPSAoeyBzb3VyY2UsIGxhbmd1YWdlIH0pID0+IHtcbiAgcmV0dXJuIChcbiAgICA8U3ludGF4SGlnaGxpZ2h0ZXJcbiAgICAgIGxhbmd1YWdlPXtsYW5ndWFnZX1cbiAgICAgIHN0eWxlPXttb2RpZmllZFNvbGFyaXplZExpZ2h0fVxuICAgID5cbiAgICAgIHtmb3JtYXRDb2RlKHNvdXJjZSl9XG4gICAgPC9TeW50YXhIaWdobGlnaHRlcj5cbiAgKVxufVxuXG5leHBvcnQgY29uc3QgSmF2YXNjcmlwdCA9ICh7IGNoaWxkcmVuIH0pID0+IFxuICA8Q29kZVxuICAgIGxhbmd1YWdlPVwiamF2YXNjcmlwdFwiXG4gICAgc291cmNlPXtjaGlsZHJlbn0gLz5cblxuZXhwb3J0IGNvbnN0IEhhc2tlbGwgPSAoeyBjaGlsZHJlbiB9KSA9PiBcbiAgPENvZGVcbiAgICBsYW5ndWFnZT1cImhhc2tlbGxcIlxuICAgIHNvdXJjZT17Y2hpbGRyZW59IC8+XG5cbmV4cG9ydCBjb25zdCBDbG9qdXJlID0gKHsgY2hpbGRyZW4gfSkgPT4gXG4gIDxDb2RlXG4gICAgbGFuZ3VhZ2U9XCJjbG9qdXJlXCJcbiAgICBzb3VyY2U9e2NoaWxkcmVufSAvPlxuXG5jb25zdCBHbG9iYWxTdHlsZXMgPSAoKSA9PiBcbiAgIDxzdHlsZSBnbG9iYWwganN4PlxuICAge2BcbiAgICAgIGJvZHkge1xuICAgICAgICBmb250LWZhbWlseTogaGVsdmV0aWNhLCBzYW5zLXNlcmlmO1xuICAgICAgICBjb2xvcjogIzMzMztcbiAgICAgICAgbGluZS1oZWlnaHQ6IDEuNTtcbiAgICAgIH1cbiAgICAgIGEge1xuICAgICAgICBjb2xvcjogIzMzMztcbiAgICAgIH1cbiAgIGB9XG4gICA8L3N0eWxlPlxuXG5jb25zdCBDb250YWluZXIgPSAoe2NoaWxkcmVufSkgPT5cbiAgIDxkaXYgc3R5bGU9e3tcbiAgICAgIG1hcmdpbjogXCIwIGF1dG9cIixcbiAgICAgIG1heFdpZHRoOiA3MDAsXG4gICB9fT5cbiAgICAgIHtjaGlsZHJlbn1cbiAgIDwvZGl2PlxuXG5jb25zdCBMaXN0SXRlbSA9ICh7IGhyZWYsIHRleHQsIEVsZW0gfSkgPT5cbiAgPGxpIGtleT17aHJlZn0+XG4gICAgPEVsZW0+XG4gICAgICA8TGluayBocmVmPXtocmVmfSBhcz17aHJlZiArIFwiL1wifT5cbiAgICAgICAgPGE+e3RleHR9PC9hPlxuICAgICAgPC9MaW5rPlxuICAgIDwvRWxlbT5cbiAgPC9saT5cblxuZXhwb3J0IGNvbnN0IExhcmdlVGV4dCA9ICh7IGNoaWxkcmVuIH0pID0+IFxuICA8cCBzdHlsZT17e2ZvbnRTaXplOiBcIjEuNWVtXCJ9fT5cbiAgICB7Y2hpbGRyZW59XG4gIDwvcD5cblxuZXhwb3J0IGNvbnN0IExpbmtMaXN0ID0gKHsgaXRlbXMsIEVsZW09TGFyZ2VUZXh0LCB0aXRsZSB9KSA9PlxuICA8PlxuICAgIDxIZWFkaW5nIHRleHQ9e3RpdGxlfSAvPlxuICAgIDx1bD5cbiAgICAgIHtpdGVtcy5tYXAoaXRlbSA9PiBMaXN0SXRlbSh7Li4uaXRlbSwgRWxlbX0pKX1cbiAgICA8L3VsPlxuICA8Lz5cblxuZXhwb3J0IGNvbnN0IEhlYWRpbmcgPSAoeyBjb2xvciwgdGV4dCwgc2l6ZT0xIH0pID0+IGRvIHtcbiAgY29uc3Qgc2l6ZVRvRWxlbSA9IHsxOiBcImgxXCIsIDI6IFwiaDJcIiwgMzogXCJoM1wiLCBcIjRcIjogXCJoNFwifVxuICBjb25zdCBFbGVtID0gc2l6ZVRvRWxlbVtzaXplXTtcbiAgPEVsZW0gc3R5bGU9e3sgY29sb3IgfX0+XG4gICAge3RleHR9XG4gIDwvRWxlbT5cbn1cblxuZXhwb3J0IGNvbnN0IFRlcm0gPSAoe2NoaWxkcmVufSkgPT5cbiAgPGNvZGUgc3R5bGU9e3tcbiAgICBiYWNrZ3JvdW5kQ29sb3I6IFwicmdiYSgyNywzMSwzNSwwLjA1KVwiLFxuICAgIHBhZGRpbmc6IFwiMC4yZW0gMC40ZW1cIixcbiAgICBib3JkZXJSYWRpdXM6IDMsXG4gICAgZm9udEZhbWlseTogXCJNb25hY28sIG1vbm9zcGFjZVwiLFxuICAgIGZvbnRTaXplOiAxMyxcbiAgfX0+XG4gICAge2NoaWxkcmVufVxuICA8L2NvZGU+XG5cbmV4cG9ydCBjb25zdCBCbG9ja1F1b3RlID0gKHtjaGlsZHJlbn0pID0+XG4gIDxibG9ja3F1b3RlIHN0eWxlPXt7XG4gICAgcGFkZGluZ0xlZnQ6IDIwLFxuICAgIG1hcmdpbjogMCxcbiAgICBtYXJnaW5MZWZ0OiAyMCxcbiAgICBib3JkZXJMZWZ0OiBcIjAuMjVlbSBzb2xpZCAjZGZlMmU1XCIsXG4gIH19PlxuICAgIHtjaGlsZHJlbn1cbiAgPC9ibG9ja3F1b3RlPlxuXG5leHBvcnQgY29uc3QgVGl0bGUgPSAoeyB0ZXh0IH0pID0+IFxuICA8PlxuICAgIDxIZWFkPlxuICAgICAgPHRpdGxlPnt0ZXh0fTwvdGl0bGU+XG4gICAgPC9IZWFkPlxuICAgIDxIZWFkaW5nIHRleHQ9e3RleHR9IHNpemU9ezF9IC8+XG4gIDwvPlxuXG5cbmV4cG9ydCBjb25zdCBHbG9iYWxMYXlvdXQgPSAoeyBjaGlsZHJlbiB9KSA9PlxuICA8PlxuICAgIDxIZWFkPlxuICAgICAgPG1ldGEgbmFtZT1cInZpZXdwb3J0XCIgY29udGVudD1cIndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xXCIgLz5cbiAgICAgIDxsaW5rIHJlbD1cImljb25cIiBocmVmPVwiZGF0YTo7YmFzZTY0LGlWQk9SdzBLR2dvPVwiIC8+XG4gICAgICA8bWV0YSBuYW1lPVwiYXV0aG9yXCIgY29udGVudD1cIkppbW15IE1pbGxlclwiIC8+XG4gICAgPC9IZWFkPlxuICAgIDxHbG9iYWxTdHlsZXMgLz5cbiAgICA8Q29udGFpbmVyPlxuICAgICAgPGRpdiBzdHlsZT17e3Bvc2l0aW9uOiBcInJlbGF0aXZlXCJ9fT5cbiAgICAgICAgICA8QWJzb2x1dGVQb3NpdGlvbiByaWdodD17MH0gdG9wPXswfT5cbiAgICAgICAgICA8YSBocmVmPVwiL1wiIHN0eWxlPXt7dGV4dERlY29yYXRpb246IFwibm9uZVwifX0+XG4gICAgICAgICAgICA8SGVhZGluZ1xuICAgICAgICAgICAgICAgY29sb3I9XCIjOTk5XCJcbiAgICAgICAgICAgICAgIHRleHQ9XCJKaW1teSBNaWxsZXJcIi8+XG4gICAgICAgICAgPC9hPlxuICAgICAgICAgIDwvQWJzb2x1dGVQb3NpdGlvbj5cbiAgICAgIDwvZGl2PlxuICAgICAgPFBhZGRpbmcgdG9wPXs3MH0+XG4gICAgICAgIHtjaGlsZHJlbn1cbiAgICAgIDwvUGFkZGluZz5cbiAgICA8L0NvbnRhaW5lcj5cbiAgPC8+XG5cblxuIl19 */\n/*@ sourceURL=/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/utils.js */");
 };
 
 var Container = function Container(_ref9) {
@@ -21036,7 +21036,9 @@ var Term = function Term(_ref14) {
     style: {
       backgroundColor: "rgba(27,31,35,0.05)",
       padding: "0.2em 0.4em",
-      borderRadius: 3
+      borderRadius: 3,
+      fontFamily: "Monaco, monospace",
+      fontSize: 13
     },
     __source: {
       fileName: _jsxFileName,
@@ -21056,7 +21058,7 @@ var BlockQuote = function BlockQuote(_ref15) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 181
+      lineNumber: 183
     },
     __self: this
   }, children);
@@ -21066,13 +21068,13 @@ var Title = function Title(_ref16) {
   return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 192
+      lineNumber: 194
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 193
+      lineNumber: 195
     },
     __self: this
   }, text)), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Heading, {
@@ -21080,7 +21082,7 @@ var Title = function Title(_ref16) {
     size: 1,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 195
+      lineNumber: 197
     },
     __self: this
   }));
@@ -21090,7 +21092,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
   return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 201
+      lineNumber: 203
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("meta", {
@@ -21098,7 +21100,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     content: "width=device-width, initial-scale=1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 202
+      lineNumber: 204
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("link", {
@@ -21106,7 +21108,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     href: "data:;base64,iVBORw0KGgo=",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 203
+      lineNumber: 205
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("meta", {
@@ -21114,19 +21116,19 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     content: "Jimmy Miller",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 204
+      lineNumber: 206
     },
     __self: this
   })), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(GlobalStyles, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 206
+      lineNumber: 208
     },
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Container, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 207
+      lineNumber: 209
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
@@ -21135,7 +21137,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 208
+      lineNumber: 210
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(AbsolutePosition, {
@@ -21143,7 +21145,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     top: 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 209
+      lineNumber: 211
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("a", {
@@ -21153,7 +21155,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 210
+      lineNumber: 212
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Heading, {
@@ -21161,14 +21163,14 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     text: "Jimmy Miller",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 211
+      lineNumber: 213
     },
     __self: this
   })))), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Padding, {
     top: 70,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 217
+      lineNumber: 219
     },
     __self: this
   }, children)));
