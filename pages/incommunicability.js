@@ -47,7 +47,7 @@ export default () => (
       <p>
         A main claim of the Theory Building View of programming is that an
         essential part of any program, the theory of it, is something that could
-        not be conceivably be expressed, but is inextricably bound to human
+        not conceivably be expressed, but is inextricably bound to human
         beings.
       </p>
     </BlockQuote>
