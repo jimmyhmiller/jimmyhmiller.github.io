@@ -39,8 +39,8 @@ export default () => (
     
     (defn reformat-preferred-address [person]
       (let [address (:preferred-address person)]
-        {:address {:line1 (:address1 person)
-                   :line2 (:address2 person)}
+        {:address {:line1 (:address1 address)
+                   :line2 (:address2 address)}
          :city-info {:city (:city address)
                      :state (:state address)
                      :zipcode (:zip address)}}))
