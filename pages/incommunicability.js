@@ -55,7 +55,7 @@ export default () => (
       This seemingly radical thesis is not just a consequence of Naur's view,
       but rather a main claim of it. In other words, to view programming as
       theory building, one must see that these theories are in some sense
-      incommunicable. Given the strong importances Naur places on this thesis,
+      incommunicable. Given the strong importance Naur places on this thesis,
       it is suprising that commenters who are even supportive of the view tend
       to reject this major claim. For instance, Donald Knuth writes:
     </p>
@@ -97,7 +97,7 @@ export default () => (
       It is here that difficulties arise. Theory is a word with many meanings
       and uses not all of which match Ryle's. In fact, what we have in Ryle is a
       technical notion of theory. Theory for Ryle, while multifaceted has
-      particular meaning, one described in Ryle's work not by definition, but by
+      a particular meaning, one described in Ryle's work not by definition, but by
       explicating its relations. In order to understand what Ryle means by a
       theory, we must pay close attention to these various relations and
       constraints he places upon it. We must distinguish between the act of
@@ -109,7 +109,7 @@ export default () => (
       Someone laboring to discover how to lay carpet in a room, making
       measurements, determining which way the carpet ought to be laid, is caught
       up in the act of theory building. The historian, as he studies the
-      accounts of a battle, is building a theory about the battle's procedings.
+      accounts of a battle, is building a theory about the battle's proceedings.
       Given this broad view of theory building, it should be not be a surprise
       that programming will fall into this category as well.
     </p>
@@ -262,7 +262,7 @@ export default () => (
     </p>
     <Heading size="3" text="Implications" />
     <p>
-      The theory of the programs we write live inside us. As we move onto new
+      The theories of the programs we write live inside us. As we move onto new
       projects, leave old companies, or forget about code we once wrote, those
       theories die. The code we wrote might live on. People may continue to run
       it, read it, modify it, but some understanding of that code lives (or
@@ -272,7 +272,7 @@ export default () => (
     <p>
       As we inherit code bases written by others, we encounter the same things,
       code bases whose theory are gone to time or locked away in a location
-      unaccessible to us. Programs that have been modified under many different
+      inaccessible to us. Programs that have been modified under many different
       theories, often incompatible ones. Bugs begin to find their way in, often
       at the intersection of two theories. Hacks begin to emerge as needs
       evolve, but theory is lacking. The code becomes worse and worse.
@@ -280,7 +280,7 @@ export default () => (
     <p>
       These are the facts we face as professional software engineers. We write
       code whose theories will one day be lost and we inherit code bases whose
-      theories are long forgotten. If we are to do programming well, we most
+      theories are long forgotten. If we are to do programming well, we must
       adopt practices that address these issues.
     </p>
   </GlobalLayout>
