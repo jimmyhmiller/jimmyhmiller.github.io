@@ -46,6 +46,10 @@ const posts = [
     text: "Meander for Practical Data Transformation",
     href: "/meander-practical"
   },
+  {
+    text: "Term Rewriting with Meander",
+    href: "/meander-rewriting"
+  },
 ]
 
 const utilities = [
