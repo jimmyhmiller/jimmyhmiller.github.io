@@ -5,7 +5,7 @@ import {
   LinkList,
 } from '../utils.js';
 
-const posts = [
+export const posts = [
   {
     text: "Variants Explained",
     href: "/variants-explained",

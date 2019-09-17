@@ -18,6 +18,9 @@
     "export": "next export"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-do-expressions": "^7.0.0-rc.1"
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-proposal-do-expressions": "^7.0.0-rc.1",
+    "@babel/register": "^7.6.0",
+    "rss": "^1.2.2"
   }
 }
