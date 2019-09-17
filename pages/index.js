@@ -5,6 +5,8 @@ import {
   LinkList,
 } from '../utils.js';
 
+export const excludeRss = true;
+
 export const posts = [
   {
     text: "Variants Explained",
