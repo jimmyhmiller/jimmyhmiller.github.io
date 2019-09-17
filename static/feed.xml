@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[jimmyhmiller.github.io]]></title>
+        <description><![CDATA[jimmyhmiller.github.io]]></description>
+        <link>https://jimmyhmiller.github.io</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Tue, 17 Sep 2019 04:30:27 GMT</lastBuildDate>
+        <item>
+            <title><![CDATA[Variants Explained]]></title>
+            <link>https://jimmyhmiller.github.io/variants-explained</link>
+            <guid isPermaLink="false">/variants-explained</guid>
+        </item>
+        <item>
+            <title><![CDATA[Variants and Protocols]]></title>
+            <link>https://jimmyhmiller.github.io/variants-and-protocols</link>
+            <guid isPermaLink="false">/variants-and-protocols</guid>
+        </item>
+        <item>
+            <title><![CDATA[Protomorphism]]></title>
+            <link>https://jimmyhmiller.github.io/protomorphism</link>
+            <guid isPermaLink="false">/protomorphism</guid>
+        </item>
+        <item>
+            <title><![CDATA[Beautiful Code Through Simplicity]]></title>
+            <link>https://jimmyhmiller.github.io/beautiful-code</link>
+            <guid isPermaLink="false">/beautiful-code</guid>
+        </item>
+        <item>
+            <title><![CDATA[OOP from the Ground Up]]></title>
+            <link>https://jimmyhmiller.github.io/oop-ground-up</link>
+            <guid isPermaLink="false">/oop-ground-up</guid>
+        </item>
+        <item>
+            <title><![CDATA[Side Effects, Complecting a la Carte]]></title>
+            <link>https://jimmyhmiller.github.io/side-effects-complect</link>
+            <guid isPermaLink="false">/side-effects-complect</guid>
+        </item>
+        <item>
+            <title><![CDATA[Basic Functional Studies]]></title>
+            <link>https://jimmyhmiller.github.io/basic-functional-studies</link>
+            <guid isPermaLink="false">/basic-functional-studies</guid>
+        </item>
+        <item>
+            <title><![CDATA[Defending the Incommunicability of Programs]]></title>
+            <link>https://jimmyhmiller.github.io/incommunicability</link>
+            <guid isPermaLink="false">/incommunicability</guid>
+        </item>
+        <item>
+            <title><![CDATA[Named Function Composition]]></title>
+            <link>https://jimmyhmiller.github.io/named-function-composition</link>
+            <guid isPermaLink="false">/named-function-composition</guid>
+        </item>
+        <item>
+            <title><![CDATA[Meander for Practical Data Transformation]]></title>
+            <link>https://jimmyhmiller.github.io/meander-practical</link>
+            <guid isPermaLink="false">/meander-practical</guid>
+        </item>
+        <item>
+            <title><![CDATA[Term Rewriting with Meander]]></title>
+            <link>https://jimmyhmiller.github.io/meander-rewriting</link>
+            <guid isPermaLink="false">/meander-rewriting</guid>
+        </item>
+    </channel>
+</rss>
