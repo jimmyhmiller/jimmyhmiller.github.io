@@ -6,4 +6,7 @@ const dir = "./static"
 if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
 }
-fs.writeFileSync(`${dir}/feed.xml`, (generateRSS(posts)))
+
+console.log("Generating RSS")
+fs.writeFileSync(`${dir}/feed.xml`, generateRSS(posts))
+console.log("Generated RSS")
