@@ -205,6 +205,7 @@ export const GlobalLayout = ({ children }) =>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
       <meta name="author" content="Jimmy Miller" />
+      <link rel="alternate" type="application/rss+xml" title="RSS Feed for jimmyhmiller.github.io"  href="/static/feed.xml" />
     </Head>
     <GlobalStyles />
     <Container>
