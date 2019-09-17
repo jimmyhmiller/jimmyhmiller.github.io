@@ -141,7 +141,7 @@ const Container = ({children}) =>
 const ListItem = ({ href, text, Elem }) =>
   <li key={href}>
     <Elem>
-      <Link href={href} as={href + "/"}>
+      <Link href={href}>
         <a>{text}</a>
       </Link>
     </Elem>
