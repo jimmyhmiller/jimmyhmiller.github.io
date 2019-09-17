@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/beautiful-code.js"],{
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
 /*!*******************************************************************!*\
@@ -6818,21 +6818,21 @@ exports.formatWithValidation = formatWithValidation;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js!./":
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js ***!
-  \********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fbeautiful-code&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fbeautiful-code.js!./":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fbeautiful-code&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fbeautiful-code.js ***!
+  \*******************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    (window.__NEXT_P=window.__NEXT_P||[]).push(["/", function() {
-      var page = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
+    (window.__NEXT_P=window.__NEXT_P||[]).push(["/beautiful-code", function() {
+      var page = __webpack_require__(/*! ./pages/beautiful-code.js */ "./pages/beautiful-code.js")
       if(true) {
-        module.hot.accept(/*! ./pages/index.js */ "./pages/index.js", function() {
-          if(!next.router.components["/"]) return
-          var updatedPage = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
-          next.router.update("/", updatedPage.default || updatedPage)
+        module.hot.accept(/*! ./pages/beautiful-code.js */ "./pages/beautiful-code.js", function() {
+          if(!next.router.components["/beautiful-code"]) return
+          var updatedPage = __webpack_require__(/*! ./pages/beautiful-code.js */ "./pages/beautiful-code.js")
+          next.router.update("/beautiful-code", updatedPage.default || updatedPage)
         })
       }
       return { page: page.default || page }
@@ -20202,146 +20202,206 @@ function extend() {
 
 /***/ }),
 
-/***/ "./pages/index.js":
-/*!************************!*\
-  !*** ./pages/index.js ***!
-  \************************/
-/*! exports provided: excludeRss, posts, default */
+/***/ "./pages/beautiful-code.js":
+/*!*********************************!*\
+  !*** ./pages/beautiful-code.js ***!
+  \*********************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "excludeRss", function() { return excludeRss; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "posts", function() { return posts; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils.js */ "./utils.js");
-var _jsxFileName = "/Users/jimmy/Documents/Code/jimmyhmiller.github.io/pages/index.js";
+var _jsxFileName = "/Users/jimmy/Documents/Code/jimmyhmiller.github.io/pages/beautiful-code.js";
 
 
-var excludeRss = true;
-var posts = [{
-  text: "Variants Explained",
-  href: "/variants-explained"
-}, {
-  text: "Variants and Protocols",
-  href: "/variants-and-protocols"
-}, {
-  text: "Protomorphism",
-  href: "/protomorphism"
-}, {
-  text: "Beautiful Code Through Simplicity",
-  href: "/beautiful-code"
-}, {
-  text: "OOP from the Ground Up",
-  href: "/oop-ground-up"
-}, {
-  text: "Side Effects, Complecting a la Carte",
-  href: "/side-effects-complect"
-}, {
-  text: "Basic Functional Studies",
-  href: "/basic-functional-studies"
-}, {
-  text: "Defending the Incommunicability of Programs",
-  href: "/incommunicability"
-}, {
-  text: "Named Function Composition",
-  href: "/named-function-composition"
-}, {
-  text: "Meander for Practical Data Transformation",
-  href: "/meander-practical"
-}, {
-  text: "Term Rewriting with Meander",
-  href: "/meander-rewriting"
-}];
-var utilities = [{
-  text: "Graph Maker",
-  href: "https://jimmyhmiller.github.io/graph-maker/"
-}, {
-  text: "Finite State Machine Maker",
-  href: "https://jimmyhmiller.github.io/fsm-maker/"
-}, {
-  text: "EsLint Fixit",
-  href: "https://github.com/jimmyhmiller/eslint-fixit"
-}, {
-  text: "Zoom Launcher",
-  href: "https://github.com/jimmyhmiller/zoom-cli"
-}];
-var libraries = [{
-  text: "MultiMethods in Javascript",
-  href: "https://github.com/jimmyhmiller/multiple-methods"
-}, {
-  text: "React Redux Connected",
-  href: "https://github.com/jimmyhmiller/react-redux-connected"
-}];
-var slides = [{
-  text: "The Future of Programming",
-  href: "https://future-of-programming.now.sh"
-}, {
-  text: "What is a Monad?",
-  href: "https://what-is-a-monad.now.sh"
-}, {
-  text: "Practical Functional Refactoring",
-  href: "https://practical-functional-refactoring.now.sh"
-}, {
-  text: "Property Based Testing",
-  href: "https://generative-testing.now.sh"
-}, {
-  text: "Datalog Lightning Talk",
-  href: "https://datalog.now.sh"
-}];
-var project = [{
-  text: "One Hundred Lines or Less",
-  href: "https://github.com/jimmyhmiller/one-hundred-lines-or-less"
-}];
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["GlobalLayout"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118
+      lineNumber: 12
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Posts",
-    items: posts,
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Title"], {
+    text: "Beautiful Code Through Simplicity",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119
+      lineNumber: 13
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Utilities",
-    items: utilities,
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123
+      lineNumber: 14
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Libraries",
-    items: libraries,
+  }, "Beautiful code is not about text. It isn't about the function it serves. It isn't line count. It isn't whitespace. It isn't how easy it was to write. Beautiful code is about one thing, structure. Simplicity of structure creates beautiful code, code that breathes, that hides no secrets; code that is readable, changeable, and comprehensible. If simplicity is to achieve these ends, it must be something a bit more than ease."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127
+      lineNumber: 22
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Slides",
-    items: slides,
+  }, "Ease in code writing is rather comfortable. It relaxes us, invigorates us, but ultimately it's deceptive. Ease is a measure of our skill; it shows us what we are familiar with, what makes sense to us. But as such, ease necessarily fades as our problem grows more complex. Ease will not create beautiful code; familiarity isn't always right. To obtain the beautiful code we seek, hard work is needed, not ease."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131
+      lineNumber: 30
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Projects",
-    items: project,
+  }, "Simplicity is often used synonymously with ease. When we begin a tutorial for the new framework of the day, we will often think, \"how simple!\", and while \"simple\" does lend itself well to this usage, it is often necessary to hijack words, to purify them in order that our goal may be made clear. This process of turning an ordinary word, with its multifarious meanings, into a technical term may seem obnoxious to some, but once the process is through, speech becomes fluid, ideas can be built, and new areas explored."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    size: "2",
+    text: "Complecting",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 39
     },
     __self: this
-  }));
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: this
+  }, "Simplicity can best be understood through a rather unusual word, \"complect\". Complect literally means to \"join by weaving\". Complecting code is the process of taking two independent concerns and intertwining them together. To grasp this let's dive into some examples."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46
+    },
+    __self: this
+  }, "\n      function fetchData() {\n        launchTheMissiles();\n        return http.get(\"/data\"); \n      }\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54
+    },
+    __self: this
+  }, "In this incredibly contrived example we can see a rather egregious example of complecting. What does fetching data have to do with launching missiles? Absolutely nothing. The caller of this function would be rather surprised to know that he launched missiles just by fetching some data. But perhaps we need a less contrived and more controversial example."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 61
+    },
+    __self: this
+  }, "\n      let oldList = [1,2,3];\n      let newList = [];\n      for (let i = 0; i < oldList.length; i++) {\n        newList.push(oldList[i] + 2);\n      } \n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
+    },
+    __self: this
+  }, "I'm sure the majority of people reading this see nothing wrong with code above. How is this code complecting anything? It is complecting data manipulation and time. To see this, ask yourself the following, what elements does newList contain? The answer depends on what time in the program it is. If we are before the loop none, in the middle of the loop it depends on what ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76
+    },
+    __self: this
+  }, "i"), " equals, at the end of the loop [3,4,5]. Is this code easy to write? Of course but it lacks simplicity because it complects separate notions. Consider the following decomplected code."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 80
+    },
+    __self: this
+  }, "\n      const oldList = [1,2,3];\n      const add2 = x => x+2;\n      const newList = oldList.map(add2);\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87
+    },
+    __self: this
+  }, "Again let's ask the same question, what elements does newList contain? There is no condition here. It only ever contains one value [3,4,5]. Now imagine that oldList was huge. It contained millions of entries. Could we run our first version in parallel? No, encoded into to is the notion that we must iterate over the list sequentially. What about our second version? Of course we can. Map does not encode how the operation has to work, but just what it should do."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    size: "3",
+    text: "What isn't being claimed",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 97
+    },
+    __self: this
+  }, "Unlike the first code I showed, this second one may not be as familiar. In fact, I wouldn't be surprised if some of you have never seen \"map\" before. So how can this code be more simple if fewer people are familiar with it? This is where we must remember that simplicity is not about familiarity. It is about keeping our concerns separate. Simplicity will not make it so everyone knows exactly what your code does. Its goal is to keep your code decomplected, because decomplecting allows composition."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    size: "2",
+    text: "Composition",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 106
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 107
+    },
+    __self: this
+  }, "Complect and compose are opposites as far as programming goes. Where complecting mixes our concerns together, composition allows them to stay separate and be brought together in a straightforward fashion. Imagine that now instead of merely adding two to each element in our list we want to filter out all the evens and then add two. Our first example would change to this:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 115
+    },
+    __self: this
+  }, "\n      const oldList = [1,2,3];\n      const newList = [];\n      for (let i = 0; i < oldList.length; i++) {\n        if (i % 2 == 0) {\n          newList.push(oldList[i] + 2);\n        }\n      } \n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 126
+    },
+    __self: this
+  }, "Now as a developer I must follow in my head each step to determine what code is called. The if statement adds an additional branch my code can take making it that much harder to trace. Our second example will change as follows:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 132
+    },
+    __self: this
+  }, "\n      const oldList = [1,2,3];\n      const add2 = x => x + 2;\n      const isEven = x => x % 2 == 0;\n      const newList = oldList.filter(isEven).map(add2);\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 140
+    },
+    __self: this
+  }, "Rather than including our changes into the body of some loop, we create functions that can be applied anywhere we'd like. But we can take our decomplecting one step further. Imagine now that our oldList is not longer a list, but a promise, how do our examples change? Let's start with the first example and see what perhaps seems like the most obvious way to change it."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 147
+    },
+    __self: this
+  }, "\n      const oldList = getTheList();\n      const newList = [];\n      \n      oldList.then(function (list) {\n        for (let i = 0; i < list.length; i++) {\n          if (i % 2 == 0) {\n            newList.push(list[i] + 2);\n          }\n        } \n      });\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 161
+    },
+    __self: this
+  }, "Does this code work? Unfortunately no. We can see how our encoding of time caused us issues here. Again ask yourself the question, what elements does newList contain? Well, it depends if oldList has resolved or not. If it hasn't newList will be empty. If it has then depending on what point in the for loop we are in, it has different values. We have introduced a race condition in our code. Of course we can fix this bug without transitioning our code fully, moving newList into the function and returning it will work, but as we will see in the second example, this sort of bug is not possible."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 171
+    },
+    __self: this
+  }, "Now what about our second example?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 172
+    },
+    __self: this
+  }, "\n      const oldList = getTheList();\n      const add2 = (x) => x+2;\n      const isEven = (x) => x%2 == 0;\n      const newList = oldList.then(list => \n        list.filter(isEven).map(add2)\n      );\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 182
+    },
+    __self: this
+  }, "This is the most obvious transformation. oldList is a promise, so obviously we can't directly filter on it. We must call then and apply our transformations. So now, newList is a promise which contains our list. Our lack of complecting time and data transformation has paid off.", " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    size: "2",
+    text: "Conclusion",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 188
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 189
+    },
+    __self: this
+  }, "We could still yet take this code further down the path of decomplecting. Unfortunately, javascript doesn't cooperate much fully with decomplecting. But that isn't our concern for now. While these samples have been small, simplicity, in the sense of decomplecting, has already shown its benefits. As we move forward we will see more and more how our process of simplification can bring us closer and closer to our goal of beautiful code."));
 });
 
 /***/ }),
@@ -20843,14 +20903,14 @@ var GlobalLayout = function GlobalLayout(_ref17) {
 
 /***/ }),
 
-/***/ 0:
-/*!************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js ***!
-  \************************************************************************************************************************************************/
+/***/ 2:
+/*!***********************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fbeautiful-code&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fbeautiful-code.js ***!
+  \***********************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fbeautiful-code&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fbeautiful-code.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fbeautiful-code&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fbeautiful-code.js!./");
 
 
 /***/ }),
@@ -20866,5 +20926,5 @@ module.exports = dll_afa7b25a60452594c240;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
-//# sourceMappingURL=index.js.map
+},[[2,"static/runtime/webpack.js"]]]);
+//# sourceMappingURL=beautiful-code.js.map

@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/variants-explained.js"],{
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
 /*!*******************************************************************!*\
@@ -6818,21 +6818,21 @@ exports.formatWithValidation = formatWithValidation;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js!./":
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js ***!
-  \********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fvariants-explained&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fvariants-explained.js!./":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fvariants-explained&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fvariants-explained.js ***!
+  \***************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    (window.__NEXT_P=window.__NEXT_P||[]).push(["/", function() {
-      var page = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
+    (window.__NEXT_P=window.__NEXT_P||[]).push(["/variants-explained", function() {
+      var page = __webpack_require__(/*! ./pages/variants-explained.js */ "./pages/variants-explained.js")
       if(true) {
-        module.hot.accept(/*! ./pages/index.js */ "./pages/index.js", function() {
-          if(!next.router.components["/"]) return
-          var updatedPage = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
-          next.router.update("/", updatedPage.default || updatedPage)
+        module.hot.accept(/*! ./pages/variants-explained.js */ "./pages/variants-explained.js", function() {
+          if(!next.router.components["/variants-explained"]) return
+          var updatedPage = __webpack_require__(/*! ./pages/variants-explained.js */ "./pages/variants-explained.js")
+          next.router.update("/variants-explained", updatedPage.default || updatedPage)
         })
       }
       return { page: page.default || page }
@@ -20202,146 +20202,416 @@ function extend() {
 
 /***/ }),
 
-/***/ "./pages/index.js":
-/*!************************!*\
-  !*** ./pages/index.js ***!
-  \************************/
-/*! exports provided: excludeRss, posts, default */
+/***/ "./pages/variants-explained.js":
+/*!*************************************!*\
+  !*** ./pages/variants-explained.js ***!
+  \*************************************/
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "excludeRss", function() { return excludeRss; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "posts", function() { return posts; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils.js */ "./utils.js");
-var _jsxFileName = "/Users/jimmy/Documents/Code/jimmyhmiller.github.io/pages/index.js";
+var _jsxFileName = "/Users/jimmy/Documents/Code/jimmyhmiller.github.io/pages/variants-explained.js";
 
 
-var excludeRss = true;
-var posts = [{
-  text: "Variants Explained",
-  href: "/variants-explained"
-}, {
-  text: "Variants and Protocols",
-  href: "/variants-and-protocols"
-}, {
-  text: "Protomorphism",
-  href: "/protomorphism"
-}, {
-  text: "Beautiful Code Through Simplicity",
-  href: "/beautiful-code"
-}, {
-  text: "OOP from the Ground Up",
-  href: "/oop-ground-up"
-}, {
-  text: "Side Effects, Complecting a la Carte",
-  href: "/side-effects-complect"
-}, {
-  text: "Basic Functional Studies",
-  href: "/basic-functional-studies"
-}, {
-  text: "Defending the Incommunicability of Programs",
-  href: "/incommunicability"
-}, {
-  text: "Named Function Composition",
-  href: "/named-function-composition"
-}, {
-  text: "Meander for Practical Data Transformation",
-  href: "/meander-practical"
-}, {
-  text: "Term Rewriting with Meander",
-  href: "/meander-rewriting"
-}];
-var utilities = [{
-  text: "Graph Maker",
-  href: "https://jimmyhmiller.github.io/graph-maker/"
-}, {
-  text: "Finite State Machine Maker",
-  href: "https://jimmyhmiller.github.io/fsm-maker/"
-}, {
-  text: "EsLint Fixit",
-  href: "https://github.com/jimmyhmiller/eslint-fixit"
-}, {
-  text: "Zoom Launcher",
-  href: "https://github.com/jimmyhmiller/zoom-cli"
-}];
-var libraries = [{
-  text: "MultiMethods in Javascript",
-  href: "https://github.com/jimmyhmiller/multiple-methods"
-}, {
-  text: "React Redux Connected",
-  href: "https://github.com/jimmyhmiller/react-redux-connected"
-}];
-var slides = [{
-  text: "The Future of Programming",
-  href: "https://future-of-programming.now.sh"
-}, {
-  text: "What is a Monad?",
-  href: "https://what-is-a-monad.now.sh"
-}, {
-  text: "Practical Functional Refactoring",
-  href: "https://practical-functional-refactoring.now.sh"
-}, {
-  text: "Property Based Testing",
-  href: "https://generative-testing.now.sh"
-}, {
-  text: "Datalog Lightning Talk",
-  href: "https://datalog.now.sh"
-}];
-var project = [{
-  text: "One Hundred Lines or Less",
-  href: "https://github.com/jimmyhmiller/one-hundred-lines-or-less"
-}];
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["GlobalLayout"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118
+      lineNumber: 12
     },
     __self: this
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Posts",
-    items: posts,
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Title"], {
+    text: "Variants Explained",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119
+      lineNumber: 13
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Utilities",
-    items: utilities,
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
+  }, "Imagine you have the following request for a product you are building:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["BlockQuote"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: this
+  }, "Users should be able to login using the following methods:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: this
+  }, "Username and Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
+    },
+    __self: this
+  }, "Phone Number"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: this
+  }, "Facebook Login"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: this
+  }, "As you are building this application you have to think about how to represent these user credentials. It might look something like this:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
+  }, "\n      // Username and Password auth\n      userCredentials: {\n        username: \"test\",\n        password: \"password\"\n      }\n\n      // phoneNumber auth\n      userCredentials: {\n        phoneNumber: \"555-867-5309\"\n      }\n\n      // Facebook Login\n      userCredentials: {\n        token: \"VGhpcyBpcyBzdXBlciBzZWNyZXQ=\" \n      }\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50
+    },
+    __self: this
+  }, "There is a problem with the above way of representing this scenario. Imagine we needed to write a function that uses these user credentials. We have to make sure to handle every single case."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56
+    },
+    __self: this
+  }, "\n      function handleAuth(userCredentials) {\n        if (userCredentials.username && userCredentials.password) {\n        // do stuff with username login\n        } else if (userCredentials.phoneNumber) {\n            // do stuff with phone number login\n        } else if (userCredentials.token) {\n            // do stuff with facebook login\n        } else {\n            // handle unknown scenario\n        }\n      }\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72
+    },
+    __self: this
+  }, "This code made seem good as far as it goes, in fact, it even handles malformed data gracefully. Now imagine that our requirements change, we now need to handle third party username and password requests as well. We decide to model this in the obvious way."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 79
+    },
+    __self: this
+  }, "\n        userCredentials: {\n          username: \"test\",\n          password: \"password\",\n          thirdParty: \"SomeOtherBusiness\"\n        }\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88
+    },
+    __self: this
+  }, "Unfortuantely now our code breaks, but not by throwing a nice error, it breaks subtly. We will try to use third party usernames and passwords for our own login system and since they have a username and password we will mistake them for first party logins."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95
+    },
+    __self: this
+  }, "In javascript, there aren't too many great solutions to this. One obvious one is to create a class for each of different userCredential type. Then for any function we want to implement on our different types we implement a method in that class. That is how a Java developer may have solved this problem. That approach has its upsides and downsides, but rather than dive into those, let's look at a different approach, one that isn't supported by javascript. Since it isn't supported by javascript we will have to choose some other language. But rather than choose an existing language, let's just make up our own and imagine what it might be like to solve this problem in it."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    size: 2,
+    text: "Variants: An Example",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 108
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 110
+    },
+    __self: this
+  }, "The essence of our requirements is that we need to support different methods of login. Users may login this way ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 112
+    },
+    __self: this
+  }, "or"), " that way ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 112
+    },
+    __self: this
+  }, "or"), " someother way. We need a way to represent ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 113
+    },
+    __self: this
+  }, "or"), " in our data model. Variants allow us to do exactly that. Let's first look at a simple example of a variant."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Haskell"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 117
+    },
+    __self: this
+  }, "\n      data Color = Green | Red | Blue\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 123
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Libraries",
-    items: libraries,
+  }, "Here we have a variant with three choices of colors. In our world, a color can only be green, red, or blue. No other colors are available to us. What we need to do now is write a function which returns true if it is passed the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 127
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Slides",
-    items: slides,
+  }, "best"), " color."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131
+      lineNumber: 130
     },
     __self: this
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Projects",
-    items: project,
+  }, "\n      fn bestColor {\n        Green => true\n        Red => false\n        Blue => false\n      }\n      bestColor(Red)\n      // false\n\n      bestColor(Green)\n      // true\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 145
     },
     __self: this
-  }));
+  }, "This function is rather straight-forward. We pattern match on the argument of the function to determine what was passed in. This allows us to express in a very concise way each case and what its output should be. Variants combined with pattern matching allow for very expressive, explicit code."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 152
+    },
+    __self: this
+  }, "Simple variants like color are just like enums in other languages, but variants are much more useful when they can take arguments as well."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Haskell"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 157
+    },
+    __self: this
+  }, "\n      data UserCredentials = FirstParty(username, password)\n                           | Phone(phoneNumber)\n                           | Facebook(token)\n                           | ThirdParty(username, password, thirdParty)\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 166
+    },
+    __self: this
+  }, "Here we have our login problem fully specified. Each case is represented as a data type and because of that we can write a much less error prone functions for dealing with each case."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 172
+    },
+    __self: this
+  }, "\n      fn handleAuth {\n        FirstParty(username, password) => // do stuff with username login\n        Phone(phoneNumber ) => // do stuff with phone number login\n        Facebook(token) => // do stuff with facebook login\n        ThirdParty(username, password, thirdparty) => // do stuff with thirdParty login\n        otherwise => // handle unknown scenario\n      }\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 184
+    },
+    __self: this
+  }, "Not only is our function less error prone, it is also much easier to understand. Variants allow our code to be self documenting. Each case is named and handle explicitly leading us to think precisely about each scenario. Since our imaginary language is dynamically typed, we do need to handle the ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 189
+    },
+    __self: this
+  }, "otherwise"), " case (imagine someone passed in a number instead), but if it were statically typed we could be guarantee that nothing other than those variants would be passed."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    size: 2,
+    text: "Using Variants to Solve Problems",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 194
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 196
+    },
+    __self: this
+  }, "Variants are not just limited to concrete scenarios like the login above. They can be quote a bit more generic and that can give us more power. Let's look at a few generic variants that can be used to tackle common and difficult problems in programming."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    size: 2,
+    text: "Nulls",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 203
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 205
+    },
+    __self: this
+  }, "Null (undefined as well) is one of the most frustating things to work with. Expressing nulls checks leads to verbose code. Code isn't actually about the problem we are trying to solve. Variants offer an alternative to nulls, called the Maybe type."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Haskell"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 212
+    },
+    __self: this
+  }, "\n      data Maybe = Nothing | Something(thing)\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 218
+    },
+    __self: this
+  }, "The definition above may seem a bit strange if this is your first time encountering it. What it says is that there are two cases we need to consider, when we have nothing (the null case) and when we have something (the non-null case). We can use this by pattern matching."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 225
+    },
+    __self: this
+  }, "\n      fn tryToGetUserId {\n        Something(user) => Something(getId(user))\n        Nothing => Nothing\n      }\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 234
+    },
+    __self: this
+  }, "The tryToGetUserId handles the case when we don't have a user id by pattern matching on ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 236
+    },
+    __self: this
+  }, "Nothing"), " and returning", " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 237
+    },
+    __self: this
+  }, "Nothing"), ". If however we get something (a user) then we get the id of that user and return ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 238
+    },
+    __self: this
+  }, "Something"), " which contains a user."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 241
+    },
+    __self: this
+  }, "The tryToGetUserId handles the case when we don't have a user id by pattern matching on ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 243
+    },
+    __self: this
+  }, "Nothing"), " and returning ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 243
+    },
+    __self: this
+  }, "Nothing"), ". If however we get something (a user) then we get the id of that user and return ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 244
+    },
+    __self: this
+  }, "Something"), "which contains a user."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 248
+    },
+    __self: this
+  }, "As it stands, this isn't that much better than null, but when combined with simple functions, this variant because infinitely more useful."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 253
+    },
+    __self: this
+  }, "\n      fn map {\n        (f, Something(x)) => Something(f(x))\n        (f, Nothing) => Nothing\n      }\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 262
+    },
+    __self: this
+  }, "Here we have map. You may be familiar with map with it comes to lists and if so, map for ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 264
+    },
+    __self: this
+  }, "Maybe"), " is very similar. As you can see from the function definition, map applies f only if we have ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 265
+    },
+    __self: this
+  }, "Something"), ", if not it returns", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 266
+    },
+    __self: this
+  }, "Nothing"), ". Using map we can rewrite our tryToGetUserId function."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Javascript"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 269
+    },
+    __self: this
+  }, "\n      fn tryToGetUserId(maybeUser) {\n        map(getId, maybeUser)\n      }\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 277
+    },
+    __self: this
+  }, "Using map extracts out all the pattern matching and does it for us. This same pattern can work for other variants. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 279
+    },
+    __self: this
+  }, "map"), " is much more general than just lists."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Haskell"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 283
+    },
+    __self: this
+  }, "\n      data Either = Error e | Success s\n      data List = Nil | Cons x tail\n      data Tree = Leaf | Node left x right\n    "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 291
+    },
+    __self: this
+  }, "For each of these structures, there is a sensible map definition. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 292
+    },
+    __self: this
+  }, "Either"), "allows us to handle errors and only apply the function if we are not in an error state, mapping over a ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 294
+    },
+    __self: this
+  }, "List"), " applies the function to each element, and mapping over a tree applies the function to each node, recursing through the tree."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Heading"], {
+    size: 2,
+    text: "Conclusion",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 299
+    },
+    __self: this
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 301
+    },
+    __self: this
+  }, "Variants are an extremely expressive way to state the assumptions behind our code. They force us to be explicit and handle cases individual. Yet, they also give a means of abstraction, a point at which we can define common interfaces and ignored the particularities underneath. In future posts we will take up this notion in more depth, showing how ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 306
+    },
+    __self: this
+  }, "protocols"), "when combined with ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_utils_js__WEBPACK_IMPORTED_MODULE_1__["Term"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 307
+    },
+    __self: this
+  }, "variants"), " can bring our language even more power."));
 });
 
 /***/ }),
@@ -20843,14 +21113,14 @@ var GlobalLayout = function GlobalLayout(_ref17) {
 
 /***/ }),
 
-/***/ 0:
-/*!************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js ***!
-  \************************************************************************************************************************************************/
+/***/ 1:
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fvariants-explained&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fvariants-explained.js ***!
+  \*******************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fvariants-explained&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fvariants-explained.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fvariants-explained&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fvariants-explained.js!./");
 
 
 /***/ }),
@@ -20866,5 +21136,5 @@ module.exports = dll_afa7b25a60452594c240;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
-//# sourceMappingURL=index.js.map
+},[[1,"static/runtime/webpack.js"]]]);
+//# sourceMappingURL=variants-explained.js.map
