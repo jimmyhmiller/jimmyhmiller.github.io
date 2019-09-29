@@ -33,7 +33,8 @@ export default () =>
     </p>
     <Clojure>
     {`
-      (require '[meander.strategy.epsilon :as r])
+      (require '[meander.strategy.epsilon :as r]
+               '[meander.epsilon :as m])
 
       (def x-to-y
         (r/rewrite
@@ -146,13 +147,12 @@ export default () =>
     </p>
     <Clojure>
     {`
-      (def find-x
-        (r/choice
-          (r/pred number?)
-          (r/rewrite
-           [?x] ?x
-           [?x _] ?x
-           [?x _ _] ?x)))
+      (def find-x  
+        (r/rewrite
+         (m/pred number? ?x) ?x 
+         [?x] ?x
+         [?x _] ?x
+         [?x _ _] ?x))
 
       (find-x 1) ;; 1
       (find-x [1]) ;; 1
