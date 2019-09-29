@@ -33,7 +33,8 @@ export default () =>
     </p>
     <Clojure>
     {`
-      (require '[meander.strategy.delta :as r])
+      (require '[meander.strategy.epsilon :as r]
+               '[meander.epsilon :as m])
 
       (def x-to-y
         (r/rewrite
@@ -79,7 +80,7 @@ export default () =>
     {`
       (def match-any-thing
         (r/rewrite
-          ?x [:matched ?x])
+          ?x [:matched ?x]))
 
       (match-any-thing :a) ;; [:matched :a]
       (match-any-thing "hello") ;; [:matched "hello"]
@@ -146,9 +147,9 @@ export default () =>
     </p>
     <Clojure>
     {`
-      (def find-x
+      (def find-x  
         (r/rewrite
-         (pred number? ?x) ?x
+         (m/pred number? ?x) ?x 
          [?x] ?x
          [?x _] ?x
          [?x _ _] ?x))
@@ -218,7 +219,7 @@ export default () =>
     </p>
     <Clojure>
     {`
-      (simplify-twice '(+ 0 3)) ;; #meander.delta/fail[]
+      (simplify-twice '(+ 0 3)) ;; #meander.epsilon/fail[]
     `}
     </Clojure>
     <p>
