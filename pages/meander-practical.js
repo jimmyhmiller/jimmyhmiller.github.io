@@ -56,11 +56,11 @@ export default () => (
     </p>
     <Clojure>
     {`
-    (require '[meander.match.delta :as m])
+    (require '[meander.epsilon :as m])
 
     (defn reformat-preferred-address [person]
       (m/match person
-        {:preferred-address 
+        {:preferred-address
          {:address1 ?address1
           :address2 ?address2
           :city ?city
@@ -179,8 +179,8 @@ export default () => (
     {`
     (defn distinct-zip-codes [person]
       (m/match person
-        {:preferred-address {:zip (or nil !zips)}
-         :other-addresses [{:zip (or nil !zips)} ...]}
+        {:preferred-address {:zip (m/or nil !zips)}
+         :other-addresses [{:zip (m/or nil !zips)} ...]}
         (distinct !zips)))
     `}
     </Clojure>
@@ -211,10 +211,10 @@ export default () => (
     {`
     (defn distinct-zips-and-cities [person]
       (m/match person
-        {:preferred-address {:zip (or nil !zips)
-                             :city (or nil !cities)}
-         :other-addresses [{:zip (or nil !zips)
-                            :city (or nil !cities)} ...]}
+        {:preferred-address {:zip (m/or nil !zips)
+                             :city (m/or nil !cities)}
+         :other-addresses [{:zip (m/or nil !zips)
+                            :city (m/or nil !cities)} ...]}
         {:zips (distinct !zips)
          :cities (distinct !cities)}))
     `}
@@ -350,8 +350,8 @@ export default () => (
     {`
     (defn find-people-with-zip [people zip]
       (m/search people
-        (scan {:name ?name
-               :addresses (scan {:zip ~zip :as ?address})})
+        (m/scan {:name ?name
+                 :addresses (scan {:zip ~zip :as ?address})})
         {:name ?name
          :address ?address}))
     `}
@@ -472,10 +472,10 @@ export default () => (
     {`
     (defn find-potential-bad-visits [data]
       (m/search data
-        {:people (scan {:id ?id :name ?name})
-         :addresses {?id (scan {:preferred true :zip ?zip})}
-         :visits {?id (scan {:geo-location {:zip (and (not ?zip) ?bad-zip)}
-                             :date ?date})}}
+        {:people (m/scan {:id ?id :name ?name})
+         :addresses {?id (m/scan {:preferred true :zip ?zip})}
+         :visits {?id (m/scan {:geo-location {:zip (m/and (m/not ?zip) ?bad-zip)}
+                               :date ?date})}}
         {:name ?name
          :id ?id
          :zip ?bad-zip
