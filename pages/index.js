@@ -52,6 +52,10 @@ export const posts = [
     text: "Term Rewriting with Meander",
     href: "/meander-rewriting"
   },
+  {
+    text: "Card Driven Development",
+    href: "/card-driven-development"
+  },
 ]
 
 const utilities = [
