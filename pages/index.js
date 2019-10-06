@@ -58,6 +58,13 @@ export const posts = [
   },
 ]
 
+const talks = [
+  {
+    text: "Meander: Declarative Explorations at the Limits of FP",
+    href: "https://www.youtube.com/watch?v=9fhnJpCgtUw"
+  },
+]
+
 const utilities = [
   {
     text: "Graph Maker",
@@ -123,6 +130,10 @@ export default () =>
     <LinkList
       title="Posts"
       items={posts}
+    />
+    <LinkList
+      title="Talks"
+      items={talks}
     />
     <LinkList
       title="Utilities"

@@ -260,7 +260,7 @@ export default () => (
       cycle repeats. If we are ever to break this cycle, we must get rid of card
       driven development. What I think should replace it is a topic for another
       post, but I will say that whatever will must start with an understanding
-      of <Link href="/incommunicability">what programming is</Link>.
+      of <Link href="/incommunicability"><a>what programming is</a></Link>.
     </p>
   </GlobalLayout>
 );

@@ -23,7 +23,7 @@ export default () =>
       understanding of how Term Rewriting works and what it is capable of. This
       post will not focus on practical uses of meander, if you are interested in
       that check out{" "}
-      <Link href="/meander-practical">Meander for Practical Data Transformation</Link>.
+      <Link href="/meander-practical"><a>Meander for Practical Data Transformation</a></Link>.
     </p>
     <Heading size="2" text="The Basics" />
     <p>
