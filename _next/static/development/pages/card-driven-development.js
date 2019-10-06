@@ -20512,7 +20512,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
       lineNumber: 263
     },
     __self: this
-  }, "what programming is"), "."));
+  }, __jsx("a", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 263
+    },
+    __self: this
+  }, "what programming is")), "."));
 });
 
 /***/ }),
@@ -21015,7 +21021,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 0:
 /*!************************************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fcard-driven-development&absolutePagePath=%2FUsers%2Fjimmyhmiller%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Fcard-driven-development.js ***!
   \************************************************************************************************************************************************************************************************/
@@ -21038,5 +21044,5 @@ module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=card-driven-development.js.map
