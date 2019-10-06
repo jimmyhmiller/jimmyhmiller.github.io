@@ -20334,6 +20334,10 @@ var posts = [{
   text: "Card Driven Development",
   href: "/card-driven-development"
 }];
+var talks = [{
+  text: "Meander: Declarative Explorations at the Limits of FP",
+  href: "https://www.youtube.com/watch?v=9fhnJpCgtUw"
+}];
 var utilities = [{
   text: "Graph Maker",
   href: "https://jimmyhmiller.github.io/graph-maker/"
@@ -20378,7 +20382,7 @@ var project = [{
   return __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["GlobalLayout"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 129
     },
     __self: this
   }, __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20386,7 +20390,15 @@ var project = [{
     items: posts,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123
+      lineNumber: 130
+    },
+    __self: this
+  }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
+    title: "Talks",
+    items: talks,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 134
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20394,7 +20406,7 @@ var project = [{
     items: utilities,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127
+      lineNumber: 138
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20402,7 +20414,7 @@ var project = [{
     items: libraries,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131
+      lineNumber: 142
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20410,7 +20422,7 @@ var project = [{
     items: slides,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 146
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20418,7 +20430,7 @@ var project = [{
     items: project,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 139
+      lineNumber: 150
     },
     __self: this
   }));
@@ -20924,7 +20936,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 2:
 /*!*******************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjimmyhmiller%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js ***!
   \*******************************************************************************************************************************************************/
@@ -20947,5 +20959,5 @@ module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
