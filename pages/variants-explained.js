@@ -247,7 +247,7 @@ export default () => (
 
     <p>
       As it stands, this isn't that much better than null, but when combined
-      with simple functions, this variant because infinitely more useful.
+      with simple functions, this variant becomes infinitely more useful.
     </p>
 
     <Javascript>
