@@ -187,7 +187,7 @@ export default () => (
       it distances engineers from the problems they are solving. No longer do
       engineers know or care deeply about these problems. No longer do they
       spend their time thinking about these problems and how best to solve them.
-      Instead they are consumed my details, consumed by sub-optimal answers.
+      Instead they are consumed by details, consumed by sub-optimal answers.
     </p>
     <p>
       But this isn't just a problem for Engineering. Product has actually
