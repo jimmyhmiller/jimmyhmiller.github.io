@@ -56,6 +56,10 @@ export const posts = [
     text: "Card Driven Development",
     href: "/card-driven-development"
   },
+  {
+    text: "Building Meander in Meander",
+    href: "/building-meander-in-meander"
+  },
 ]
 
 const talks = [
