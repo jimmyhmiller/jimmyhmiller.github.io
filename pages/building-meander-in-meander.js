@@ -388,7 +388,7 @@ export default () => (
   `}
     </Clojure>
     <p>
-      Admittedly this is still quiet a bit of code for what we are doing. If you
+      Admittedly this is still quite a bit of code for what we are doing. If you
       look at it for even a moment you can see some issues. We definitely run
       nth and subvec entirely too many times. But once we look back at code it
       becomes pretty obvious that the gensym trick we used before could easy
