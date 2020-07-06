@@ -13,7 +13,7 @@ export default () => (
     <p>
       <a href="https://github.com/noprompt/meander/">Meander</a> has been (in my
       personal opinion) a wonderful success. With meander.epsilon, we can
-      express most of the data transformations we are interested. There are of
+      express most of the data transformations we are interested in. There are of
       course a few rough edges, a few things we'd change. But as more people
       have begun to use meander and more people present problems they are
       tackling with meander, it becomes clear that this approach is working. And
