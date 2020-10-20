@@ -246,7 +246,7 @@ export default () => (
       A strained Product and Engineering relationship can spell the end for a
       project or even a whole company. More often than not, strained product
       relationship leads to frustrated engineers. These engineers leave, taking
-      with them they hard-earned knowledge of the system they helped build. As
+      with them their hard-earned knowledge of the system they helped build. As
       engineers become frustrated, they often become defensive. When asked for
       estimates they worry how the estimates might be used and so they pad them.
       Knowing that anyone can detect if they constantly over-estimate, they slow
