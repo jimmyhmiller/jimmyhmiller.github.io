@@ -7,7 +7,7 @@ import {
 
 export const excludeRss = true;
 
-export const posts = [
+export const postsForBeginners = [
   {
     text: "Variants Explained",
     href: "/variants-explained",
@@ -36,6 +36,9 @@ export const posts = [
     text: "Basic Functional Studies",
     href: "/basic-functional-studies",
   },
+];
+
+export const posts = [
   {
     text: "Defending the Incommunicability of Programs",
     href: "/incommunicability"
@@ -132,7 +135,11 @@ const project = [
 export default () =>
   <GlobalLayout>
     <LinkList
-      title="Posts"
+      title="For Beginners"
+      items={postsForBeginners}
+    />
+    <LinkList
+      title="Other Posts"
       items={posts}
     />
     <LinkList

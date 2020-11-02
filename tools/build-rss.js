@@ -1,6 +1,6 @@
 import RSS from 'rss'
 import ReactDOMServer from 'react-dom/server';
-import { posts } from "../pages/index.js"
+import { postsForBeginners, posts } from "../pages/index.js"
 const fs = require("fs");
 
 const generateRSS = () => {
@@ -10,7 +10,7 @@ const generateRSS = () => {
     title: "jimmyhmiller.github.io",
     site_url: siteUrl,
   })
-  posts.map(post => {
+  postsForBeginners.concat(posts).map(post => {
     const postEntry = require(`../pages${post.href}`)
     feed.item({
       title: post.text,
