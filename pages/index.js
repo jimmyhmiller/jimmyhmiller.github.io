@@ -63,6 +63,10 @@ export const posts = [
     text: "Building Meander in Meander",
     href: "/building-meander-in-meander"
   },
+  {
+    text: "Conceptual Engineering",
+    href: "/conceptual-engineering"
+  },
 ]
 
 const talks = [
