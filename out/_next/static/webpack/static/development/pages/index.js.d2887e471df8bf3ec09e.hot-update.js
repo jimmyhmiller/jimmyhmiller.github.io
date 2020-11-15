@@ -60,6 +60,9 @@ var posts = [{
 }, {
   text: "Building Meander in Meander",
   href: "/building-meander-in-meander"
+}, {
+  text: "Conceptual Engineering",
+  href: "/conceptual-engineering"
 }];
 var talks = [{
   text: "Meander: Declarative Explorations at the Limits of FP",
@@ -109,7 +112,7 @@ var project = [{
   return __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["GlobalLayout"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136
+      lineNumber: 140
     },
     __self: this
   }, __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -117,15 +120,15 @@ var project = [{
     items: postsForBeginners,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 137
+      lineNumber: 141
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
-    title: "Posts",
+    title: "Other Posts",
     items: posts,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 141
+      lineNumber: 145
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -133,7 +136,7 @@ var project = [{
     items: talks,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 149
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -141,7 +144,7 @@ var project = [{
     items: utilities,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149
+      lineNumber: 153
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -149,7 +152,7 @@ var project = [{
     items: libraries,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 153
+      lineNumber: 157
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -157,7 +160,7 @@ var project = [{
     items: slides,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 157
+      lineNumber: 161
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -165,7 +168,7 @@ var project = [{
     items: project,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 161
+      lineNumber: 165
     },
     __self: this
   }));
@@ -174,4 +177,4 @@ var project = [{
 /***/ })
 
 })
-//# sourceMappingURL=index.js.1af55cca0ef9842eaef0.hot-update.js.map
+//# sourceMappingURL=index.js.d2887e471df8bf3ec09e.hot-update.js.map
