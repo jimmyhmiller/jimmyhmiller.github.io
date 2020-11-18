@@ -74,6 +74,10 @@ const talks = [
     text: "Meander: Declarative Explorations at the Limits of FP",
     href: "https://www.youtube.com/watch?v=9fhnJpCgtUw"
   },
+  {
+    text:"Paradigms Without Progress: Kuhnian Reflections on Programming Practice",
+    href:"https://www.youtube.com/watch?v=TkPy7aLTtAw"
+  },
 ]
 
 const utilities = [
