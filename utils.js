@@ -1,10 +1,12 @@
 import Head from 'next/head';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-light";
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
 import haskell from 'react-syntax-highlighter/dist/cjs/languages/prism/haskell';
 import clojure from 'react-syntax-highlighter/dist/cjs/languages/prism/clojure';
 import { solarizedlight } from 'react-syntax-highlighter/dist/styles/prism';
+
+export const Link = NextLink;
 
 // Super ugly hack to override prism languages
 // I really should make a modern prism, but I will
@@ -198,7 +200,6 @@ export const Title = ({ text }) =>
     <Heading text={text} size={1} />
   </>
 
-
 export const GlobalLayout = ({ children }) =>
   <>
     <Head>
@@ -211,7 +212,7 @@ export const GlobalLayout = ({ children }) =>
     <Container>
       <div style={{position: "relative"}}>
           <AbsolutePosition right={0} top={0}>
-          <Link  href="/" >
+          <Link href="/">
             <a style={{textDecoration: "none"}}>
               <Heading
                  color="#999"

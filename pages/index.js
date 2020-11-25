@@ -67,6 +67,10 @@ export const posts = [
     text: "Conceptual Engineering",
     href: "/conceptual-engineering"
   },
+    {
+    text: "Conceptual Preservation",
+    href: "/conceptual-preservation"
+  },
 ]
 
 const talks = [
