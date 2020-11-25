@@ -7104,10 +7104,10 @@ exports.SUPPORTS_PERFORMANCE_USER_TIMING = exports.SUPPORTS_PERFORMANCE && typeo
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js!./":
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js ***!
-  \********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmyhmiller%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js!./":
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmyhmiller%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js ***!
+  \***************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20293,7 +20293,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils.js */ "./utils.js");
-var _jsxFileName = "/Users/jimmy/Documents/Code/jimmyhmiller.github.io/pages/index.js";
+var _jsxFileName = "/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/pages/index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -20341,6 +20341,9 @@ var posts = [{
 }, {
   text: "Conceptual Engineering",
   href: "/conceptual-engineering"
+}, {
+  text: "Conceptual Preservation",
+  href: "/conceptual-preservation"
 }];
 var talks = [{
   text: "Meander: Declarative Explorations at the Limits of FP",
@@ -20393,7 +20396,7 @@ var project = [{
   return __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["GlobalLayout"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144
+      lineNumber: 148
     },
     __self: this
   }, __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20401,7 +20404,7 @@ var project = [{
     items: postsForBeginners,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 149
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20409,7 +20412,7 @@ var project = [{
     items: posts,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149
+      lineNumber: 153
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20417,7 +20420,7 @@ var project = [{
     items: talks,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 153
+      lineNumber: 157
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20425,7 +20428,7 @@ var project = [{
     items: utilities,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 157
+      lineNumber: 161
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20433,7 +20436,7 @@ var project = [{
     items: libraries,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 161
+      lineNumber: 165
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20441,7 +20444,7 @@ var project = [{
     items: slides,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 165
+      lineNumber: 169
     },
     __self: this
   }), __jsx(_utils_js__WEBPACK_IMPORTED_MODULE_1__["LinkList"], {
@@ -20449,7 +20452,7 @@ var project = [{
     items: project,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 169
+      lineNumber: 173
     },
     __self: this
   }));
@@ -20461,11 +20464,12 @@ var project = [{
 /*!******************!*\
   !*** ./utils.js ***!
   \******************/
-/*! exports provided: AbsolutePosition, Padding, Margin, detectIndent, removeIndent, formatCode, modifiedSolarizedLight, Code, Javascript, Haskell, Clojure, LargeText, LinkList, Heading, Term, BlockQuote, Title, GlobalLayout */
+/*! exports provided: Link, AbsolutePosition, Padding, Margin, detectIndent, removeIndent, formatCode, modifiedSolarizedLight, Code, Javascript, Haskell, Clojure, LargeText, LinkList, Heading, Term, BlockQuote, Title, GlobalLayout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return Link; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AbsolutePosition", function() { return AbsolutePosition; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Padding", function() { return Padding; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Margin", function() { return Margin; });
@@ -20506,7 +20510,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_syntax_highlighter_dist_styles_prism__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_syntax_highlighter_dist_styles_prism__WEBPACK_IMPORTED_MODULE_10__);
 
 
-var _jsxFileName = "/Users/jimmy/Documents/Code/jimmyhmiller.github.io/utils.js";
+var _jsxFileName = "/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/utils.js";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
@@ -20516,7 +20520,8 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
 
 
- // Super ugly hack to override prism languages
+
+var Link = next_link__WEBPACK_IMPORTED_MODULE_5___default.a; // Super ugly hack to override prism languages
 // I really should make a modern prism, but I will
 // never find time to do that. Warning to future me
 // this causes some weird stuff with hot reloading when changed.
@@ -20549,7 +20554,7 @@ var AbsolutePosition = function AbsolutePosition(_ref) {
     }, "left", left),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 33
     },
     __self: this
   }, children);
@@ -20569,7 +20574,7 @@ var Padding = function Padding(_ref3) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 38
     },
     __self: this
   }, children);
@@ -20589,7 +20594,7 @@ var Margin = function Margin(_ref4) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 48
     },
     __self: this
   }, children);
@@ -20634,7 +20639,7 @@ var Code = function Code(_ref5) {
     style: modifiedSolarizedLight,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 97
     },
     __self: this
   }, formatCode(source));
@@ -20646,7 +20651,7 @@ var Javascript = function Javascript(_ref6) {
     source: children,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105
+      lineNumber: 107
     },
     __self: this
   });
@@ -20658,7 +20663,7 @@ var Haskell = function Haskell(_ref7) {
     source: children,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 112
     },
     __self: this
   });
@@ -20670,7 +20675,7 @@ var Clojure = function Clojure(_ref8) {
     source: children,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 115
+      lineNumber: 117
     },
     __self: this
   });
@@ -20680,7 +20685,7 @@ var GlobalStyles = function GlobalStyles() {
   return __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_2___default.a, {
     id: "1541984143",
     __self: this
-  }, "body{font-family:helvetica,sans-serif;color:#333;line-height:1.5;}a{color:#333;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qaW1teS9Eb2N1bWVudHMvQ29kZS9qaW1teWhtaWxsZXIuZ2l0aHViLmlvL3V0aWxzLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXdISSxBQUcyQyxBQUt2QixXQUNiLHNCQUxhLFdBQ0ssZ0JBQ2xCIiwiZmlsZSI6Ii9Vc2Vycy9qaW1teS9Eb2N1bWVudHMvQ29kZS9qaW1teWhtaWxsZXIuZ2l0aHViLmlvL3V0aWxzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IEhlYWQgZnJvbSAnbmV4dC9oZWFkJztcbmltcG9ydCBMaW5rIGZyb20gJ25leHQvbGluayc7XG5pbXBvcnQgU3ludGF4SGlnaGxpZ2h0ZXIgZnJvbSBcInJlYWN0LXN5bnRheC1oaWdobGlnaHRlci9kaXN0L2Nqcy9wcmlzbS1saWdodFwiO1xuaW1wb3J0IGpzIGZyb20gJ3JlYWN0LXN5bnRheC1oaWdobGlnaHRlci9kaXN0L2Nqcy9sYW5ndWFnZXMvcHJpc20vamF2YXNjcmlwdCc7XG5pbXBvcnQgaGFza2VsbCBmcm9tICdyZWFjdC1zeW50YXgtaGlnaGxpZ2h0ZXIvZGlzdC9janMvbGFuZ3VhZ2VzL3ByaXNtL2hhc2tlbGwnO1xuaW1wb3J0IGNsb2p1cmUgZnJvbSAncmVhY3Qtc3ludGF4LWhpZ2hsaWdodGVyL2Rpc3QvY2pzL2xhbmd1YWdlcy9wcmlzbS9jbG9qdXJlJztcbmltcG9ydCB7IHNvbGFyaXplZGxpZ2h0IH0gZnJvbSAncmVhY3Qtc3ludGF4LWhpZ2hsaWdodGVyL2Rpc3Qvc3R5bGVzL3ByaXNtJztcblxuLy8gU3VwZXIgdWdseSBoYWNrIHRvIG92ZXJyaWRlIHByaXNtIGxhbmd1YWdlc1xuLy8gSSByZWFsbHkgc2hvdWxkIG1ha2UgYSBtb2Rlcm4gcHJpc20sIGJ1dCBJIHdpbGxcbi8vIG5ldmVyIGZpbmQgdGltZSB0byBkbyB0aGF0LiBXYXJuaW5nIHRvIGZ1dHVyZSBtZVxuLy8gdGhpcyBjYXVzZXMgc29tZSB3ZWlyZCBzdHVmZiB3aXRoIGhvdCByZWxvYWRpbmcgd2hlbiBjaGFuZ2VkLlxuY29uc3QgY2xvanVyZTIgPSAoUHJpc20pID0+IHtcbiAgY2xvanVyZShQcmlzbSk7XG4gIFByaXNtLmxhbmd1YWdlcy5jbG9qdXJlID0ge1xuICAgIC4uLlByaXNtLmxhbmd1YWdlcy5jbG9qdXJlLFxuICAgIG51bWJlcjogL1xcYi0/KDB4KT9cXGQqXFwuP1xcZCtcXGIvZyxcbiAgICBsb2dpY1ZhcmlhYmxlOiAvKFxcP3whKVthLXpBLVpdW2EtekEtWjAtOS1dKy8sXG4gIH1cbn1cbmNsb2p1cmUyLmRpc3BsYXlOYW1lID0gJ2Nsb2p1cmUnXG5jbG9qdXJlMi5hbGlhc2VzID0gW11cblxuU3ludGF4SGlnaGxpZ2h0ZXIucmVnaXN0ZXJMYW5ndWFnZSgnamF2YXNjcmlwdCcsIGpzKTtcblN5bnRheEhpZ2hsaWdodGVyLnJlZ2lzdGVyTGFuZ3VhZ2UoJ2hhc2tlbGwnLCBoYXNrZWxsKTtcblN5bnRheEhpZ2hsaWdodGVyLnJlZ2lzdGVyTGFuZ3VhZ2UoJ2Nsb2p1cmUnLCBjbG9qdXJlMilcblxuXG5cbmV4cG9ydCBjb25zdCBBYnNvbHV0ZVBvc2l0aW9uID0gKHsgY2hpbGRyZW4sIHJpZ2h0LCB0b3AsIGxlZnQsIGJ1dHRvbX0pID0+XG4gICA8ZGl2IHN0eWxlPXt7IHBvc2l0aW9uOiBcImFic29sdXRlXCIsIHJpZ2h0LCBsZWZ0LCB0b3AsbGVmdH19PlxuICAgICAge2NoaWxkcmVufVxuICAgPC9kaXY+XG5cbmV4cG9ydCBjb25zdCBQYWRkaW5nID0gKHsgY2hpbGRyZW4sIHRvcCwgbGVmdCwgcmlnaHQsIGJvdHRvbSB9KSA9PlxuICAgPGRpdiBzdHlsZT17e1xuICAgICAgcGFkZGluZ1RvcDogdG9wLFxuICAgICAgcGFkZGluZ0xlZnQ6IGxlZnQsXG4gICAgICBwYWRkaW5nUmlnaHQ6IHJpZ2h0LFxuICAgICAgcGFkZGluZ0JvdHRvbTogYm90dG9tLFxuICAgfX0+XG4gICAgICB7Y2hpbGRyZW59XG4gICA8L2Rpdj5cblxuZXhwb3J0IGNvbnN0IE1hcmdpbiA9ICh7IGNoaWxkcmVuLCB0b3AsIGxlZnQsIHJpZ2h0LCBib3R0b20gfSkgPT5cbiAgIDxkaXYgc3R5bGU9e3tcbiAgICAgIG1hcmdpblRvcDogdG9wLFxuICAgICAgbWFyZ2luTGVmdDogbGVmdCxcbiAgICAgIG1hcmdpblJpZ2h0OiByaWdodCxcbiAgICAgIG1hcmdpbkJvdHRvbTogYm90dG9tLFxuICAgfX0+XG4gICAgICB7Y2hpbGRyZW59XG4gICA8L2Rpdj5cblxuY29uc3QgcmVtb3ZlRmlyc3QgPSAoYXJyKSA9PiB7XG4gIGlmIChhcnIubGVuZ3RoID4gMSkge1xuICAgIGFyci5zaGlmdCgpO1xuICB9XG4gIHJldHVybiBhcnI7XG59XG5cbmV4cG9ydCBjb25zdCBkZXRlY3RJbmRlbnQgPSBzb3VyY2UgPT5cbiAgL14gKi8uZXhlYyhzb3VyY2UpWzBdLmxlbmd0aFxuXG5leHBvcnQgY29uc3QgcmVtb3ZlSW5kZW50ID0gKHNvdXJjZSkgPT4gZG8ge1xuICBjb25zdCBsaW5lcyA9IHJlbW92ZUZpcnN0KHNvdXJjZS5zcGxpdChcIlxcblwiKSlcbiAgY29uc3QgaW5kZW50ID0gZGV0ZWN0SW5kZW50KGxpbmVzWzBdKVxuICBsaW5lc1xuICAgIC5tYXAocyA9PiBzLnN1YnN0cmluZyhpbmRlbnQsIHMubGVuZ3RoKSlcbiAgICAuam9pbihcIlxcblwiKVxufVxuXG5cbmV4cG9ydCBjb25zdCBmb3JtYXRDb2RlID0gKHNvdXJjZSkgPT4ge1xuICByZXR1cm4gcmVtb3ZlSW5kZW50KHNvdXJjZSlcbn1cblxuXG5leHBvcnQgY29uc3QgbW9kaWZpZWRTb2xhcml6ZWRMaWdodCA9IHtcbiAgLi4uc29sYXJpemVkbGlnaHQsXG4gIFwib3BlcmF0b3JcIjoge1xuICAgIGNvbG9yOiBcIiNjYjRiMTZcIlxuICB9LFxuICBcImxvZ2ljVmFyaWFibGVcIjoge1xuICAgIGNvbG9yOiBcIiMyYWExOThcIlxuICB9LFxuICBcInByZVtjbGFzcyo9XFxcImxhbmd1YWdlLVxcXCJdXCI6IHtcbiAgICAuLi5zb2xhcml6ZWRsaWdodFtcInByZVtjbGFzcyo9XFxcImxhbmd1YWdlLVxcXCJdXCJdLFxuICAgIGJhY2tncm91bmRDb2xvcjogXCIjZmZmXCIsXG4gIH0sXG59XG5cbmV4cG9ydCBjb25zdCBDb2RlID0gKHsgc291cmNlLCBsYW5ndWFnZSB9KSA9PiB7XG4gIHJldHVybiAoXG4gICAgPFN5bnRheEhpZ2hsaWdodGVyXG4gICAgICBsYW5ndWFnZT17bGFuZ3VhZ2V9XG4gICAgICBzdHlsZT17bW9kaWZpZWRTb2xhcml6ZWRMaWdodH1cbiAgICA+XG4gICAgICB7Zm9ybWF0Q29kZShzb3VyY2UpfVxuICAgIDwvU3ludGF4SGlnaGxpZ2h0ZXI+XG4gIClcbn1cblxuZXhwb3J0IGNvbnN0IEphdmFzY3JpcHQgPSAoeyBjaGlsZHJlbiB9KSA9PiBcbiAgPENvZGVcbiAgICBsYW5ndWFnZT1cImphdmFzY3JpcHRcIlxuICAgIHNvdXJjZT17Y2hpbGRyZW59IC8+XG5cbmV4cG9ydCBjb25zdCBIYXNrZWxsID0gKHsgY2hpbGRyZW4gfSkgPT4gXG4gIDxDb2RlXG4gICAgbGFuZ3VhZ2U9XCJoYXNrZWxsXCJcbiAgICBzb3VyY2U9e2NoaWxkcmVufSAvPlxuXG5leHBvcnQgY29uc3QgQ2xvanVyZSA9ICh7IGNoaWxkcmVuIH0pID0+IFxuICA8Q29kZVxuICAgIGxhbmd1YWdlPVwiY2xvanVyZVwiXG4gICAgc291cmNlPXtjaGlsZHJlbn0gLz5cblxuY29uc3QgR2xvYmFsU3R5bGVzID0gKCkgPT4gXG4gICA8c3R5bGUgZ2xvYmFsIGpzeD5cbiAgIHtgXG4gICAgICBib2R5IHtcbiAgICAgICAgZm9udC1mYW1pbHk6IGhlbHZldGljYSwgc2Fucy1zZXJpZjtcbiAgICAgICAgY29sb3I6ICMzMzM7XG4gICAgICAgIGxpbmUtaGVpZ2h0OiAxLjU7XG4gICAgICB9XG4gICAgICBhIHtcbiAgICAgICAgY29sb3I6ICMzMzM7XG4gICAgICB9XG4gICBgfVxuICAgPC9zdHlsZT5cblxuY29uc3QgQ29udGFpbmVyID0gKHtjaGlsZHJlbn0pID0+XG4gICA8ZGl2IHN0eWxlPXt7XG4gICAgICBtYXJnaW46IFwiMCBhdXRvXCIsXG4gICAgICBtYXhXaWR0aDogNzAwLFxuICAgfX0+XG4gICAgICB7Y2hpbGRyZW59XG4gICA8L2Rpdj5cblxuY29uc3QgTGlzdEl0ZW0gPSAoeyBocmVmLCB0ZXh0LCBFbGVtIH0pID0+XG4gIDxsaSBrZXk9e2hyZWZ9PlxuICAgIDxFbGVtPlxuICAgICAgPExpbmsgaHJlZj17aHJlZn0+XG4gICAgICAgIDxhPnt0ZXh0fTwvYT5cbiAgICAgIDwvTGluaz5cbiAgICA8L0VsZW0+XG4gIDwvbGk+XG5cbmV4cG9ydCBjb25zdCBMYXJnZVRleHQgPSAoeyBjaGlsZHJlbiB9KSA9PiBcbiAgPHAgc3R5bGU9e3tmb250U2l6ZTogXCIxLjVlbVwifX0+XG4gICAge2NoaWxkcmVufVxuICA8L3A+XG5cbmV4cG9ydCBjb25zdCBMaW5rTGlzdCA9ICh7IGl0ZW1zLCBFbGVtPUxhcmdlVGV4dCwgdGl0bGUgfSkgPT5cbiAgPD5cbiAgICA8SGVhZGluZyB0ZXh0PXt0aXRsZX0gLz5cbiAgICA8dWw+XG4gICAgICB7aXRlbXMubWFwKGl0ZW0gPT4gTGlzdEl0ZW0oey4uLml0ZW0sIEVsZW19KSl9XG4gICAgPC91bD5cbiAgPC8+XG5cbmV4cG9ydCBjb25zdCBIZWFkaW5nID0gKHsgY29sb3IsIHRleHQsIHNpemU9MSB9KSA9PiBkbyB7XG4gIGNvbnN0IHNpemVUb0VsZW0gPSB7MTogXCJoMVwiLCAyOiBcImgyXCIsIDM6IFwiaDNcIiwgXCI0XCI6IFwiaDRcIn1cbiAgY29uc3QgRWxlbSA9IHNpemVUb0VsZW1bc2l6ZV07XG4gIDxFbGVtIHN0eWxlPXt7IGNvbG9yIH19PlxuICAgIHt0ZXh0fVxuICA8L0VsZW0+XG59XG5cbmV4cG9ydCBjb25zdCBUZXJtID0gKHtjaGlsZHJlbn0pID0+XG4gIDxjb2RlIHN0eWxlPXt7XG4gICAgYmFja2dyb3VuZENvbG9yOiBcInJnYmEoMjcsMzEsMzUsMC4wNSlcIixcbiAgICBwYWRkaW5nOiBcIjAuMmVtIDAuNGVtXCIsXG4gICAgYm9yZGVyUmFkaXVzOiAzLFxuICAgIGZvbnRGYW1pbHk6IFwiTW9uYWNvLCBtb25vc3BhY2VcIixcbiAgICBmb250U2l6ZTogMTMsXG4gICAgd2hpdGVTcGFjZTogXCJub3dyYXBcIixcbiAgfX0+XG4gICAge2NoaWxkcmVufVxuICA8L2NvZGU+XG5cbmV4cG9ydCBjb25zdCBCbG9ja1F1b3RlID0gKHtjaGlsZHJlbn0pID0+XG4gIDxibG9ja3F1b3RlIHN0eWxlPXt7XG4gICAgcGFkZGluZ0xlZnQ6IDIwLFxuICAgIG1hcmdpbjogMCxcbiAgICBtYXJnaW5MZWZ0OiAyMCxcbiAgICBib3JkZXJMZWZ0OiBcIjAuMjVlbSBzb2xpZCAjZGZlMmU1XCIsXG4gIH19PlxuICAgIHtjaGlsZHJlbn1cbiAgPC9ibG9ja3F1b3RlPlxuXG5leHBvcnQgY29uc3QgVGl0bGUgPSAoeyB0ZXh0IH0pID0+IFxuICA8PlxuICAgIDxIZWFkPlxuICAgICAgPHRpdGxlPnt0ZXh0fTwvdGl0bGU+XG4gICAgPC9IZWFkPlxuICAgIDxIZWFkaW5nIHRleHQ9e3RleHR9IHNpemU9ezF9IC8+XG4gIDwvPlxuXG5cbmV4cG9ydCBjb25zdCBHbG9iYWxMYXlvdXQgPSAoeyBjaGlsZHJlbiB9KSA9PlxuICA8PlxuICAgIDxIZWFkPlxuICAgICAgPG1ldGEgbmFtZT1cInZpZXdwb3J0XCIgY29udGVudD1cIndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xXCIgLz5cbiAgICAgIDxsaW5rIHJlbD1cImljb25cIiBocmVmPVwiZGF0YTo7YmFzZTY0LGlWQk9SdzBLR2dvPVwiIC8+XG4gICAgICA8bWV0YSBuYW1lPVwiYXV0aG9yXCIgY29udGVudD1cIkppbW15IE1pbGxlclwiIC8+XG4gICAgICA8bGluayByZWw9XCJhbHRlcm5hdGVcIiB0eXBlPVwiYXBwbGljYXRpb24vcnNzK3htbFwiIHRpdGxlPVwiamltbXlobWlsbGVyLmdpdGh1Yi5pb1wiICBocmVmPVwiL3N0YXRpYy9mZWVkLnhtbFwiIC8+XG4gICAgPC9IZWFkPlxuICAgIDxHbG9iYWxTdHlsZXMgLz5cbiAgICA8Q29udGFpbmVyPlxuICAgICAgPGRpdiBzdHlsZT17e3Bvc2l0aW9uOiBcInJlbGF0aXZlXCJ9fT5cbiAgICAgICAgICA8QWJzb2x1dGVQb3NpdGlvbiByaWdodD17MH0gdG9wPXswfT5cbiAgICAgICAgICA8TGluayAgaHJlZj1cIi9cIiA+XG4gICAgICAgICAgICA8YSBzdHlsZT17e3RleHREZWNvcmF0aW9uOiBcIm5vbmVcIn19PlxuICAgICAgICAgICAgICA8SGVhZGluZ1xuICAgICAgICAgICAgICAgICBjb2xvcj1cIiM5OTlcIlxuICAgICAgICAgICAgICAgICB0ZXh0PVwiSmltbXkgTWlsbGVyXCIvPlxuICAgICAgICAgICAgPC9hPlxuICAgICAgICAgICA8L0xpbms+XG4gICAgICAgICAgPC9BYnNvbHV0ZVBvc2l0aW9uPlxuICAgICAgPC9kaXY+XG4gICAgICA8UGFkZGluZyB0b3A9ezcwfT5cbiAgICAgICAge2NoaWxkcmVufVxuICAgICAgPC9QYWRkaW5nPlxuICAgIDwvQ29udGFpbmVyPlxuICA8Lz5cblxuXG4iXX0= */\n/*@ sourceURL=/Users/jimmy/Documents/Code/jimmyhmiller.github.io/utils.js */");
+  }, "body{font-family:helvetica,sans-serif;color:#333;line-height:1.5;}a{color:#333;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qaW1teWhtaWxsZXIvRG9jdW1lbnRzL0NvZGUvamltbXlobWlsbGVyLmdpdGh1Yi5pby91dGlscy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUEwSEksQUFHMkMsQUFLdkIsV0FDYixzQkFMYSxXQUNLLGdCQUNsQiIsImZpbGUiOiIvVXNlcnMvamltbXlobWlsbGVyL0RvY3VtZW50cy9Db2RlL2ppbW15aG1pbGxlci5naXRodWIuaW8vdXRpbHMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgSGVhZCBmcm9tICduZXh0L2hlYWQnO1xuaW1wb3J0IE5leHRMaW5rIGZyb20gJ25leHQvbGluayc7XG5pbXBvcnQgU3ludGF4SGlnaGxpZ2h0ZXIgZnJvbSBcInJlYWN0LXN5bnRheC1oaWdobGlnaHRlci9kaXN0L2Nqcy9wcmlzbS1saWdodFwiO1xuaW1wb3J0IGpzIGZyb20gJ3JlYWN0LXN5bnRheC1oaWdobGlnaHRlci9kaXN0L2Nqcy9sYW5ndWFnZXMvcHJpc20vamF2YXNjcmlwdCc7XG5pbXBvcnQgaGFza2VsbCBmcm9tICdyZWFjdC1zeW50YXgtaGlnaGxpZ2h0ZXIvZGlzdC9janMvbGFuZ3VhZ2VzL3ByaXNtL2hhc2tlbGwnO1xuaW1wb3J0IGNsb2p1cmUgZnJvbSAncmVhY3Qtc3ludGF4LWhpZ2hsaWdodGVyL2Rpc3QvY2pzL2xhbmd1YWdlcy9wcmlzbS9jbG9qdXJlJztcbmltcG9ydCB7IHNvbGFyaXplZGxpZ2h0IH0gZnJvbSAncmVhY3Qtc3ludGF4LWhpZ2hsaWdodGVyL2Rpc3Qvc3R5bGVzL3ByaXNtJztcblxuZXhwb3J0IGNvbnN0IExpbmsgPSBOZXh0TGluaztcblxuLy8gU3VwZXIgdWdseSBoYWNrIHRvIG92ZXJyaWRlIHByaXNtIGxhbmd1YWdlc1xuLy8gSSByZWFsbHkgc2hvdWxkIG1ha2UgYSBtb2Rlcm4gcHJpc20sIGJ1dCBJIHdpbGxcbi8vIG5ldmVyIGZpbmQgdGltZSB0byBkbyB0aGF0LiBXYXJuaW5nIHRvIGZ1dHVyZSBtZVxuLy8gdGhpcyBjYXVzZXMgc29tZSB3ZWlyZCBzdHVmZiB3aXRoIGhvdCByZWxvYWRpbmcgd2hlbiBjaGFuZ2VkLlxuY29uc3QgY2xvanVyZTIgPSAoUHJpc20pID0+IHtcbiAgY2xvanVyZShQcmlzbSk7XG4gIFByaXNtLmxhbmd1YWdlcy5jbG9qdXJlID0ge1xuICAgIC4uLlByaXNtLmxhbmd1YWdlcy5jbG9qdXJlLFxuICAgIG51bWJlcjogL1xcYi0/KDB4KT9cXGQqXFwuP1xcZCtcXGIvZyxcbiAgICBsb2dpY1ZhcmlhYmxlOiAvKFxcP3whKVthLXpBLVpdW2EtekEtWjAtOS1dKy8sXG4gIH1cbn1cbmNsb2p1cmUyLmRpc3BsYXlOYW1lID0gJ2Nsb2p1cmUnXG5jbG9qdXJlMi5hbGlhc2VzID0gW11cblxuU3ludGF4SGlnaGxpZ2h0ZXIucmVnaXN0ZXJMYW5ndWFnZSgnamF2YXNjcmlwdCcsIGpzKTtcblN5bnRheEhpZ2hsaWdodGVyLnJlZ2lzdGVyTGFuZ3VhZ2UoJ2hhc2tlbGwnLCBoYXNrZWxsKTtcblN5bnRheEhpZ2hsaWdodGVyLnJlZ2lzdGVyTGFuZ3VhZ2UoJ2Nsb2p1cmUnLCBjbG9qdXJlMilcblxuXG5cbmV4cG9ydCBjb25zdCBBYnNvbHV0ZVBvc2l0aW9uID0gKHsgY2hpbGRyZW4sIHJpZ2h0LCB0b3AsIGxlZnQsIGJ1dHRvbX0pID0+XG4gICA8ZGl2IHN0eWxlPXt7IHBvc2l0aW9uOiBcImFic29sdXRlXCIsIHJpZ2h0LCBsZWZ0LCB0b3AsbGVmdH19PlxuICAgICAge2NoaWxkcmVufVxuICAgPC9kaXY+XG5cbmV4cG9ydCBjb25zdCBQYWRkaW5nID0gKHsgY2hpbGRyZW4sIHRvcCwgbGVmdCwgcmlnaHQsIGJvdHRvbSB9KSA9PlxuICAgPGRpdiBzdHlsZT17e1xuICAgICAgcGFkZGluZ1RvcDogdG9wLFxuICAgICAgcGFkZGluZ0xlZnQ6IGxlZnQsXG4gICAgICBwYWRkaW5nUmlnaHQ6IHJpZ2h0LFxuICAgICAgcGFkZGluZ0JvdHRvbTogYm90dG9tLFxuICAgfX0+XG4gICAgICB7Y2hpbGRyZW59XG4gICA8L2Rpdj5cblxuZXhwb3J0IGNvbnN0IE1hcmdpbiA9ICh7IGNoaWxkcmVuLCB0b3AsIGxlZnQsIHJpZ2h0LCBib3R0b20gfSkgPT5cbiAgIDxkaXYgc3R5bGU9e3tcbiAgICAgIG1hcmdpblRvcDogdG9wLFxuICAgICAgbWFyZ2luTGVmdDogbGVmdCxcbiAgICAgIG1hcmdpblJpZ2h0OiByaWdodCxcbiAgICAgIG1hcmdpbkJvdHRvbTogYm90dG9tLFxuICAgfX0+XG4gICAgICB7Y2hpbGRyZW59XG4gICA8L2Rpdj5cblxuY29uc3QgcmVtb3ZlRmlyc3QgPSAoYXJyKSA9PiB7XG4gIGlmIChhcnIubGVuZ3RoID4gMSkge1xuICAgIGFyci5zaGlmdCgpO1xuICB9XG4gIHJldHVybiBhcnI7XG59XG5cbmV4cG9ydCBjb25zdCBkZXRlY3RJbmRlbnQgPSBzb3VyY2UgPT5cbiAgL14gKi8uZXhlYyhzb3VyY2UpWzBdLmxlbmd0aFxuXG5leHBvcnQgY29uc3QgcmVtb3ZlSW5kZW50ID0gKHNvdXJjZSkgPT4gZG8ge1xuICBjb25zdCBsaW5lcyA9IHJlbW92ZUZpcnN0KHNvdXJjZS5zcGxpdChcIlxcblwiKSlcbiAgY29uc3QgaW5kZW50ID0gZGV0ZWN0SW5kZW50KGxpbmVzWzBdKVxuICBsaW5lc1xuICAgIC5tYXAocyA9PiBzLnN1YnN0cmluZyhpbmRlbnQsIHMubGVuZ3RoKSlcbiAgICAuam9pbihcIlxcblwiKVxufVxuXG5cbmV4cG9ydCBjb25zdCBmb3JtYXRDb2RlID0gKHNvdXJjZSkgPT4ge1xuICByZXR1cm4gcmVtb3ZlSW5kZW50KHNvdXJjZSlcbn1cblxuXG5leHBvcnQgY29uc3QgbW9kaWZpZWRTb2xhcml6ZWRMaWdodCA9IHtcbiAgLi4uc29sYXJpemVkbGlnaHQsXG4gIFwib3BlcmF0b3JcIjoge1xuICAgIGNvbG9yOiBcIiNjYjRiMTZcIlxuICB9LFxuICBcImxvZ2ljVmFyaWFibGVcIjoge1xuICAgIGNvbG9yOiBcIiMyYWExOThcIlxuICB9LFxuICBcInByZVtjbGFzcyo9XFxcImxhbmd1YWdlLVxcXCJdXCI6IHtcbiAgICAuLi5zb2xhcml6ZWRsaWdodFtcInByZVtjbGFzcyo9XFxcImxhbmd1YWdlLVxcXCJdXCJdLFxuICAgIGJhY2tncm91bmRDb2xvcjogXCIjZmZmXCIsXG4gIH0sXG59XG5cbmV4cG9ydCBjb25zdCBDb2RlID0gKHsgc291cmNlLCBsYW5ndWFnZSB9KSA9PiB7XG4gIHJldHVybiAoXG4gICAgPFN5bnRheEhpZ2hsaWdodGVyXG4gICAgICBsYW5ndWFnZT17bGFuZ3VhZ2V9XG4gICAgICBzdHlsZT17bW9kaWZpZWRTb2xhcml6ZWRMaWdodH1cbiAgICA+XG4gICAgICB7Zm9ybWF0Q29kZShzb3VyY2UpfVxuICAgIDwvU3ludGF4SGlnaGxpZ2h0ZXI+XG4gIClcbn1cblxuZXhwb3J0IGNvbnN0IEphdmFzY3JpcHQgPSAoeyBjaGlsZHJlbiB9KSA9PiBcbiAgPENvZGVcbiAgICBsYW5ndWFnZT1cImphdmFzY3JpcHRcIlxuICAgIHNvdXJjZT17Y2hpbGRyZW59IC8+XG5cbmV4cG9ydCBjb25zdCBIYXNrZWxsID0gKHsgY2hpbGRyZW4gfSkgPT4gXG4gIDxDb2RlXG4gICAgbGFuZ3VhZ2U9XCJoYXNrZWxsXCJcbiAgICBzb3VyY2U9e2NoaWxkcmVufSAvPlxuXG5leHBvcnQgY29uc3QgQ2xvanVyZSA9ICh7IGNoaWxkcmVuIH0pID0+IFxuICA8Q29kZVxuICAgIGxhbmd1YWdlPVwiY2xvanVyZVwiXG4gICAgc291cmNlPXtjaGlsZHJlbn0gLz5cblxuY29uc3QgR2xvYmFsU3R5bGVzID0gKCkgPT4gXG4gICA8c3R5bGUgZ2xvYmFsIGpzeD5cbiAgIHtgXG4gICAgICBib2R5IHtcbiAgICAgICAgZm9udC1mYW1pbHk6IGhlbHZldGljYSwgc2Fucy1zZXJpZjtcbiAgICAgICAgY29sb3I6ICMzMzM7XG4gICAgICAgIGxpbmUtaGVpZ2h0OiAxLjU7XG4gICAgICB9XG4gICAgICBhIHtcbiAgICAgICAgY29sb3I6ICMzMzM7XG4gICAgICB9XG4gICBgfVxuICAgPC9zdHlsZT5cblxuY29uc3QgQ29udGFpbmVyID0gKHtjaGlsZHJlbn0pID0+XG4gICA8ZGl2IHN0eWxlPXt7XG4gICAgICBtYXJnaW46IFwiMCBhdXRvXCIsXG4gICAgICBtYXhXaWR0aDogNzAwLFxuICAgfX0+XG4gICAgICB7Y2hpbGRyZW59XG4gICA8L2Rpdj5cblxuY29uc3QgTGlzdEl0ZW0gPSAoeyBocmVmLCB0ZXh0LCBFbGVtIH0pID0+XG4gIDxsaSBrZXk9e2hyZWZ9PlxuICAgIDxFbGVtPlxuICAgICAgPExpbmsgaHJlZj17aHJlZn0+XG4gICAgICAgIDxhPnt0ZXh0fTwvYT5cbiAgICAgIDwvTGluaz5cbiAgICA8L0VsZW0+XG4gIDwvbGk+XG5cbmV4cG9ydCBjb25zdCBMYXJnZVRleHQgPSAoeyBjaGlsZHJlbiB9KSA9PiBcbiAgPHAgc3R5bGU9e3tmb250U2l6ZTogXCIxLjVlbVwifX0+XG4gICAge2NoaWxkcmVufVxuICA8L3A+XG5cbmV4cG9ydCBjb25zdCBMaW5rTGlzdCA9ICh7IGl0ZW1zLCBFbGVtPUxhcmdlVGV4dCwgdGl0bGUgfSkgPT5cbiAgPD5cbiAgICA8SGVhZGluZyB0ZXh0PXt0aXRsZX0gLz5cbiAgICA8dWw+XG4gICAgICB7aXRlbXMubWFwKGl0ZW0gPT4gTGlzdEl0ZW0oey4uLml0ZW0sIEVsZW19KSl9XG4gICAgPC91bD5cbiAgPC8+XG5cbmV4cG9ydCBjb25zdCBIZWFkaW5nID0gKHsgY29sb3IsIHRleHQsIHNpemU9MSB9KSA9PiBkbyB7XG4gIGNvbnN0IHNpemVUb0VsZW0gPSB7MTogXCJoMVwiLCAyOiBcImgyXCIsIDM6IFwiaDNcIiwgXCI0XCI6IFwiaDRcIn1cbiAgY29uc3QgRWxlbSA9IHNpemVUb0VsZW1bc2l6ZV07XG4gIDxFbGVtIHN0eWxlPXt7IGNvbG9yIH19PlxuICAgIHt0ZXh0fVxuICA8L0VsZW0+XG59XG5cbmV4cG9ydCBjb25zdCBUZXJtID0gKHtjaGlsZHJlbn0pID0+XG4gIDxjb2RlIHN0eWxlPXt7XG4gICAgYmFja2dyb3VuZENvbG9yOiBcInJnYmEoMjcsMzEsMzUsMC4wNSlcIixcbiAgICBwYWRkaW5nOiBcIjAuMmVtIDAuNGVtXCIsXG4gICAgYm9yZGVyUmFkaXVzOiAzLFxuICAgIGZvbnRGYW1pbHk6IFwiTW9uYWNvLCBtb25vc3BhY2VcIixcbiAgICBmb250U2l6ZTogMTMsXG4gICAgd2hpdGVTcGFjZTogXCJub3dyYXBcIixcbiAgfX0+XG4gICAge2NoaWxkcmVufVxuICA8L2NvZGU+XG5cbmV4cG9ydCBjb25zdCBCbG9ja1F1b3RlID0gKHtjaGlsZHJlbn0pID0+XG4gIDxibG9ja3F1b3RlIHN0eWxlPXt7XG4gICAgcGFkZGluZ0xlZnQ6IDIwLFxuICAgIG1hcmdpbjogMCxcbiAgICBtYXJnaW5MZWZ0OiAyMCxcbiAgICBib3JkZXJMZWZ0OiBcIjAuMjVlbSBzb2xpZCAjZGZlMmU1XCIsXG4gIH19PlxuICAgIHtjaGlsZHJlbn1cbiAgPC9ibG9ja3F1b3RlPlxuXG5leHBvcnQgY29uc3QgVGl0bGUgPSAoeyB0ZXh0IH0pID0+IFxuICA8PlxuICAgIDxIZWFkPlxuICAgICAgPHRpdGxlPnt0ZXh0fTwvdGl0bGU+XG4gICAgPC9IZWFkPlxuICAgIDxIZWFkaW5nIHRleHQ9e3RleHR9IHNpemU9ezF9IC8+XG4gIDwvPlxuXG5leHBvcnQgY29uc3QgR2xvYmFsTGF5b3V0ID0gKHsgY2hpbGRyZW4gfSkgPT5cbiAgPD5cbiAgICA8SGVhZD5cbiAgICAgIDxtZXRhIG5hbWU9XCJ2aWV3cG9ydFwiIGNvbnRlbnQ9XCJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MVwiIC8+XG4gICAgICA8bGluayByZWw9XCJpY29uXCIgaHJlZj1cImRhdGE6O2Jhc2U2NCxpVkJPUncwS0dnbz1cIiAvPlxuICAgICAgPG1ldGEgbmFtZT1cImF1dGhvclwiIGNvbnRlbnQ9XCJKaW1teSBNaWxsZXJcIiAvPlxuICAgICAgPGxpbmsgcmVsPVwiYWx0ZXJuYXRlXCIgdHlwZT1cImFwcGxpY2F0aW9uL3Jzcyt4bWxcIiB0aXRsZT1cImppbW15aG1pbGxlci5naXRodWIuaW9cIiAgaHJlZj1cIi9zdGF0aWMvZmVlZC54bWxcIiAvPlxuICAgIDwvSGVhZD5cbiAgICA8R2xvYmFsU3R5bGVzIC8+XG4gICAgPENvbnRhaW5lcj5cbiAgICAgIDxkaXYgc3R5bGU9e3twb3NpdGlvbjogXCJyZWxhdGl2ZVwifX0+XG4gICAgICAgICAgPEFic29sdXRlUG9zaXRpb24gcmlnaHQ9ezB9IHRvcD17MH0+XG4gICAgICAgICAgPExpbmsgaHJlZj1cIi9cIj5cbiAgICAgICAgICAgIDxhIHN0eWxlPXt7dGV4dERlY29yYXRpb246IFwibm9uZVwifX0+XG4gICAgICAgICAgICAgIDxIZWFkaW5nXG4gICAgICAgICAgICAgICAgIGNvbG9yPVwiIzk5OVwiXG4gICAgICAgICAgICAgICAgIHRleHQ9XCJKaW1teSBNaWxsZXJcIi8+XG4gICAgICAgICAgICA8L2E+XG4gICAgICAgICAgIDwvTGluaz5cbiAgICAgICAgICA8L0Fic29sdXRlUG9zaXRpb24+XG4gICAgICA8L2Rpdj5cbiAgICAgIDxQYWRkaW5nIHRvcD17NzB9PlxuICAgICAgICB7Y2hpbGRyZW59XG4gICAgICA8L1BhZGRpbmc+XG4gICAgPC9Db250YWluZXI+XG4gIDwvPlxuXG5cbiJdfQ== */\n/*@ sourceURL=/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io/utils.js */");
 };
 
 var Container = function Container(_ref9) {
@@ -20692,7 +20697,7 @@ var Container = function Container(_ref9) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 134
+      lineNumber: 136
     },
     __self: this
   }, children);
@@ -20706,26 +20711,26 @@ var ListItem = function ListItem(_ref10) {
     key: href,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 142
+      lineNumber: 144
     },
     __self: this
   }, __jsx(Elem, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 143
+      lineNumber: 145
     },
     __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
+  }, __jsx(Link, {
     href: href,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144
+      lineNumber: 146
     },
     __self: this
   }, __jsx("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 147
     },
     __self: this
   }, text))));
@@ -20739,7 +20744,7 @@ var LargeText = function LargeText(_ref11) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 151
+      lineNumber: 153
     },
     __self: this
   }, children);
@@ -20753,13 +20758,13 @@ var LinkList = function LinkList(_ref12) {
     text: title,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 157
+      lineNumber: 159
     },
     __self: this
   }), __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 158
+      lineNumber: 160
     },
     __self: this
   }, items.map(function (item) {
@@ -20785,7 +20790,7 @@ var Heading = function Heading(_ref13) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 166
+      lineNumber: 168
     },
     __self: this
   }, text);
@@ -20803,7 +20808,7 @@ var Term = function Term(_ref14) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 172
+      lineNumber: 174
     },
     __self: this
   }, children);
@@ -20819,7 +20824,7 @@ var BlockQuote = function BlockQuote(_ref15) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 184
+      lineNumber: 186
     },
     __self: this
   }, children);
@@ -20829,13 +20834,13 @@ var Title = function Title(_ref16) {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 195
+      lineNumber: 197
     },
     __self: this
   }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 196
+      lineNumber: 198
     },
     __self: this
   }, text)), __jsx(Heading, {
@@ -20843,7 +20848,7 @@ var Title = function Title(_ref16) {
     size: 1,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 198
+      lineNumber: 200
     },
     __self: this
   }));
@@ -20853,7 +20858,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 204
+      lineNumber: 205
     },
     __self: this
   }, __jsx("meta", {
@@ -20861,7 +20866,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     content: "width=device-width, initial-scale=1",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 205
+      lineNumber: 206
     },
     __self: this
   }), __jsx("link", {
@@ -20869,7 +20874,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     href: "data:;base64,iVBORw0KGgo=",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 206
+      lineNumber: 207
     },
     __self: this
   }), __jsx("meta", {
@@ -20877,7 +20882,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     content: "Jimmy Miller",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 207
+      lineNumber: 208
     },
     __self: this
   }), __jsx("link", {
@@ -20887,19 +20892,19 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     href: "/static/feed.xml",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 208
+      lineNumber: 209
     },
     __self: this
   })), __jsx(GlobalStyles, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 210
+      lineNumber: 211
     },
     __self: this
   }), __jsx(Container, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 211
+      lineNumber: 212
     },
     __self: this
   }, __jsx("div", {
@@ -20908,7 +20913,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 212
+      lineNumber: 213
     },
     __self: this
   }, __jsx(AbsolutePosition, {
@@ -20916,14 +20921,14 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     top: 0,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 213
+      lineNumber: 214
     },
     __self: this
-  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
+  }, __jsx(Link, {
     href: "/",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 214
+      lineNumber: 215
     },
     __self: this
   }, __jsx("a", {
@@ -20932,7 +20937,7 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 215
+      lineNumber: 216
     },
     __self: this
   }, __jsx(Heading, {
@@ -20940,14 +20945,14 @@ var GlobalLayout = function GlobalLayout(_ref17) {
     text: "Jimmy Miller",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 216
+      lineNumber: 217
     },
     __self: this
   }))))), __jsx(Padding, {
     top: 70,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 223
+      lineNumber: 224
     },
     __self: this
   }, children)));
@@ -20955,14 +20960,14 @@ var GlobalLayout = function GlobalLayout(_ref17) {
 
 /***/ }),
 
-/***/ 0:
-/*!************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js ***!
-  \************************************************************************************************************************************************/
+/***/ 4:
+/*!*******************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjimmyhmiller%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js ***!
+  \*******************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmy%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fjimmyhmiller%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fjimmyhmiller%2FDocuments%2FCode%2Fjimmyhmiller.github.io%2Fpages%2Findex.js!./");
 
 
 /***/ }),
@@ -20978,5 +20983,5 @@ module.exports = dll_829b10deddf10e1653a8;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[4,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
