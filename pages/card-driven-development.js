@@ -68,7 +68,7 @@ export default () => (
       around cards. Typically cards are reviewed and discussed before they ever
       are handed to an Engineer to be worked on. Some of these cards may be
       "technical cards", cards created and owned by Engineering. With
-      the exception of these technical cards though, cards are ultimately owned
+      the exception of these technical cards though, cards are owned
       by Product. Product has the final say in the priority of cards and also
       serves as the "acceptor" for the fact that the work described in
       cards has been accomplished.
@@ -78,7 +78,7 @@ export default () => (
       by CDD. I imagine the process as I've described above is familiar to most
       reading this. CDD is a process that many companies adopt and do so for
       good reason. But despite the best of intentions by companies that adopt
-      CDD, it is ultimately a disastrous process that leads to some of the worst
+      CDD, it is a disastrous process that leads to some of the worst
       issues plaguing modern software development. My contention is that
       companies that adopt CDD will inevitably exacerbate these issues, leading
       to engineer dissatisfaction and decreased productivity.
@@ -131,7 +131,7 @@ export default () => (
       that the sorts of knowledge shared between Product and Engineering allows
       neither to accomplish their job as well as they ought. The recipricol
       nature of this issue is incredibly important. CDD isn't just bad for
-      Engineering, it is bad for Product and ultimately bad for the business.
+      Engineering, it is bad for Product and bad for the business.
     </p>
     <Heading size="3" text="Wrong Level, Wrong Order" />
     <p>
@@ -256,7 +256,7 @@ export default () => (
       Development time stretches on and on. The system the company has invested
       so much in grows worse and worse to make changes to. All the original
       engineers have left. Product is sick and tried of trying to force changes
-      through. Ultimately the business decides to do the big rewrite and the
+      through. Eventually the business decides to do the big rewrite and the
       cycle repeats. If we are ever to break this cycle, we must get rid of card
       driven development. What I think should replace it is a topic for another
       post, but I will say that whatever will must start with an understanding
