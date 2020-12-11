@@ -81,7 +81,7 @@ export default () => (
       CDD, it is ultimately a disastrous process that leads to some of the worst
       issues plaguing modern software development. My contention is that
       companies that adopt CDD will inevitably exacerbate these issues, leading
-      to engineer dissatisfaction and ultimately decrease productivity.
+      to engineer dissatisfaction and decreased productivity.
     </p>
     <Heading size="2" text="A Bit About Creating Software" />
     <p>
@@ -220,7 +220,7 @@ export default () => (
       mean leaving out a feature that was sorely needed. All of these problems
       can drive customers away or prevent a company from gaining more customers.
       If the users of the system are internal, it may cause inefficiencies that
-      cost the company money and can even effect employee morale.
+      cost the company money and can even affect employee morale.
     </p>
     <p>
       If Product has been tasked with designing new features and lacks the
