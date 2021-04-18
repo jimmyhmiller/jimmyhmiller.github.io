@@ -514,7 +514,7 @@ export default () => (
       web. I'd also love to do more computer science examples. Using Meander to
       make little lisp interpreter, a CEK machine or basic arithmetic. And yet,
       Meander goes way beyond all of these things. Meander is about more than
-      practical data manipulation. It is about a new away of programming, a new
+      practical data manipulation. It is about a new way of programming, a new
       way of thinking about problems. Hopefully this introduction will help you
       to dive in and try it yourself.
     </p>
