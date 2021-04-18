@@ -139,7 +139,7 @@ export default () => (
       I'm sure some people could have minor quibbles about how this is written,
       but I doubt other solutions would be much different. One thing to note
       here is that we have lost a little bit the structure of our input data. We
-      could maybe change that up a bit. Maybe using distructuring is the right
+      could maybe change that up a bit. Maybe using destructuring is the right
       approach? Regardless, this is a simple and reasonable Clojure function.
       Now, let's look at the Meander version.
     </p>
