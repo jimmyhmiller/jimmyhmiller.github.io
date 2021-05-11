@@ -80,8 +80,9 @@ typings/
 # End of https://www.gitignore.io/api/node
 
 .DS_Store
-/static/feed.xml
-
+/public/feed.xml
+# Temporarily exclude board until I can make it smaller
+/public/board
 
 
 

@@ -144,34 +144,35 @@ const project = [
   }
 ]
 
-export default () =>
-  <GlobalLayout>
-    <LinkList
-      title="For Beginners"
-      items={postsForBeginners}
-    />
-    <LinkList
-      title="Other Posts"
-      items={posts}
-    />
-    <LinkList
-      title="Talks"
-      items={talks}
-    />
-    <LinkList
-      title="Utilities"
-      items={utilities}
-    />
-    <LinkList
-      title="Libraries"
-      items={libraries}
-    />
-    <LinkList
-      title="Slides"
-      items={slides}
-    />
-    <LinkList
-      title="Projects"
-      items={project}
-    />
-  </GlobalLayout>
+const Index = () => <GlobalLayout>
+  <LinkList
+    title="For Beginners"
+    items={postsForBeginners}
+  />
+  <LinkList
+    title="Other Posts"
+    items={posts}
+  />
+  <LinkList
+    title="Talks"
+    items={talks}
+  />
+  <LinkList
+    title="Utilities"
+    items={utilities}
+  />
+  <LinkList
+    title="Libraries"
+    items={libraries}
+  />
+  <LinkList
+    title="Slides"
+    items={slides}
+  />
+  <LinkList
+    title="Projects"
+    items={project}
+  />
+</GlobalLayout>;
+
+export default Index;
