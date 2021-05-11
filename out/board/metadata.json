@@ -1,0 +1,13 @@
+{
+  "bundle_version" : 5,
+  "created_at" : "2021-05-01T02:05:39Z",
+  "device" : "iPad8,11",
+  "muse_build" : "4744",
+  "muse_bundle_id" : "com.musesoftware.museios-appstore",
+  "muse_version" : "1.6.1",
+  "os_version" : "14.4.2",
+  "resolution" : [
+    2048,
+    2732
+  ]
+}
