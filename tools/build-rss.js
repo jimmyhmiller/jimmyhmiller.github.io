@@ -20,7 +20,7 @@ const generateRSS = () => {
     })
   })
    const output = feed.xml({ indent: true })
-   const dir = "./static"
+   const dir = "./public"
    if (!fs.existsSync(dir)){
       fs.mkdirSync(dir);
     }
