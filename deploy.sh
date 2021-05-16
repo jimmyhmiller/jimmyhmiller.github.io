@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-yarn run build
-yarn run export
+npm run build
+npm run export
 touch out/.nojekyll
 git add .
 git commit -am "New Build"
