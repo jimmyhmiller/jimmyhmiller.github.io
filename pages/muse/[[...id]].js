@@ -10,8 +10,7 @@ import board from '../../public/board/contents.json'
 // Need to not set 100% if top level
 const Image = ({ original_file, recurse }) => {
   const size = recurse === 0 ? {} : {width: "100%", height: "100%"}
-  const suffix = original_file.endsWith(".png") ? ".jpeg" : "";
-  return <img style={{position: "absolute", ...size}} src={`/board/files/${original_file}${suffix}`} />
+  return <img style={{position: "absolute", ...size}} src={`/board/files/${original_file}`} />
 } 
 
 const Ink = ({ ink_svg }) => {

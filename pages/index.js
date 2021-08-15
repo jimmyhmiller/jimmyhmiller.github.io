@@ -67,10 +67,15 @@ export const posts = [
     text: "Conceptual Engineering",
     href: "/conceptual-engineering"
   },
-    {
+  {
     text: "Conceptual Preservation",
     href: "/conceptual-preservation"
   },
+  {
+    text: "CDD and the Non-Linearity of Discovery",
+    href: "/cdd-non-linear"
+  },
+
 ]
 
 const talks = [
