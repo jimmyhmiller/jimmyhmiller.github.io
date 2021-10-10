@@ -5,12 +5,10 @@ import board from '../../public/board/contents.json'
 
 
 
-
-
 // Need to not set 100% if top level
 const Image = ({ original_file, recurse }) => {
   const size = recurse === 0 ? {} : {width: "100%", height: "100%"}
-  return <img style={{position: "absolute", ...size}} src={`/board/files/${original_file}`} />
+  return <img style={{position: "absolute", ...size}} src={`/board/files/${original_file.replace(".png", "")}-fs8.png`} />
 } 
 
 const Ink = ({ ink_svg }) => {
@@ -19,7 +17,7 @@ const Ink = ({ ink_svg }) => {
 
 const Pdf = ({ original_file, recurse }) => {
   const size = recurse === 0 ? {} : {width: "100%"}
-  return <img style={{...size}} src={`/board/files/${original_file}.jpeg`} />
+  return <img style={{...size}} src={`/board/files/${original_file}-0-fs8.png`} />
 } 
 
 const Text = ({ original_file }) => {
@@ -38,6 +36,7 @@ const Text = ({ original_file }) => {
 const Card = ({ type, document_id, position_x, position_y, size_height, size_width, recurse, z, ...rest }) => {
   const cardInfo = board.documents[document_id]
   const router = useRouter();
+  const scale = cardInfo.snapshot_scale === 0 ? 0.1 : cardInfo.snapshot_scale;
   return (
     <div style={{
       position: "absolute",
@@ -49,18 +48,18 @@ const Card = ({ type, document_id, position_x, position_y, size_height, size_wid
       }}>
       <div style={{color: "black", top: -20, position: "absolute", width: size_width - 20, textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>{cardInfo.label}</div>
       <div
-        style={{
+        style={cardInfo.type === "text" ? {} : {
           width: size_width, 
           height: size_height,
           borderRadius: 9,
-          boxShadow: "0px 0px 20px rgba(0,0,0,0.2)",
-          backgroundColor: "#F6F6F6",
+          boxShadow: "rgb(206, 206, 205) 0px 0px 10px",
+          backgroundColor: "#F0F0EE",
           overflow: "hidden"
         }}
       onClick={() => {
         // hacky way of only transitioning at top level
         if (recurse === 0) {
-          console.log(`transitioning  ${document_id}}`)
+          // console.log(`transitioning  ${document_id}}`)
           router.push(`/muse/${document_id}`)
         }
       }}
@@ -68,7 +67,7 @@ const Card = ({ type, document_id, position_x, position_y, size_height, size_wid
         {cardInfo.type !== "board" 
           ? <CardForType {...cardInfo} />
           :
-          <div style={{position: "relative", transform: "scale(0.1)", width: 0}}>
+          <div style={{position: "relative", transform: `scale(${scale})`, width: 0}}>
             {recurse <= 1 ? <Board {...cardInfo} recurse={recurse + 1} /> : null}
           </div>
         }
@@ -83,8 +82,9 @@ const inkToArray = (ink_models) => {
     .map(([k, v]) => v)
 }
 
-const Board = ({ cards, ink_models, recurse, type, ...rest }) => {
+const Board = ({ cards, ink_models, recurse, type, label, ...rest }) => {
   return <>
+    {recurse !== 0 ? null : <div style={{color: "black", top: 20, position: "absolute", width: 200, textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>{label}</div>}
     {(cards || []).map(card => <Card key={card.document_id} {...card} recurse={recurse} />)}
     {inkToArray(ink_models).map(ink => <Ink key={ink.ink_svg} {...ink} />)}
   </>
@@ -115,11 +115,12 @@ const Muse = () => {
   const router = useRouter();
   const boardId = router.query.id && router.query.id[0];
   const currentBoard = board.documents[boardId || board.root];
-  console.log(currentBoard)
+  // console.log(currentBoard);
+
   return <>
     <style jsx global>{`
       body {
-        background-color: #DEDEDE;
+        background-color: #DFDFDE;
         font-family: sans-serif;
       }
 
@@ -128,5 +129,26 @@ const Muse = () => {
     <CardForType {...currentBoard} recurse={0}  />
   </>
 }
+
+
+export const getStaticProps = async () => {
+  return {
+    props: {}
+  }
+}
+
+export const getStaticPaths = async () => {
+
+
+  return {
+    paths: Object.keys(board.documents).map(id => ({
+      params: {id: [id]}
+    })).concat([
+      { params: {id: []} } // See the "paths" section below
+    ]),
+    fallback: false
+  };
+}
+
 
 export default Muse
