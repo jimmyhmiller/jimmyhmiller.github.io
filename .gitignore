@@ -81,8 +81,7 @@ typings/
 
 .DS_Store
 /public/feed.xml
-# Temporarily exclude board until I can make it smaller
-/public/board
+
 
 
 

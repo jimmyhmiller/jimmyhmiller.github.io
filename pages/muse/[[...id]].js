@@ -1,26 +1,49 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import board from '../../public/board/contents.json'
-// Need to narrow down the files
+import Link from 'next/link'
+
+const findParents = (board, card) => {
+  const currentLevel = card?.cards?.map(x => [x.document_id, card.id]) ?? [];
+  const nextLevel = currentLevel.flatMap(([x, _]) => findParents(board, {...board.documents[x], id: x}))
+  return currentLevel.concat(nextLevel)
+}
+
+const parents = Object.fromEntries(findParents(board, {...board.documents[board.root], id: board.root}));
+
+const withParentLink = (Comp) => ({id, recurse, ...rest}) => {
+  if (recurse !== 0 || board.root === id) {
+    return <Comp id={id} recurse={recurse} {...rest} />
+  }
+  const parent = parents[id];
+  return (
+    <>
+     <div style={{position: "absolute", right: 50, zIndex: 1000}}>
+          <Link href={parent === board.root ? "/muse" : `/muse/${parent}`}>
+            <a style={{textDecoration: "none"}}>↑ Parent</a>
+          </Link>
+        </div>
+      <Comp id={id} recurse={recurse} {...rest} />
+    </>
+  )
+}
 
 
-
-// Need to not set 100% if top level
-const Image = ({ original_file, recurse }) => {
+const Image = withParentLink(({ original_file, recurse }) => {
   const size = recurse === 0 ? {} : {width: "100%", height: "100%"}
-  return <img style={{position: "absolute", ...size}} src={`/board/files/${original_file.replace(".png", "")}-fs8.png`} />
-} 
+  return <img style={{position: "absolute", ...size}} src={`/board/files/${original_file}`} />
+})
 
-const Ink = ({ ink_svg }) => {
+const Ink = withParentLink(({ ink_svg }) => {
   return <img style={{position: "absolute"}} src={`/board/files/${ink_svg}`} />
-} 
+})
 
-const Pdf = ({ original_file, recurse }) => {
+const Pdf = withParentLink(({ original_file, recurse }) => {
   const size = recurse === 0 ? {} : {width: "100%"}
-  return <img style={{...size}} src={`/board/files/${original_file}-0-fs8.png`} />
-} 
+  return <img style={{...size}} src={`/board/files/${original_file}-0.png`} />
+})
 
-const Text = ({ original_file }) => {
+const Text = withParentLink(({ original_file }) => {
   const [fileContent, setFileContent] = useState(null);
   useEffect(() => {
       fetch(`/board/files/${original_file}`).then(resp => {
@@ -31,9 +54,9 @@ const Text = ({ original_file }) => {
     [original_file]
   )
   return <div style={{padding: "10px 0 0 10px"}}>{fileContent}</div>
-}
+})
 
-const Card = ({ type, document_id, position_x, position_y, size_height, size_width, recurse, z, ...rest }) => {
+const Card = withParentLink(({ type, document_id, position_x, position_y, size_height, size_width, recurse, z, ...rest }) => {
   const cardInfo = board.documents[document_id]
   const router = useRouter();
   const scale = cardInfo.snapshot_scale === 0 ? 0.1 : cardInfo.snapshot_scale;
@@ -58,23 +81,23 @@ const Card = ({ type, document_id, position_x, position_y, size_height, size_wid
         }}
       onClick={() => {
         // hacky way of only transitioning at top level
-        if (recurse === 0) {
+        if (recurse === 1) {
           // console.log(`transitioning  ${document_id}}`)
           router.push(`/muse/${document_id}`)
         }
       }}
       >
         {cardInfo.type !== "board" 
-          ? <CardForType {...cardInfo} />
+          ? <CardForType {...cardInfo} id={document_id} />
           :
           <div style={{position: "relative", transform: `scale(${scale})`, width: 0}}>
-            {recurse <= 1 ? <Board {...cardInfo} recurse={recurse + 1} /> : null}
+            {recurse <= 3 ? <Board {...cardInfo} id={document_id} recurse={recurse + 1} /> : null}
           </div>
         }
       </div>
     </div>
   )
-}
+})
 
 const inkToArray = (ink_models) => {
   return Object.entries(ink_models || {})
@@ -82,13 +105,14 @@ const inkToArray = (ink_models) => {
     .map(([k, v]) => v)
 }
 
-const Board = ({ cards, ink_models, recurse, type, label, ...rest }) => {
+
+const Board = withParentLink(({ cards, ink_models, recurse, type, label, id, ...rest }) => {
   return <>
-    {recurse !== 0 ? null : <div style={{color: "black", top: 20, position: "absolute", width: 200, textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>{label}</div>}
-    {(cards || []).map(card => <Card key={card.document_id} {...card} recurse={recurse} />)}
+    {recurse !== 0 ? null : <div style={{color: "black", top: 20, position: "absolute", width: 200, textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>{label} </div>}
+    {(cards || []).map(card => <Card key={card.document_id} {...card} recurse={recurse + 1} id={card.document_id} />)}
     {inkToArray(ink_models).map(ink => <Ink key={ink.ink_svg} {...ink} />)}
   </>
-}
+})
 
 
 const CardForType = ({ type, ...cardInfo }) => {
@@ -104,6 +128,7 @@ const CardForType = ({ type, ...cardInfo }) => {
   if (type === "pdf") {
     return <Pdf {...cardInfo} />
   }
+  // Probably need to change?
   if (type === "url") {
     return <a href={cardInfo.url} title={cardInfo.title}>{cardInfo.label}</a>
   }
@@ -111,11 +136,12 @@ const CardForType = ({ type, ...cardInfo }) => {
 }
 
 
+
+
 const Muse = () => {
   const router = useRouter();
-  const boardId = router.query.id && router.query.id[0];
-  const currentBoard = board.documents[boardId || board.root];
-  // console.log(currentBoard);
+  const boardId = (router.query.id && router.query.id[0]) || board.root;
+  const currentBoard = board.documents[boardId];
 
   return <>
     <style jsx global>{`
@@ -126,9 +152,11 @@ const Muse = () => {
 
     `}</style>
 
-    <CardForType {...currentBoard} recurse={0}  />
+    <CardForType {...currentBoard} id={boardId} recurse={0}  />
   </>
 }
+
+
 
 
 export const getStaticProps = async () => {
