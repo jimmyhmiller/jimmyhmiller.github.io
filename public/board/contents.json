@@ -14935,7 +14935,7 @@
       "cards" : [
         {
           "document_id" : "pdf_3a73af3090ef40e29f3b9ed4dcb02b7f",
-          "position_x" : 1114,
+          "position_x" : 40,
           "position_y" : 60,
           "size_height" : 150,
           "size_width" : 200,
@@ -15116,7 +15116,7 @@
           "position_x" : 47,
           "position_y" : 300,
           "size_height" : 100,
-          "size_width" : 674,
+          "size_width" : 200,
           "z" : 111
         },
         {
