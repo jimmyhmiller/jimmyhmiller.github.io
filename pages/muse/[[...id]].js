@@ -84,8 +84,7 @@ const Card = withParentLink(({ type, document_id, position_x, position_y, size_h
         }}
       onClick={() => {
         // hacky way of only transitioning at top level
-        if (recurse === 1) {
-          // console.log(`transitioning  ${document_id}}`)
+        if (recurse === 1 && cardInfo.type !== "url") {
           router.push(`/muse/${document_id}`)
         }
       }}
