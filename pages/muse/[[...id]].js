@@ -53,7 +53,7 @@ const Text = withParentLink(({ original_file }) => {
     },
     [original_file]
   )
-  return <div style={{padding: "10px 0 0 10px"}}>{fileContent}</div>
+  return <div style={{fontSize: 18, lineHeight: 1.2, fontFamily: "helvetica"}}>{fileContent}</div>
 })
 
 const Card = withParentLink(({ type, document_id, position_x, position_y, size_height, size_width, recurse, z, ...rest }) => {
@@ -68,8 +68,11 @@ const Card = withParentLink(({ type, document_id, position_x, position_y, size_h
       width: size_width, 
       height: size_height,
       zIndex: z,
+      cursor: cardInfo.type === "text" ? undefined : "pointer",
       }}>
-      <div style={{color: "black", top: -20, position: "absolute", width: size_width - 20, textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>{cardInfo.label}</div>
+      {cardInfo.type === "url" ? null :
+        <div style={{color: "black", top: -20, position: "absolute", width: size_width - 20, textOverflow: "ellipsis", overflow: "hidden", whiteSpace: "nowrap"}}>{cardInfo.label}</div>
+      }
       <div
         style={cardInfo.type === "text" ? {} : {
           width: size_width, 
@@ -115,6 +118,18 @@ const Board = withParentLink(({ cards, ink_models, recurse, type, label, id, ...
 })
 
 
+const Url = withParentLink(({url, title, label}) => {
+  return (
+    <div style={{padding: 10}}>
+      <a style={{textDecoration: "none"}}
+         href={url}
+         title={title}>
+        {label}
+      </a>
+    </div>
+  )
+})
+
 const CardForType = ({ type, ...cardInfo }) => {
   if (type === "image") {
     return <Image {...cardInfo} />
@@ -128,9 +143,8 @@ const CardForType = ({ type, ...cardInfo }) => {
   if (type === "pdf") {
     return <Pdf {...cardInfo} />
   }
-  // Probably need to change?
   if (type === "url") {
-    return <a href={cardInfo.url} title={cardInfo.title}>{cardInfo.label}</a>
+    return <Url {...cardInfo} />
   }
   return JSON.stringify({type, ...cardInfo}, null, 2)
 }

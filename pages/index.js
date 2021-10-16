@@ -149,7 +149,18 @@ const project = [
   }
 ]
 
+const readings = [
+  {
+    text: "Programming Readings",
+    href: "/muse"
+  }
+]
+
 const Index = () => <GlobalLayout>
+ <LinkList
+    title="Readings"
+    items={readings}
+  />
   <LinkList
     title="For Beginners"
     items={postsForBeginners}
