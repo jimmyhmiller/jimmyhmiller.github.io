@@ -63,7 +63,6 @@ const Card = withParentLink(({ type, document_id, position_x, position_y, size_h
   return (
     <div style={{
       position: "absolute",
-      draggable="false"
       left: position_x, 
       top: position_y,
       width: size_width, 
