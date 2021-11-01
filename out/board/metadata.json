@@ -1,11 +1,11 @@
 {
   "bundle_version" : 6,
-  "created_at" : "2021-10-16T20:43:01Z",
+  "created_at" : "2021-11-01T15:00:51Z",
   "device" : "iPad8,11",
-  "muse_build" : "5491",
+  "muse_build" : "5529",
   "muse_bundle_id" : "com.musesoftware.museios-appstore",
-  "muse_version" : "1.8.7",
-  "os_version" : "15.0.1",
+  "muse_version" : "1.8.8",
+  "os_version" : "15.0.2",
   "resolution" : [
     2048,
     2732
