@@ -13582,7 +13582,7 @@
       },
       "label" : "Programming",
       "should_auto_resize_card" : true,
-      "snapshot_scale" : 0.1312830001115799,
+      "snapshot_scale" : 0.502830001115799,
       "type" : "board"
     },
     "board_42497f345aae430fbdc51ec87c087d8b" : {
@@ -13730,10 +13730,10 @@
       "cards" : [
         {
           "document_id" : "board_41176ce575aa4518b737e93fc99dc63f",
-          "position_x" : 897,
-          "position_y" : 146,
-          "size_height" : 135,
-          "size_width" : 177,
+          "position_x" : 800,
+          "position_y" : 100,
+          "size_height" : 500,
+          "size_width" : 700,
           "z" : 4
         },
         {
