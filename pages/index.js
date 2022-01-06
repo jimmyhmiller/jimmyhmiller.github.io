@@ -75,6 +75,10 @@ export const posts = [
     text: "CDD and the Non-Linearity of Discovery",
     href: "/cdd-non-linear"
   },
+  {
+    text: "Towards Aesthetic Elements of Programming",
+    href: "/aesthetic-elements"
+  },
 
 ]
 
