@@ -13,11 +13,10 @@ const MeanderRewriting = () => <GlobalLayout>
   <Title text="Introduction to Term Rewriting with Meander" />
   <p>
     Meander is heavily inspired by the capabilities of term rewriting languages.
-    But sadly, there aren't many introductions to term rewriting aimed at every
-    day software engineers. Typically introductions to term rewriting
+    But sadly, there aren't many introductions to term rewriting aimed at everyday software engineers. Typically introductions to term rewriting
     immediately dive into discussing mathematical properties or proving
-    theorems. These can be really interesting and useful in their own right. But
-    personally I like to get an intuitive feel for something before diving into
+    theorems. These can be interesting and useful in their own right. But
+    personally, I like to get an intuitive feel for something before diving into
     a formalism. That is the aim of this post, to help you have a more intuitive
     understanding of how Term Rewriting works and what it is capable of. This
     post will not focus on practical uses of meander, if you are interested in
@@ -54,7 +53,7 @@ const MeanderRewriting = () => <GlobalLayout>
   </p>
   <p>
     Admittedly, this seems almost useless, and it really is with this overly
-    simplisitic example. But let's take it slow and build it up.{" "}
+    simplistic example. But let's take it slow and build it up.{" "}
   </p>
   <Clojure>
   {`
@@ -71,7 +70,7 @@ const MeanderRewriting = () => <GlobalLayout>
   </Clojure>
   <p>
     Here we've extended our rewrite to have multiple rules. Now we can handle
-    more than just <Term>:x</Term>. Of course this is still really limiting. We
+    more than just <Term>:x</Term>. Of course, this is still really limiting. We
     definitely can't list every single possible input for all of our rules. We
     need a way to match any input. That is where <Term>variables</Term> come in.
   </p>
@@ -140,7 +139,7 @@ const MeanderRewriting = () => <GlobalLayout>
   `}
   </Clojure>
   <p>
-    The order of our rules matter, <Term>?x</Term> matches anything, so we will
+    The order of our rules matters, <Term>?x</Term> matches anything, so we will
     always get the first match. We could change the order, or we can constrain
     the match.
   </p>
@@ -159,7 +158,7 @@ const MeanderRewriting = () => <GlobalLayout>
   </Clojure>
   <p>
     Okay, now it works. But many of you are probably thinking "Isn't this
-    just pattern matching?". And in many way it is. Term Rewriting is a
+    just pattern matching?". And in many ways it is. Term Rewriting is a
     kind of pattern matching. But it doesn't stop with simple pattern matching.
     Term Rewriting is a way to do all computation through pattern matching. To
     see that, let's move beyond the basics.
@@ -184,7 +183,7 @@ const MeanderRewriting = () => <GlobalLayout>
   </Clojure>
   <p>
     Zero added to anything is just that thing. We can easily express this with
-    term rewriting. But what if we have multple 0's nested?
+    term rewriting. But what if we have multiple 0's nested?
   </p>
   <Clojure>
   {`
@@ -357,10 +356,10 @@ const MeanderRewriting = () => <GlobalLayout>
   </Clojure>
   <p>
     If we look at the top-down approach, we can see that the top-down strategy
-    actually gets called three times. Once it rewrites quite a bit, but leaves
+    actually gets called three times. Once it rewrites quite a bit but leaves
     in a 0 that needs to be rewritten. Then it gets called again, eliminating
-    all zeros. Finally it is called and nothing changes. Our bottom-up strategy
-    however is only called twice. But we can actually get more fine grained than
+    all zeros. Finally, it is called and nothing changes. Our bottom-up strategy
+    however is only called twice. But we can actually get more fine-grained than
     this. We can put trace at any point in our strategies.
   </p>
   <Clojure>
@@ -403,7 +402,7 @@ const MeanderRewriting = () => <GlobalLayout>
     power of term rewriting. Term rewriting is a general programming technique.
     Using it we can compute absolutely anything that is computable. Let's start
     with a classic example, fibonacci, but to further show general
-    computability, we will make our own numbers instead relying on Clojure's.
+    computability, we will make our own numbers instead of relying on Clojure's.
   </p>
   <Clojure>
   {`
@@ -459,33 +458,33 @@ const MeanderRewriting = () => <GlobalLayout>
   </p>
   <p>
     In fact, with Meander, we are limited to what the clojure reader can
-    interpret, but in general with term rewriting, the syntax doesn't matter. I
+    interpret, but in general, with term rewriting, the syntax doesn't matter. I
     wrote things as <Term>(fib n)</Term> merely as convention. I could have
     writen <Term>(n fib)</Term>. There is nothing special about the syntax other
     than what rules we apply to it.{" "}
   </p>
   <Heading size="2" text="Why Should We Care?" />
   <p>
-    Admittedly the example of fibonacci above isn't very useful. And of course
+    Admittedly the example of fibonacci above isn't very useful. And of course,
     if we had a real language, we would never want a number system like that. So
     why should we care about term rewriting? Term Rewriting offers a powerful
     yet simple way of viewing programming. It gives us the potential to take the
-    lisp montra that code is data and data is code much more seriously. How so?
+    lisp mantra that code is data and data is code much more seriously. How so?
     First, in lisps functions might be values, but they are opaque. Evaluating a
-    function defintion returns you something that you can't inspect directly.
+    function definition returns you something that you can't inspect directly.
     Something you can't directly transform (<Term>#function[]</Term> in
-    clojure). With term rewriting things can just remain data, because we have
+    clojure). With term rewriting, things can just remain data, because we have
     separated execution from description.
   </p>
   <p>
     Not only can our "code" be data more than it can in lisp, but we
     can actually have our execution as data. Executing a Term Rewriting rule is
-    just taking in data, matching on it and producing more data. That means all
+    just taking in data, matching on it, and producing more data. That means all
     our intermediate values are data. The entire execution of our program now
     becomes data. Have you ever run your program and had no idea where a certain
     value came from? Well, imagine if you could just ask your language to
     pattern match on every intermediate value that contains that value. Or
-    maybe, give me that last 5 steps that led to this value. With Term Rewriting
+    maybe, give me the last 5 steps that led to this value. With Term Rewriting
     this is entirely possible.
   </p>
   <p>
@@ -501,7 +500,7 @@ const MeanderRewriting = () => <GlobalLayout>
   </Clojure>
   <p>
     What does the program return? Well as its name is clear, unimplemented is in
-    fact, unimplemented. So most languages, will just throw an error. That can
+    fact, unimplemented. So most languages will just throw an error. That can
     be what we want at times. But as people, we can look at that code and tell
     something else. We know that it will return <Term>(+ 7 something)</Term>.
     Why can't our languages tell us that? Why can't we start writing partial
@@ -520,9 +519,9 @@ const MeanderRewriting = () => <GlobalLayout>
   </p>
   <p>
     Meander isn't at that point. But it is the beginning of an exploration into
-    how to get there. In many ways, Meander is a testament to the flexiblity of
+    how to get there. In many ways, Meander is a testament to the flexibility of
     lisps and Clojure in particular. Using Clojure's rich data literals and macros
-    we are able to embed our own language inside it. Yet at the same time,
+    we can embed our own language inside it. Yet at the same time,
     Meander pushes us beyond the way we've traditionally conceived of
     programming. Maybe functions aren't the best abstraction for working with
     data. Could programming be better if we truly had a way to work with data

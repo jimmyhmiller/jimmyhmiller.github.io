@@ -14,9 +14,9 @@ const SideEffectsComplect = () => <GlobalLayout>
     There are many concepts we learn as we continue our adventure in programming
     languages. Objects, polymorphism, inheritance, and a whole host of others.
     Often these concepts are taught with the goal of making our code simpler,
-    yet more often than not, they makes our code more complex, in other words,
-    they <a href="/beautiful-code">complect</a> them. In these post we dive
-    into where most of the inessential complexity of our programs come from,
+    yet more often than not, they make our code more complex, in other words,
+    they <a href="/beautiful-code">complect</a> them. In this post, we dive
+    into where most of the inessential complexity of our programs comes from,
     side effects.
   </p>
   <Heading size="2" text="Programming Functions are Algebraic Functions" />
@@ -45,7 +45,7 @@ const SideEffectsComplect = () => <GlobalLayout>
   <p>
     Above is the mathematical definition of function composition. It states that
     composing g and f is the same thing as first applying f to some value, then
-    apply g to the return of f. A simple implementation in javascript would be
+    apply g to the return value of f. A simple implementation in javascript would be
     the following:
   </p>
   <Javascript>
@@ -55,7 +55,7 @@ const SideEffectsComplect = () => <GlobalLayout>
   </Javascript>
   <p>
     This code says that compose is a function that takes two functions f and g.
-    Compose returns a function that takes an x, and applies f to x, and then g
+    Compose returns a function that takes an x, applies f to x, and then g
     to the result of f applied to x.
   </p>
   <Heading size="3" text="What mathematics gains us" />
@@ -90,14 +90,14 @@ const SideEffectsComplect = () => <GlobalLayout>
     Well, it seems to hold in the case we thought of, but how do we know if it
     holds in general? This is what mathematics gives us. Since our functions are
     exactly the same as mathematical functions the laws which apply to
-    mathematical functions apply to programming functions. In this case the
+    mathematical functions apply to programming functions. In this case, the
     pertinent law is associativity.
   </p>
   <Javascript>{`f ∘ (g ∘ h) = (f ∘ g) ∘ h`}</Javascript>
   <p>
     Associativity tells us that how we group our composition makes no difference
     to the result. Given this knowledge extending our composition function to
-    and indefinite number of arguments is actually quite easy.
+    an indefinite number of arguments is actually quite easy.
   </p>
   <Javascript>
   {`
@@ -106,7 +106,7 @@ const SideEffectsComplect = () => <GlobalLayout>
   `}
   </Javascript>
   <p>
-    First we renamed our old compose function. Here the <Term>...</Term> just
+    First, we renamed our old compose function. Here the <Term>...</Term> just
     says take the rest of the arguments and pack them into an array for us. Now
     we can simply compose as follows:
   </p>
@@ -165,8 +165,8 @@ const SideEffectsComplect = () => <GlobalLayout>
   <p>
     Pure functions are the perfect example of decomplected code. Pure functions
     do one thing, transform input. Impure functions are complecting a la carte.
-    Inside an impure function we can change anything, we can return different
-    results depending on the time of the day, and even return nothing. These
+    Inside an impure function, we can change anything, we can return different
+    results depending on the time of the day and even return nothing. These
     side effects weave together the notion of an effect with the computation
     that needs to be done.
   </p>
@@ -175,7 +175,7 @@ const SideEffectsComplect = () => <GlobalLayout>
     Side-effects (in Javascript) are of course necessary. Our programs must
     communicate with the outside world in some way. But unconstrained
     side-effects can incredibly complicate our code. Mixing our data
-    transformations with side-effects causes us to lose the ability to reason
+    transformations with side effects causes us to lose the ability to reason
     about our code accurately. Mutating variables causes us to have to keep
     track of more and more state as variables change. In fact, it is my
     conjecture that a large majority of hard to trace bugs come from some
@@ -183,9 +183,9 @@ const SideEffectsComplect = () => <GlobalLayout>
   </p>
   <Heading size="2" text="Conclusion" />
   <p>
-    So how do we constrain side-effects? That deserves a whole post or three on
-    that very topic but for now we can keep it simple. First, always strive to
-    write pure functions. Secondly, avoid mutation if at all possible. Finally
+    So how do we constrain side effects? That de serves a whole post or three on
+    that very topic but for now, we can keep it simple. First, always strive to
+    write pure functions. Secondly, avoid mutation if at all possible. Finally,
     move all side effects to the edges of your programs. Future posts will
     explore these topics showing how constraining our side-effects eliminates
     whole classes of bugs commonly encountered in programming and leads to

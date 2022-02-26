@@ -69,9 +69,9 @@ const VariantsExplained = () => <GlobalLayout>
   </Javascript>
 
   <p>
-    This code made seem good as far as it goes, in fact, it even handles
+    This code may seem good as far as it goes, in fact, it even handles
     malformed data gracefully. Now imagine that our requirements change, we
-    now need to handle third party username and password requests as well. We
+    now need to handle third-party username and password requests as well. We
     decide to model this in the obvious way.
   </p>
 
@@ -85,16 +85,16 @@ const VariantsExplained = () => <GlobalLayout>
   `}
   </Javascript>
   <p>
-    Unfortuantely now our code breaks, but not by throwing a nice error, it
-    breaks subtly. We will try to use third party usernames and passwords for
+    Unfortunately, now our code breaks, but not by throwing a nice error, it
+    breaks subtly. We will try to use third-party usernames and passwords for
     our own login system and since they have a username and password we will
-    mistake them for first party logins.
+    mistake them for first-party logins.
   </p>
 
   <p>
     In javascript, there aren't too many great solutions to this. One obvious
     one is to create a class for each of different userCredential type. Then
-    for any function we want to implement on our different types we implement
+    for any function, we want to implement on our different types we implement
     a method in that class. That is how a Java developer may have solved this
     problem. That approach has its upsides and downsides, but rather than dive
     into those, let's look at a different approach, one that isn't supported
@@ -108,7 +108,7 @@ const VariantsExplained = () => <GlobalLayout>
 
   <p>
     The essence of our requirements is that we need to support different
-    methods of login. Users may login this way <em>or</em> that way <em>or</em> someother
+    methods of login. Users may login this way <em>or</em> that way <em>or</em> some other
     way. We need a way to represent <strong>or</strong> in our data model. Variants allow
     us to do exactly that. Let's first look at a simple example of a variant.
   </p>
@@ -122,7 +122,7 @@ const VariantsExplained = () => <GlobalLayout>
   <p>
     Here we have a variant with three choices of colors. In our world, a color
     can only be green, red, or blue. No other colors are available to us. What
-    we need to do now is write a function which returns true if it is passed
+    we need to do now is write a function that returns true if it is passed
     the <em>best</em> color.
   </p>
 
@@ -142,7 +142,7 @@ const VariantsExplained = () => <GlobalLayout>
   </Javascript>
 
   <p>
-    This function is rather straight-forward. We pattern match on the argument
+    This function is rather straightforward. We pattern match on the argument
     of the function to determine what was passed in. This allows us to express
     in a very concise way each case and what its output should be. Variants
     combined with pattern matching allow for very expressive, explicit code.
@@ -164,8 +164,8 @@ const VariantsExplained = () => <GlobalLayout>
 
   <p>
     Here we have our login problem fully specified. Each case is represented
-    as a data type and because of that we can write a much less error prone
-    functions for dealing with each case.
+    as a data type and because of that, we can write a much less error-prone
+    function for dealing with each case.
   </p>
 
   <Javascript>
@@ -181,12 +181,12 @@ const VariantsExplained = () => <GlobalLayout>
   </Javascript>
 
   <p>
-    Not only is our function less error prone, it is also much easier to
-    understand. Variants allow our code to be self documenting. Each case is
-    named and handle explicitly leading us to think precisely about each
+    Not only is our function less error-prone, but it is also much easier to
+    understand. Variants allow our code to be self-documenting. Each case is
+    named and handled explicitly leading us to think precisely about each
     scenario. Since our imaginary language is dynamically typed, we do need to
     handle the <Term>otherwise</Term> case (imagine someone passed in a number
-    instead), but if it were statically typed we could be guarantee that nothing
+    instead), but if it were statically typed we could be guaranteed that nothing
     other than those variants would be passed.
   </p>
 
@@ -194,7 +194,7 @@ const VariantsExplained = () => <GlobalLayout>
 
   <p>
     Variants are not just limited to concrete scenarios like the login above. They
-    can be quote a bit more generic and that can give us more power. Let's
+    can be quite a bit more generic and that can give us more power. Let's
     look at a few generic variants that can be used to tackle common and
     difficult problems in programming.
   </p>
@@ -202,7 +202,7 @@ const VariantsExplained = () => <GlobalLayout>
   <Heading size={2} text="Nulls" />
 
   <p>
-    Null (undefined as well) is one of the most frustating things to work
+    Null (undefined as well) is one of the most frustrating things to work
     with. Expressing nulls checks leads to verbose code. Code isn't actually
     about the problem we are trying to solve. Variants offer an alternative to
     nulls, called the Maybe type.
@@ -299,7 +299,7 @@ const VariantsExplained = () => <GlobalLayout>
 
   <p>
     Variants are an extremely expressive way to state the assumptions behind
-    our code. They force us to be explicit and handle cases individual. Yet,
+    our code. They force us to be explicit and handle cases individually. Yet,
     they also give a means of abstraction, a point at which we can define
     common interfaces and ignored the particularities underneath. In future
     posts we will take up this notion in more depth, showing how <Term>protocols</Term>

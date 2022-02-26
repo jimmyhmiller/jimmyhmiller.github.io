@@ -39,19 +39,19 @@ const CDDNonLinear = () => (
 		<p>
 			Theory Building is an activity of trying to take information about
 			the world and it put it to some particular use. Sherlock Holmes
-			works to build his theories in order to apprehend criminals. Someone
+			works to build his theories to apprehend criminals. Someone
 			decorating a home builds their theory so that they might make their
 			home cozy, habitable, and enjoyable to live in. A software engineer
 			builds their theory to enable them to solve the problems at hand,
-			not only the problems of today, but the problems that will arise
+			not only the problems of today but the problems that will arise
 			tomorrow.
 		</p>
 		<p>
 			Consider an instance of complex theory building, how does it
 			proceed? Does Sherlock Holmes proceed from clue to clue, following a
-			linear path to apprehension of the criminal? No the investigation is
+			linear path to apprehension of the criminal? No, the investigation is
 			full of false starts, of reimaginings, of unexpected twists. But
-			most importantly is Holmes thoughts on the matter. Holmes theory
+			what is most important are Holmes's thoughts on the matter. Holmes's theory
 			involves learning lessons and responding to them in unusual,
 			particular ways. The process of learning and responding is important
 			to his investigation. If Holmes merely gathered the data, brought it
@@ -104,7 +104,7 @@ const CDDNonLinear = () => (
 		<p>
 			The card also fails to serve as a proper medium for conveying the
 			information it needs to about this discovery process. First, cards
-			are factual pieces of proposed works. They often taken the form of a
+			are factual pieces of proposed works. They often take the form of a
 			user story along with acceptance criteria. But this is not what is
 			needed. Because CDD has split the responsibility for deciding what
 			work is to be performed between product and engineering, what the
@@ -113,10 +113,10 @@ const CDDNonLinear = () => (
 			theory.
 		</p>
 		<p>
-			Finally the card fails because it assumes that all the work to be
+			Finally, the card fails because it assumes that all the work to be
 			done has a deliverable. The process of discovery is however not like
 			this. When working to build a theory much of the work we do has no
-			direct outcome. We much guesses that turn out the be wrong. We
+			direct outcome. We make guesses that turn out the be wrong. We
 			pursue paths that are dead ends. But this work was not useless. If
 			programming is theory building and the primary output is knowledge
 			rather than a build artifact or source code, then the engineer
@@ -124,9 +124,9 @@ const CDDNonLinear = () => (
 		</p>
 		<Heading size="2" text="Making CDD Work"></Heading>
 		<p>
-			In the previous section I have ignored some of the nuances that
+			In the previous section, I have ignored some of the nuances that
 			occur in the CDD process that might make it seem I am not being
-			fair, let me address those. First, is it really true that engineers
+			fair, let me address those. First, is it true that engineers
 			are not given the flexibility to course correct without creating a
 			card? Well, if the card is written the way many advocates of CDD
 			recommend, it would seem no. CDD advocates often say that a card
@@ -135,14 +135,14 @@ const CDDNonLinear = () => (
 			solve this problem.
 		</p>
 		<p>
-			Here we can say a few things. First it is readily admitted by most
+			Here we can say a few things. First, it is readily admitted by most
 			parties that achieving this goal is something must companies
-			struggle with. So CDD as it is actually practiced, rather than in
+			struggle with. So CDD as it is practiced, rather than in
 			its ideal form still runs into this issue quite a bit. But we can go
 			further than this. What problems make sense to tackle, what problems
-			are meaningful depend on the theory we have. How many times have we
-			done work where we really solved a particular problem, and solved it
-			well only to find out our customers didn’t use it? Many times, our
+			are meaningful depends on the theory we have. How many times have we
+			done work where we solved a particular problem, and solved it
+			well, only to find out our customers didn’t use it? Many times, our
 			customers themselves told us about this problem, will even admit it
 			solves the problem as originally stated, but it turns out they were
 			wrong about their needs. Setting forth a problem constrains our
@@ -151,7 +151,7 @@ const CDDNonLinear = () => (
 			do to given CDD?
 		</p>
 		<p>
-			Next I have acted as if the card is the only medium of communication
+			Next, I have acted as if the card is the only medium of communication
 			available. If we view any guide on how to practice a CDD process, we
 			will find this isn’t accurate. The card is a starting point, it
 			precedes the conversation. Planning is not about taking the card as
@@ -215,7 +215,7 @@ const CDDNonLinear = () => (
 			forces us down a linear path to dead-ends. It prevents feedback
 			mechanisms from operating as they should. If we are to make
 			engineering more productive and help engineers have a better
-			understand of the problems they truely need to solve, we must rid
+			understand of the problems they truly need to solve, we must rid
 			ourselves of CDD.
 		</p>
 	</GlobalLayout>

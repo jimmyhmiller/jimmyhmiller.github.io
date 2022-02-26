@@ -13,7 +13,7 @@ const MeanderPractical = () => <GlobalLayout>
     As Clojure programmers we love data. We believe that, at its core,
     programming is just data manipulation. To that end, Clojure provides
     fantastic data literals for its immutable data structures. Moreover core
-    provides tons of functions for manipulation of data. But as our data grows
+    provides tons of functions for the manipulation of data. But as our data grows
     more complex, things become difficult. Our beautiful declarative data
     transformation pipeline becomes a nested mess. We wind up, yet again,
     playing computer in our heads.
@@ -49,7 +49,7 @@ const MeanderPractical = () => <GlobalLayout>
     Here we have a pretty decent Clojure function that converts between two
     different address formats. This sort of code is fairly common when we need
     to convert from the data requirements of one system to another. Honestly,
-    with this simple example, the code is fairly straight forward. Our data
+    with this simple example, the code is fairly straightforward. Our data
     requirements are simple and so our code isn't difficult. Let's look at how
     to accomplish this same task in Meander.
   </p>
@@ -76,10 +76,10 @@ const MeanderPractical = () => <GlobalLayout>
   <p>
     Here is code that does the same thing written with Meander. One obvious
     thing to note is that the Meander version is much longer. Judging
-    code based on number of lines is not something we are going to do.
+    code based on the number of lines is not something we are going to do.
   </p>
   <p>
-    Let's explain what is going on. First we are using the Meander's{" "}
+    Let's explain what is going on. First, we are using the Meander's{" "}
     <Term>match</Term> feature. <Term>match</Term> takes the thing that we are
     matching on (<Term>person</Term>), a pattern to try to match, and the
     output. Our pattern here is in the exact shape of the person map we passed
@@ -87,7 +87,7 @@ const MeanderPractical = () => <GlobalLayout>
     <Term>?address1</Term>, <Term>?address2</Term>, etc). Logic variables are
     just symbols that start with <Term>?</Term>. We can assign values in our
     data to any logic variables we'd like and then use those logic variables
-    in our output. One thing I love about this simple Meander example, is that
+    in our output. One thing I love about this simple Meander example is that
     you can see the exact shape of the input immediately.
   </p>
   <Heading size="2" text="Making Our Example Harder" />
@@ -122,7 +122,7 @@ const MeanderPractical = () => <GlobalLayout>
   <p>
     In the example above we left out some things. A person has a preferred
     address, but they also have other addresses. We have a few different
-    things we want to do with this data. First we want to find all the
+    things we want to do with this data. First, we want to find all the
     distinct zip codes that a person has.
   </p>
   <Clojure>
@@ -134,10 +134,10 @@ const MeanderPractical = () => <GlobalLayout>
   `}
   </Clojure>
   <p>
-    Here is some pretty straight forward Clojure code for doing exactly that.
+    Here is some pretty straightforward Clojure code for doing exactly that.
     I'm sure some people could have minor quibbles about how this is written,
     but I doubt other solutions would be much different. One thing to note
-    here is that we have lost a little bit the structure of our input data. We
+    here is that we have lost a little bit of the structure of our input data. We
     could maybe change that up a bit. Maybe using destructuring is the right
     approach? Regardless, this is a simple and reasonable Clojure function.
     Now, let's look at the Meander version.
@@ -237,7 +237,7 @@ const MeanderPractical = () => <GlobalLayout>
     I think this is a pretty good function. But what I find interesting is
     that I needed to refactor to get here. It took me a little bit to think
     this way. Ideally, small changes to output should not require us to
-    restructure our code. In this case the change is minor. But if we have to
+    restructure our code. In this case, the change is minor. But if we have to
     change our structure in such small cases, won't we have to change it
     even more in larger cases?
   </p>
@@ -280,13 +280,12 @@ const MeanderPractical = () => <GlobalLayout>
   `}
   </Clojure>
   <p>
-    I apologize for the amount of room this takes up on the screen, but real
-    world examples are much larger. I want to try and make something that
-    approaches realistic and in order to do that our input needs to be a bit
-    bigger. Okay, so what we want do now is given a zip code, find all people
+    I apologize for the amount of room this takes up on the screen, but real-world examples are much larger. I want to try and make something that
+    approaches realistic and to do that our input needs to be a bit
+    bigger. Okay, so what we want to do now is given a zip code, find all people
     that have an address with that zip code, and for each of the addresses
     that match that zip code, return a map of
-    <Term>{"{:name <name> :address <address>}"}</Term>. So in this case if we
+    <Term>{"{:name <name> :address <address>}"}</Term>. So in this case, if we
     asked for zip <Term>86753</Term> we should get the following response:
   </p>
   <Clojure>
@@ -322,7 +321,7 @@ const MeanderPractical = () => <GlobalLayout>
   </Clojure>
   <p>
     This code might not be very idiomatic. I almost never use <Term>for</Term>{" "}
-    in actual code. But honestly this was the most succinct way I could think
+    in actual code. But honestly, this was the most succinct way I could think
     to write it. We could also have written something like this:
   </p>
   <Clojure>
@@ -342,7 +341,7 @@ const MeanderPractical = () => <GlobalLayout>
   <p>
     It seems like there is a better way I'm overlooking. But regardless I
     think any of these solutions will be a tiny bit complicated. We've
-    definitely lost the shape of the input data. We have some imperative stuff
+    lost the shape of the input data. We have some imperative stuff
     going on here. Let's contrast this with the Meander implementation.
   </p>
   <Clojure>
@@ -416,9 +415,9 @@ const MeanderPractical = () => <GlobalLayout>
   </Clojure>
   <p>
     Here we have some much more realistic data than anything we've seen
-    before. We have a map with three top level keys. These represent data we
+    before. We have a map with three top-level keys. These represent data we
     have gathered from various sources. The first key <Term>:people</Term> is our
-    collection of people with names and ids. The next are the{" "}
+    collection of people with names and ids. The next is the{" "}
     <Term>:addresses</Term> of these people, indexed by id for efficient
     lookup. And finally we have <Term>:visits</Term>, this represents the
     dates that the users visited our site, again indexed by user-id.
@@ -462,7 +461,7 @@ const MeanderPractical = () => <GlobalLayout>
   <p>
     I really wanted to come up with a better implementation. <Term>for</Term>{" "}
     might have been useful here. If any reader has a better implementation,
-    I'm happy to replace this one. But honestly, I think no matter version we
+    I'm happy to replace this one. But honestly, I think no matter what version we
     went with, it is going to have the features that make this one less than
     desirable. Just look at how much of this code is about telling the
     computer what to do. Let's look at the Meander version now.
@@ -488,8 +487,8 @@ const MeanderPractical = () => <GlobalLayout>
     need to know about a person easily. We can also search into any collection
     and match on data at any level. We don't need to rely on pulling things
     out into a higher scope by using let bindings, making helper functions to
-    work on sub collections, or creating a series of transformations to get at
-    the data we care about. Instead we declare our data needs and the
+    work on sub-collections, or creating a series of transformations to get at
+    the data we care about. Instead, we declare our data needs and the
     relationships that need to hold between them.
   </p>
   <Heading size="2" text="Conclusion" />
@@ -506,15 +505,15 @@ const MeanderPractical = () => <GlobalLayout>
   <p>
     Now I do admit, my examples here are a bit contrived. But they are meant
     to be simple so we don't focus on the examples and instead focus on the
-    code. In coming posts I will explore more directly various ways we can
+    code. In coming posts, I will explore more directly various ways we can
     apply Meander for data transformation. Some ideas I have in mind are using
     Meander with honeysql to turn our data into sql, transforming a collection
     of data into hiccup for display as html, and using Meander to scrap the
     web. I'd also love to do more computer science examples. Using Meander to
-    make little lisp interpreter, a CEK machine or basic arithmetic. And yet,
+    make a little lisp interpreter, a CEK machine, or basic arithmetic. And yet,
     Meander goes way beyond all of these things. Meander is about more than
     practical data manipulation. It is about a new way of programming, a new
-    way of thinking about problems. Hopefully this introduction will help you
+    way of thinking about problems. Hopefully, this introduction will help you
     to dive in and try it yourself.
   </p>
 </GlobalLayout>;

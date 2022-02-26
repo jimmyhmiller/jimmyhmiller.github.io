@@ -114,7 +114,7 @@ const AestheticElements = () => (
         </p>
         <p>
             But direct and indirect are not merely about function calls. We can
-            for example have code that builds up some tree or hierarchical
+            for example, have code that builds up some tree or hierarchical
             structure and then interprets it, rather than code that directly
             runs a computation. We might convey data onto a queue, with some
             consumer elsewhere rather than locally deal with our data.
@@ -190,7 +190,7 @@ const AestheticElements = () => (
             <li>Abstract</li>
         </ul>
         <p>
-            There is a lot to unpack here. First, it must be said that of course
+            There is a lot to unpack here. First, it must be said that of course,
             no codebase is uniformly all these things in all its parts, so will
             be generalizing a bit. Second, trying to think about all these items
             at once is hard, so let's pair them up a bit and think through the
@@ -230,7 +230,7 @@ const AestheticElements = () => (
             with via our structural and closed system. Next, we would not
             introduce many different concrete types, instead, we would make use
             of abstract concepts, perhaps certain event types, or operations in
-            and algebra. Further, things would not directly call other things or
+            an algebra. Further, things would not directly call other things or
             directly depend on things. Instead, these would be passed around to
             use or gathered through some abstract means. Further, as we
             introduce new concepts, we would not colocate them with existing

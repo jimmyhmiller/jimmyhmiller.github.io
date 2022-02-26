@@ -65,7 +65,7 @@ const NamedFunctionComposition = () => <GlobalLayout>
     But function bind syntax also has flaws even if it were accepted into the
     language. Function bind syntax abuses <Term>this</Term> the most
     misunderstood keyword in all of javascript. The functions you write with
-    function binding in mind, must use <Term>this</Term>, they can't be normal
+    function binding in mind must use <Term>this</Term>, they can't be normal
     functions. Of course, you can wrap up those functions, but if we need to
     wrap functions up, why not wrap them in a way that doesn't require function
     bind?
@@ -98,7 +98,7 @@ const NamedFunctionComposition = () => <GlobalLayout>
     take a collection of functions, in this case <Term>zaphod</Term>, and wrap
     them up into a fluent interface. But what does this fluent interface do? It
     is just function composition. After calling it, we get a function back. We
-    can now use this function to pass our data through the pipeline. Since, what
+    can now use this function to pass our data through the pipeline. Since what
     we get back is just a function, we can also pass this function around. We
     can see its use on line 14 as just a normal function that lets us perform a
     series of transformations on data.
@@ -132,7 +132,7 @@ const NamedFunctionComposition = () => <GlobalLayout>
   <p>
     Here we can see a combination of two totally separate libraries. In fact, I
     even used <Term>lodash/fp</Term> because rather than taking its primary
-    argument first, it takes it last. Yet, we were still able to compose these
+    argument first, it makes it last. Yet, we were still able to compose these
     libraries in a simple, yet flexible way.{" "}
   </p>
   <p>
@@ -184,7 +184,7 @@ const NamedFunctionComposition = () => <GlobalLayout>
     In fact, since <Term>fluent-compose</Term> just makes functions, you can use
     this reducer with combine reducers. But another really cool thing you can do
     with it is add on the reducer after the fact. One feature to note with this
-    implementation, is that it actually short circuits, as soon as it finds the
+    implementation is that it actually short circuits, as soon as it finds the
     action that matches the type, it returns, so there is no wasted computation.
   </p>
   <Heading size="2" text="Why do I call this a hack?" />
@@ -202,7 +202,7 @@ const NamedFunctionComposition = () => <GlobalLayout>
     In fact, that is the thing that makes this library a hack; it is the wrong
     means. This library was created out of the limitation javascript imposes on
     us. How would we accomplish similar things in other languages? Here are just
-    a couple examples.
+    a couple of examples.
   </p>
   <Clojure>
   {`
@@ -235,9 +235,9 @@ const NamedFunctionComposition = () => <GlobalLayout>
     What we have done is allow our functions to have special ways in which they
     compose. Each function can determine for itself special composition points.
     At each point along the way, we keep these composition properties, allowing
-    us to compose further. Each of these composition methods have a name, hence
+    us to compose further. Each of these composition methods has a name, hence
     "named function composition". While born out of necessity an
-    implemented as a hack, I there is something here, something interesting that
+    implemented as a hack, there is something here, something interesting that
     might be worth exploring further. (Addendum: It has been two years and I've
     yet to explore it further.)
   </p>

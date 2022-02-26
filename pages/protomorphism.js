@@ -11,7 +11,7 @@ import {
 const Protomorphism = () => <GlobalLayout>
   <Title size="1" text="Protomorphism" />
   <p>
-    The last two posts ventured off into the hypothetical world. In that world
+    The last two posts ventured off into the hypothetical world. In that world,
     we had a language very much like javascript but with variants and protocols.
     Unfortunately, that language isn't real, but that doesn't mean we can't
     sneak some of those ideas into our javascript. Today we are going to explore
@@ -38,7 +38,7 @@ const Protomorphism = () => <GlobalLayout>
     `}
   </Javascript>
   <p>
-    Here we can see protomorphism in action with our Mapper protocol from last
+    Here we can see protomorphism in action with our Mapper protocol from the last
     post. This actually isn't too different from the code we would write in our
     imaginary language. What we see here is basically all of protomorphism, it
     is a simple library that does one thing. In fact, it is only 31 lines of
@@ -73,7 +73,7 @@ const Protomorphism = () => <GlobalLayout>
   <p>
     Here is our Sequence protocol from which we will build all our lodash like
     functions. It is a simple protocol, with only five methods, each of which
-    are fairly straight forward. Using these we can start building up more and
+    is fairly straightforward. Using these we can start building up more and
     more useful functions. Let's start off with some very simple ones.
   </p>
   <Heading size="2" text="Examples" />
@@ -101,7 +101,7 @@ const Protomorphism = () => <GlobalLayout>
   </Javascript>
   <p>
     We start off with simple aliases to our Sequence functions we need to use.
-    This is purely for convenience sake and not necessary. Next we implement two
+    This is purely for convenience's sake and not necessary. Next we implement two
     very simple functions, <Term>second</Term> and<Term> ffirst</Term>. Second
     does what it says, it gives of the second element of a collection; ffirst
     gives us the first of the first element of the collection. Below should
@@ -123,7 +123,7 @@ const Protomorphism = () => <GlobalLayout>
   </p>
   <p>
     One thing to note is that these functions are perfectly comprehensible and
-    sensible and yet we have not mentioned at all what datastructure these
+    sensible and yet we have not mentioned at all what data structure these
     functions are for. As far as our code is concerned, it doesn't matter if
     this is an array, an immutable list, or any other type. All that matters for
     the functions above is that the data structure implements the Sequence
@@ -180,9 +180,8 @@ const Protomorphism = () => <GlobalLayout>
     `}
   </Javascript>
   <p>
-    The definition for Arrays is a tad bit uglier. This is due mainly to that
-    fact that our protocol's methods are assumed to be side-effect free, where
-    as Arrays methods mutate. So in order to do cons and rest, we must copy the
+    The definition for Arrays is a tad bit uglier. This is due mainly to the
+    fact that our protocol's methods are assumed to be side-effect free, whereas Arrays methods mutate. So in order to do cons and rest, we must copy the
     array. Now, that we have defined the Sequence protocol for Arrays, all
     functions that just use protocol methods will work with Arrays.
   </p>
@@ -217,7 +216,7 @@ const Protomorphism = () => <GlobalLayout>
     `}
   </Javascript>
   <p>
-    Here we have the three power house lodash functions. By showing that we can
+    Here we have the three powerhouse lodash functions. By showing that we can
     implement these, it becomes easy to see how we can begin to implement all
     the functionality that lodash supports, but without depending on a concrete
     implementation.
@@ -225,9 +224,9 @@ const Protomorphism = () => <GlobalLayout>
   <Heading size="2" text="Conclusion" />
   <p>
     Protocols give us the ability to reason at a higher level of abstractions.
-    They provide us a way to extend functionality to new code that we never
-    planned for. This level of programming allows our code be clear, yet
-    powerful. In our next pos,t we are going to explore a similar, yet slightly
+    They provide us with a way to extend functionality to new code that we never
+    planned for. This level of programming allows our code to be clear, yet
+    powerful. In our next post, we are going to explore a similar, yet slightly
     different way to provide flexibility and extensibility, multi-methods.
   </p>
 </GlobalLayout>;

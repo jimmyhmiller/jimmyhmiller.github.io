@@ -9,10 +9,10 @@ const ConceptualEngineering = () => <GlobalLayout>
   <Title text="Conceptual Engineering" />
   <p>
     Naming things is one of the hardest things to do in software. Why? Is it
-    because all the names have been taken? Is it becasue we are trying to get
+    because all the names have been taken? Is it because we are trying to get
     at some essence that our words need to capture? (Like some sort of fantasy
-    magic system.) Perhaps at times we feel both of these things. But I think
-    that the difficulties we feel naming things stems from an unexpressed
+    magic system.) Perhaps at times, we feel both of these things. But I think
+    that the difficulties we feel naming things stem from an unexpressed
     anxiety. Deep down we understand that naming is more than assigning a word
     to a value. When we are naming things, we aren't just deciding what
     something is, instead we are asking the question of what something should
@@ -26,10 +26,10 @@ const ConceptualEngineering = () => <GlobalLayout>
       Conceptual Engineering
     </a>
     . Conceptual Engineering here should be understood to include both working
-    to change the meaning of existing concepts (re-engingeering) and creating
+    to change the meaning of existing concepts (re-engineering) and creating
     new concepts for a given purpose (de novo engineering). Naming things is
     hard because in doing so, we know deep down that we are advocating for
-    this concept. We are putting our weight behind this new concept, or in the
+    this concept. We are putting our weight behind this new concept or in the
     redefinition (expansion or contraction) of an existing concept. This is a
     heavy burden to carry.
   </p>
@@ -38,21 +38,21 @@ const ConceptualEngineering = () => <GlobalLayout>
     Code we call over-abstracted has often failed us by not carrying this
     burden well. But sometimes, we are also asking too much of this code.
     Concepts extend past their concrete uses. Our concept of justice for
-    instance extends not only to concrete instances that have occured, but to
+    instance extends not only to concrete instances that have occurred but to
     hypotheticals. So too the concepts in our programs extend beyond the ways
     in which we have in fact employed them. Expecting code to fully define a
-    concept can lead to frustration. Instead we have to accept our sctive role
+    concept can lead to frustration. Instead, we have to accept our active role
     in understanding a program.
   </p>
   <p>
     Given this underdetermination of code in defining the bounds of our
     concepts, what should we do? This depends on the circumstances we find
     ourselves in. Are we creators of these concepts, or consumers of them? As
-    creators our work is by no means easy but straight forward. We are
+    creators, our work is by no means easy but straightforward. We are
     responsible for explaining our concept to others, for persuading others to
-    adopt our approach, and to listen and consider feedback, refining our
+    adopt our approach and to listen and consider feedback, refining our
     concepts as necessary. We are also responsible for considering if/when our
-    concept has overstayed its welcome, when it is time to rid ourselves of
+    concept has overstayed its welcome; when it is time to rid ourselves of
     this concept. In other words, we should take full responsibility for this
     concept.
   </p>
@@ -74,8 +74,8 @@ const ConceptualEngineering = () => <GlobalLayout>
     Being the consumer of a concept is often much harder than the creator. As
     creators we have certain leeway, we know the boundaries, we know where
     edges are vague and where they are exact. We are intimately familiar with
-    our concepts. As consumers, we are not affording these luxuries. Instead
-    we are encounting a concept and trying to employ it to meet our purposes,
+    our concepts. As consumers, we are not affording these luxuries. Instead,
+    we are encountering a concept and trying to employ it to meet our purposes,
     often not knowing if this is or isn't a good idea.
   </p>
   <p>
@@ -83,19 +83,19 @@ const ConceptualEngineering = () => <GlobalLayout>
     concept can be incredibly important for successful deployment. Does this
     concept have a canonical definition? Are there &quot;laws&quot; that apply
     the concept? What is the conceptual background from which this concept was
-    born? Is there family of related concepts to which this concept belongs?
-    These sorts of questions will helps us ensure we do not misuse the
+    born? Is there a family of related concepts to which this concept belongs?
+    These sorts of questions will help us ensure we do not misuse the
     concept.
   </p>
   <p>
-    Given all these constraints, how to precede is far from straight forward
+    Given all these constraints, how to proceed is far from straightforward
     and often requires careful consideration and a good amount of taste. What
     do we do when we find a mismatch between our purpose and the current
     bounds of a concept? Should we choose some different existing concept,
     create a wholly new concept, work to extend the bounds of the concept, or
     change our purpose? Each of these responses (and more besides) can be the
     correct move to take. When the mismatch between our purposes and our
-    candidate concept are serious and irreconcilable, it is often the correct
+    candidate concepts is serious and irreconcilable, it is often the correct
     course of action to search for a different existing concept. But knowing
     when something is irreconcilable is the trick.
   </p>
@@ -120,7 +120,7 @@ const ConceptualEngineering = () => <GlobalLayout>
   <p>
     This process of updating our purposes as our understanding of concepts
     expands is incredibly important. But so too, is it important to consider
-    expansion of our concepts as our purposes change. Our concepts are
+    the expansion of our concepts as our purposes change. Our concepts are
     under-determined by their instances, but more than that their boundaries
     are fuzzy in many dimensions. Over time we ought to reconsider these edges
     in light of our present purposes and knowledge. Introducing new concepts
@@ -144,13 +144,13 @@ const ConceptualEngineering = () => <GlobalLayout>
     There is more to be said about many of the things mentioned here. For
     example, how can we understand a concept by reading code and whatever
     documentation might exist when these things undetermined the concept at
-    hand? How can understanding norms of a community or the intentions of an
+    hand? How can understanding the norms of a community or the intentions of an
     author help us here? How can we be sure we are doing justice to a concept
     in our extension of it? All of these questions and more deserve to be
     explored. The first step to doing so is to recognize Conceptual
     Engineering as a crucial part of what we do when engineering a codebase.
     Creating a codebase is not merely the creation of a bunch of textual
-    artifacts. The norms and intentions we impose on this text is a crucial
+    artifacts. The norms and intentions we impose on this text are a crucial
     part of it. The concepts we create, reuse, or modify are incredibly
     important. If we want to be better programmers, we need to attend to our
     concepts and consider the question, what should this concept be.

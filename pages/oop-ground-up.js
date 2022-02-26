@@ -15,8 +15,8 @@ const OopGroundUp = () => <GlobalLayout>
     we don't understand appear magical, making them either scary or
     compelling. In fact, typically the difference in attitude towards these
     magical objects is that of our peers. Despite the popular view that
-    programming is an ever changing field, new ideas in the programming world
-    must fight a hard fought battle. Often things which aren't familiar to the
+    programming is an ever-changing field, new ideas in the programming world
+    must fight a hard-fought battle. Often things that aren't familiar to the
     programmer who encounters them are met with suspicion or disdain. But not
     so with objects, or at least not anymore. Objects have captured the
     popular mindshare of developers. Objects are the bread and butter of
@@ -42,7 +42,7 @@ const OopGroundUp = () => <GlobalLayout>
   `}
   </Javascript>
   <p>
-    This is our target, so in order to implement it we must understand it. The
+    This is our target, so in order to implement it, we must understand it. The
     object above has two properties, firstName and lastName and it has some
     way to access those properties (the . operator). Now, our "object",
     because it isn't built into the language, is certainly not going to have
@@ -65,9 +65,9 @@ const OopGroundUp = () => <GlobalLayout>
   </Javascript>
   <p>
     So here it is, our first "object". It might be hard to see exactly how our
-    function here is an object, but with a little squinting we can see that it
+    function here is an object, but with a little squinting, we can see that it
     fulfills the exact same role as an object. The normal object has two
-    properties which we can access, so does our "object". The only difference
+    properties that we can access, so does our "object". The only difference
     between them is the method of access. Our normal objects have their
     properties accessed through the dot operator, while our "objects" are
     through function application. In fact, a simple shift in language can show
@@ -75,8 +75,8 @@ const OopGroundUp = () => <GlobalLayout>
   </p>
   <Heading size="3" text="Terminological" />
   <p>
-    SmallTalk is one the first OO languages; almost all of what is thought
-    about as OO stems from it. Unfortunately we have lost a bit of SmallTalks
+    SmallTalk is one of the first OO languages; almost all of what is thought
+    about as OO stems from it. Unfortunately, we have lost a bit of SmallTalks
     terminology, terminology which would make things more clear. In the
     languages we are used to there are two ways to do things with objects,
     accessing properties (or fields) and invoking methods. With SmallTalk,
@@ -84,9 +84,9 @@ const OopGroundUp = () => <GlobalLayout>
     "uniform access principle" and is the reason people often cite for Java
     getters/setters.) This "limitation" does not make SmallTalk any less
     capable. Everything you can do with objects in a modern language can be
-    done in SmallTalk. Once we think about the dot operator as simple sending
+    done in SmallTalk. Once we think about the dot operator as simply sending
     a message to our object, is our function application any different? We are
-    simple sending the message as a string and our object is replying.
+    simply sending the message as a string and our object is replying.
   </p>
   <Heading size="2" text="More Advanced Objects" />
   <p>
@@ -206,7 +206,7 @@ const OopGroundUp = () => <GlobalLayout>
   `}
   </Javascript>
   <p>
-    Here we have an objects which encapsulates a bit of state. Each counter
+    Here we have an object which encapsulates a bit of state. Each counter
     here keeps its own value. We can call increment on one counter, without
     affecting the other. This might seem a bit tricky to implement using our
     function-style objects, but it actually is no more complicated than any
@@ -238,13 +238,13 @@ const OopGroundUp = () => <GlobalLayout>
   </Javascript>
   <p>
     Our object with encapsulated state makes use of closures to hold state. In
-    fact, in this version our state is actually further encapsulated because
+    fact, in this version, our state is actually further encapsulated because
     our value isn't publicly accessible. The only way anyone can get at the
     value is by sending the message 'increment'.
   </p>
   <Heading size="3" text="More to come" />
   <p>
-    This is of course a lot more to object oriented programming than what has
+    This is of course a lot more to object-oriented programming than what has
     been shown here. Most notably missing from the discussion is inheritance.
     Unfortunately addressing inheritance is a bit outside the scope of this
     article. Perhaps we will revisit it at some point in the future. But even

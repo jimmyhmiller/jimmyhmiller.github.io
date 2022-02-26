@@ -11,9 +11,9 @@ import {
 const BasicFunctionalStudies = () => <GlobalLayout>
   <Title text="Basic Functional Studies" />
   <p>
-    In the previous post we observed some rules on how to get the most out of
-    our functions. In this post we will do exactly that, get the most out of
-    them. But rather than diving straight in to these techniques, we are going
+    In the previous post, we observed some rules on how to get the most out of
+    our functions. In this post, we will do exactly that, get the most out of
+    them. But rather than diving straight into these techniques, we are going
     to come up with them ourselves. There is no better way to learn a concept
     than to arrive at it through simple steps. To see how we ourselves could
     have come up with these techniques.
@@ -57,7 +57,7 @@ const BasicFunctionalStudies = () => <GlobalLayout>
   </Javascript>
   <p>
     Alright, problem solved. I can now add 3 or any number for that matter.
-    Let's try a different problem. I want I have a list of string and I want to
+    Let's try a different problem. I want I have a list of strings and I want to
     concatenate something onto the front of them. Here's what that function
     might look like.
   </p>
@@ -75,10 +75,10 @@ const BasicFunctionalStudies = () => <GlobalLayout>
   </Javascript>
   <p>
     Again, this certainly works, but doesn't it look remarkably similar to our
-    addNToList? In fact, the name and one line are the only thing that changed.
-    If we decide instead of concatenating we want to replace, or substring or
+    addNToList? The name and one line are the only things that changed.
+    If we decide instead of concatenating we want to replace, or substring, or
     any other operation we will have to write another function that is
-    remarkable similar to this. Couldn't we write a function that abstracts over
+    remarkably similar to this. Couldn't we write a function that abstracts over
     this?
   </p>
   <Javascript>
@@ -113,16 +113,16 @@ const BasicFunctionalStudies = () => <GlobalLayout>
   `}
   </Javascript>
   <p>
-    Map is that function. Map is a fairly interesting function, because one of
+    Map is that function. Map is a fairly interesting function because one of
     its arguments is itself a function. This function is then applied to every
     element of the list. What we've done is extract out the essence of what we
     were doing in those other functions and made it reusable. This use of
-    functions as arguments to other functions is called "higher order
+    functions as arguments to other functions is called "higher-order
     functions".
   </p>
   <Heading size="2" text="Partial application" />
   <p>
-    Higher order functions allow us to abstract over behavior, not just data. We
+    Higher-order functions allow us to abstract over behavior, not just data. We
     can extract out the essence of a certain transformation and allow the
     particulars to be passed in a function. But we still don't have the full
     reusability we would like to. You'll notice that we had to define two
@@ -148,11 +148,11 @@ const BasicFunctionalStudies = () => <GlobalLayout>
   `}
   </Javascript>
   <p>
-    That's not really any better is it? The problem is map expects a function
+    That's not really any better, is it? The problem is map expects a function
     that takes one argument, but addN takes two. So we have to create functions
     that hard code some value of n and call addN underneath the hood. This
-    really doesn't help our situation. But isn't there something we can do?W
-    what if instead of writing those functions, addN just returned a function?
+    doesn't help our situation. But isn't there something we can do?
+    What if instead of writing those functions, addN just returned a function?
   </p>
   <Javascript>
   {`
@@ -173,9 +173,9 @@ const BasicFunctionalStudies = () => <GlobalLayout>
     be much messier if we had a function that took three arguments. Do we make
     it so they pass in two arguments and then finally the third? Do we make them
     pass one at a time? But really what isn't great here is the fact that what
-    our addN is really supposed to do is obscured by the fact that we have to
+    our addN is supposed to do is obscured by the fact that we have to
     make it return a function. What if we could have our first addN definition
-    but somehow make it return a function? We can using a method called partial
+    but somehow make it return a function? We can by using a method called partial
     application.
   </p>
   <Javascript>
@@ -189,22 +189,22 @@ const BasicFunctionalStudies = () => <GlobalLayout>
   `}
   </Javascript>
   <p>
-    Okay, now this probably seems a bit weird, what is this bind thing and why
+    Okay, now this probably seems a bit weird, what is this bind thing, and why
     are you passing null as the first argument? Unfortunately, javascript
     doesn't support a beautiful way to do partial application, so we can use
-    bind. Binds first argument is the "this" value of the function.
+    bind. Bind's first argument is the "this" value of the function.
     Since we aren't using "this", we can set it to null. The rest of
     the arguments allow us to "bind" a value to one of the arguments
     of our function. In other words, when we say <Term>add.bind(null, 2)</Term>{" "}
     we are setting the "a" variable in add to 2 and then we are
-    getting back a function that takes the rest of the arguments. In other words
+    getting back a function that takes the rest of the arguments. In other words,
     bind takes any function and turns it into a function that returns functions!
   </p>
   <Heading size="2" text="Currying" />
   <p>
-    Partial application is actually incredibly useful. It can eliminate tons of
-    code repetition. In future posts I guarantee we will see more uses of it
-    will pop up, but there is actually a simply more powerful version of partial
+    Partial application is incredibly useful. It can eliminate tons of
+    code repetition. In future posts, I guarantee we will see more uses of it
+    will pop up, but there is a more powerful version of partial
     application. To see our problem let's change our add function to accept
     three variables.
   </p>
@@ -218,7 +218,7 @@ const BasicFunctionalStudies = () => <GlobalLayout>
   <p>
     Now with partial application I can do all sorts of things, I can bind to
     "a", bind to "a" and "b", I could even bind to
-    all three. But in order to do that, I have to explicitly call bind each
+    all three. But to do that, I have to explicitly call bind each
     time. So let's say I want to first bind "a" and then later
     "b", what will that look like.
   </p>
@@ -232,7 +232,7 @@ const BasicFunctionalStudies = () => <GlobalLayout>
     Not very pretty if you ask me. This also creates some weird cases, what will
     I get back if I call "add2(1)"? Since I only passed in one
     argument instead of the two remaining arguments "c" is undefined
-    and thus the whole thing is. What I'd really love is to be able to pass in
+    and thus the whole thing is. What I'd love is to be able to pass in
     as many or as few arguments as I'd like and get back a function that takes
     the rest of them. This idea is called currying.
   </p>
@@ -288,11 +288,11 @@ const BasicFunctionalStudies = () => <GlobalLayout>
     Here we took our map function and curried it. Now with our curried add we
     can combine the two, giving us a new function, something that maps and adds
     two. With currying, our functions can serve as readily combinable building
-    blocks, allowing us to easily define high level features.
+    blocks, allowing us to easily define high-level features.
   </p>
   <Heading size="2" text="Conclusion" />
   <p>
-    Higher Order Functions allow us to extract the essence of a function out. We
+    Higher-Order Functions allow us to extract the essence of a function out. We
     can get great reuse of our functions and work a higher abstraction. Currying
     allows us to take general functions and slowly add specificity. At every
     step, we are in control of what our functions do, what arguments they are

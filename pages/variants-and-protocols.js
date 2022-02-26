@@ -11,11 +11,11 @@ import {
 const VariantsAndProtocols = () => <GlobalLayout>
   <Title text="Variants and Protocols" />
   <p>
-    In our last post we explored variants and the way in which they allow us
+    In our last post, we explored variants and the way in which they allow us
     to express choice. We saw that variants are much more powerful than enums
     because they allow you to pass values. Pattern matching on variants allows
     code to be explicit yet concise. However, there is still a way to make
-    variants even more power, the ability to write functions that apply to
+    variants even more powerful, the ability to write functions that apply to
     multiple types of variants.
   </p>
   <Haskell>
@@ -37,7 +37,7 @@ const VariantsAndProtocols = () => <GlobalLayout>
     list, map for Maybe applies the function if there is an element. But if we
     defined map as we do above, it would conflict with the definition of List
     because they have the same name. We could just move each map definition
-    into a module, but then we lose some of the benefit behind map. To see
+    into a module, but then we lose some of the benefits behind map. To see
     what that is, let's explore some different structures that work with map.
   </p>
   <Haskell>
@@ -54,7 +54,7 @@ const VariantsAndProtocols = () => <GlobalLayout>
   `}
   </Javascript>
   <p>
-    This is our first example, the Either Variant. Either allows us to have a
+    This is our first example, the Either Variant. Either allow us to have a
     value that is either a success or an error. If we have a success, then we
     want to apply our function to the successful value. If we have an error,
     applying a function wouldn't make much sense.
@@ -119,7 +119,7 @@ const VariantsAndProtocols = () => <GlobalLayout>
   <Heading size="1" text="Unifying map" />
   <p>
     Now that we've seen just some of the instances of how we could use map, it
-    seems clear that just point this in separate modules will lead to ugly
+    seems clear that just putting this in separate modules will lead to ugly
     code. We will have to refer to map using fully qualified names (e.g.
     Maybe.map, Either.map), this makes our code verbose, but also limits its
     reusability. As far as map is concerned, we shouldn't care if we have
@@ -127,7 +127,7 @@ const VariantsAndProtocols = () => <GlobalLayout>
     In other words, we want map to be a polymorphic function.
   </p>
   <p>
-    Protocols allow us to do exactly that, write functions which are
+    Protocols allow us to do exactly that, write functions that are
     polymorphic over a given datatype. When we pass a datatype to a function
     implemented as a protocol, it finds its type and dispatches to the proper
     function. Let's look at the Mapper protocol.
@@ -189,9 +189,9 @@ const VariantsAndProtocols = () => <GlobalLayout>
   </Javascript>
   <p>
     We can see that our map does the right thing when passed a Maybe or an
-    Either. This is a feature with no direct counter-part in javascript.
-    Protocols allow us to extend functionality to new datatypes, they allow us
-    to build common interfaces with which we can interact, and they allow of
+    Either. This is a feature with no direct counterpart in javascript.
+    Protocols allow us to extend functionality to new data types, they allow us
+    to build common interfaces with which we can interact, and they allow 
     this without a nested class hierarchy or any sort of monkey patching.
     Protocols offer a clean way to extend functionality through out our
     programs. They give us a way to add new capabilities to a library as well

@@ -30,7 +30,7 @@ const BeautifulCode = () => <GlobalLayout>
     Simplicity is often used synonymously with ease. When we begin a tutorial
     for the new framework of the day, we will often think, "how simple!", and
     while "simple" does lend itself well to this usage, it is often necessary to
-    hijack words, to purify them in order that our goal may be made clear. This
+    hijack words, to purify them so that our goal may be made clear. This
     process of turning an ordinary word, with its multifarious meanings, into a
     technical term may seem obnoxious to some, but once the process is through,
     speech becomes fluid, ideas can be built, and new areas explored.
@@ -51,7 +51,7 @@ const BeautifulCode = () => <GlobalLayout>
   `}
   </Javascript>
   <p>
-    In this incredibly contrived example we can see a rather egregious example
+    In this incredibly contrived example, we can see a rather egregious example
     of complecting. What does fetching data have to do with launching missiles?
     Absolutely nothing. The caller of this function would be rather surprised to
     know that he launched missiles just by fetching some data. But perhaps we
@@ -94,20 +94,19 @@ const BeautifulCode = () => <GlobalLayout>
   </p>
   <Heading size="3" text="What isn't being claimed" />
   <p>
-    Unlike the first code I showed, this second one may not be as familiar. In
-    fact, I wouldn't be surprised if some of you have never seen "map" before.
+    Unlike the first code I showed, this second one may not be as familiar. I wouldn't be surprised if some of you have never seen "map" before.
     So how can this code be more simple if fewer people are familiar with it?
     This is where we must remember that simplicity is not about familiarity. It
     is about keeping our concerns separate. Simplicity will not make it so
     everyone knows exactly what your code does. Its goal is to keep your code
-    decomplected, because decomplecting allows composition.
+    decomplected because decomplecting allows composition.
   </p>
   <Heading size="2" text="Composition" />
   <p>
     Complect and compose are opposites as far as programming goes. Where
     complecting mixes our concerns together, composition allows them to stay
     separate and be brought together in a straightforward fashion. Imagine that
-    now instead of merely adding two to each element in our list we want to
+    now instead of merely adding two to each element in our list, we want to
     filter out all the evens and then add two. Our first example would change to
     this:
   </p>
@@ -139,7 +138,7 @@ const BeautifulCode = () => <GlobalLayout>
   <p>
     Rather than including our changes into the body of some loop, we create
     functions that can be applied anywhere we'd like. But we can take our
-    decomplecting one step further. Imagine now that our oldList is not longer a
+    decomplecting one step further. Imagine now that our oldList is no longer a
     list, but a promise, how do our examples change? Let's start with the first
     example and see what perhaps seems like the most obvious way to change it.
   </p>
@@ -163,7 +162,7 @@ const BeautifulCode = () => <GlobalLayout>
     newList contain? Well, it depends if oldList has resolved or not. If it
     hasn't newList will be empty. If it has then depending on what point in the
     for loop we are in, it has different values. We have introduced a race
-    condition in our code. Of course we can fix this bug without transitioning
+    condition in our code. Of course, we can fix this bug without transitioning
     our code fully, moving newList into the function and returning it will work,
     but as we will see in the second example, this sort of bug is not possible.
   </p>

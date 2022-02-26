@@ -17,12 +17,12 @@ const Incommunicability = () => <GlobalLayout>
     of this activity is paramount, for, "If our understanding is inappropriate
     we will misunderstand the difficulties that arise in the activity and our
     attempts to overcome them will give rise to conflicts and frustrations."
-    Unfortunately, despite Naur's consciousness raising essay, we find
+    Unfortunately, despite Naur's consciousness-raising essay, we find
     ourselves in exactly this predicament.
   </p>
   <p>
     As the title suggestions, Naur claims that programming is first and
-    formost a process of theory building. What Naur means by this is that what
+    foremost a process of theory building. What Naur means by this is that what
     is most fundamental to the process of programming is not the source code,
     the documentation, or even the running program, it is instead the
     knowledge the programmer has.
@@ -36,10 +36,10 @@ const Incommunicability = () => <GlobalLayout>
     </p>
   </BlockQuote>
   <p>
-    This notion of programming as theory building has recieved in general wide
+    This notion of programming as theory building has received in general wide
     praise in secondary literature. It seems to be recognized widely that
     Naur's view brings quite a bit to the table. But there is an aspect of
-    Naur's view that has not recieved quite so much praise. This aspect may be
+    Naur's view has not received quite so much praise. This aspect may be
     called the "incommunicability thesis". Naur puts it this way:
   </p>
   <BlockQuote>
@@ -55,7 +55,7 @@ const Incommunicability = () => <GlobalLayout>
     but rather a main claim of it. In other words, to view programming as
     theory building, one must see that these theories are in some sense
     incommunicable. Given the strong importance Naur places on this thesis,
-    it is suprising that commenters who are even supportive of the view tend
+    it is surprising that commenters who are even supportive of the view tend
     to reject this major claim. For instance, Donald Knuth writes:
   </p>
   <BlockQuote>
@@ -85,10 +85,10 @@ const Incommunicability = () => <GlobalLayout>
     Gilbert Ryle is most known for his critique of Cartesian Dualism, the
     notion that the mind is an immaterial substance separate from the body.
     Ryle's work, while remembered for its groundbreaking critique of dualism
-    has a much broader scope. Ryle's behaviorist theory, requires that he
+    has a much broader scope. Ryle's behaviorist theory requires that he
     separate mental talk from observable behavior. This self-imposed
     constraint requires Ryle to re-examine intellectual activity broadly and
-    from this we get beautiful descriptions of various intellectual
+    from this, we get beautiful descriptions of various intellectual
     activities, most important for our purpose, the activity of theory
     building.
   </p>
@@ -103,28 +103,28 @@ const Incommunicability = () => <GlobalLayout>
     building a theory, operations on a theory, and the theory itself.
   </p>
   <p>
-    Ryle's notion of theory extends accross disciplines, Marx and Sherlock
+    Ryle's notion of theory extends across disciplines, Marx and Sherlock
     Holmes, while differing in subject matter and method, built theories.
     Someone laboring to discover how to lay carpet in a room, making
     measurements, determining which way the carpet ought to be laid, is caught
     up in the act of theory building. The historian, as he studies the
     accounts of a battle, is building a theory about the battle's proceedings.
-    Given this broad view of theory building, it should be not be a surprise
+    Given this broad view of theory building, it should not be a surprise
     that programming will fall into this category as well.
   </p>
   <Heading size="4" text="Theory and Communication" />
   <p>
     But what sort of thing is a theory that these people are building? We may
-    be to tempted to identify a theory with some set of statements. For
+    be too tempted to identify a theory with some set of statements. For
     example, we may talk about Newton's theory of motion by stating his three
     laws. We may speak of Sherlock's theory of a case by citing a passage in
     which he lays out his conclusion as well as the twists and turns along the
-    way that lead him to this conclusion. How can a theory be incommuncable if
+    way that lead him to this conclusion. How can a theory be incommunicable if
     a theory just is a statement of some position?
   </p>
   <p>
     This is where Ryle's attention to detail pays off. Ryle helps us by making
-    more precise the notion of theory, separating it from its manifestions and
+    more precise the notion of theory, separating it from its manifestations and
     operations upon the theory. First Ryle wants to separate out building a
     theory from having a theory.
   </p>
@@ -141,7 +141,7 @@ const Incommunicability = () => <GlobalLayout>
   <p>
     Here Ryle contrasts the process of building the theory, from having a
     theory by talking about our abilities after we have a theory, the ability
-    to state or apply our theory. From this it would seem that a theory is
+    to state or apply our theory. From this, it would seem that a theory is
     some sort of proposition. If this is so, the work of building a theory
     would be that of memorization in order to recite a propositional
     statement. But this isn't quite right.
@@ -157,10 +157,10 @@ const Incommunicability = () => <GlobalLayout>
     </p>
   </BlockQuote>
   <p>
-    Having a theory must go beyond mere recitation. Theories are things which
+    Having a theory must go beyond mere recitation. Theories are things that
     can be applied and to have a theory requires the ability to apply that
     theory. Theories are varied in their presentation and use and a certain
-    level of mastery is required in order to claim possesion of a theory. To
+    level of mastery is required in order to claim possession of a theory. To
     put these in Ryle's terms, having a theory involves aspects of knowing how
     and knowing that.
   </p>
@@ -215,7 +215,7 @@ const Incommunicability = () => <GlobalLayout>
     how". We are to be "prepared to make a variety of moves". Having a theory
     requires the ability to know how to wield this theory. It requires being
     able to put the theory into practice, to use it for its particular ends.
-    This is not merely to sit in an arm chair and draw conclusions from it,
+    This is not merely to sit in an armchair and draw conclusions from it,
     but to know our theory so well, we know how to teach it, how to answer
     queries about it, how to relate it to other things, how to modify it in
     the face of new evidence. Each different type of theory has its own use
@@ -248,7 +248,7 @@ const Incommunicability = () => <GlobalLayout>
     theory about a program, he will know how to make changes to that program,
     we will be able to answer questions about that program, he will be able to
     explain parts of the program to others. But none of these presentations or
-    applications of the theory of the program is the theory itself
+    applications of the theory of the program are the theory itself
   </p>
   <p>
     If no presentation of a theory is the theory itself, it follows that no
@@ -256,12 +256,12 @@ const Incommunicability = () => <GlobalLayout>
     theory requires being able to perform certain moves, in the case of
     programming, making modifications to a program, then no program contains
     its own theory. In fact, no text, no video, no media of any sort can
-    contain the theory of a programming. Having a theory is something only a
+    contain the theory of a program. Having a theory is something only a
     human can do.
   </p>
   <Heading size="3" text="Implications" />
   <p>
-    The theories of the programs we write live inside us. As we move onto new
+    The theories of the programs we write live inside us. As we move on to new
     projects, leave old companies, or forget about code we once wrote, those
     theories die. The code we wrote might live on. People may continue to run
     it, read it, modify it, but some understanding of that code lives (or
@@ -270,7 +270,7 @@ const Incommunicability = () => <GlobalLayout>
   </p>
   <p>
     As we inherit code bases written by others, we encounter the same things,
-    code bases whose theory are gone to time or locked away in a location
+    codebases whose theories are gone to time or locked away in a location
     inaccessible to us. Programs that have been modified under many different
     theories, often incompatible ones. Bugs begin to find their way in, often
     at the intersection of two theories. Hacks begin to emerge as needs
@@ -278,7 +278,7 @@ const Incommunicability = () => <GlobalLayout>
   </p>
   <p>
     These are the facts we face as professional software engineers. We write
-    code whose theories will one day be lost and we inherit code bases whose
+    code whose theories will one day be lost and we inherit codebases whose
     theories are long forgotten. If we are to do programming well, we must
     adopt practices that address these issues.
   </p>
