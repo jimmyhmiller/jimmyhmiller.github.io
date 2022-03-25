@@ -182,7 +182,7 @@ const Index = () => <GlobalLayout>
     items={utilities}
   />
   <LinkList
-    title="Libraries"
+    title="Old Libraries"
     items={libraries}
   />
   <LinkList
@@ -190,7 +190,7 @@ const Index = () => <GlobalLayout>
     items={slides}
   />
   <LinkList
-    title="Projects"
+    title="Projects on Hold"
     items={project}
   />
 </GlobalLayout>;
