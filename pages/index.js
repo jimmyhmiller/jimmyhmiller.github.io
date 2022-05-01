@@ -1,9 +1,6 @@
-import {
-  Code,
-  Heading,
-  GlobalLayout,
-  LinkList,
-} from '../utils.js';
+import { Code, Heading, GlobalLayout, LinkList } from "../utils.js";
+
+import generateRSS from '../tools/build-rss';
 
 export const excludeRss = true;
 
@@ -84,13 +81,13 @@ export const posts = [
 const talks = [
   {
     text: "Meander: Declarative Explorations at the Limits of FP",
-    href: "https://www.youtube.com/watch?v=9fhnJpCgtUw"
+    href: "https://www.youtube.com/watch?v=9fhnJpCgtUw",
   },
   {
-    text:"Paradigms Without Progress: Kuhnian Reflections on Programming Practice",
-    href:"https://www.youtube.com/watch?v=TkPy7aLTtAw"
+    text: "Paradigms Without Progress: Kuhnian Reflections on Programming Practice",
+    href: "https://www.youtube.com/watch?v=TkPy7aLTtAw",
   },
-]
+];
 
 const utilities = [
   {
@@ -103,96 +100,79 @@ const utilities = [
   },
   {
     text: "EsLint Fixit",
-    href: "https://github.com/jimmyhmiller/eslint-fixit"
+    href: "https://github.com/jimmyhmiller/eslint-fixit",
   },
   {
     text: "Zoom Launcher",
-    href: "https://github.com/jimmyhmiller/zoom-cli"
+    href: "https://github.com/jimmyhmiller/zoom-cli",
   },
-]
+];
 
 const libraries = [
   {
     text: "MultiMethods in Javascript",
-    href: "https://github.com/jimmyhmiller/multiple-methods"
+    href: "https://github.com/jimmyhmiller/multiple-methods",
   },
   {
     text: "React Redux Connected",
-    href: "https://github.com/jimmyhmiller/react-redux-connected"
+    href: "https://github.com/jimmyhmiller/react-redux-connected",
   },
-]
+];
 
 const slides = [
   {
     text: "The Future of Programming",
-    href: "https://future-of-programming.now.sh"
+    href: "https://future-of-programming.now.sh",
   },
   {
     text: "What is a Monad?",
-    href: "https://what-is-a-monad.now.sh"
+    href: "https://what-is-a-monad.now.sh",
   },
   {
     text: "Practical Functional Refactoring",
-    href: "https://practical-functional-refactoring.now.sh"
+    href: "https://practical-functional-refactoring.now.sh",
   },
   {
     text: "Property Based Testing",
-    href: "https://generative-testing.now.sh"
+    href: "https://generative-testing.now.sh",
   },
   {
     text: "Datalog Lightning Talk",
-    href: "https://datalog.now.sh"
-  }
-]
+    href: "https://datalog.now.sh",
+  },
+];
 
 const project = [
   {
     text: "One Hundred Lines or Less",
-    href: "https://github.com/jimmyhmiller/one-hundred-lines-or-less"
-  }
-]
+    href: "https://github.com/jimmyhmiller/one-hundred-lines-or-less",
+  },
+];
 
 const readings = [
   {
     text: "Programming Readings",
-    href: "/muse"
-  }
-]
+    href: "/muse",
+  },
+];
 
-const Index = () => <GlobalLayout>
- <LinkList
-    title="Readings"
-    items={readings}
-  />
-  <LinkList
-    title="Posts (Most Recent First)"
-    items={posts}
-  />
-  <LinkList
-    title="For Beginners"
-    items={postsForBeginners}
-  />
+const Index = () => (
+  <GlobalLayout>
+    <LinkList title="Readings" items={readings} />
+    <LinkList title="Posts (Most Recent First)" items={posts} />
+    <LinkList title="For Beginners" items={postsForBeginners} />
 
-  <LinkList
-    title="Talks"
-    items={talks}
-  />
-  <LinkList
-    title="Utilities"
-    items={utilities}
-  />
-  <LinkList
-    title="Old Libraries"
-    items={libraries}
-  />
-  <LinkList
-    title="Slides"
-    items={slides}
-  />
-  <LinkList
-    title="Projects on Hold"
-    items={project}
-  />
-</GlobalLayout>;
+    <LinkList title="Talks" items={talks} />
+    <LinkList title="Utilities" items={utilities} />
+    <LinkList title="Old Libraries" items={libraries} />
+    <LinkList title="Slides" items={slides} />
+    <LinkList title="Projects on Hold" items={project} />
+  </GlobalLayout>
+);
+
+export const getStaticProps = () => {
+  generateRSS();
+  return {props: {}}
+}
 
 export default Index;
