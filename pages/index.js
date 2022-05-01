@@ -159,7 +159,7 @@ const readings = [
 const Index = () => (
   <GlobalLayout>
     <LinkList title="Readings" items={readings} />
-    <LinkList title="Posts (Most Recent First)" items={posts} />
+    <LinkList title="Posts" items={posts} />
     <LinkList title="For Beginners" items={postsForBeginners} />
 
     <LinkList title="Talks" items={talks} />
