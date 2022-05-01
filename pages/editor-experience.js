@@ -15,7 +15,7 @@ const EditorExperience = () => (
             (We'll explain what you see in a bit.)
         </p>
         <span>
-            <Image alt="editor" src="images/editor-intro.png" />
+            <Image alt="editor" src="images/editor-intro.webp" />
         </span>
         <p>
             The question of course is, what does &quot;scratch&quot;. In my
@@ -180,7 +180,7 @@ const EditorExperience = () => (
         </p>
         <Heading size="3" text="Token Pane"></Heading>
         <span>
-            <Image alt="" src="/images/token-pane.png" />
+            <Image alt="" src="/images/token-pane.webp" />
         </span>
         <p>
             As I was working on my tokenizer, I wanted to be able to see the
@@ -191,7 +191,7 @@ const EditorExperience = () => (
             useful for debugging.
         </p>
         <Heading size="3" text="Action Pane"></Heading>
-        <span><Image alt="" src="/images/action-pane.png" /></span>
+        <span><Image alt="" src="/images/action-pane.webp" /></span>
         <p>
             
             Next was the action pane. Quite a bit trickier. Here I would display
@@ -232,7 +232,7 @@ const EditorExperience = () => (
             then parsed by the editor and drawn as rectangles to the screen.
         </p>
         <span>
-            <Image alt="" src="/images/editor-draw.png" />
+            <Image alt="" src="/images/editor-draw.webp" />
         </span>
         <Heading size="3" text="Text Space Drawing"></Heading>
         <p>
@@ -243,7 +243,7 @@ const EditorExperience = () => (
             left, a quick bash script for drawing that to the screen.
         </p>
         <span>
-            <Image alt="" src="/images/text-space.png" />
+            <Image alt="" src="/images/text-space.webp" />
         </span>
         <p>
             The dream is that as things evolved, your editor could gain new
@@ -263,7 +263,7 @@ const EditorExperience = () => (
             tools. So, I exposed the editor as an http service.
         </p>
         <span>
-            <Image alt="" src="/images/editor-http.png" />
+            <Image alt="" src="/images/editor-http.webp" />
         </span>
         <p>
             Honestly, as weird as it may seem, it was pretty easy to do, not
