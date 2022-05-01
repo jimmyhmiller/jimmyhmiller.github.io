@@ -21,7 +21,7 @@ const EditorExperience = () => (
             (We'll explain what you see in a bit.)
         </p>
         <p>
-            <Image alt="editor" src={introImage} />
+            <Image alt="editor" src="images/editor-intro.png" />
         </p>
         <p>
             The question of course is, what does &quot;scratch&quot;. In my
@@ -186,7 +186,7 @@ const EditorExperience = () => (
         </p>
         <Heading size="3" text="Token Pane"></Heading>
         <p>
-            <Image alt="" src={tokenPaneImage} />
+            <Image alt="" src="/images/token-pane.png" />
         </p>
         <p>
             As I was working on my tokenizer, I wanted to be able to see the
@@ -198,7 +198,7 @@ const EditorExperience = () => (
         </p>
         <Heading size="3" text="Action Pane"></Heading>
         <p>
-            <Image alt="" src={actionPaneImage} />
+            <Image alt="" src="/images/action-pane.png" />
             Next was the action pane. Quite a bit trickier. Here I would display
             every action that happened in the app. But, what about scrolling the
             action pane? Well, if I did that, then as I scrolled the action pane
@@ -236,7 +236,7 @@ const EditorExperience = () => (
             prints output like <Term>rect 4 10 100 100</Term>, that output is
             then parsed by the editor and drawn as rectangles to the screen.
         </p>
-        <Image src={drawImage} />
+        <Image src="/images/editor-draw.png" />
         <Heading size="3" text="Text Space Drawing"></Heading>
         <p>
             Obviously, rectangles aren't the most useful thing to draw. But I
@@ -246,7 +246,7 @@ const EditorExperience = () => (
             left, a quick bash script for drawing that to the screen.
         </p>
         <p>
-            <Image alt="" src={textSpaceImage} />
+            <Image alt="" src="/images/text-space.png" />
         </p>
         <p>
             The dream is that as things evolved, your editor could gain new
@@ -266,7 +266,7 @@ const EditorExperience = () => (
             tools. So, I exposed the editor as an http service.
         </p>
         <p>
-            <Image alt="" src={httpImage} />
+            <Image alt="" src="/images/editor-http.png" />
         </p>
         <p>
             Honestly, as weird as it may seem, it was pretty easy to do, not

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
-// import NextImage from 'next/image';
+
+import { useState } from 'react';
 import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-light";
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
 import haskell from 'react-syntax-highlighter/dist/cjs/languages/prism/haskell';
@@ -8,8 +9,18 @@ import clojure from 'react-syntax-highlighter/dist/cjs/languages/prism/clojure';
 import { solarizedlight } from 'react-syntax-highlighter/dist/styles/prism';
 
 export const Link = NextLink;
-export const Image = () => null;
-// export const Image = (props) => <NextImage layout="responsive" {...props} />
+// export const Image = (props) => <img {...props} ;
+export const Image = (props) => {
+  const [fullScreen, setFullScreen] = useState(false);
+  const styles = !fullScreen ? {} : {position: "fixed", zIndex: 100, top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "80vw"}
+  return ( 
+    <>
+    {fullScreen && <div onClick={_ => setFullScreen(false)} style={{position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", backgroundColor: "rgb(0,0,0,0.8)"}} />}
+    <div style={{...styles}}>{fullScreen && <img onClick={() => setFullScreen(x => !x)} style={{width: "100%"}}  {...props}  />}</div>
+    <img onClick={() => setFullScreen(x => !x)} style={{width: "100%"}} {...props}  />
+    </>
+  )
+}
 
 // Super ugly hack to override prism languages
 // I really should make a modern prism, but I will
@@ -68,10 +79,10 @@ const removeFirst = (arr) => {
 export const detectIndent = source =>
   /^ */.exec(source)[0].length
 
-export const removeIndent = (source) => do {
+export const removeIndent = (source) => {
   const lines = removeFirst(source.split("\n"))
   const indent = detectIndent(lines[0])
-  lines
+  return lines
     .map(s => s.substring(indent, s.length))
     .join("\n")
 }
@@ -166,12 +177,14 @@ export const LinkList = ({ items, Elem=LargeText, title }) =>
     </ul>
   </>
 
-export const Heading = ({ color, text, size=1 }) => do {
+export const Heading = ({ color, text, size=1 }) => {
   const sizeToElem = {1: "h1", 2: "h2", 3: "h3", "4": "h4"}
   const Elem = sizeToElem[size];
-  <Elem style={{ color }}>
-    {text}
-  </Elem>
+  return (
+    <Elem style={{ color }}>
+      {text}
+    </Elem>
+  )
 }
 
 export const Term = ({children}) =>
