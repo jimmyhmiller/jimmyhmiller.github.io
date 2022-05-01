@@ -37,6 +37,10 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "My Experience Building an Editor in Rust",
+    href: "/editor-experience",
+  },
+  {
     text: "Towards Aesthetic Elements of Programming",
     href: "/aesthetic-elements",
   },

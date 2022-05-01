@@ -10,14 +10,14 @@ import { solarizedlight } from 'react-syntax-highlighter/dist/styles/prism';
 
 export const Link = NextLink;
 // export const Image = (props) => <img {...props} ;
-export const Image = (props) => {
+export const Image = ({ src }) => {
   const [fullScreen, setFullScreen] = useState(false);
   const styles = !fullScreen ? {} : {position: "fixed", zIndex: 100, top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "80vw"}
   return ( 
     <>
     {fullScreen && <div onClick={_ => setFullScreen(false)} style={{position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", backgroundColor: "rgb(0,0,0,0.8)"}} />}
-    <div style={{...styles}}>{fullScreen && <img onClick={() => setFullScreen(x => !x)} style={{width: "100%"}}  {...props}  />}</div>
-    <img onClick={() => setFullScreen(x => !x)} style={{width: "100%"}} {...props}  />
+    <div style={{...styles}}>{fullScreen && <img onClick={() => setFullScreen(x => !x)} style={{width: "100%"}}  src={src}  />}</div>
+    <img onClick={() => setFullScreen(x => !x)} style={{width: "100%"}} src={src}  />
     </>
   )
 }

@@ -1,10 +1,4 @@
 import { Heading, GlobalLayout, Title, Term, Image } from "../utils.js";
-import introImage from '../public/images/editor-intro.png';
-import drawImage from '../public/images/editor-draw.png';
-import httpImage from '../public/images/editor-http.png';
-import actionPaneImage from '../public/images/action-pane.png';
-import textSpaceImage from '../public/images/text-space.png';
-import tokenPaneImage from '../public/images/token-pane.png';
 
 const EditorExperience = () => (
     <GlobalLayout>
@@ -20,9 +14,9 @@ const EditorExperience = () => (
             pretty well. Here's a screenshot of where things are right now.
             (We'll explain what you see in a bit.)
         </p>
-        <p>
+        <span>
             <Image alt="editor" src="images/editor-intro.png" />
-        </p>
+        </span>
         <p>
             The question of course is, what does &quot;scratch&quot;. In my
             case, I decided that &quot;scratch&quot; was going to be defined as
@@ -185,9 +179,9 @@ const EditorExperience = () => (
             the more interesting things I now wanted to do.{" "}
         </p>
         <Heading size="3" text="Token Pane"></Heading>
-        <p>
+        <span>
             <Image alt="" src="/images/token-pane.png" />
-        </p>
+        </span>
         <p>
             As I was working on my tokenizer, I wanted to be able to see the
             output of the tokens right in the app. So I created what I called
@@ -197,8 +191,9 @@ const EditorExperience = () => (
             useful for debugging.
         </p>
         <Heading size="3" text="Action Pane"></Heading>
+        <span><Image alt="" src="/images/action-pane.png" /></span>
         <p>
-            <Image alt="" src="/images/action-pane.png" />
+            
             Next was the action pane. Quite a bit trickier. Here I would display
             every action that happened in the app. But, what about scrolling the
             action pane? Well, if I did that, then as I scrolled the action pane
@@ -236,7 +231,9 @@ const EditorExperience = () => (
             prints output like <Term>rect 4 10 100 100</Term>, that output is
             then parsed by the editor and drawn as rectangles to the screen.
         </p>
-        <Image src="/images/editor-draw.png" />
+        <span>
+            <Image alt="" src="/images/editor-draw.png" />
+        </span>
         <Heading size="3" text="Text Space Drawing"></Heading>
         <p>
             Obviously, rectangles aren't the most useful thing to draw. But I
@@ -245,9 +242,9 @@ const EditorExperience = () => (
             compiler output. On the right, you see some unused imports. On the
             left, a quick bash script for drawing that to the screen.
         </p>
-        <p>
+        <span>
             <Image alt="" src="/images/text-space.png" />
-        </p>
+        </span>
         <p>
             The dream is that as things evolved, your editor could gain new
             powers simply by code you have running in panes. No need for an
@@ -265,9 +262,9 @@ const EditorExperience = () => (
             saved. Further, you should be able to access it with just standard
             tools. So, I exposed the editor as an http service.
         </p>
-        <p>
+        <span>
             <Image alt="" src="/images/editor-http.png" />
-        </p>
+        </span>
         <p>
             Honestly, as weird as it may seem, it was pretty easy to do, not
             expensive computationally, and made it easy to access the data.
