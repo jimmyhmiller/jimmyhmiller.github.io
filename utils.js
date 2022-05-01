@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
+import NextImage from 'next/image';
 import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-light";
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
 import haskell from 'react-syntax-highlighter/dist/cjs/languages/prism/haskell';
@@ -7,6 +8,7 @@ import clojure from 'react-syntax-highlighter/dist/cjs/languages/prism/clojure';
 import { solarizedlight } from 'react-syntax-highlighter/dist/styles/prism';
 
 export const Link = NextLink;
+export const Image = (props) => <NextImage layout="responsive" {...props} />
 
 // Super ugly hack to override prism languages
 // I really should make a modern prism, but I will
@@ -26,6 +28,7 @@ clojure2.aliases = []
 SyntaxHighlighter.registerLanguage('javascript', js);
 SyntaxHighlighter.registerLanguage('haskell', haskell);
 SyntaxHighlighter.registerLanguage('clojure', clojure2)
+
 
 
 

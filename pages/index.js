@@ -40,47 +40,46 @@ export const postsForBeginners = [
 
 export const posts = [
   {
-    text: "Defending the Incommunicability of Programs",
-    href: "/incommunicability"
-  },
-  {
-    text: "Named Function Composition",
-    href: "/named-function-composition"
-  },
-  {
-    text: "Meander for Practical Data Transformation",
-    href: "/meander-practical"
-  },
-  {
-    text: "Term Rewriting with Meander",
-    href: "/meander-rewriting"
-  },
-  {
-    text: "Card Driven Development",
-    href: "/card-driven-development"
-  },
-  {
-    text: "Building Meander in Meander",
-    href: "/building-meander-in-meander"
-  },
-  {
-    text: "Conceptual Engineering",
-    href: "/conceptual-engineering"
-  },
-  {
-    text: "Conceptual Preservation",
-    href: "/conceptual-preservation"
+    text: "Towards Aesthetic Elements of Programming",
+    href: "/aesthetic-elements",
   },
   {
     text: "CDD and the Non-Linearity of Discovery",
-    href: "/cdd-non-linear"
+    href: "/cdd-non-linear",
   },
   {
-    text: "Towards Aesthetic Elements of Programming",
-    href: "/aesthetic-elements"
+    text: "Conceptual Preservation",
+    href: "/conceptual-preservation",
   },
-
-]
+  {
+    text: "Conceptual Engineering",
+    href: "/conceptual-engineering",
+  },
+  {
+    text: "Building Meander in Meander",
+    href: "/building-meander-in-meander",
+  },
+  {
+    text: "Card Driven Development",
+    href: "/card-driven-development",
+  },
+  {
+    text: "Term Rewriting with Meander",
+    href: "/meander-rewriting",
+  },
+  {
+    text: "Meander for Practical Data Transformation",
+    href: "/meander-practical",
+  },
+  {
+    text: "Named Function Composition",
+    href: "/named-function-composition",
+  },
+  {
+    text: "Defending the Incommunicability of Programs",
+    href: "/incommunicability",
+  },
+];
 
 const talks = [
   {
@@ -166,13 +165,14 @@ const Index = () => <GlobalLayout>
     items={readings}
   />
   <LinkList
+    title="Posts (Most Recent First)"
+    items={posts}
+  />
+  <LinkList
     title="For Beginners"
     items={postsForBeginners}
   />
-  <LinkList
-    title="Other Posts"
-    items={posts}
-  />
+
   <LinkList
     title="Talks"
     items={talks}
