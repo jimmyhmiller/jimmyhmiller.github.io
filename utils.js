@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-light";
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
 import haskell from 'react-syntax-highlighter/dist/cjs/languages/prism/haskell';
@@ -217,31 +217,38 @@ export const Title = ({ text }) =>
     <Heading text={text} size={1} />
   </>
 
-export const GlobalLayout = ({ children }) =>
-  <>
-    <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
-      <meta name="author" content="Jimmy Miller" />
-      <link rel="alternate" type="application/rss+xml" title="jimmyhmiller.github.io"  href="feed.xml" />
-    </Head>
-    <GlobalStyles />
-    <Container>
-      <div style={{position: "relative"}}>
-          <AbsolutePosition right={0} top={0}>
-          <Link href="/">
-            <a style={{textDecoration: "none"}}>
-              <Heading
-                 color="#999"
-                 text="Jimmy Miller"/>
-            </a>
-           </Link>
-          </AbsolutePosition>
-      </div>
-      <Padding top={70}>
-        {children}
-      </Padding>
-    </Container>
-  </>
+export const GlobalLayout = ({ children }) => {
+  useEffect(() => {
+    fetch(`https://github-sites-simple-stats-jimmyhmiller.vercel.app/api${window.location.pathname === "/" ? "/index" : window.location.pathname}`)
+  }, [])
+
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+        <meta name="author" content="Jimmy Miller" />
+        <link rel="alternate" type="application/rss+xml" title="jimmyhmiller.github.io"  href="feed.xml" />
+      </Head>
+      <GlobalStyles />
+      <Container>
+        <div style={{position: "relative"}}>
+            <AbsolutePosition right={0} top={0}>
+            <Link href="/">
+              <a style={{textDecoration: "none"}}>
+                <Heading
+                   color="#999"
+                   text="Jimmy Miller"/>
+              </a>
+             </Link>
+            </AbsolutePosition>
+        </div>
+        <Padding top={70}>
+          {children}
+        </Padding>
+      </Container>
+    </>
+  )
+}
 
 
