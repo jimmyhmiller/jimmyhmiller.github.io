@@ -2,7 +2,7 @@ import { Heading, BlockQuote, Term, GlobalLayout, Title } from "../utils.js";
 
 const AestheticElements = () => (
     <GlobalLayout>
-        <Title text="Towards Aesthetics Elements of Programming" />
+        <Title text="Towards Aesthetic Elements of Programming" />
         <p>
             Programming styles are immediately recognizable. And yet, the
             elements that contribute to these styles remain unnamed. What is it
@@ -83,7 +83,7 @@ const AestheticElements = () => (
         <Heading size="2" text="Structured vs Unstructured" />
         <p>
             The contrast here between structure vs unstructured is not referring
-            to “structured programming” in the “goto considered harmful sense”.
+            to “structured programming” in the “goto considered harmful" sense.
             Instead what I am referring to is a program-level structure. Some
             codebases provide an overarching structure, perhaps providing
             categories for where each sort of item should go (eg. MVC). Then
