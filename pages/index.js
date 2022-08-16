@@ -2,7 +2,6 @@ import { Code, Heading, GlobalLayout, LinkList } from "../utils.js";
 
 import generateRSS from '../tools/build-rss';
 
-export const excludeRss = true;
 
 export const postsForBeginners = [
   {
@@ -36,6 +35,10 @@ export const postsForBeginners = [
 ];
 
 export const posts = [
+  {
+    text: "Social Language Constructs",
+    href: "/social-language-constructs",
+  },
   {
     text: "My Experience Building an Editor in Rust",
     href: "/editor-experience",
@@ -160,17 +163,36 @@ const readings = [
   },
 ];
 
+const contact = [
+  {
+    text: "Twitter",
+    href:"https://twitter.com/jimmyhmiller",
+  },
+  {
+    text: "Github",
+    href: "https://github.com/jimmyhmiller",
+  }
+]
+
+const podcast = [
+  {
+    text: "Future Of Coding",
+    href: "https://futureofcoding.org/episodes/",
+  }
+]
+
 const Index = () => (
   <GlobalLayout>
-    <LinkList title="Readings" items={readings} />
     <LinkList title="Posts" items={posts} />
-    <LinkList title="For Beginners" items={postsForBeginners} />
-
+    <LinkList title="Podcast" items={podcast} />
     <LinkList title="Talks" items={talks} />
+    <LinkList title="Posts For Beginners" items={postsForBeginners} />
     <LinkList title="Utilities" items={utilities} />
     <LinkList title="Old Libraries" items={libraries} />
     <LinkList title="Slides" items={slides} />
     <LinkList title="Projects on Hold" items={project} />
+    <LinkList title="Readings" items={readings} />
+    <LinkList title="Personal Links" items={contact} />
   </GlobalLayout>
 );
 

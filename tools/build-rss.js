@@ -11,6 +11,7 @@ const generateRSS = () => {
     site_url: siteUrl,
   })
   postsForBeginners.concat(posts).map(post => {
+    console.log(post);
     const postEntry = require(`../pages${post.href}`)
     feed.item({
       title: post.text,
@@ -20,7 +21,7 @@ const generateRSS = () => {
     })
   })
    const output = feed.xml({ indent: true })
-   const dir = "../public"
+   const dir = "public"
    if (!fs.existsSync(dir)){
       fs.mkdirSync(dir);
     }
