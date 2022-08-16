@@ -12,7 +12,7 @@ const EditorExperience = () => (
             perfect opportunity to go beyond glue code. To write a GUI text
             editor from &quot;scratch&quot;. Overall, I'd say it worked out
             pretty well. Here's a screenshot of where things are right now.
-            (We'll explain what you see in a bit.)
+            (I'll explain what you see in a bit.)
         </p>
         <span>
             <Image alt="editor" src="images/editor-intro.webp" />
