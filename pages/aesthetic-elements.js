@@ -15,7 +15,7 @@ const AestheticElements = () => (
         </p>
         <Heading size="2" text="Identifying Elements" />
         <p>
-            Ideally, to understand these styles, we can consider elements that
+            Ideally, to understand these styles we can consider elements that
             combine to form a certain style. If we identify the right elements,
             we should be able to take them, vary them, and combine them to get a
             particular, recognizable style. Perhaps even, we can see what
