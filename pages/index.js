@@ -36,7 +36,7 @@ export const postsForBeginners = [
 
 export const posts = [
   {
-    text: "Social Language Constructs",
+    text: "Social Programming Language Constructs",
     href: "/social-language-constructs",
   },
   {

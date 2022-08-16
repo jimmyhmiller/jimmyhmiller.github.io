@@ -3,7 +3,7 @@ import { Heading, BlockQuote, Term, GlobalLayout, Title } from "../utils.js";
 const SocialLanguageConstructs = () => {
     return (
         <GlobalLayout>
-            <Title text="Social Language Constructs"></Title>
+            <Title text="Social Programming Language Constructs"></Title>
             <p>
                 As programmers, we love to act as if everything is cut and dry,
                 unaffected by social circumstances. The mindless execution of
