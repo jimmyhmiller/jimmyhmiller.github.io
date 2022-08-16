@@ -18,13 +18,13 @@ const EditorExperience = () => (
             <Image alt="editor" src="images/editor-intro.webp" />
         </span>
         <p>
-            The question of course is, what does &quot;scratch&quot;. In my
+            The question of course is, what does &quot;scratch&quot; mean. In my
             case, I decided that &quot;scratch&quot; was going to be defined as
             using sdl2 as my set of primitives. So I had a fairly high-level way
             of dealing with things like drawing to a screen and rendering fonts,
             but nothing text editor specific. This choice I think was pretty
             good for me to get stuff going. I have no experience with graphics
-            APIs and had I started there, I might have just stayed there.{" "}
+            APIs and had I started there, I might have just stayed there.
         </p>
         <p>
             From the other angle, sdl2 was also good in that it didn't do too
