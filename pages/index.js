@@ -36,6 +36,10 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "The Space Between Programs",
+    href: "/space-between",
+  },
+  {
     text: "Social Programming Language Constructs",
     href: "/social-language-constructs",
   },
