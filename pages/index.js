@@ -193,7 +193,7 @@ const Index = () => (
     <LinkList title="Posts For Beginners" items={postsForBeginners} />
     <LinkList title="Utilities" items={utilities} />
     <LinkList title="Old Libraries" items={libraries} />
-    <LinkList title="Slides" items={slides} />
+    <LinkList title="Slides from Old Talks" items={slides} />
     <LinkList title="Projects on Hold" items={project} />
     <LinkList title="Readings" items={readings} />
     <LinkList title="Personal Links" items={contact} />
