@@ -6,6 +6,7 @@ import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-light";
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
 import haskell from 'react-syntax-highlighter/dist/cjs/languages/prism/haskell';
 import clojure from 'react-syntax-highlighter/dist/cjs/languages/prism/clojure';
+import ruby from 'react-syntax-highlighter/dist/cjs/languages/prism/ruby';
 import { solarizedlight } from 'react-syntax-highlighter/dist/styles/prism';
 
 export const Link = NextLink;
@@ -39,7 +40,8 @@ clojure2.aliases = []
 
 SyntaxHighlighter.registerLanguage('javascript', js);
 SyntaxHighlighter.registerLanguage('haskell', haskell);
-SyntaxHighlighter.registerLanguage('clojure', clojure2)
+SyntaxHighlighter.registerLanguage('clojure', clojure2);
+SyntaxHighlighter.registerLanguage('ruby', ruby);
 
 
 
@@ -131,6 +133,12 @@ export const Haskell = ({ children }) =>
 export const Clojure = ({ children }) => 
   <Code
     language="clojure"
+    source={children} />
+
+
+export const Ruby = ({ children }) => 
+  <Code
+    language="ruby"
     source={children} />
 
 const GlobalStyles = () => 
