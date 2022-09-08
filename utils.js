@@ -186,8 +186,11 @@ export const LinkList = ({ items, Elem=LargeText, title }) =>
   </>
 
 export const Heading = ({ color, text, size=1 }) => {
-  const sizeToElem = {1: "h1", 2: "h2", 3: "h3", "4": "h4"}
+  const sizeToElem = {1: "h1", 2: "h2", 3: "h3", 4: "h4"}
   const Elem = sizeToElem[size];
+  if (!Elem) {
+    throw new Error("Undefined Heading Size")
+  }
   return (
     <Elem style={{ color }}>
       {text}
