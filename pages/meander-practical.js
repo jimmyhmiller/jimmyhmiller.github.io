@@ -349,7 +349,7 @@ const MeanderPractical = () => <GlobalLayout>
   (defn find-people-with-zip [people zip]
     (m/search people
       (m/scan {:name ?name
-               :addresses (scan {:zip ~zip :as ?address})})
+               :addresses (m/scan {:zip ~zip :as ?address})})
       {:name ?name
        :address ?address}))
   `}
