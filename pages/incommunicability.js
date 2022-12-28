@@ -107,7 +107,7 @@ const Incommunicability = () => <GlobalLayout>
     Holmes, while differing in subject matter and method, built theories.
     Someone laboring to discover how to lay carpet in a room, making
     measurements, determining which way the carpet ought to be laid, is caught
-    up in the act of theory building. The historian, as he studies the
+    up in the act of theory building. The historian, as they study the
     accounts of a battle, is building a theory about the battle's proceedings.
     Given this broad view of theory building, it should not be a surprise
     that programming will fall into this category as well.
@@ -183,8 +183,8 @@ const Incommunicability = () => <GlobalLayout>
     that of a juggler. We are led to imagine a skilled juggler, who with ease
     can juggle various objects in various amounts. His hands rise and fall in
     perfect time with the objects. This is a perfect example of "knowing how",
-    our juggler has a certain intuitive understanding of the objects he is
-    manipulating. He knows how high to throw an object, how quickly to move
+    our juggler has a certain intuitive understanding of the objects they are
+    manipulating. They knows how high to throw an object, how quickly to move
     his hands to catch them as they fall; his knowledge is made evident by his
     performance.
   </p>
@@ -245,8 +245,8 @@ const Incommunicability = () => <GlobalLayout>
   </BlockQuote>
   <p>
     Having a theory is to know how to do something. If a programmer has a
-    theory about a program, he will know how to make changes to that program,
-    we will be able to answer questions about that program, he will be able to
+    theory about a program, they will know how to make changes to that program,
+    we will be able to answer questions about that program, they will be able to
     explain parts of the program to others. But none of these presentations or
     applications of the theory of the program are the theory itself
   </p>
