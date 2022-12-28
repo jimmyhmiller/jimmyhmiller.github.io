@@ -205,9 +205,7 @@ const EditorExperience = () => (
             a great way to refer to panes. My actions would be something like
             &quot;MoveActivePane&quot;. But what was the active pane, or more
             precisely, when? Well, if I was looking at the action
-            <i>
-                pane, it was the active pane, so now as I'm filtering out action
-            </i>
+            pane, it was the active pane, so now as I'm filtering out action
             pane actions, I would filter out all active pane actions! Not what I
             wanted. So I had to set up a system where your actions resolve to
             ids.{" "}
