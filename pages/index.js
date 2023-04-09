@@ -36,6 +36,10 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "What Follows from Empirical Software Research?",
+    href: "/empirical",
+  },
+  {
     text: "The Space Between Programs",
     href: "/space-between",
   },

@@ -120,6 +120,10 @@ export const Code = ({ source, language }) => {
   )
 }
 
+export const GenericCode = ({ children }) =>
+  <Code
+    source={children} />
+
 export const Javascript = ({ children }) => 
   <Code
     language="javascript"
