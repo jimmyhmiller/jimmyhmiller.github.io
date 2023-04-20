@@ -5,8 +5,29 @@ import {
   BlockQuote,
 } from "../utils.js";
 
+
+import Head from 'next/head';
+
 const Empirical = () => (
   <GlobalLayout>
+
+    <Head>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="jimmyhmiller.github.io" />
+        <meta
+          property="og:url"
+          content="https://jimmyhmiller.github.io/empirical"
+        />
+        <meta
+          name="og:title"
+          content="What Follows from Empirical Software Research?"
+        />
+        <meta
+          name="og:image"
+          content="https://jimmyhmiller.github.io/images/empirical.png"
+        />
+    </Head>
+
     <Title text="What Follows from Empirical Software Research?"></Title>
     <p>
       There is a growing body of literature studying software engineering from
