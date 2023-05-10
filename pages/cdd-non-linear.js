@@ -14,7 +14,7 @@ const CDDNonLinear = () => (
 	<GlobalLayout>
 		<Title text="CDD and the Non-Linearity of Discovery"></Title>
 		<p>
-			I have written previously about how Card Driven Development is
+			I have written previously about how <Link href="/card-driven-development">Card Driven Development</Link> is
 			extremely detrimental to the development process. In that essay I
 			pegged the problem on CDDs lack of proper knowledge sharing and its
 			incorrect splitting of responsibility. Today I want to focus on a
