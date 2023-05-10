@@ -6,6 +6,7 @@ import {
   Term,
   GlobalLayout,
   Title,
+  Link,
 } from "../utils.js";
 
 
@@ -21,7 +22,7 @@ const CDDNonLinear = () => (
 			is the start of me trying to deliver on the promissory note I left
 			at the end of the last essay. If we are to replace CDD we must start
 			with an understanding of what programming is. That is our starting
-			point today. Programming is theory building, does CDD help us build
+			point today. <Link href="/incommunicability">Programming is Theory Building</Link>, does CDD help us build
 			theories?
 		</p>
 		<p>

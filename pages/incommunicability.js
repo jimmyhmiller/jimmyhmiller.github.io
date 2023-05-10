@@ -6,12 +6,13 @@ import {
   Term,
   GlobalLayout,
   Title,
+  Link,
 } from "../utils.js";
 
 const Incommunicability = () => <GlobalLayout>
   <Title text="Defending the Incommunicability of Programs" />
   <p>
-    Peter Naur's essay "Programming as Theory Building" is an exploration into
+    Peter Naur's essay <Link href="https://pages.cs.wisc.edu/~remzi/Naur.pdf">"Programming as Theory Building"</Link> is an exploration into
     the essence of programming. What is the activity of programming? How does
     this notion affect our practice? As Naur sees it, understanding the nature
     of this activity is paramount, for, "If our understanding is inappropriate
