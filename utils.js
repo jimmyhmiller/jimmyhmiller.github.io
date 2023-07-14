@@ -258,7 +258,7 @@ export const GlobalLayout = ({ children }) => {
              </Link>
             </AbsolutePosition>
         </div>
-        <Padding top={70}>
+        <Padding top={70} bottom={70}>
           {children}
         </Padding>
       </Container>
