@@ -36,6 +36,10 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "ChatGPT Doesn't Know Anything",
+    href: "/chatgpt",
+  },
+  {
     text: "What Follows from Empirical Software Research?",
     href: "/empirical",
   },
