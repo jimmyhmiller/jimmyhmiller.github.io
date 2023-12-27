@@ -36,6 +36,11 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "Being Stuck in Someone Else’s Theory",
+    href: "/stuck",
+    mdx: true,
+  },
+  {
     text: "ChatGPT Doesn't Know Anything",
     href: "/chatgpt",
   },
@@ -208,7 +213,7 @@ const Index = () => (
   </GlobalLayout>
 );
 
-export const getStaticProps = () => {
+export const getStaticProps = async () => {
   generateRSS();
   return {props: {}}
 }

@@ -3,6 +3,16 @@ import ReactDOMServer from 'react-dom/server';
 import { postsForBeginners, posts } from "../pages/index.js"
 const fs = require("fs");
 
+const getMarkupUp = (post) => {
+  if (post.mdx) {
+    const postEntry = require(`../pages${post.href}.mdx`);
+    return ReactDOMServer.renderToStaticMarkup(postEntry.default());
+  } else {
+    const postEntry = require(`../pages${post.href}`)
+    return ReactDOMServer.renderToStaticMarkup(postEntry.default())
+  }
+}
+
 const generateRSS = () => {
   console.log("Generating RSS")
   const siteUrl = "https://jimmyhmiller.github.io"
@@ -10,16 +20,15 @@ const generateRSS = () => {
     title: "jimmyhmiller.github.io",
     site_url: siteUrl,
   })
-  postsForBeginners.concat(posts).map(post => {
-    console.log(post);
-    const postEntry = require(`../pages${post.href}`)
-    feed.item({
+  for (const post of postsForBeginners.concat(posts)) {
+     feed.item({
       title: post.text,
       guid: post.href,
       url: siteUrl + post.href,
-      description: ReactDOMServer.renderToStaticMarkup(postEntry.default())
+      description: getMarkupUp(post)
     })
-  })
+  }
+
    const output = feed.xml({ indent: true })
    const dir = "public"
    if (!fs.existsSync(dir)){

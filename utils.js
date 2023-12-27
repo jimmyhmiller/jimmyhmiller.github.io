@@ -171,7 +171,7 @@ const ListItem = ({ href, text, Elem }) =>
   <li key={href}>
     <Elem>
       <Link href={href}>
-        <a>{text}</a>
+        {text}
       </Link>
     </Elem>
   </li>
@@ -249,12 +249,10 @@ export const GlobalLayout = ({ children }) => {
       <Container>
         <div style={{position: "relative"}}>
             <AbsolutePosition right={0} top={0}>
-            <Link href="/">
-              <a style={{textDecoration: "none"}}>
+            <Link style={{textDecoration: "none"}} href="/">
                 <Heading
                    color="#999"
                    text="Jimmy Miller"/>
-              </a>
              </Link>
             </AbsolutePosition>
         </div>

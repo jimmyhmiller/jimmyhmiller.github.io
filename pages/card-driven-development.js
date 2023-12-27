@@ -259,7 +259,7 @@ const CardDrivenDevelopment = () => <GlobalLayout>
     cycle repeats. If we are ever to break this cycle, we must get rid of 
     card-driven development. What I think should replace it is a topic for another
     post. But whatever the right process is, it must start with an understanding
-    of <Link href="/incommunicability"><a>what programming is</a></Link>.
+    of <Link href="/incommunicability">what programming is</Link>.
   </p>
 </GlobalLayout>;
 
