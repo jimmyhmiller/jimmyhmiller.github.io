@@ -37,7 +37,7 @@ export const postsForBeginners = [
 export const posts = [
   {
     text: "Not Another Technical Debt Article",
-    href: "/technical-debt",
+    href: "/not-another-technical-debt-article",
     mdx: true,
   },
   {
