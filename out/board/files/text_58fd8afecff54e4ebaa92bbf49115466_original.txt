@@ -1,1 +1,0 @@
-Here is a collection of the papers I’ve read, and those in my list to read. I use museapp.com for all my reading and ideating. Since they don’t currently support any web export, I decided to make my own quick and hacky viewer.

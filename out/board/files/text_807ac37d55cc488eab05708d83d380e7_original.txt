@@ -1,1 +1,0 @@
-What if instead of some count it was based on probability? Or instead of probability was based on efficiency? Are their better times to force those thunks? Research predicting below.
