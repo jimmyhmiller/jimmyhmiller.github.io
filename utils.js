@@ -224,6 +224,18 @@ export const BlockQuote = ({children}) =>
     {children}
   </blockquote>
 
+export const Attribution = ({children}) =>
+  <p style={{
+    fontSize: 13,
+    color: "#666",
+    marginTop: -14,
+    marginLeft: 12,
+    fontWeight: "light",
+  }}>
+    —{" "}
+    <span style={{textDecoration: "underline"}}>{children}</span>
+  </p>
+
 export const Title = ({ text }) => 
   <>
     <Head>

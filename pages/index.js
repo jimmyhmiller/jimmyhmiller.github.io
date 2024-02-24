@@ -36,6 +36,11 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "That Will Never Change. Not Here",
+    href: "/never-change",
+    mdx: true,
+  },
+  {
     text: "Not Another Technical Debt Article",
     href: "/not-another-technical-debt-article",
     mdx: true,
