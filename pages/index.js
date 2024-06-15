@@ -192,6 +192,10 @@ const readings = [
 
 const contact = [
   {
+    text: "Mastodon",
+    href:"https://hachyderm.io/@jimmyhmiller",
+  },
+  {
     text: "Twitter",
     href:"https://twitter.com/jimmyhmiller",
   },
