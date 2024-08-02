@@ -7,7 +7,7 @@ import {
   GlobalLayout,
   Title,
   Link,
-} from "../utils.js";
+} from "../utils";
 
 const Incommunicability = () => <GlobalLayout>
   <Title text="Defending the Incommunicability of Programs" />

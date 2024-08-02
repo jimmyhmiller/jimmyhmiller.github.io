@@ -2,7 +2,7 @@ import {
   Heading,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 import Link from 'next/link';
 

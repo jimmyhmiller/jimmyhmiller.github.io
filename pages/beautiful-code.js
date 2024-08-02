@@ -6,7 +6,7 @@ import {
   Term,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 const BeautifulCode = () => <GlobalLayout>
   <Title text="Beautiful Code Through Simplicity" />

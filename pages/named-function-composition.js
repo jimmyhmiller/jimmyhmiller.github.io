@@ -7,7 +7,7 @@ import {
   Term,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 const NamedFunctionComposition = () => <GlobalLayout>
   <Title text="Named Function Composition" />

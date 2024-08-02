@@ -5,7 +5,7 @@ import {
   Term,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 const BuildingMeanderInMeander = () => <GlobalLayout>
   <Title text="Building Meander in Meander" />

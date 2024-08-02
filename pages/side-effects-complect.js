@@ -6,7 +6,7 @@ import {
   Term,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 const SideEffectsComplect = () => <GlobalLayout>
   <Title text="Side Effects, Complecting a la Carte" />

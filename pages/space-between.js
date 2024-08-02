@@ -1,4 +1,4 @@
-import { Heading, BlockQuote, Term, GlobalLayout, Title } from "../utils.js";
+import { Heading, BlockQuote, Term, GlobalLayout, Title } from "../utils";
 
 const SpaceBetween = () => {
     return (

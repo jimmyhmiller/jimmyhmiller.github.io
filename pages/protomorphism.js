@@ -6,7 +6,7 @@ import {
   Term,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 const Protomorphism = () => <GlobalLayout>
   <Title size="1" text="Protomorphism" />

@@ -1,4 +1,4 @@
-import { Heading, BlockQuote, Term, GlobalLayout, Title, Image } from "../utils.js";
+import { Heading, BlockQuote, Term, GlobalLayout, Title, Image } from "../utils";
 
 const YJit = () => (
     <GlobalLayout>

@@ -1,4 +1,4 @@
-import { Heading, GlobalLayout, Title, Term, Image, BlockQuote } from "./utils.js";
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote } from "./utils";
  
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any

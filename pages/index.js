@@ -1,4 +1,4 @@
-import { Code, Heading, GlobalLayout, LinkList } from "../utils.js";
+import { Code, Heading, GlobalLayout, LinkList } from "../utils";
 
 import generateRSS from '../tools/build-rss';
 
@@ -35,6 +35,11 @@ export const postsForBeginners = [
 ];
 
 export const posts = [
+  {
+    text: '"We ran out of columns" - The best, worst codebase',
+    href: "/ugliest-beautiful-codebase",
+    mdx: true,
+  },
   {
     text: "That Will Never Change. Not Here",
     href: "/never-change",
@@ -228,7 +233,7 @@ const Index = () => (
 );
 
 export const getStaticProps = async () => {
-  generateRSS();
+  await generateRSS();
   return {props: {}}
 }
 

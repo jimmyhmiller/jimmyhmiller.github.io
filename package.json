@@ -5,6 +5,7 @@
   "repository": "git@github.com:jimmyhmiller/jimmyhmiller.github.io.git",
   "author": "<jimmy@jimmyhmiller@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
@@ -13,7 +14,8 @@
     "next": "^14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-syntax-highlighter": "10.3.0"
+    "react-syntax-highlighter": "10.3.0",
+    "remark-gfm": "^4.0.0"
   },
   "scripts": {
     "dev": "next",

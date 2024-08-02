@@ -3,17 +3,17 @@ import ReactDOMServer from 'react-dom/server';
 import { postsForBeginners, posts } from "../pages/index.js"
 const fs = require("fs");
 
-const getMarkupUp = (post) => {
+const getMarkupUp = async (post) => {
   if (post.mdx) {
     const postEntry = require(`../pages${post.href}.mdx`);
     return ReactDOMServer.renderToStaticMarkup(postEntry.default());
   } else {
-    const postEntry = require(`../pages${post.href}`)
+    const postEntry = await import(`../pages${post.href}`)
     return ReactDOMServer.renderToStaticMarkup(postEntry.default())
   }
 }
 
-const generateRSS = () => {
+const generateRSS = async () => {
   console.log("Generating RSS")
   const siteUrl = "https://jimmyhmiller.github.io"
   const feed = new RSS({

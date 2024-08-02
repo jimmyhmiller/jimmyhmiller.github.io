@@ -1,4 +1,4 @@
-import { Heading, GlobalLayout, Title, Term, Image } from "../utils.js";
+import { Heading, GlobalLayout, Title, Term, Image } from "../utils";
 
 const EditorExperience = () => (
     <GlobalLayout>

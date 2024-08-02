@@ -6,7 +6,7 @@ import {
   Term,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 const BasicFunctionalStudies = () => <GlobalLayout>
   <Title text="Basic Functional Studies" />

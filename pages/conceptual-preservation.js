@@ -3,7 +3,7 @@ import {
   GlobalLayout,
   Title,
   Link,
-} from "../utils.js";
+} from "../utils";
 
 
 const ConceptualPreservation = () => <GlobalLayout>

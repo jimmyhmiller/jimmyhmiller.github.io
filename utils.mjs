@@ -2,11 +2,11 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 
 import { useState, useEffect } from 'react';
-import SyntaxHighlighter from "react-syntax-highlighter/dist/cjs/prism-light";
-import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript';
-import haskell from 'react-syntax-highlighter/dist/cjs/languages/prism/haskell';
-import clojure from 'react-syntax-highlighter/dist/cjs/languages/prism/clojure';
-import ruby from 'react-syntax-highlighter/dist/cjs/languages/prism/ruby';
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-light";
+import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
+import haskell from 'react-syntax-highlighter/dist/esm/languages/prism/haskell';
+import clojure from 'react-syntax-highlighter/dist/esm/languages/prism/clojure';
+import ruby from 'react-syntax-highlighter/dist/esm/languages/prism/ruby';
 import { solarizedlight } from 'react-syntax-highlighter/dist/styles/prism';
 
 export const Link = NextLink;
@@ -155,6 +155,19 @@ const GlobalStyles = () =>
       }
       a {
         color: #333;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
       }
    `}
    </style>

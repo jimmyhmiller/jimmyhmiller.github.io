@@ -4,7 +4,7 @@ import {
   GlobalLayout,
   Title,
   BlockQuote,
-} from "../utils.js";
+} from "../utils";
 
 
 

@@ -6,7 +6,7 @@ import {
     Title,
     Image,
     Ruby,
-} from "../utils.js";
+} from "../utils";
 
 const YJit = () => (
     <GlobalLayout>

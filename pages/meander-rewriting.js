@@ -5,7 +5,7 @@ import {
   Term,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 import Link from 'next/link';
 

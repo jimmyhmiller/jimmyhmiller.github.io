@@ -6,7 +6,7 @@ import {
   Term,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 const VariantsAndProtocols = () => <GlobalLayout>
   <Title text="Variants and Protocols" />

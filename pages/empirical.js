@@ -3,7 +3,7 @@ import {
   GlobalLayout,
   Title,
   BlockQuote,
-} from "../utils.js";
+} from "../utils";
 
 
 import Head from 'next/head';

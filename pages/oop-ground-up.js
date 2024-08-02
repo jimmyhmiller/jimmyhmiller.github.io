@@ -6,7 +6,7 @@ import {
   Term,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 const OopGroundUp = () => <GlobalLayout>
   <Title text="OOP from the ground up" />

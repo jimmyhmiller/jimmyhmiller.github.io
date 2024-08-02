@@ -5,7 +5,7 @@ import {
   Term,
   GlobalLayout,
   Title,
-} from "../utils.js";
+} from "../utils";
 
 const MeanderPractical = () => <GlobalLayout>
   <Title text="Meander for Practical Data Transformation" />
