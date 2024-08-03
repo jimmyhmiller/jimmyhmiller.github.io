@@ -233,7 +233,7 @@ const Index = () => (
 );
 
 export const getStaticProps = async () => {
-  await generateRSS();
+  generateRSS();
   return {props: {}}
 }
 
