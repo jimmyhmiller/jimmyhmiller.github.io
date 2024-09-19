@@ -21,7 +21,6 @@ const generateRSS = () => {
     site_url: siteUrl,
   })
 
-  console.log("HERE!!!!");
   
   for (const post of postsForBeginners.concat(posts)) {
      const description = getMarkupUp(post);

@@ -36,6 +36,11 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "Being Raised by the Internet",
+    href: "/raised",
+    mdx: true,
+  },
+  {
     text: '"We ran out of columns" - The best, worst codebase',
     href: "/ugliest-beautiful-codebase",
     mdx: true,
@@ -233,7 +238,9 @@ const Index = () => (
 );
 
 export const getStaticProps = async () => {
-  generateRSS();
+  if (process.env.NODE_ENV == "production") {
+    generateRSS();
+  }
   return {props: {}}
 }
 
