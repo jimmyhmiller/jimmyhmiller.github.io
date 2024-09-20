@@ -14,7 +14,7 @@ export const Link = NextLink;
 export const Image = ({ src }) => {
   const [fullScreen, setFullScreen] = useState(false);
   const styles = !fullScreen ? {} : {position: "fixed", zIndex: 100, top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "80vw"}
-  return ( 
+  return (
     <>
     {fullScreen && <div onClick={_ => setFullScreen(false)} style={{position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", backgroundColor: "rgb(0,0,0,0.8)"}} />}
     <div style={{...styles}}>{fullScreen && <img onClick={() => setFullScreen(x => !x)} style={{width: "100%"}}  src={src}  />}</div>
@@ -124,28 +124,28 @@ export const GenericCode = ({ children }) =>
   <Code
     source={children} />
 
-export const Javascript = ({ children }) => 
+export const Javascript = ({ children }) =>
   <Code
     language="javascript"
     source={children} />
 
-export const Haskell = ({ children }) => 
+export const Haskell = ({ children }) =>
   <Code
     language="haskell"
     source={children} />
 
-export const Clojure = ({ children }) => 
+export const Clojure = ({ children }) =>
   <Code
     language="clojure"
     source={children} />
 
 
-export const Ruby = ({ children }) => 
+export const Ruby = ({ children }) =>
   <Code
     language="ruby"
     source={children} />
 
-const GlobalStyles = () => 
+const GlobalStyles = () =>
    <style global jsx>
    {`
       body {
@@ -189,7 +189,7 @@ const ListItem = ({ href, text, Elem }) =>
     </Elem>
   </li>
 
-export const LargeText = ({ children }) => 
+export const LargeText = ({ children }) =>
   <p style={{fontSize: "1.5em"}}>
     {children}
   </p>
@@ -228,14 +228,27 @@ export const Term = ({children}) =>
   </code>
 
 export const BlockQuote = ({children}) =>
-  <blockquote style={{
-    paddingLeft: 20,
-    margin: 0,
-    marginLeft: 20,
-    borderLeft: "0.25em solid #dfe2e5",
+    <blockquote style={{
+      paddingLeft: 20,
+      margin: 0,
+      marginLeft: 20,
+      borderLeft: "0.25em solid #dfe2e5",
+    }}>
+      {children}
+    </blockquote>
+
+// Like what you get on github when you do > [!NOTE]
+export const Note = ({children}) =>
+  <div style={{
+    backgroundColor: "#f1f8ff",
+    padding: 10,
+    border: "1px solid #c8e1ff",
+    borderRadius: 3,
+    borderLeft: "0.25em solid #79b8ff",
   }}>
+    <p style={{padding:0, margin: 0, color: "#79b8ff"}}><strong>ⓘ Note</strong></p>
     {children}
-  </blockquote>
+  </div>
 
 export const Attribution = ({children}) =>
   <p style={{
@@ -249,7 +262,7 @@ export const Attribution = ({children}) =>
     <span style={{textDecoration: "underline"}}>{children}</span>
   </p>
 
-export const Title = ({ text }) => 
+export const Title = ({ text }) =>
   <>
     <Head>
       <title>{text}</title>
