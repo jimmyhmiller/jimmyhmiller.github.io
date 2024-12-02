@@ -210,12 +210,12 @@ const readings = [
 
 const contact = [
   {
-    text: "Mastodon",
-    href:"https://hachyderm.io/@jimmyhmiller",
+    text: "Blue Sky",
+    href:"https://bsky.app/profile/jimmyhmiller.bsky.social",
   },
   {
-    text: "Twitter",
-    href:"https://twitter.com/jimmyhmiller",
+    text: "Mastodon",
+    href:"https://hachyderm.io/@jimmyhmiller",
   },
   {
     text: "Github",
