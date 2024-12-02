@@ -194,9 +194,14 @@ export const LargeText = ({ children }) =>
     {children}
   </p>
 
-export const LinkList = ({ items, Elem=LargeText, title }) =>
+export const MediumText = ({ children }) =>
+  <p style={{fontSize: "1.1em"}}>
+    {children}
+  </p>
+
+export const LinkList = ({ items, Elem=LargeText, title, headingSize=1 }) =>
   <>
-    <Heading text={title} />
+    <Heading size={headingSize} text={title} />
     <ul>
       {items.map(item => ListItem({...item, Elem}))}
     </ul>
@@ -237,8 +242,12 @@ export const BlockQuote = ({children}) =>
       {children}
     </blockquote>
 
+const NoteTitle = () => (
+  <p style={{padding:0, margin: 0, color: "#79b8ff"}}><strong>ⓘ Note</strong></p>
+)
+
 // Like what you get on github when you do > [!NOTE]
-export const Note = ({children}) =>
+export const Note = ({children, Title=NoteTitle}) =>
   <div style={{
     backgroundColor: "#f1f8ff",
     padding: 10,
@@ -246,7 +255,7 @@ export const Note = ({children}) =>
     borderRadius: 3,
     borderLeft: "0.25em solid #79b8ff",
   }}>
-    <p style={{padding:0, margin: 0, color: "#79b8ff"}}><strong>ⓘ Note</strong></p>
+    {Title && <Title />}
     {children}
   </div>
 
@@ -270,9 +279,34 @@ export const Title = ({ text }) =>
     <Heading text={text} size={1} />
   </>
 
+export const RandomList = ({ items, Elem }) => {
+  const [randomizedList, setRandomizedList] = useState([]);
+
+  useEffect(() => {
+    // Shuffle the list
+    const shuffled = [...items].sort(() => Math.random() - 0.5);
+    setRandomizedList(shuffled);
+  }, [items]);
+
+  return (
+    <ul>
+      {randomizedList.map((item, index) => (
+        <li><Elem key={index}>{item.text}</Elem></li>
+      ))}
+    </ul>
+  );
+};
+
+export default RandomList;
+
+
+const removeLeadingSlash = (str) => str.startsWith('/') ? str.slice(1) : str;
+
 export const GlobalLayout = ({ children }) => {
   useEffect(() => {
-    fetch(`https://github-sites-simple-stats-jimmyhmiller.vercel.app/api${window.location.pathname === "/" ? "/index" : window.location.pathname}`)
+    const urlPath = encodeURIComponent(removeLeadingSlash(window.location.pathname));
+
+    fetch(`https://github-sites-simple-stats-jimmyhmiller.vercel.app/api/${window.location.pathname === "/" ? "index" : urlPath}`)
   }, [])
 
   return (

@@ -1,6 +1,14 @@
 import { Code, Heading, GlobalLayout, LinkList } from "../utils";
+import Head from 'next/head';
 
 import generateRSS from '../tools/build-rss';
+
+export const specialPosts = [
+  {
+    text: "Advent of Papers (2024)",
+    href: "/advent-of-papers",
+  }
+]
 
 
 export const postsForBeginners = [
@@ -224,6 +232,10 @@ const podcast = [
 
 const Index = () => (
   <GlobalLayout>
+    <Head>
+      <title>Jimmy Miller</title>
+    </Head>
+    <LinkList title="Special Posts" items={specialPosts} />
     <LinkList title="Posts" items={posts} />
     <LinkList title="Podcast" items={podcast} />
     <LinkList title="Talks" items={talks} />

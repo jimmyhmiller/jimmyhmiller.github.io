@@ -1,0 +1,50 @@
+
+import { Code, Heading, GlobalLayout, LinkList, Link, LargeText, MediumText, Title, RandomList } from "../../utils";
+
+const finishedPapers = [
+    {
+        text: "Dec 1: Elephant 2000",
+        href: "/advent-of-papers/2024/dec-1-elephant-2000",
+        mdx: true,
+    }
+]
+
+const consideredPapers = [
+    {text: "Computing with Uncertainty and Its Implications to Universality - Naya Nagy and Selim G. Akl"},
+    {text: "Intrinsic Propensity for Vulnerability in Computers? Arbitrary Code Execution in the Universal Turing Machine - Pontus Johnson"},
+    {text: "Implementation is Semantic Interpretation - William J. Rapaport"},
+    {text: "Adapting the Environment Instead of Oneself - David Kirsh"},
+    {text: "The Cultural Part of Cognition - Roy Goodwin D’Andrade"},
+    {text: "Abstraction in Computer Science - Timothy Colburn and Gary Shute"},
+    {text: "Worlds: Controlling the Scope of Side Effects - Alessandro Warth and Alan Kay"},
+    {text: "50,000,000,000 Instructions Per Second: Design and Implementation of a 256-Core BrainFuck Computer - Sang-Woo Jun"},
+    {text: "Software is an Abstract Artifact - Nurbay Irmak"},
+    {text: "Everybody Clap Your Hands: The Cha-Cha Slide is Turing Complete - Harrison Goldstein"},
+    {text: "Challenging the Computational Metaphor: Implications for How We Think - Lynn Andrea Stein"},
+    {text: "On Reversible Subroutines and Computers That Run Backwards - E. D. Reilly, Jr. and F. D. Federighi"},
+    {text: "Three Challenges to Chalmers on Computational Implementation - Mark Sprevak"},
+    {text: "Content, Computation, and Externalism - Oron Shagrir"},
+    {text: "Programming Languages as Technical Artifacts - Raymond Turner"},
+    {text: "Intuition in Software Development - P. Naur"},
+    {text: "Once More—A Computer Revolution - Joseph Weizenbaum"},
+]
+
+const Advent = () => (
+    <GlobalLayout>
+       <Title text="Advent of Papers (2024)" />
+       <MediumText>
+            I spend quite a bit of time talking about papers on the the <Link href="https://futureofcoding.org/episodes">Future of Coding</Link> podcast.
+            But there are so much papers we will never get to. So I thought it might be fun to do an advent of papers. I'm largely inspired by {" "}
+            <Link href="https://blog.acolyer.org/">The Morning Paper</Link>. But I don't expect to be covering similar ground. In fact, I've kind of
+            kept the choice of papers here to weirder papers. I don't right now plan on covering any classics. Though perhaps the amount of time I have
+            could convince me otherwise. Since I am doing these daily for advent and it's a rather busy time. I will keep them brief and mostly summarize
+            and give you my opinion on the paper. In large part this is a personal challenge to see if I can write about these papers in a reasonably
+            short amount of time and with reasonable clarity. Below are the papers I've written up and an unordered list of papers I'm considering.
+        </MediumText>
+        <LinkList headingSize={2} items={finishedPapers} title="Finished Papers" />
+        <Heading size={2} text="Potential Future Papers (Random Order)" />
+        <RandomList Elem={MediumText} items={consideredPapers} />
+    </GlobalLayout>
+)
+
+export default Advent;

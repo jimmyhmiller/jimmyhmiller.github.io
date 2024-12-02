@@ -1,0 +1,76 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+
+# Advent of Papers: Elephant 2000
+
+>  I hereby kick off the first annual advent of papers (2024) - Speech Act by Jimmy
+
+You may know John McCarthy as the creator of Lisp. But did you know he created another programming language? Sadly, just like Lisp, McCarthy merely wrote about the idea, not an implementation. But quite unlike Lisp, no one rushed to make implementations of this language. There may be a good reason for this, it is quite different from what you might expect. You may think that you just need to see some example code. But I'm not sure that would serve you super well. You see what McCarthy offered here was not simply a new syntax or a new way of combining old ideas. It was an ambitious idea for what programming in the year 2000 could be like. An idea that adds an element from natural language that is wholly missing in programming languages, Speech Acts.
+
+## Speech Acts
+
+Now sadly McCarthy doesn't offer us much in the way of an introduction to speech acts, other than to constantly make fairly vague statements about how speech acts in Elephant 2000 will differ from those philosophers have discussed, so it might be useful for us to spend a little bit of time talking about them before looking at elephant 2000's use of them.
+
+> Whereas an act of speech is any act of uttering meaningful words, ‘speech act’ is a term of art. As a first approximation, speech acts are those acts that can (though need not) be performed by saying that one is doing so. On this conception, resigning, promising, asserting, and asking are all speech acts, while convincing, insulting, and growing six inches are not. One can, for instance, resign by saying, “I resign…”, although one can also resign from a position without describing oneself as doing so. - [Stanford Encyclopedia of Philosophy](https://plato.stanford.edu/entries/speech-acts/#Int)
+
+Speech acts are acts we do by speaking. When we make a promise, we are both uttering the words "I promise" and making it the case that we have made a promise. Contrast this with assertions. By saying "Mt. Everest is the tallest mountain", I have not done anything above and beyond my assertion. (If you are interested in Speech Acts I highly recommend [Speech Acts by John Serle](https://bookshop.org/p/books/speech-acts-an-essay-in-the-philosophy-of-language-john-r-searle/7963401?ean=9780521096263)) Speech acts are a part of natural language that (according to McCarthy) programming languages generally lack. Further, he thinks that unlike attempts to borrow syntax from natural language, it might be beneficial for us to borrow speech acts and add them to our programming languages.
+
+This is precisely what McCarthy aims to do with Elephant 2000 and he gives us a list of "speech acts" he aims to add to it.
+
+1. Assertions: By this, he does not mean an `assert` keyword or function. He does mean something that must be true. But further that must be "sincere". He adds that this notion of "sincerity" requires us to have "a theory of the beliefs of the program"
+2. Questions: A user can question the program and the program can question the user. (It is unclear how these are speech acts imo)
+3. Answers to Questions: These are assertions and must be truthful and sincere. But they must also be responsive. Meaning that the answer might be appropriately related to the question asked. The example McCarthy gives is that if someone asks for George's Telephone number, it is unresponsive to say that it's the same as George's wife's husband's telephone number. He adds that there must be a way in the specification language to require the answer to be a string of numbers and not an expression whose value is a string of numbers. (Again is this a speech act?)
+4. Commitments and Promises: Here McCarthy imagines both simple promises, which are internal to the program and represent a commitment to perform an action. But also commitments have, for example, legal ramifications for the organization operating the program.
+
+One crucial thing to notice about the "speech acts" is that they all refer to the outside world. The meaning of these programs depends on the outside world in some way. McCarthy believes this is of crucial importance. Elephant 2000 does not merely simulate speech acts, it "can perform some kinds of speech acts as genuinely as do humans". A program in Elephant 2000 for air traffic control would meet its "accomplishment specifications" only if the airplane truly did land safely. The Elephant 2000 program must truly perceive that a plane has indeed landed.
+
+## The Past
+
+Beyond these speech acts, Elephant 2000 can refer to the past directly. There is no need for data structures, instead Elephant 2000 never forgets anything. This isn't some kind of persistent data structure or a simple way of storing all past values of program state. Instead, it is supposed to mirror all the interesting ways in which people can refer to the past. Here are some examples given
+
+1. The simplest function of the past is the value of some parameter at a given time, say the account balance of a certain person on January 5, 1991. References to the past are rarely this simple.
+
+2. Next we may consider the time of a certain event, say the time when a person was born.
+
+3. Slightly more complex is the first or last time a certain event occurred or a certain parameter had a certain value, say the most recent time a certain person was overdrawn at his bank.
+
+4. More generally, we may consider the unique time or the first or last time a certain proposition was true.
+
+5. Still more generally, we will be interested in time-valued functions of the whole past, e.g. an average time.
+
+6. Whether a person has an airplane reservation for a certain flight is determined by whether one has been made for him and not subsequently canceled.
+
+## Example program
+
+Here is an example program, but for your sake, my variables actually use vowels.
+
+```Haskell
+if ¬full flight then accept.request make commitment admit(psgr, flight).
+    answer.query exists commitment admit(passenger, flight).
+    accept.request cancel commitment admit(passenger, flight).
+	if now = time flight ∧ exists commitment admit(passenger, flight)
+			then accept.request admit(passenger, flight).
+
+full flt ≡ card{passenger|exists commitment admit(passenger, flight)} = capacity flight.
+```
+
+Here accept.request and answer.query are built-ins. As are make, exists, and cancel. Commitment is a function that takes an object and creates a commitment. `admit` here has two interpretations, telling the agent to let the passenger in (illuctionary for you nerds) and actually letting the passenger in (perlocutionary). 
+
+## Thoughts
+
+There is far too much in this paper to discuss in full detail, but one of the most fascinating elements woven through this paper is the direct discussion with the works of philosophers on the areas in question. It is clear that McCarthy was reading quite a lot of work in the philosophy of linguistics. McCarthy is rather concerned with this system having an externalist connection to the truth of the matter, something modern AI perspectives seem to ignore. Further, McCarthy is concerned not merely with the functioning of the computer in isolation, but the sorts of institutions that must exist to realize this programming language. 
+
+> Many kinds of human speech acts are relative to social institutions that change. For example, a challenge to a duel in societies where dueling was customary was not just an oﬀer. It generated certain obligations on the part of the challenger, the person challenged and the community. Suppression of dueling was accomplished partly by intentional changes in these institutions. The exchange of speech acts among computer programs will often involve the design of new institutions prescribing the eﬀects of speech acts.
+
+At the same time, he falls short of considering his own implications. What happens when society changes but a program does not? Does it now create spurious speech acts? What about the effects it has on the world? Speech acts performed by humans have certain kinds of safety properties built in. A declaration by a judge does cause in a direct physical way the action declared, but a computer system hooked up to the world could. These "code as law" considerations aren't considered despite the talk of human institutions and computers interacting.
+
+This is a paper I'd highly recommend reading. It's definitely quirking, full of old style AI-isms. But a surprisingly novel and interesting take on a programming language that, I promise, will never see the light of day.
+
+
+export default function Elephant({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}
+
