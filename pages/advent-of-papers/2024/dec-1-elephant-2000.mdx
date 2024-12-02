@@ -1,10 +1,14 @@
 import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
 
 <Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
 
 
+<Head>
+    <title>Advent of Papers: Elephant 2000</title>
+</Head>
 
-# Advent of Papers: Elephant 2000
+<Heading text={<>Advent of Papers: Elephant 2000 (<Link href="/pdfs/elephant.dvi.pdf">pdf</Link>)</>} />
 
 >  I hereby kick off the first annual advent of papers (2024) - Speech Act by Jimmy
 
