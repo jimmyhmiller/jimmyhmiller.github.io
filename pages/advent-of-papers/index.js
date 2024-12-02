@@ -1,7 +1,7 @@
 
 import { Code, Heading, GlobalLayout, LinkList, Link, LargeText, MediumText, Title, RandomList } from "../../utils";
 
-const finishedPapers = [
+export const finishedPapers = [
     {
         text: "Dec 1: Elephant 2000",
         href: "/advent-of-papers/2024/dec-1-elephant-2000",

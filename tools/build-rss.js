@@ -1,6 +1,7 @@
 import RSS from 'rss'
 import ReactDOMServer from 'react-dom/server';
 import { postsForBeginners, posts } from "../pages/index.js"
+import { finishedPapers } from "../pages/advent-of-papers/index.js"
 const fs = require("fs");
 
 const getMarkupUp = (post) => {
@@ -22,7 +23,7 @@ const generateRSS = () => {
   })
 
   
-  for (const post of postsForBeginners.concat(posts)) {
+  for (const post of postsForBeginners.concat(posts).concat(finishedPapers)) {
      const description = getMarkupUp(post);
      feed.item({
       title: post.text,
