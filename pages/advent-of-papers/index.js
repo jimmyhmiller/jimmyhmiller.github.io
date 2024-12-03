@@ -6,6 +6,11 @@ export const finishedPapers = [
         text: "Dec 1: Elephant 2000",
         href: "/advent-of-papers/2024/dec-1-elephant-2000",
         mdx: true,
+    },
+    {
+        text: "Dec 2: Software is an Abstract Artifact",
+        href: "/advent-of-papers/2024/dec-2-abstract-artifact",
+        mdx: true,
     }
 ]
 
@@ -18,7 +23,6 @@ const consideredPapers = [
     {text: "Abstraction in Computer Science - Timothy Colburn and Gary Shute"},
     {text: "Worlds: Controlling the Scope of Side Effects - Alessandro Warth and Alan Kay"},
     {text: "50,000,000,000 Instructions Per Second: Design and Implementation of a 256-Core BrainFuck Computer - Sang-Woo Jun"},
-    {text: "Software is an Abstract Artifact - Nurbay Irmak"},
     {text: "Everybody Clap Your Hands: The Cha-Cha Slide is Turing Complete - Harrison Goldstein"},
     {text: "Challenging the Computational Metaphor: Implications for How We Think - Lynn Andrea Stein"},
     {text: "On Reversible Subroutines and Computers That Run Backwards - E. D. Reilly, Jr. and F. D. Federighi"},

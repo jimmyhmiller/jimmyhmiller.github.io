@@ -1,0 +1,56 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>What is Software Anyways? Where Does it Exist?</title>
+    <meta
+        name="og:description"
+        content="In the second of our advent of papers, we look at a seemingly pointless question. What exactly is software?"
+        />
+</Head>
+
+<Heading text={<>What is Software Anyways? Where Does it Exist? (<Link href="/pdfs/abstract-artifact.pdf">pdf</Link>)</>} />
+
+For this next paper, we are looking at a question I'm sure many will think is pointless. What exactly is software? But by this, we mean something a bit different than offering a definition. The goal here isn't to figure out how to split the world into software things and non-software things. Nor is it to distinguish hardware from software. Instead, the question is, assuming we have software, what sort of thing is it? This may feel like a weird question. But why? I think it's not a very fashionable question. After all, what kinds of things are there? Are there ghosts and spirits and other spooky substances? Of course not! What could there be other than things made of atoms?
+
+Nurbay Irmak gives us what I think is a rather interesting view. The aptly named "Software is an Abstract Artifact" tells precisely what software is. But if you aren't a philosophy nerd, that title might not be enlightening to you. My goal in this brief paper summary is to make these notions clear. I will not attempt to argue for Irmak's view but simply state it. To try and make clear what the paper presents. But you must be reminded, this is merely a summary.
+
+## What is software made of?
+
+Let's start with a particular example of software and consistently use it throughout. Irmak often uses Windows 7 so we will stick with that example. Windows 7 is software, I think we can all agree to that. But what is Windows 7? Let's say I have a disc that contains Windows 7. Is Windows 7 identical to that physical disk? If I incenerate that disk do I destroy Windows 7 and it no longer exists? I doubt many would think so. Is Windows 7 identical to the bytes on the disk? What if I store the bytes in a different order, or I compress the bytes? Does that mean I no longer have a copy of Windows 7 but some totally different piece of software? That seems unlikely.
+
+These are the kinds of questions Irmak wants us to ask. Is Windows 7 identical to a copy of it? Is it identical to some text? Is it identical to an execution of it? Or is it identical to what he calls "the algorithm" of it? Algorithm here might be better understood as some abstract structure. Take the program that is Windows 7 and convert it to some formalism like lambda calculus or a Turing Machine, consider Windows 7 from some mathematical point of view. That is what Irmak means by "algorithm", the mathematical structure that Windows 7 realizes. Is Windows 7 identical with these things?
+
+But what exactly does it mean for two things to be "identical"? Well, I common way to think about this in philosophy is called "Leibniz's law" or "Identity of indiscernibles". Put simply it says that if you have potentially two objects X and Y, X is identical to Y just in the case that X has all the same properties as Y and vice versa. So, consider the case where I am holding a red ball in my right hand and a red ball in my left hand. Imagine that these balls weigh the same, look the same, even down to the microscopic level, and are made of the same material. We know they aren't identical because one has the property of "being held in my right hand" and the other lacks that property. So, when we are looking for what Windows 7 is identical to, this is the criteria we are looking for.
+
+### What Software can't be
+
+When asked above if Windows 7 was identical to the disk containing Windows 7, we were actually applying this principle. Windows 7 has the property "surviving being incinerated", but the disk does not. For the bytes example, Windows 7 can be instantiated by many different shapes of bytes, but a particular shape of bytes has its shape essentially. We can continue for things like the execution, if Windows 7 is identical to executions, that means if all computers executing Windows 7 were shut down, Windows 7 would cease to exist, but intuitively, that's not the case. And the text of Windows 7, if we put the text in a different encoding, or we changed all the variables, or we moved some function, etc, we'd still have Windows 7, despite the texts themselves not being identical. 
+
+It seems Windows 7 lives above and beyond any particular instance of these Windows 7 artifacts. But how are we deciding that? Irmak believes we should start with our everyday notions. When we talk about software, these are the kinds of things we generally believe about it. The way we talk about software, we being the everyday folk, should inform our theory as to what kind of thing software is. This is crucially important for our last potential candidate. Is software identical to the "algorithm"? Well, according to Irmak, the algorithm is a mathematical platonic entity. That is a non-spatial, non-temporal, unchanging thing. If software is identical to the algorithm, it must not be changeable. But software can change and still be the same software!
+
+A patch to Windows 7 does not make it no longer Windows 7. In the paper, Irmak gets into versioning, but as this summary is going a bit long, I will completely alide that discussion. Let's just take it for granted this point is right. If so, software is not identical to the algorithm. What is it then?
+
+### Artifacts
+
+As we are told in the title, software is an abstract artifact. What is an artifact? An artifact is any human-made object. A shovel, a computer, and a statue are all artifacts. But these artifacts are concrete? What does that mean? It means they are spacio-temporal. Concrete artifacts exist in time and space, they have a definite location. We can point to them. Software we cannot. Now this may seem all a bit weird, but Irmak shows us that software isn't necessarily alone in this regard. Consider Music. Music has elements like sound structure, score, copy of score, and performance. These are quite related to algorithms, text, copies, and execution! A piece of music isn't identical to any of these things.
+
+The last thing I'll mention here is that Irmak discusses when programs cease to exist. Here are his four criteria.
+
+1. Their authors ceased to exist.
+2. All of their copies are destroyed.
+3. They are not performed or executed ever again.
+4. There are no memories of them.
+
+I think there is some intuitive appeal to these criteria. But I'm unsure about 1 and 4. Is a vague memory of a piece of software enough for it to exist? Do the authors really need to "cease to exist" for the program to cease to exist? What about that first-ever program I wrote that I have no memory of?
+
+## Conclusion
+
+Irmak gives us a fascinating look at the ontology of software. I think it's a great paper for introducing the ideas, but as the paper itself says, it is far from a full discussion. In a bonus episode of the future of coding podcast I talk about [James Grimmelmann's distinctions between the naive, literal, and functional meaning](https://james.grimmelmann.net/files/articles/structure-and-legal-interpretation.pdf) of code. I think a similar kind of distinction can be drawn here between a program and software. I would say that Windows 7 is software, but two different versions of Windows 7 are different programs. Further, when we consider forks, it becomes tricky to say which fork continues to be the same software, is it the one that keeps the name, or is it the one the community adopts? Programs by contrast have much clearer identity criteria. To me, they are just identical to the "algorithm" in Irmak's parlance. What this means of course is that programs are eternal unchanging things. We don't create programs as much as discover them. That to me is not a fact to run away from, but to embrace.
+
+export default function AbstractArtifact({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}
