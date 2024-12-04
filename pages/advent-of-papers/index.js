@@ -11,6 +11,11 @@ export const finishedPapers = [
         text: "Dec 2: Software is an Abstract Artifact",
         href: "/advent-of-papers/2024/dec-2-abstract-artifact",
         mdx: true,
+    },
+    {
+        text: "Dec 3: Google's Awful Paper on Technical Debt",
+        href: "/advent-of-papers/2024/dec-3-awful-google-tech-debt",
+        mdx: true,
     }
 ]
 

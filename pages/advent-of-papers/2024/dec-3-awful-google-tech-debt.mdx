@@ -1,0 +1,65 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Google's Awful Paper on Technical Debt</title>
+    <meta
+        name="og:description"
+        content="I ran out of time today, so I rant about this bad paper."
+        />
+</Head>
+
+<Heading text={<>Google's Awful Paper on Technical Debt (<Link href="/pdfs/google-tech-debt.pdf">pdf</Link>)</>} />
+
+
+Okay, I'll admit that I didn't have a ton of time today, so I picked a paper that doesn't require much deep thought. A paper that isn't weird at all. I tried for quite longer than I should have to find a paper I could adequately cover in the amount of time I had to cover it. But I'm afraid all the good papers require more care than I could commit to. So today, you get a terrible paper. A paper about how Google has dealt with technical debt.
+
+This paper is chalk full things I absolutely hate about "empirical" software studies. (I have expressed [those feelings in many words elsewhere](https://jimmyhmiller.github.io/empirical)). It is laden with value statements disguised as facts. The empirical aspect of the research contributes very little to our understanding of the problem. For those who like this kind of stuff, the article completely lacks any numbers and discussion of statistical significance or any of that. (I think that is completely beside the point). Overall it is just a lackluster, boring paper that reads more like a promo for Google than anything else.
+
+Let's start with a summary. Every quarter this team surveys engineers. By the paper's own admission, they get a very low response rate which basically amounts to 1/9 of the engineers. (It is unclear how evenly spread these are. Do they rotate them? Is it the same group every time?) But regardless of all of that, they wanted to find what kinds of technical debt were hindering engineers and after some back and forth, found that with this selection of 10 options, less than 2% picked "other". As they put it, "This provided us with a collectively exhaustive and mutually exclusive list of 10 categories of technical debt". 
+
+* Migration is needed or in progress
+* Documentation on project and apis
+* Testing
+* Code quality
+* Dead and/or abandoned code
+* Code degradation
+* Team lacks necessary expertise
+* Dependencies
+* Migration was poorly executed or abandoned
+* Release process
+
+But not wanting to stop there, they decided to try to find "metrics based on engineering log data that capture the presence of technical debt of different types". But after trying 117 different metrics "No single metric predicted reports of technical debt from engineers; our linear regression models predicted less than 1% of the variance in survey responses.". Yet despite this, they were able to fix technical debt! What did they do?
+
+> Motivated in part by our early findings on technical debt, an interested community within Google formed a coalition to help engineers, managers, and leaders systematically manage and address technical debt within their teams through education, case studies, processes, artifacts, incentives, and tools.
+
+And of course, given their measurements, they know that these efforts worked because:
+
+> Overall, our emphasis on technical debt reduction has resulted in a substantial drop in the percentage of engineers who report that their productivity is being extremely to moderately hindered by technical debt or overly complicated code in their project. The majority of Google engineers now feel they are only “slightly hindered” or “not at all hindered” by technical debt, according to our survey. 
+
+## Subjectivity
+
+They do have some interesting, non-empirical insights. In fact, it is the best part of the paper. When discussing why their metrics failed to capture technical debt, they point out that people conceive of something as technical debt based not on what the system is, but on what the system could be. Or as they put it.
+
+> conceiving of the ideal state of a system and using that imagined state as a benchmark against which the current state can be judged
+
+But rather than realizing the subjective implications of this insight, they instead talk about the need to model it and how modeling it is a "prerequisite to effective management of technical debt". What is so interesting about this insight is it calls into question all of their findings. Did technical debt actually decrease? Or did engineers stop seeing the ideal state they can benchmark against? 
+
+I have worked on countless projects where the weight of technical debt felt like a burden. One year later it didn't feel so burdensome. Why? Not because we had fixed all the problems, but because we had given up on our ambitions. We didn't feel a hindrance because of the technical debt, because we had stopped having aspirations for the system to be better. There isn't even so much as a discussion of this possibility.
+
+Nor is there any questioning of the central metaphor here. Is technical debt truly a coherent topic? Is asking questions on a survey like this a good way to break it down into its parts? Do we have any good reason to justify statements like:
+
+> Technical debt isn’t unequivocally a bad thing, after all. Just like financial debt, technical debt is one component of a strategy for trading off velocity and (some form of) quality or completeness.
+
+Nowhere in the paper do they stop and question the dogma, trite statements that are made about technical debt. There is no examination of the deeper causes or looking at things conceptually. This is a far cry from much more interesting, illuminating work like [Peter Naur's Programming as Theory Building](https://futureofcoding.org/episodes/061)
+
+## Conclusion
+
+In some ways, it feels like I wasted a day by giving you a rant about this silly paper. In other ways, it feels great to just rant a bit. Hopefully, this paper will serve as a contrast for all the interesting papers I hope to cover in this advent season. The papers that don't just repeat company-focused talking points. The papers that are not rife with value-laden statements disguised as facts. The papers that don't make claims without arguing for them at all. The papers that actually ask questions about what programming is, that take seriously the human experience of programming. That don't have beliefs that simple metrics and surveys somehow solve deep meaningful problems. 
+
+export default function BadGoogle({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}
