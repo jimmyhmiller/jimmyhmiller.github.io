@@ -16,6 +16,11 @@ export const finishedPapers = [
         text: "Dec 3: Google's Awful Paper on Technical Debt",
         href: "/advent-of-papers/2024/dec-3-awful-google-tech-debt",
         mdx: true,
+    },
+    {
+        text: "Dec 4: Is the Brain a Computer?",
+        href: "/advent-of-papers/2024/dec-4-brain-computer",
+        mdx: true,
     }
 ]
 
