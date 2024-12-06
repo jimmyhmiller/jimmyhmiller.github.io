@@ -339,7 +339,7 @@ export const GlobalLayout = ({ children }) => {
             </AbsolutePosition>
         </div>
         <Padding top={70} bottom={70}>
-          <NoSsr>{children}</NoSsr>
+          {children}
         </Padding>
       </Container>
     </>
