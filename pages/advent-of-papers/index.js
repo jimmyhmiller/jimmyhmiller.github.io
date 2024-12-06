@@ -21,6 +21,11 @@ export const finishedPapers = [
         text: "Dec 4: Is the Brain a Computer?",
         href: "/advent-of-papers/2024/dec-4-brain-computer",
         mdx: true,
+    },
+    {
+        text: "Dec 5: Worlds: Mutability with Control",
+        href: "/advent-of-papers/2024/dec-5-worlds",
+        mdx: true,
     }
 ]
 
@@ -31,7 +36,6 @@ const consideredPapers = [
     {text: "Adapting the Environment Instead of Oneself - David Kirsh"},
     {text: "The Cultural Part of Cognition - Roy Goodwin D’Andrade"},
     {text: "Abstraction in Computer Science - Timothy Colburn and Gary Shute"},
-    {text: "Worlds: Controlling the Scope of Side Effects - Alessandro Warth and Alan Kay"},
     {text: "50,000,000,000 Instructions Per Second: Design and Implementation of a 256-Core BrainFuck Computer - Sang-Woo Jun"},
     {text: "Everybody Clap Your Hands: The Cha-Cha Slide is Turing Complete - Harrison Goldstein"},
     {text: "Challenging the Computational Metaphor: Implications for How We Think - Lynn Andrea Stein"},

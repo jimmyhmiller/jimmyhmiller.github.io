@@ -9,6 +9,16 @@ import clojure from 'react-syntax-highlighter/dist/esm/languages/prism/clojure';
 import ruby from 'react-syntax-highlighter/dist/esm/languages/prism/ruby';
 import { solarizedlight } from 'react-syntax-highlighter/dist/styles/prism';
 
+import dynamic from 'next/dynamic'
+
+const NoSsrWrapper = props => (
+  <>{props.children}</>
+)
+
+const NoSsr = dynamic(() => Promise.resolve(NoSsrWrapper), {
+  ssr: false
+})
+
 export const Link = NextLink;
 // export const Image = (props) => <img {...props} ;
 export const Image = ({ src }) => {
@@ -109,13 +119,13 @@ export const modifiedSolarizedLight = {
   },
 }
 
-export const Code = ({ source, language }) => {
+export const Code = ({ source, language, removeIndent=true }) => {
   return (
     <SyntaxHighlighter
       language={language}
       style={modifiedSolarizedLight}
     >
-      {formatCode(source)}
+      {removeIndent ? formatCode(source) : source}
     </SyntaxHighlighter>
   )
 }
@@ -329,7 +339,7 @@ export const GlobalLayout = ({ children }) => {
             </AbsolutePosition>
         </div>
         <Padding top={70} bottom={70}>
-          {children}
+          <NoSsr>{children}</NoSsr>
         </Padding>
       </Container>
     </>

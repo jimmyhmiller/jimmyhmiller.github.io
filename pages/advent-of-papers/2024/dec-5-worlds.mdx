@@ -1,0 +1,81 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Worlds: Mutability with Control</title>
+    <meta
+        name="og:description"
+        content="What if your programming langauge could spawn many possible worlds? Wouldn't that be cool?"
+        />
+</Head>
+
+<Heading text={<>Worlds: Mutability with Control (<Link href="/pdfs/2008-worlds.pdf">pdf</Link>)</>} />
+
+Today's paper is a bit different. Rather than philosophical musings or a rant, we will be looking at a fascinating language feature that has not made its way into any programming languages I'm aware of. A feature first presented in this early paper by Alessandro Warth and Alan Kay. It's an idea that strikes a very interesting middle ground between a completely immutable way of programming and an unconstrained mutable system. It does that by bringing a bit of sci-fi into your language, by introducing a first-class concept of other worlds.
+
+Let's start with a code example to make this all more clear.
+
+```javascript
+let myObject = {
+  x: 1,
+  y: 1,
+};
+
+let myWorld = thisWorld.sprout();
+in myWorld {
+  myObject.x = 42;
+  myObject.y = 42;
+  console.log(myObject) // { x: 42, y: 42}
+}
+
+console.log(myObject) // { x: 1, y: 1}
+```
+
+Here we can see the most basic operations on a world. First, is <Term>thisWorld</Term>, which refers to the current world. Second is the operator <Term>sprout</Term> this is what creates a new world. Finally is our <Term>in</Term> operator, which allows us to run computations inside a world. In that, any mutations to any variables we make are constrained within that world. But what if we don't want to throw away our changes? That is where <Term>commit</Term> comes in.
+
+```javascript
+let tempWorld = thisWorld.sprout()
+let failed = false;
+try {	
+  in tempWorld {
+    runPotentiallyDangerousMutations();
+  }
+} catch (e) {
+  failed = true;
+}
+
+if (!failed) {
+  tempWorld.commit();
+}
+```
+
+Now, inside <Term>runPotentiallyDangerousMutations</Term> we are free to mutate things all we want without working about needing complicated logic to undo them if things throw an exception. We only commit those changes if no exceptions were thrown. 
+
+This is pretty much all there is to the notion of worlds. But its implications are quite interesting. One infamous problem in JavaScript is that prototypes can be extended by anybody, but that can break all kinds of things! (There's a reason we almost had <Term>smoosh</Term> and <Term>smooshMap</Term> as methods on Array.) But with worlds, we can escape this.
+
+```javascript
+let ourWorld = thisWorld.sprout();
+in ourWorld {
+	Number.prototype.fact = function() { ... };
+}
+  
+// later
+in ourWorld {
+  console.log((5).fact())
+}
+```
+
+There are more examples in the paper, like a hierarchical generic undo system that are worth checking out. But I actually wonder about use cases not explored. Could we start with a blank world, no standard objects, and build up a world with just the things we want to expose? Could we make a <Term>pure</Term> world, where the only objects and functions exposed can't do side effects? Or a deterministic world? In other words, I'm interested in using this as a way to find language subsets where we can have certain kinds of guarantees for sandboxing or for analysis.
+
+I am intentionally linking to an earlier version of the paper (because I like it more), but in a [later version](/pdfs/2011-worlds.pdf) they discuss in more detail aspects of the implementation. Conceptually though, you can think about objects as not storing their own properties, but instead a table storing entity, attribute, and value. A world could have its own table, with a pointer to the parent world. Or we could do something like eavw. This model actually makes me think of datomic and CRDTs. Is there an extension of this world concept but for times? Could we use this general mechanism to replay all the mutations going on in a single world by adding making it an eavt like datomic?
+
+## Conclusion
+
+I love this concept. From the first time I read it, I've always thought it would be a wonderful feature to have in a language. If you are familiar with <Term>immer</Term> from the react world, this may seem familiar. But having this at the language level makes it all the more interesting. It's sad that JavaScript hasn't gone in these more interesting directions. Reading this paper always reminds me of [James Long's original sweetjs](https://archive.jlongster.com/Stop-Writing-JavaScript-Compilers--Make-Macros-Instead). I made [so](https://github.com/jimmyhmiller/PlayGround/blob/master/sweetjs/do-notation.sweet.js) [many](https://github.com/jimmyhmiller/PlayGround/blob/master/sweetjs/curry.sweet.js) [things](https://github.com/jimmyhmiller/PlayGround/blob/master/sweetjs/protocol.sweet.js) [with](https://github.com/jimmyhmiller/PlayGround/blob/master/sweetjs/threading.sweet.js) [it](https://github.com/jimmyhmiller/PlayGround/blob/master/sweetjs/adt.sweet.js). I love the vision of a javascript with macros. I loved a javascript that could move forward without a committee needing to declare it. I long to get back that sense of playing with languages I once had. That's why I've retreated to building my own. Slowly but surely, I can make it a place where interesting language ideas can be explored. A place free from the baggage of more successful languages. I place where people get to carve their own path. We haven't had a language like that be popular in quite some time.
+
+export default function Worlds({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

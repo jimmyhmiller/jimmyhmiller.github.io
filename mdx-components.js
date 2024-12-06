@@ -1,5 +1,4 @@
-import { Heading, GlobalLayout, Title, Term, Image, BlockQuote } from "./utils";
- 
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Code } from "./utils";
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
 // React component you want, including inline styles,
@@ -18,6 +17,12 @@ export function useMDXComponents(components) {
     blockquote: (props) => (
       <BlockQuote {...props} />
     ),
+    pre: ({children}) => {
+      return (<>{children}</>)
+    },
+    code: ({children, className}) => {
+      return (<Code source={children}  language={className?.replace("language-", "")} removeIndent={false}  />)
+    },
     ...components,
   }
 }
