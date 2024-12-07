@@ -1,0 +1,59 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Intuition in Software Development</title>
+    <meta
+        name="og:description"
+        content="All software development methods are bad. Peter Naur tells us why."
+        />
+</Head>
+
+<Heading text={<>Intuition in Software Development (<Link href="/pdfs/intuition.pdf">pdf</Link>)</>} />
+
+
+
+If you haven't read Peter Naur's papers you should. If there is one thinker in the computing space I wish I could emulate, it is Peter Naur. This paper is no exception. It is about the role of intuition in software development but is ultimately an argument against applying methods to software development. It is almost certainly a sub-tweet (sub-skeet? sub-toot?) of Dijkstra. It was originally presented at the "Advanced Seminar On The Role Of Semantics In Software Development" and yet is critical of the whole enterprise.
+
+> Finally, to the question of this conference, what is the role of semantics in software development? Answer: neither that of the composer, nor of the librettist, the conductor, the hero, or the heroine, but that of the prompter, who does nothing but tell the actors things they know already, but that may momentarily have slipped from their minds.
+
+Peter Naur is a computer scientist who seems to truly understand software. He is someone who connects practice and theory. He is a writer who gets at the underlying truths of programming in a way no one else does.
+
+## How to tackle this paper?
+
+I'm now on day 6th of this exercise, and I feel I've earned a moment to reflect. One of the things I'm unsure about is how I ought to cover these papers. One way I can go about this is to give you a cliff notes version of the paper. To save you from having to read the paper yourself. To present the ideas in these papers in an easier-to-read digestible form. I honestly don't have much problem with that. In many ways, I feel that is my role on the future of coding podcast. Not everyone will take the time to read the papers we discuss and I'm fine with them not and letting us do that for them.
+
+But the other way I can take this assignment is that I should get you to read the paper. That my real goal here is to entice you into reading the paper. But I'm unsure if that can really work. I know people come to these blog posts with a certain amount of time they are willing to spend on it. Most people don't come here with the luxury of then spending 30+ minutes reading a carefully crafted paper. Perhaps they save them for later and do actually read them. Or perhaps they, like me, save them with the best of intentions just to have an ever-growing list of saved links.
+
+This paper makes me question this very issue because I'm unsure I can do it justice. Naur is a wonderful writer, but I'm afraid his argumentation style is a bit vague. Unlike the philosophers he often cites, he does not put his arguments into a logical structure. Instead, he pokes and prods at you at various points. He tries from many different angles to get you to see the point he is trying to make. His conclusions seem to many to be an over-reach. So what am I supposed to do?
+
+## The Argument
+
+I'm still unsure about the right way to proceed, so I will try to take both paths at once. This is a paper with a radical thesis, namely that most software methods do not and cannot work. The one exception granted is the checklist. Checklists are good all other methods (insert agile-inspired garbage here, but also insert all formal methods) are not. But why exactly do we come to this conclusion? Because, the most pervasive, impossible-to-eliminate, all-important aspect of any software development process, is intuition.
+
+What exactly is intuition? Well, it isn't some spooky sixth sense. Peter Naur quotes Quine in what I believe is the clearest definition we get from Naur.
+
+> Twice I have been startled to find my use of 'intuitive' misconstrued as alluding to some special and mysterious avenue of knowledge. By an intuitive account, I mean one in which terms are used in habitual ways, without reflecting on how they might be defined or what presuppositions they might conceal.
+
+Our intuition is the most basic way we act. It is the things we do without reflection. It is the thing that allows us to make connections between various elements. But intuition is not some fixed substance. It morphs and changes as we learn new things. Things we once were not able to do using our intuition become intuitive for us (think about driving a car now vs when learning).
+
+But intuition isn't merely something we gain in a specific skill via experience, it is pervasive in every act we do. Most importantly is what undergirds our understanding of language. We do not apply rules and methods for understanding language. Instead, we intuitively grasp the meanings of others' utterances. This isn't to suggest that our understanding is without flaw, no our intuitions can go wrong and frequently do. What it is instead to suggest is that there are certain acts we perform, for which we cannot explain our actions at some deeper fundamental level. We do not go through a series of steps consciously to perform these actions and couldn't recreate them if we tried.
+
+### Software
+
+Software development is "an interplay of the intuitive knowledge had by the programming person and the real world accessible to that person, which includes the texts used and produced by the person". Naur walks us through how our knowledge of the problem we are trying to solve, the texts (documentation, code, etc) we produce/consume, and the world change over time as an essential part of the software development practice. Fundamental to this practice is this changing of knowledge over time which is grounded in our intuition. Absent this intuition we could not even start this process.
+
+But further, no method can be substituted for our intuition, because any proposed method would itself need to be comprehended by our intuition. Our intuition is what tells us when to apply certain methods. It is what shows us the connection between the methods and the world in which we are applying them. It is what helps us understand the words, concepts, and terms used by the method.
+
+### Conclusion
+
+Perhaps I've stopped too short with the summary. But I can't underscore enough how much I feel people ought to read this text. If you don't want to, but have the time to listen to a podcast, go listen to Ivan and I talk about [Programming as Theory Build by Naur](https://futureofcoding.org/episodes/061). Naur here provides in my mind a definitive end to all sorts of method debates. Should people be forced to use types? Will TDD save us? Is agile the answer to the software crisis? Naur shows us why these things can't be the answers. He gives a construction of what the software development process is that isn't about historical accidents, that isn't about industrial scale concerns. But instead engages with the human practice. It doesn't try to hide behind empirical work or fancy discussions of the brain, it looks at what makes programming practice possible. 
+
+I don't expect those of you who love methods to be convinced by this paper. I don't offer it as such. Instead, I offer it as a different lens to see through. When people tell you they like dynamically typed languages, when they tell you they don't find all that documenting and planning useful, when they tell your method doesn't help them, don't see them as resisting for no reason. See them as wanting to make the most out of their intuition, as trying to build software in a way that works best for them. They aren't rebels. They aren't ignorant. Their intuitions are just different than yours.
+
+export default function Intuition({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

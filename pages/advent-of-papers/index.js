@@ -26,7 +26,12 @@ export const finishedPapers = [
         text: "Dec 5: Worlds: Mutability with Control",
         href: "/advent-of-papers/2024/dec-5-worlds",
         mdx: true,
-    }
+    }, 
+    {
+        text: "Dec 6: Intuition in Software Development",
+        href: "/advent-of-papers/2024/dec-6-intuition",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [
@@ -43,7 +48,6 @@ const consideredPapers = [
     {text: "Three Challenges to Chalmers on Computational Implementation - Mark Sprevak"},
     {text: "Content, Computation, and Externalism - Oron Shagrir"},
     {text: "Programming Languages as Technical Artifacts - Raymond Turner"},
-    {text: "Intuition in Software Development - P. Naur"},
     {text: "Once More—A Computer Revolution - Joseph Weizenbaum"},
 ]
 
