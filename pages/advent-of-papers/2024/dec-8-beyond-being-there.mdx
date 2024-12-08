@@ -1,0 +1,45 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Beyond Being There: Making Remote Work Better</title>
+    <meta
+        name="og:description"
+        content="What if instead of trying to recreate being in person, we embraced what remote work gives us?"
+        />
+</Head>
+
+<Heading text={<>Beyond Being There: Making Remote Work Better (<Link href="/pdfs/beyond-being-there.pdf">pdf</Link>)</>} />
+
+
+I absolutely love remote work. I've been doing it since before the pandemic. I am more productive doing it, I don't have to deal with all of the annoyances and politics that automatically occur when you get a bunch of people in an office. But I have to admit, the tools for working remote are awful. Zoom is a passable tool for synchronous communication video calls. Slack is alright. GitHub's fine. But the collaborative interfaces for working remotely are poor imitations of what you might get in person. Let me be clear, I don't mean that being in an office fosters more collaboration, I find the opposite. I just mean that the medium through which we collaborate remotely is awful.
+
+Is anyone trying to actually solve this problem? Despite this huge shift that has occurred (yes, I know some people really want everyone back in the office, but the cat's out of the bag), I don't see any serious attempts to make this better. Why is that? I believe it because all the attempts have fallen into the trap that this paper from 1992 warned us against. They all try to recreate the feeling of "being there". Look at all these silly "metaverse" demos. They all want us to feel like we are in person, but is that really the goal?
+
+## How to move beyond being there?
+
+> It is tempting to think that with perhaps a little more screen resolution, a little more fidelity in the audio channel, and a little more tweaking to bring the machinery in conformance with subtle and long-established social mechanisms such as eye contact, telecommunications systems will achieve a level of information richness so close to face-to-face that for most needs it will be indistinguishable.
+
+> But will they ever be close enough? It is clear they can, for example provide a cost-effective and efficient alternative to business travel to a distant location, and may be superior to audio only telephone for some communicative needs. We have no argument with that. But is this general approach going to be adequate for the long term? Is it powerful enough to see us through to achieving the goal that those at a distance will be at no real disadvantage to those colocated?
+
+What if instead of focusing on imitating "being there" we instead considered the strengths of our computer-mediated modes of communication? Computers are not good at recreating all the high-fidelity cues we get during in-person conversation, but what are they good at? The paper outlines three features.
+
+1. asynchronous communication
+2. anonymous communication
+3. automatically archiving communication
+
+One fascinating aspect of this paper is that it was written at Bellcore one of the off-shoots after Bell was broken up. To discover how computer-mediated communication might go "beyond being there" they built and are planning to build real systems and experiment with how people interact with them. One simple example was the ability to attach an "ephemeral interest group" to "any object in a community's electronic 'space'". Rather than having centralized, unidirectional broadcasting, people can chat about anything contextualized to a particular topic. How many times have I wanted to chat about that meeting invite in a zero-friction way?
+
+The paper goes on to explore things like semi-synchronous discussions, anonymity, and the ability to ease meeting others. All the discussions are preliminary and suggestive of research to be done, but they provide a view of a remote work environment where the means of communication are integrated rather than disparate. Today's corporate communication landscape is owned by so many different vendors, Slack for chat, zoom for videos, and Microsoft/Google for email. Even when a company buys into a single vendor, the connections between the products are completely simplistic and artificial. There are vast amounts of improvements we could make to these systems, improvements that do not require groundbreaking new tech (like some VR headset), but instead better design principles.
+
+## Conclusion
+
+Xerox PARC asked, "What does the office of the future look like?". Who today is asking "What does the remote office of the future look like?" We are stuck in the early days of pervasive remote work, where we still try and mimic what the office provided us. But will we be stuck there forever? Progress is not inevitable. Billions of dollars have been sunk into imitating "being there", who will focus on moving beyond?
+
+
+export default function Beyond({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

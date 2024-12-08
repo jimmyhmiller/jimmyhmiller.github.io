@@ -37,6 +37,11 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-7-interpretation",
         mdx: true,
     },
+    {
+        text: "Dec 8: Beyond Being There: Making Remote Work Better",
+        href: "/advent-of-papers/2024/dec-8-beyond-being-there",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [
