@@ -32,12 +32,16 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-6-intuition",
         mdx: true,
     },
+    {
+        text: "Dec 7: Implementation is Semantic Interpretation",
+        href: "/advent-of-papers/2024/dec-7-interpretation",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [
     {text: "Computing with Uncertainty and Its Implications to Universality - Naya Nagy and Selim G. Akl"},
     {text: "Intrinsic Propensity for Vulnerability in Computers? Arbitrary Code Execution in the Universal Turing Machine - Pontus Johnson"},
-    {text: "Implementation is Semantic Interpretation - William J. Rapaport"},
     {text: "Adapting the Environment Instead of Oneself - David Kirsh"},
     {text: "The Cultural Part of Cognition - Roy Goodwin D’Andrade"},
     {text: "Abstraction in Computer Science - Timothy Colburn and Gary Shute"},

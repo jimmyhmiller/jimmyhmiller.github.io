@@ -1,0 +1,47 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Implementation is Semantic Interpretation</title>
+    <meta
+        name="og:description"
+        content="What is implementation? Why does this paper not give us a good answer?"
+        />
+</Head>
+
+<Heading text={<>Implementation is Semantic Interpretation (<Link href="/pdfs/interpretation.pdf">pdf</Link>)</>} />
+
+
+
+I read this paper this morning and I had the time to just finish this post before my day began. But as has been the case for these posts so far, I procrastinated on it until bedtime. Maybe tomorrow we will break that pattern. Anyway, this is another in the series of philosophical papers. Though I have to admit, after reading the paper I was left feeling a bit empty. The paper doesn't do a great job explaining exactly what semantic interpretation is. So I sought out some more information and found that there was another paper by the same author called ["Implementation is semantic interpretation: further thoughts"](/pdfs/more-interpretation.pdf). It seems I should have read that paper instead, but alas, I did not. What I have done however is skimmed it. Perhaps I will read that paper for another advent day? It actually directly interacts with the [Searle](https://jimmyhmiller.github.io/advent-of-papers/2024/dec-4-brain-computer) paper we read earlier. 
+
+Whether or not we read that paper on another day, my thoughts on this paper are definitely colored by the things I skimmed through in the other paper. But for now, we will leave that aside. What does this paper claim? Well, that <Term>implementation</Term> is a unique notion separate from a bunch of different notions people may have thought we could define it in terms of. Implementation is a semantic interpretation. Rapaport believes this goes beyond merely computer science examples:
+
+> The following non-computer-science examples are clearly of the same type as these paradigms, even though we don't, normally, use the term 'implementation' in discussing them: A performance is an "implementation" of a musical score or play-script. A house is an "implementation" of a blueprint. A set-theoretic model is an "implementation" of a formal theory.
+
+
+## What the hack is a "Semantic Interpretation"?
+
+But what exactly is a semantic interpretation? Well, all we are given is a structural model of it.
+
+> Semantic interpretation requires two domains and one relation: a syntactic domain, characterized by rules of "symbol manipulation" (perhaps suitably generalized to be able to deal with domains that are not strictly speaking "symbolic"); A semantic domain, similarly characterized; and a relation of semantic interpretation that maps the former to the latter.
+
+What exactly is a syntactic domain vs a semantic domain?
+
+>  Put this way, there is no intrinsic difference between the domains; what makes one syntactic and the other semantic is the asymmetry of the interpretation mapping. Thus, a given domain can be either syntactic or semantic, depending on one's interests: Typically, we understand one domain (the "syntactic" one) in terms of an antecedently understood domain (the "semantic" one).
+
+In the further thoughts paper, Rapaport tells us that "the semantic enterprise is seen to be, ultimately, a syntactic endeavor, which I have called ‘syntactic semantics’". So I'll admit, it is entirely unclear to me what exactly semantic interpretation is supposed to be. It seems, like Monads, you aren't supposed to have anything beyond the formal, structural properties. But then in what sense is it semantic? In what sense is the "interpretation" providing meaning? 
+
+Some sections distinguish things like a concrete vs abstract implementation. The programming examples are mostly clear, though dip into some unnecessary formalisms. Other than that, the paper spends a lot of time relating implementation to individuation, instantiation, reduction, and supervenience. Long version short, all of these are examples of implementation, but not the other way around.
+
+## Conclusion
+
+I feel like there is some interesting insight lurking here, but the deflationary attitude taken towards the semantic enterprise throws the whole thing off to me. Consider the abstraction of a linked list. There are many ways to implement it. When we make a concrete implementation, we are providing semantic meaning (particularly in an operational semantics sort of way) to each operation. When we play music by reading a score, we are taking those notes and filling in some detail about how they relate to the world. We apply our own subjective interpretation for the music, taking the meaning of the notes and acting upon them, in the same way we do when given an abstract description of an algorithm that we write down. We are "filling in" the details. We are making the symbols have a specific, rather than abstract meaning. But this is a process we do by actually subjectively interpreting something. Does the record player semantically interpret the record? I think that would be quite a stretch.
+
+
+export default function Interpretation({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}
