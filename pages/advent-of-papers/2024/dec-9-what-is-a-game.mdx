@@ -1,0 +1,47 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>What is a Game?</title>
+    <meta
+        name="og:description"
+        content="Can we provide a definition of a game? How might it change the way we look at programming?"
+        />
+</Head>
+
+<Heading text={<>What is a Game? (<Link href="/pdfs/game.pdf">pdf</Link>)</>} />
+
+
+Okay, so I'll come clean, I might be cheating with today's paper. Does this paper have anything to do with computing? No. But can we make it have something to do with computing? Absolutely! I mean, games have to be one the best things we've done with computers, so a paper giving a definition of a game has to count. And since I'm the one making this series, I've decided it does. But you might be wondering, why even write a paper on the "what is a game"? Well, because Wittgenstein said it was impossible.
+
+> Consider, for example, the activities that we call ‘games’. I mean board games, card games, ball games, athletic games, and so on. What is common to them all? – Don’t say: ‘They must have something in common, or they would not be called “games”’ – but look and see whether there is anything common to all. – For if you look at them, you won’t see something that is common to all, but similarities, affinities, and a whole series of them at that.*
+
+Not wanting someone to be wrong on the internet, Bernard Suits published "What Is a Game?" in 1967. Over a decade later, he would publish [THE GRASSHOPPER: Games, Life, and Utopia]() a much longer treatment of the same topic. In this version, the Grasshopper, part Jesus, part Socrates, dies and his devoted followers must puzzle out and understand his teachings about games being the ultimate way of life. But as this is a much longer book, we will stick with the paper.
+
+## What does it mean to play a game?
+
+> To play a game is to engage in activity directed toward bringing about a specific state of affairs, using only means permitted by specific rules, where the means permitted by the rules are more limited in scope than they would be in the absence of the rules, and where the sole reason for accepting such limitation is to make possible such activity.
+
+This paper is ingenious in its argumentation. It defends its definition of what it means to play a game by considering alternative proposals and by looking at many different circumstances in which can be said to be playing a game or not playing a game. We will not follow the structure of the paper entirely here, as I think you ought to read it yourself. But instead, I will try and explain some of the elements of the definition above.
+
+First, we have the idea that we want to bring about a specific state of affairs. In many cases, you can think of this as the win condition of the game. (What about games that don't have a win condition? Are they games? Are they play? Not sure). In chess, this checkmate, in a race it is getting across the finish line golf is having the fewest number of strokes, etc. But in all of these games, there are rules that limit what we can do. We can't for example, pick up the ball in put it in the hole for golf, if we did, we would not just be cheating, we would be no longer playing golf.
+
+But as Suits points out, there are all sorts of rules that don't have anything to do with games. For example, I might have a rule for myself, that I shouldn't lie. Perhaps my goals in life would be easier to accomplish if I did lie. So, there is some state of affairs I want (let's say money) and the rules I have imposed on myself limit me in achieving that end, is "getting money without lying" a game? No, I won't lie not because I'm trying to play some sort of game, but because I think it's wrong. This is unlike say following the rules of chess. I don't think there is anything important about moving the knight in an L, the rule is just there to make chess possible.
+
+## Conclusion
+
+I  think this is an incredibly rich area to read in. Grasshopper is a wonderful book if you love dialogues. But the book I want to recommend in this area of study is a bit different. It is [Games: Agency as Art by C. Thi Nguyen](https://academic.oup.com/book/32137). One goal of the book is to argue for a different way of appreciating games as art. That their medium is that of agency. That they encode ways of acting in the world. They allow us to pass down these different ways of acting. I think it's a beautiful picture.
+
+But at the same time, it is a reflection on the role that games play in our lives. The ways in which we can approach games. Nguyen talks about "Achievement Play" and "Striving Play". Both players play to win, but the striving player is trying to win because that's what makes it so they can best enjoy the game. In other words, the striving player temporarily takes on the end of winning, whereas the achievement player takes winning as their ultimate end. Professional poker players want to win to earn money. There isn't anything wrong with achievement play. But striving play can have a lot of benefits.
+
+I've started to look at a lot of the programming I do as striving. Do I *ultimately* care about earning victory points in some game? No. Do I *ultimately* care that some customer gets their new feature? Equally no. But that doesn't mean I don't care at all! When working in a job, I can be a striving programmer. Temporarily taking on the aims of my day job, not because they are my ultimate ends, but because doing so makes the work more enjoyable. In my spare time projects, I don't think that making my debugger is going to change the world or provide me with meaning in my life. But taking on that goal and striving to achieve it the best way I can helps me tremendously.
+
+These ideas and Suits' definitions may seem miles apart. But if you read Nguyen, you see just how much this Suitsian notion of games matters to him even though he thinks it falls short of being an exhaustive definition. Suits helps us focus on aspects of a game, pulling out the bits to help us understand the parts. Where is our analysis of programming concepts? Where is our reflection on our own practice in this kind of fashion? Why are we forever behind other disciplines in meta-analysis?
+
+
+export default function Game({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

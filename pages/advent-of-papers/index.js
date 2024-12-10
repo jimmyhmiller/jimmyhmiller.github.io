@@ -42,6 +42,11 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-8-beyond-being-there",
         mdx: true,
     },
+    {
+        text: "Dec 9: What is a Game?",
+        href: "/advent-of-papers/2024/dec-9-what-is-a-game",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [
