@@ -65,7 +65,7 @@ const ChatGPT = () => (
 		<Heading size="2" text="Taking Mental Talk Metaphorically"></Heading>
 		<p>
 			Why do we take mental talk about ChatGPT to be so fundamental? Are
-			we swayed by media portrayals? Are unreflectively accepting “Machine
+			we swayed by media portrayals? Are we unreflectively accepting “Machine
 			Learning” as a literal statement? I think the problem is quite a bit
 			deeper. No longer do we hold the mental as fundamental, but as
 			merely a type of computation. To suggest that ChatGPT knows

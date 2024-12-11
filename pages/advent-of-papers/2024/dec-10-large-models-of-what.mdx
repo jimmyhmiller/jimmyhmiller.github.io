@@ -1,0 +1,39 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Large Models of What?</title>
+    <meta
+        name="og:description"
+        content="Do large language models actually model language? Not if we think about language as it is actually used by humans"
+        />
+</Head>
+
+<Heading text={<>Large Models of What? (<Link href="/pdfs/models.pdf">pdf</Link>)</>} />
+
+
+We haven't really talked about LLMs much on the [future of coding](https://futureofcoding.org/episodes/). In many ways, this may seem like a striking omission. Isn't it a podcast called the "future of coding" and aren't LLMs so obviously some part of that future? I think that is undoubtedly true. I don't see LLMs (or whatever architecture takes their place) being tossed aside at any point. I use them every day and they are quite handy. But I think the main reason we haven't talked about them is we like to talk about things that aren't being talked about everywhere. There is no end to the LLM hype and no shortage of learning materials. So I figured in this advent series I'd cover something a bit different. In *Large Models of What? Mistaking Engineering
+Achievements for Human Linguistic Agency*, Abeba Birhane and Marek McGann show how LLMs fall short of the human practice of "languaging".
+
+## What language models get wrong
+
+Now if you are an LLM fan, you may be expecting that this paper will tell you about "something that LLMs can't do", but what they really mean is what current LLMs can't do. There have been countless predictions people have made about textual patterns that will never be produced by LLMs. "e.g. LLMs will never respond correctly to question X". But that is not at all what this paper is about. Instead, it is a paper offering a different perspective on language than usually assumed by the LLM crowd instead taking what they call the "enactive" view.
+
+> [T]he enactive approach to language starts not with tokens of verbal activity, but with the fundamental issue of agency, embodiment, precarity, and how meaning arises within situations where things matter to those involved.
+
+The enactive view focuses not on the formal properties of language, not on its particular modalities, but on the social situation in which language occurs. Utterances by people are not mere sounds. Instead, they are responses to environments, and to the agent's needs, they are a means of communication. Language is a human practice which, in order to be understood properly, cannot be divorced from the uses it is put to. 
+
+One aspect of these uses is the way in which language rapidly changes. There are some suggestions that nearly 10000 new English words are created every day. Even within one conversation, we create words for a particular meaning to get across our particular purposes. The point here is not that LLMs are completely incapable of doing that, but that we do this as an outpouring of our agency and our need to communicate. This is something that LLMs entirely lack. 
+
+## Conclusion
+
+The paper is honestly a bit academic at times. By that I mean, it is written in that contemporary academic style. While I can't really fault them for it, I do wish we could move away from this style. This is one of the reasons I often enjoy older papers. There seemed to be a willingness to allow the individual voice of a writer to stand out a bit.
+
+That said, I think the paper is full of interesting insights. The paper is also chock full of citations for papers that look quite interesting about the ways in which use language. I have left out so much detail from the paper because I'm not sure a quick summary would do it justice. If you are skeptical about LLMs and want something academic to back you up, definitely read this. If you think LLMs clearly do everything a human does when it comes to language, definitely read this. If you just want to read more of my blog posts (who doesn't), you can see [my thoughts](https://jimmyhmiller.github.io/chatgpt) on the same topic.
+
+export default function LargeModels({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

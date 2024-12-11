@@ -47,6 +47,11 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-9-what-is-a-game",
         mdx: true,
     },
+    {
+        text: "Dec 10: Large Models of What?",
+        href: "/advent-of-papers/2024/dec-10-large-models-of-what",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [
