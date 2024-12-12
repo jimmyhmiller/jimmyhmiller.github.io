@@ -1,0 +1,188 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>On Understanding Data Abstraction, Revisited</title>
+    <meta
+        name="og:description"
+        content="What if you could have your beautiful immutability, but keep object oriented programming?"
+        />
+</Head>
+
+<Heading text={<>On Understanding Data Abstraction, Revisited (<Link href="/pdfs/data-abstraction.pdf">pdf</Link>)</>} />
+
+One of my meta-criteria for choosing a paper in this series is the likelihood we will cover the paper on the future of coding. I won't completely rule out covering papers I think we will do at some point. But for the most part, I've decided to steer clear of them. This paper is one I don't think we'd cover on a podcast because I'm not sure it makes for great conversation. This is one of the difficult things about the podcasting medium. Or at least the medium as I conceive it. Not all papers lend themselves to a free-wheeling discussion about the paper. A lecture might work for a paper, and a blog post almost certainly works, but some things just don't come out well in a discussion.
+
+One class of papers I don't think translate well are those that just tell you facts of the matter. I don't mean of course that there isn't bias in these papers. But simply that the goal of the paper isn't to convince you of anything but to simply tell you about things. In some ways, this paper doesn't quite qualify. It is in fact an argument, but not about something I'd consider a real live debate for me. Are objects and abstract data types different things? I'm not sure I really care about that distinction and yet this paper has stuck with me ever since I read it. So, I want to cast this paper in a different light for you readers who may, like me, not really care about objects vs adts.
+
+Rather than make a division between objects and adts, I want you to view this paper as bridging a divide between the values held by object-oriented programmers and those held by functional programmers. Object-oriented programmers value the ability to have multiple implementations of objects interoperate together. They want systems to be extended not modified. Functional programmers value immutability. They want to be certain that the values they have cannot change out from under them. Until I read this paper, I had believed the view that objects were about encapsulating state. In this paper, I see a very object-oriented way of programming, that constructs completely immutable objects.
+
+## Objects
+
+In keeping with my now adopted goal of not replacing the paper, but instead enticing you to read it. I will leave off what William R. Cook has to say about the difference between ADTs (Abstract not Algebraic) and Objects. It is actually quite interesting. He shows how the standard Java way of programming and has us build ADTs rather than Objects. But I won't explain further. Instead, I want to show from his example of what an interface for an object-oriented way of defining sets might look like.
+
+```rust
+interface Set {
+  fn empty() -> bool,
+  fn contains(n : int) -> bool
+  fn insert(n : int) -> Set
+  fn union(s : Set) -> Set
+}
+```
+
+Here, in our fictional language, is an object-oriented interface for defining a set. We have not defined in any way a concrete implementation of a set. We have just talked about the operations a set must have. This is one of the keys, Cook tells us, to the object-oriented style. Most notably here, there isn't a means of constructing a set. These will come from objects that conform to this interface. Consider this implementation
+
+```rust
+struct Empty {}
+impl Empty {
+  fn new() -> Set {
+    Empty {}
+  }
+}
+
+impl Set for Empty {
+  fn empty() { true }
+  fn contains(_: int) { false }
+  fn insert(n: int) { Insert(self, n) }
+  fn union(s: Set) { s }
+}
+```
+
+Here we have the empty set (In pseudo rust). It contains nothing. It mutates nothing. To insert things into the empty set, we just return a new set called Insert. To union, just pass whatever set we want to union with. What do Insert and Union look like?
+
+```rust
+
+struct Insert {
+  set: Set,
+  i: int,
+}
+
+impl Insert {
+  fn new(set: Set, n: int) -> Set {
+    set.contains(n) ? set :  Insert { set, n }
+  }
+}
+
+impl Set for Insert
+  fn empty() { false }
+  fn contains(n: int) { i == n || set.contains(n) }
+  fn insert(n: int) { Insert(self, n) }
+  fn union(s: Set) { Union(this, s) }
+}
+
+struct Union {
+  set_1: Set,
+  set_2: Set,
+}
+
+impl Union {
+  fn new(set_1: Set, set_2: Set) -> Set {
+    Union { set_1, set_2}
+  }
+}
+
+impl Set for Union {
+  fn empty() { set_1.empty() && set_2.empty() }
+  fn contains(n: int) { set_1.contains() || set_2.contains() }
+  fn insert(n: int) { Insert(self, n) }
+  fn union(s: Set) { Union(this, s) }
+}
+```
+
+Here we see no inheritance, no encapsulating of state. Just completely immutable objects. But we also see object-oriented principles upheld. Most notably, these objects only know about themselves, they do not inspect the representation of the arguments they are passed except through their public interfaces. He calls this term Autognosis.
+
+> Autognosis means ‘self-knowledge’. An autognostic object can only have detailed knowledge of itself. All other objects are abstract. The converse is quite useful: any programming model that allows inspection of the representation of more than one abstraction at a time is not object-oriented.
+
+But I must admit, these objects are not the ones that got me so excited about this idea. They are fairly straightforward, but when you embrace this style of behavioral abstraction you can make some much more interesting implementations.
+
+```rust
+struct Even {};
+
+impl Even {
+    fn new() -> Set {
+        Even {}
+    }
+}
+
+impl Set for Even {
+    fn empty() -> bool {
+        false
+    }
+    fn contains(n: int) -> bool {
+        n % 2 == 0
+    }
+    fn insert(n: int) -> Set {
+        Insert::new(self, n)
+    }
+    fn union(s: Set) -> Set {
+        Union::new(self, s)
+    }
+}
+
+struct Full {};
+
+impl Full {
+    fn new() -> Set {
+        Full
+    }
+}
+
+impl Set for Full {
+    fn empty() -> bool {
+        false
+    }
+    fn contains(_: int) -> bool {
+        true
+    }
+    fn insert(_: int) -> Set {
+        Self
+    }
+    fn union(_: Set) -> Set {
+        Self
+    }
+}
+
+struct Interval {
+    n: int,
+    m: int,
+}
+
+impl Interval {
+    fn new(n: int, m: int) -> Set {
+        if n > m {
+            EmptySet
+        } else {
+            Interval { n, m }
+        }
+    }
+}
+
+impl Set for Interval {
+    fn empty() -> bool {
+        self.n > self.m
+    }
+    fn contains(i: int) -> bool {
+        self.n <= i && i <= self.m
+    }
+    fn insert(i: int) -> Set {
+        Insert::new(self, i)
+    }
+    fn union(s: Set) -> Set {
+        Union::new(self, s)
+    }
+}
+```
+
+Here are sets that not only are completely immutable, but they also store a large quantity of things (infinitely many), without storing almost anything at all. I actually made my [own little implementation of a language like this in Clojure](https://github.com/jimmyhmiller/PlayGround/blob/master/oop.clj) and wrote quite a number of things in it.
+
+## Conclusion
+
+The paper explains all sorts of limitations with this particular interface for sets and the tradeoffs that come with object-oriented interfaces. How do you add the intersect operator to this interface? You can't. Why? Because there is no way to tell if two set intersections are empty without iterating over the sets. But how do you iterate over these infinitely large sets? I find all of these tradeoffs fascinating and wish this was the kind of stuff talked about with Object Oriented software (in before someone tells me that of course this stuff is talked about everywhere and I'm just not reading it). I'd highly recommend trying to write some software in this style. It's a fascinating set of constraints that make for some really interesting programs.
+
+
+export default function AbstractionRevisted({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

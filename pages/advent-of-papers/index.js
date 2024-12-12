@@ -52,6 +52,11 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-10-large-models-of-what",
         mdx: true,
     },
+    {
+        text: "Dec 11: On Understanding Data Abstraction Revisited",
+        href: "/advent-of-papers/2024/dec-11-data-abstraction",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [

@@ -7,6 +7,7 @@ import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
 import haskell from 'react-syntax-highlighter/dist/esm/languages/prism/haskell';
 import clojure from 'react-syntax-highlighter/dist/esm/languages/prism/clojure';
 import ruby from 'react-syntax-highlighter/dist/esm/languages/prism/ruby';
+import rust from 'react-syntax-highlighter/dist/esm/languages/prism/rust';
 import { solarizedlight } from 'react-syntax-highlighter/dist/styles/prism';
 
 import dynamic from 'next/dynamic'
@@ -52,6 +53,7 @@ SyntaxHighlighter.registerLanguage('javascript', js);
 SyntaxHighlighter.registerLanguage('haskell', haskell);
 SyntaxHighlighter.registerLanguage('clojure', clojure2);
 SyntaxHighlighter.registerLanguage('ruby', ruby);
+SyntaxHighlighter.registerLanguage('rust', rust);
 
 
 
