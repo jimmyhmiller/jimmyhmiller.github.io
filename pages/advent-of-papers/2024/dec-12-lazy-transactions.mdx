@@ -1,0 +1,39 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Lazy Evaluation of Transactions in Database Systems</title>
+    <meta
+        name="og:description"
+        content="We discuss a fascinating paper that shows the benefits of only pretending to commit a transaction."
+        />
+</Head>
+
+<Heading text={<>Lazy Evaluation of Transactions in Database Systems (<Link href="/pdfs/lazy-transactions.pdf">pdf</Link>)</>} />
+
+
+This is a paper I have found utterly fascinating since I first read it many years ago. Is it a good idea? I have no clue. Does the data in the paper make me think it is a good idea? Probably not. But why should that be the bar? If there is anything this series has hopefully shown you, interesting papers don't need to be practical. The most valuable papers for me have been those that are completely impractical. Papers that make me think. That changes the way I view systems. 
+
+That said, what I don't enjoy are papers that pretend to be practical, but ignore the realities of practice. I don't think this paper falls into that category. Here, they are investigating a rather interesting idea, what if instead of executing all the steps of a database transaction immediately, we just record a thunk of what should happen? How would the database respond?
+
+## Explanation
+
+How exactly would lazy evaluation of a database transaction work? Well, for full details I'd suggest reading the paper, but for the general idea, we need a couple of things. First, our transactions must be deterministic. Second, we need the ability to decide given the current state of the database if a transaction will abort or commit. Finally, we need to be able to track the write set of a given transaction. With these things in place, we can have full ACID, yet lazy transactions. We can implement this lazy evaluation transaction by use of what they call "stickies". In essence, instead of actually executing our transaction, which may read from multiple fields and then write to multiple fields, we put a stickie note on the values we are going to write to. Once those sticky notes are in place, if someone reads those values, the sticky note tells them what transaction(s) to execute to get the current value.
+
+Now why would you want to do this? Because you can get all sorts of interesting load-handling benefits! In real-world applications, it is (in my experience) quite common to have writes that are never read. Or if they are read, they are read rarely at a much later date. But what is also common is to have rather spiky, inconsistent traffic. When traffic load increases, it can often be hard to keep up with the pace of transaction writes. Having lazy transactions allows us to defer the cost of those writes to later, perhaps off-peak times! This does come at the cost of potential read latency increases, because now reads may have to process transactions that were only lazily written.
+
+![Graph of Transactions](/images/transactions.png)
+
+In these graphs from the paper, you can see a few things. First, the top graph shows you the traffic in this experimental setup. Transactions per second start low, peak, and drop back. The second graph shows you throughput. Things are a bit confusing here. The black line labeled "stickification" is the throughput from the user's perspective. These are the transactions that completed and were accepted by the system. The light blue "lazy" line gives you insight into how the lazy transactions are running behind the scenes. Finally, the third graph shows the success rate. As you can see, the eager process was not able to keep up with demand and dropped nearly 60% of transactions! While the lazy process did not drop a single one!
+
+## Conclusion
+
+I think this is actually a really interesting mechanism. Even if it never found its way into a general-purpose database system, (I can imagine people would find this behavior confusing), it is a fascinating idea that I think could be applied to many fit-for-purpose systems. Something talked about, but not explored in this paper is the idea of realizing these transactions in non-peak times. This will of course happen naturally as read slowly eek in. But in my experience, many real-world systems have times of significantly lower load. I can imagine adapting this process so that when these lower load moments occur, the system executes these lazy transactions. There are so many interesting ideas and opportunities laid out in this paper. I love the way in which it combines programming language ideas (lazy evaluation) and databases in an interesting way. I'd love to see more cross-over between these communities.
+
+
+export default function LazyTransactions({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

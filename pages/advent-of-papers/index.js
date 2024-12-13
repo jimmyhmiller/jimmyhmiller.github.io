@@ -57,6 +57,11 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-11-data-abstraction",
         mdx: true,
     },
+    {
+        text: "Dec 12: Lazy Evaluation of Transactions in Database Systems",
+        href: "/advent-of-papers/2024/dec-12-lazy-transactions",
+        mdx: true,
+    }
 ]
 
 const consideredPapers = [
