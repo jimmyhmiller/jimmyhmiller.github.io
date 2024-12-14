@@ -61,6 +61,11 @@ export const finishedPapers = [
         text: "Dec 12: Lazy Evaluation of Transactions in Database Systems",
         href: "/advent-of-papers/2024/dec-12-lazy-transactions",
         mdx: true,
+    },
+    {
+        text: "Dec 13: What Knowledge Isn't",
+        href: "/advent-of-papers/2024/dec-13-knowledge",
+        mdx: true,
     }
 ]
 

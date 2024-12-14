@@ -1,0 +1,56 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>What Knowledge Isn't</title>
+    <meta
+        name="og:description"
+        content="A three page paper overturned 2000 years of philosophy."
+        />
+</Head>
+
+<Heading text={<>What Knowledge Isn't (<Link href="/pdfs/gettier.pdf">pdf</Link>)</>} />
+
+I read four different papers today. None of them stuck with me. There were a few papers on social aspects of programming, all of the empirical bent. I was hoping to find a good paper that captured the sense of frustration I feel with Agile; a paper that could summarize the perverse labor relationship that Agile has forged between software engineers, product managers, and the software itself. But I've tried in vain. I looked through my absurd back catalog. None of them stood out to me as papers I wanted to discuss today. So I'm instead giving you yet another philosophy paper. But this paper leaves you with no excuse but to read it. Coming in under 3 pages. This philosophy paper turned the world of epistemology on its head. Introducing Edmund L. Gettier's [Is Justified True Belief Knowledge](/pdfs/gettier.pdf).
+
+## Knowledge
+
+* 2 + 2 = 4
+* My name is Jimmy
+* Agile is a terrible way to make software
+* The earth is round
+* My dog sheds a ton of hair
+* No prime numbers are prime ministers
+
+These are all examples of things I think I know. But how can I be sure? What exactly does it mean for something to be knowledge? Well, when we look at the kinds of things we intuitively count as knowledge, there seems to be fairly wide agreement on the core of the account. First, the things you know, you must believe. Now of course we might say something like "I know I'm going to fail, but I don't want to believe it." But here we aren't being literal. When we say that we know something we are at least saying we believe it. Or to make it silly programmer speech, knowledge is a subclass of belief. But not all belief rises to the level of knowledge. What is missing?
+
+> "I know that the earth is flat." "No, you don't, because it isn't."
+
+Replace the word "know" about with the word "believe". Note the asymmetry. With "know", this logic feels sound, but replacing it with believe makes the tort non-sensical. What does this show? That we can't know things that aren't true. Philosophers call this the "factive" portion of knowledge. In order for something to count as knowledge, it must actually be true. But it's not enough for something to be true for you to correctly assert that you know it.
+
+> "It's going to rain tomorrow" "How do you know that?" "I rolled a d20 and got a natural 20"
+
+Unless the above sentence was uttered during some TTRPG, we would in fact reject this person's claim to knowledge. But what if it turns out it did in fact rain tomorrow? Did they know it all along? No, they just got lucky. What they lacked was any good reason for that belief. Philosophers call this "justification". Justification means that a person is internally in possession of a good reason for their belief. When asked why they believe something, they could offer a good reason. 
+
+But does this intuitive view work? Gettier shows us that it doesn't.
+
+### When Justified True Belief fails to be knowledge
+
+You should read the paper. So I'm not even going to give a Gettier example. Instead, I'll use a different example.
+
+> *The pyromaniac* (Skyrms 1967). A pyromaniac reaches eagerly for his box of Sure-Fire matches. He has excellent evidence of the past reliability of such matches, as well as of the present conditions — the clear air and dry matches — being as they should be, if his aim of lighting one of the matches is to be satisfied. He thus has good justification for believing, of the particular match he proceeds to pluck from the box, that it will light. This is what occurs, too: the match does light. However, what the pyromaniac did not realize is that there were impurities in this specific match, and that it would not have lit if not for the sudden (and rare) jolt of Q-radiation it receives exactly when he is striking it. His belief is therefore true and well justified. But is it knowledge?
+
+Gettier shows us in the paper multiple cases where true justified belief fails to be knowledge. So what exactly is knowledge? Well, this is a whole area of debate in the philosophical community. But out of this has spawned fascinating, interesting work. There are debates about whether the criteria for knowledge requires something internal (i.e. mental) or external (the world, our brain chemistry, etc). There are debates about whether there is one unified conception of knowledge, or if knowledge is contextual. Finally, there are debates on whether knowledge has an analysis at all or if we ought to take knowledge as fundamental and define things like belief in terms of knowledge.
+
+## Conclusion
+
+The example given above and the examples given in the paper may seem far-fetched, but it is my contention that programming is a constant Gettier problem generator. How many times have you believed you had found the cause of some bug, and had good reason to believe it, it turns out you were correct, but then when looking closer at the bug realize all your reasons were completely wrong! You had true justified belief, but not knowledge.
+
+Philosophy (well, analytic philosophy, which is the kind I enjoy) is a lot like programming. It goes deep on topics most people don't care about. It introduces concepts that seem overly technical and complicated. There are endless debates and disagreements with no hope of reconciliation. But what I see from philosophy that I find so hard to find in these computer science papers, is an awareness of the complexity of our topics. A willingness to engage with those who disagree. No pretension that your approach is the best approach. No need to have a related work section, because instead, you directly engage with others' works.
+
+export default function Gettier({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}
