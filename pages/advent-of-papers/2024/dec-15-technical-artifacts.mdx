@@ -1,0 +1,61 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+<Head>
+    <title>Programming Languages as Technical Artifacts</title>
+    <meta
+    name="og:description"
+    content="How do programming langauges get their meanings? How are these meanings related to the phyiscal implementations of them?"
+    />
+</Head>
+
+<Heading text={<>Programming Languages as Technical Artifacts (<Link href="/pdfs/technical-artifacts.pdf">pdf</Link>)</>} />
+
+
+At first blush, the topic of this article may seem no different than our day 2 article [Software is an Abstract Artifact](/advent-of-papers/2024/dec-2-abstract-artifact). However, Raymond Turner's notion is quite different. First I think it's important that we make clear in this article we are talking about programming languages. In the previous article, we were talking about a piece of software (e.g. Microsoft Word). Is there really a difference between these two? Aren't programming languages pieces of software after all? Go back to the year 1960. McCarthy has invented Lisp, but no implementation of it exists. Is it still a programming language? Or I have written up an operational semantics for a new DSL I'm planning on making. Is my DSL not a programming language? Contrast this with software. Software does not exist unless it is implemented.
+
+There is quite a bit more that is different about these articles. Abstract Artifacts are not the same as Technical Artifacts. We will get into that later. But I want to comment on the fact that distinctions like software vs programming languages and their existence criteria are something we pre-theoretical have intuitions about. Perhaps your intuitions disagree with mine. Maybe you think a UML diagram is all that is needed for a piece of software to come into being. But regardless, you have these views. Yet these kinds of questions aren't considered part of computer science proper. Only a handful of philosophers of computer science talk about these issues and yet it isn't as if computer scientists have no views on the matter.
+
+For example, Laurence Tratt's article [Compiled and Interpreted Languages: Two Ways of Saying Tomato](https://tratt.net/laurie/blog/2023/compiled_and_interpreted_languages_two_ways_of_saying_tomato.html) shows how complex the notions of interpretation vs compilation can be. Elements of interpretation and compilation are interweaved in many language implementations. But what it also contains is clear (if a bit implicit) commitments to constraints on the ontological status of programming languages. For example, Tratt does not believe that languages are identical to their implementations. So languages are not the bits on the computer that make up the implementation. But perhaps surprisingly, nor does he appear to believe that languages are identical to their specifications! He says this in a footnote: "Some languages don’t even have a single specification, such as BASIC, allowing many different languages and implementations with “BASIC” in their name to diverge substantially from one another". Perhaps that is a bit vague, in the first part of the sentence he seems to imply the (singular) language Basic has multiple specifications, but then talks about different languages (plural) that are "Basic".
+
+Tratt's view is a fairly common one from what I've seen. More explicitly stated views might say something like "Interpreted language" is a meaningless phrase. What they have in mind here I've gathered is that it is a category error. Languages aren't their implementations and only implementations can be interpreted. We will ignore the larger issues of language, how clearly that can't be a meaningless phrase given that people use it and communicate things all the time. (Happy to debate anyone on this) What I wanted to draw out from it is merely that computer scientists already have made these sorts of ontological commitments. This isn't an imposition from the outside.
+
+## Summary
+
+So if a programming language is a Technical Artifact, what exactly is that?
+
+> Technical artifacts include all the common objects of everyday life such as televisions, computer keyboards, paper clips, telephones, smartphones, dog collars, and cars. They are intentionally produced things. This is an essential part of being a technical artifact. For example, a physical object that accidentally carries out arithmetic is not by itself a calculator. This teleological aspect distinguishes them from other physical objects.
+
+This is first in contrast to natural objects. A rock is not made with any particular purpose in mind. It is not an intentionally produced object. But technical artifacts also differ from other socially constructed objects like money, in that there is a necessary connection between function and physical structure. Money does not need to have a particular structure to fulfill its function, but things like a paper clip do.
+
+A technical artifact is individuated by the combination of two properties, its functional properties (what it is intended to do) and its structural properties (its physical makeup). A technical artifact is not simply the physical object considered in and of itself. It must have these functional properties as well. (How exactly those are understood is a bit complicated, but we will touch on them a bit more here. See the full article and citations for more information). For our purposes, we are just going to talk about the `engineering design view` which takes the function of a technical artifact to be related to the intention of its construction.
+
+### Programming Languages
+
+What exactly specifies the function of a programming language? Well, the paper does I think a pretty great job of diving into topics like operational semantics, denotational semantics, virtual machines, and abstract machines. We don't have the space here to dive into these details, but there is one major point that is important for us to capture here, the physical implementation of a language cannot be the ground of its function. I think for some more academically minded, this is obvious, so I won't defend specifications here. But from an everyday perspective, isn't the "meaning" of a Python program just defined by what CPython does when it runs the program?
+
+The fact that there can be bugs in CPython shows this to not be the case. The notion of a bug in an implementation of a programming language requires that there is something outside the implementation itself that specifies the correctness criteria for the implementation. Or to put it in philosophy speak, semantics must provide normative criteria. This is actually crucial for any notion of meaning.
+
+> The fact that the expression means something implies that there is a whole set of normative truths about my behavior with that expression; namely, that my use of it is correct in application to certain objects and not in application to others. (Boghossian 1989)
+
+But "When is an implementation of a language correct relative to its semantic account?" This question actually brings us back to day 4's question [Is the Brain a Digital Computer](/advent-of-papers/2024/dec-4-brain-computer). In John Searle's paper he shows how given a sufficiently complex physical object, we can map that object onto any program specification. This includes a programming language specification! So any object can implement any programming language! (If this confuses you, see section 6 in the paper). Turner actually gives us a way around this problem for technical artifacts.
+
+> If I observe a man arranging stones in a way that is consistent with the extensional arrangement determined by some abstract machine, I may not legitimately infer that he is building a device according to the abstract machine viewed as a functional specification. He might just be arranging them for esthetic reasons. In general, a physical device may be in accord with an abstract machine without being governed by it. How might we tell the difference? How can we tell if she is under the authority of the abstract machine or building a work of art? Presumably, we can ask: “what are your intentions?”, “why did you do that?” For the former, the answer must refer to the abstract specification. 
+
+So rather than using the mapping procedure in a post-hoc manner after the computation has been run to see if it meets the specification, we must look at the intention behind the physical process. As the paper points out, this might seem that we are saying that the meaning of a language is actually in the head of its creator, but quoting Kripke, Turner sees this as problematic. (In the following passage quus is like mathematical plus, but just thinking about it as wrapping at some boundary like 32bit plus would.)
+
+>  Given . . . that everything in my mental history is compatible both with the conclusion that I meant plus and with the conclusion that I meant quus, it is clear that the sceptical challenge is not really an epistemological one. It purports to show that nothing in my mental history of past behavior—not even what an omniscient God would know—could establish whether I meant plus or quus. But then it appears to follow that there was no fact about me that constituted my having meant plus rather than quus. (Kripke 1982).
+
+So Turner concludes that the meanings of programming languages are not in the head, but rather are mathematical objects. By themselves, these semantics can be studied as just any other mathematical object, but when used by an agent they provide normative force over the implementation of a programming language, defining its correctness.
+
+## Conclusion
+
+I am always refreshed reading these kinds of papers. I understand many people find them exhausting. What difference can these esoteric distinctions possibly make for the actual practice of people? Well, luckily for you Turner has a suggestion for exactly that. Programming languages in order to be used for practical purposes, must have physical instantiations. Given this, computer science isn't merely an abstract discipline, it is something that produces technical artifacts. Computer science is part math, part technology. So shouldn't the philosophy of computer science be the combination of the two?
+
+You may take this as still decidedly impractical, who cares about the philosophy of computer science? For that, I have no retort. Are there no answers to the questions we seek in the philosophy of computer science? Or do the truths of certain questions simply not matter? Whichever it is, I can't understand why people wouldn't care about these questions.
+
+export default function TechnicalArtifact({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

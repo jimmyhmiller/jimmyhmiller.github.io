@@ -72,6 +72,11 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-14-bidirectional-type-checking",
         mdx: true,
     },
+    {
+        text: "Dec 15: Programming Languages as Technical Artifacts",
+        href: "/advent-of-papers/2024/dec-15-technical-artifacts",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [
@@ -86,7 +91,6 @@ const consideredPapers = [
     {text: "On Reversible Subroutines and Computers That Run Backwards - E. D. Reilly, Jr. and F. D. Federighi"},
     {text: "Three Challenges to Chalmers on Computational Implementation - Mark Sprevak"},
     {text: "Content, Computation, and Externalism - Oron Shagrir"},
-    {text: "Programming Languages as Technical Artifacts - Raymond Turner"},
     {text: "Once More—A Computer Revolution - Joseph Weizenbaum"},
 ]
 
