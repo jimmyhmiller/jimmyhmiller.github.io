@@ -1,0 +1,42 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Bidirectional Type Checking</title>
+    <meta
+        name="og:description"
+        content="A super readable paper on how to implement a bidirectional type checker"
+        />
+</Head>
+
+<Heading text={<>Bidirectional Type Checking (<Link href="/pdfs/bidirectional.pdf">pdf</Link>)</>} />
+
+
+Type checking is one of those topics in programming that I feel is often taught in a way that makes it rather confusing. Hindley Milner is a rather elegant, but confusing algorithm. Seeing how easy it is to make in mini-Karen, certainly didn't give me any insight into how it works. When you dive into papers about type checking it's full of formalism and very little code. For academics, I'm sure that's fine. However, for an industry programmer like myself, I often find it rather difficult. This paper (Bidirectional Typing Rules: A Tutorial by David Raymond Christiansen) is a great contrast to this usual setup. It isn't lacking in formalism, but provides a nice discussion of the formalism and some simple translation to code! There's even [a talk](https://www.youtube.com/watch?v=utyBNDj7s2w) which is how I first discovered this paper (though there are some audio issues). The talk goes into a few more details. But this paper is still a great introduction.
+
+
+Bidirectional type checking is a method somewhere between full type inference and no type inference. An imprecise characterization of this is that you only have to write type annotations on type-level entities, but not on every variable. So, for function definitions you need to write your types, but not much else. The bidirectionality bit gets its name because this algorithm works by checking types and inferring (or synthesizing) types in an interleaving fashion.
+
+If we know a type and we have a value, we can check that value against a type. If we don't know a type but have a value, we can infer the type and then check it. This may seem a bit simplistic. When I first saw it, I thought there was no way this kind of setup could work but it does! Consider the very simple example:
+
+```haskell
+x : bool
+x = true
+```
+
+We can very easily infer the type of the literal <Term>true</Term> and then we can check that the type of <Term>true</Term> matches the annotation. This very simple idea scales up incredibly way to larger structures. 
+
+## Conclusion
+
+Just from the features laid out in this paper, I was able to implement a simple bidirectional type checker! I actually did it twice. Once [in a terse way in Clojure](https://github.com/jimmyhmiller/PlayGround/blob/b0335150c6fe2202b130668561cf149dab5da921/wander/src/wander/core19.clj) using a library called Meander a friend of mine wrote. (Maybe I need to find a good paper on term rewriting, not sure I ever found one of those). Then I decided to translate that into more verbose, but maybe a bit more familiar [Javascript](https://github.com/jimmyhmiller/PlayGround/blob/b0335150c6fe2202b130668561cf149dab5da921/bidirectional/bidirectional.js). This post was rather short as I didn't have a ton of time today. But I promise, this paper is super readable. It is full of code translations and hints on how to read things. For example:
+![inference](/images/inference.png)
+
+Translating the formalism from above into the code below makes this whole thing way more understandable! I know there are reasons academics prefer the notion they use for these things, but every time I see them translated into code, I just imagine an alternative universe where that didn't happen and how happy I'd be.
+
+
+export default function Bidirectional({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

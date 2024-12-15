@@ -66,7 +66,12 @@ export const finishedPapers = [
         text: "Dec 13: What Knowledge Isn't",
         href: "/advent-of-papers/2024/dec-13-knowledge",
         mdx: true,
-    }
+    },
+    {
+        text: "Dec 14: Bidrectional Type Checking",
+        href: "/advent-of-papers/2024/dec-14-bidirectional-type-checking",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [
