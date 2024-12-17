@@ -1,0 +1,39 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Will Computers Ever Become Easy to Use?</title>
+    <meta
+       name="og:description"
+       content="Jef Raskin explores how computers could become easier to use. It's really not that great."
+     />
+</Head>
+
+<Heading text={<>Will Computers Ever Become Easy to Use? (<Link href="/pdfs/computers-easy.pdf">pdf</Link>)</>} />
+
+
+This paper brings back some nostalgia for me. Not because I was around when it was written (I was 5), but because my computing journey saw me growing up with a different Raskin, Jef's son Aza. Some of the first programs I wrote that had real utility were for the Enso launcher by Humanized. Their [Weblog](https://web.archive.org/web/20090216195643/http://humanized.com/weblog/) had a ton of articles that were very influential in my thinking about interface design and how programs relate to people. It was only many years later that I learned the connection between Aza and Jef. The Human Interface is a fantastic book and if I ever find myself with enough time to write about books rather than papers, I'll definitely re-read it and write that up.
+
+Today's paper though I have to admit is a bit lackluster. The question is an interesting question. But the framing is a bit disappointing. But I've gotten into this habit of reading (skimming) too many papers before making a decision on what paper to post about and I just need to commit if I'm going to make this advent of papers work.
+
+## Summary
+
+Raskin points out things that were true in 1997 and are certainly true today. Users are scared of computers. They do not want to touch things and change them. They need experts to help them do anything complicated. Applications are full of mode errors and all sorts of other design problems that cause endless frustration for non-programmer users. I think this fact can often be under-appreciated by programmers. While we do encounter these flaws in software, we are typically able to work around them or avoid that kind of software. Making settings changes isn't scary. But when I see less technical folk using computers I remember being a kid playing Sim City 3000 Unlimited. I didn't know where to save the game (what folder) and I was scared I would mess something up. I asked my mom and she didn't know either. So the game just never got saved.
+
+Raskin sees these problems as fundamental to our application-centric GUI interfaces. Each application offers very different affordances and patterns that must be relearned constantly. Not only are these problems baked into our methods, but we do not have a field of study that could help us design better alternatives. Raskin proposes a focus on what he calls cognetics: "an engineering technology of applied physics, ergonomics, and cognitive psychology". Raskin wants to define "formal measures of productivity". Given these measurements and design work, we will be able to make much better interfaces that are understandable for everyone and much more efficient. He ends the article with quite a bit of optimism about this research project.
+
+> At present Silicon Valley and the other technological triangles, loops, and glens are somewhat complacent and consider the problem of interface design essentially “solved,” needing only a bit of touch-up here and there. For many users and developers, today’s GUI is the only conceivable interface. Their very success impedes the needed radical improvements. In spite of these formidable difficulties, we will do better. Those companies that cling to the status quo will not be able to also hold on to their customers.
+
+# Conclusion
+
+I love some of Raskin's radical ideas around dissolving application boundaries. But this paper just struck me the wrong way. Is a productivity measure really our goal in making better interfaces? I guess you could say it is the only goal that is going to "win in the market" or something. But I think that generally is a naive view of the market as well. Enterprise software has absolutely terrible interfaces and is wildly successful. In many ways, they are successful because of how bad the interface is. (People need support and services, etc which makes for stickiness and a thriving ecosystem.)
+
+As I look back though, I do see a spirit for redesigning the desktop metaphor that I feel is not very bright today. This is one of the things that makes me sad that so many future of code projects focus on the web. They in many cases assume the very things I think we might want to explore dissolving by putting this platform as a requirement for their work. I get it, it is hard to start over. But I hope we will see that sort of fundamental reworking of the way we interact with our computers again someday.
+
+
+export default function ComputersEasy({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

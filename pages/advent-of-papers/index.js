@@ -77,6 +77,11 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-15-technical-artifacts",
         mdx: true,
     },
+    {
+        text: "Dec 16: Will Computers Ever Become Easy to Use?",
+        href: "/advent-of-papers/2024/dec-16-computers-easy",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [
