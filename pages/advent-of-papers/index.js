@@ -82,13 +82,17 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-16-computers-easy",
         mdx: true,
     },
+    {
+        text: "Dec 17: The Cultural Part of Cognition",
+        href: "/advent-of-papers/2024/dec-17-cultural-cognition",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [
     {text: "Computing with Uncertainty and Its Implications to Universality - Naya Nagy and Selim G. Akl"},
     {text: "Intrinsic Propensity for Vulnerability in Computers? Arbitrary Code Execution in the Universal Turing Machine - Pontus Johnson"},
     {text: "Adapting the Environment Instead of Oneself - David Kirsh"},
-    {text: "The Cultural Part of Cognition - Roy Goodwin D’Andrade"},
     {text: "Abstraction in Computer Science - Timothy Colburn and Gary Shute"},
     {text: "50,000,000,000 Instructions Per Second: Design and Implementation of a 256-Core BrainFuck Computer - Sang-Woo Jun"},
     {text: "Everybody Clap Your Hands: The Cha-Cha Slide is Turing Complete - Harrison Goldstein"},

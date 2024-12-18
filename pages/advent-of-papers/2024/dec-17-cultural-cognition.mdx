@@ -1,0 +1,47 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>The Cultural Part of Cognition</title>
+    <meta
+       name="og:description"
+       content="Are the things we learn in life programs? Can culture explain the brain?"
+     />
+</Head>
+
+<Heading text={<>The Cultural Part of Cognition (<Link href="/pdfs/cultural-cognition.pdf">pdf</Link>)</>} />
+
+As part of this series, I set out to read papers in my backlog of papers, that I literally hadn't read at all. This paper is one of them. It's a paper published in 1981 that from the abstract seems to be drawing a comparison between "cultural programs" and computer programs. But there are times when I read a paper and I feel I have understood every word, but seem lost as to what the paper is really about. This is one of those times.
+
+## Summary
+
+Roy Goodwin D'Andrade wants us to focus on more than just how cognition works or in other words, how the brain operates. The proposal of this paper is that we should focus on the "cognitive organization of culture". Most of what we know comes from cultural transmission. As a species, we are remarkable for our ability to pass information down through generations in a way that grows over time. But what shape does this information take? It must be a shape that is a natural fit for the way our cognition works.
+
+> An important assumption of cognitive anthropology is that in the process of repeated social transmission, cultural programs come to take forms which have a good fit to the natural capacities and constraints of the human brain. Thus, when similar cultural forms are found in most societies around the world, there is reason to search for psychological factors which could account for these similarities.
+
+Much is made about this idea of cultural programs. But at each turn, we are just told how they differ from computer programs. 
+
+> [O]ne major difference between cultural and computer programs is in the degree of precision with which computer programs must be stated"
+>
+> How does this great difference between the highly specified computer program and the learned-by-guided-discovery cultural program relate to differences in human versus computer processing characteristics? Among other things, this difference may have to do with the fact that humans must learn their programs, while computers "load" theirs.
+>
+> Another example of a major difference between human and computer programs is the strong tendency for human problem solving procedures to be highly local and content specific, rather than global and formal.
+>
+> 
+
+We are never really told how these two are supposed to coincide. I take it this is just taken for granted. But I'm honestly not sure I see it. In which way are cultural programs like computer programs? One example given a cultural program is playing chess at the Master's level. We already know quite well that computer programs play chess quite differently than people do. Even more mundane things, like how to use a pencil, seem to be examples of cultural programs. What do these have in common at all? 
+
+> One current formulation in anthropology treats the pool of cultural information as if it were a pool of algorithms or programs, a giant stock of procedures and representational declarations embodied primarily in natural language
+
+I thought this "one current" was going to lead us to an alternative formulation. But as far as I can find, it never does. Is this really the way this paper thinks about all the things we do in life? Am I currently following a pool of algorithms to write this paper? I never intended this to be yet another paper on computation and instantiation but it seems to be.
+
+## Conclusion
+
+The best I can see is that this paper is trying to point to how important culture is for the way we think and what we think about. It is trying to say that a study of culture can be a study of the brain. Maybe that first part needed to be said in 1981 to this group of cognitive scientists. As for the second part, it may well be true, but looking at culture in terms of programs doesn't seem all that fruitful to me.
+
+export default function CulturalCognition({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}
