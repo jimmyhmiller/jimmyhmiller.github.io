@@ -1,6 +1,8 @@
 
 import { Code, Heading, GlobalLayout, LinkList, Link, LargeText, MediumText, Title, RandomList } from "../../utils";
 
+import Head from 'next/head';
+
 export const finishedPapers = [
     {
         text: "Dec 1: Elephant 2000",
@@ -87,6 +89,11 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-17-cultural-cognition",
         mdx: true,
     },
+    {
+        text: "Dec 18: The Structure and Legal Interpretation of Computer Programs",
+        href: "/advent-of-papers/2024/dec-18-legal-interpretation",
+        mdx: true,
+    }
 ]
 
 const consideredPapers = [
@@ -106,6 +113,12 @@ const consideredPapers = [
 const Advent = () => (
     <GlobalLayout>
        <Title text="Advent of Papers (2024)" />
+       <Head>
+        <meta
+            name="og:description"
+            content="Each day I read and summarize a weird or intersting paper related to computing."
+        />
+    </Head>
        <MediumText>
             I spend quite a bit of time talking about papers on the the <Link href="https://futureofcoding.org/episodes">Future of Coding</Link> podcast.
             But there are so much papers we will never get to. So I thought it might be fun to do an advent of papers. I'm largely inspired by {" "}

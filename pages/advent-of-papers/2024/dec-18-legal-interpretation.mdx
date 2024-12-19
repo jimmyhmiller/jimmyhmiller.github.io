@@ -1,0 +1,33 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>The Structure and Legal Interpretation of Computer Programs</title>
+    <meta
+       name="og:description"
+       content="What do programs mean? Why does this matter for the law?"
+     />
+</Head>
+
+<Heading text={<>The Structure and Legal Interpretation of Computer Programs (<Link href="/pdfs/structure-and-legal-interpretation.pdf">pdf</Link>)</>} />
+
+I do not have much time to write today. I've been dealing with the seemingly never-ending problem of getting a bed frame delivered properly. It's been weeks of dealing with customer support to get the hardware, for it to arrive today, and halfway through getting the bed together realizing I'm still missing a crucial part. Then hours returning the bed.
+
+So you are getting a very short summary of a paper that deserves much more to be said about it.
+
+## Summary
+
+James Grimmelmann has written this wonderfully titled and fantastic paper about the meaning of programs. He walks through three different wants of understanding the meaning of a program, naive functional meaning, literal functional meaning, and ordinary functional meaning. All of these ways of taking meaning find their use in law. I won't detail what they mean here, but I will say as practitioners, we do have to deal with these different kinds of meanings all the time. Ordinary functional meaning and literal functional meaning are involved when debugging software.
+
+But despite not telling you what these meanings exactly are, I will give you the punch line. The meaning of our programs depends on social facts, it isn't merely objective. This is a fascinating conclusion that I believe is well argued for. If we are to find a grounding for the meaning of our programs, they must be grounded in social facts. Facts like what the community agrees is normative for language definition. Much of what Grimmelmann argues for about software is in concert with discussion in [day](/advent-of-papers/2024/dec-2-abstract-artifact) of our papers about software ontology. But literal functional meaning also connects with [day 17](/advent-of-papers/2024/dec-15-technical-artifacts) about the ontology of programming languages. 
+
+## Conclusion
+
+This paper is a wonderful exploration of program meaning, particularly in a legal context. I will admit, I haven't found a ton of great papers about programming from the social sciences (please if you know of them share them with me!). But I've been finding quite a few more from a legal context. This is a refreshing read that takes seriously programming in its social context. It's very readable and I can't recommend it highly enough.
+
+export default function LegalInterpretation({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}
