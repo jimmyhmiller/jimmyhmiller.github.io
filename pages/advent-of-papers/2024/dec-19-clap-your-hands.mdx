@@ -1,0 +1,43 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Everybody Clap Your Hands</title>
+    <meta
+       name="og:description"
+       content="The cha cha slide is actually turing complete."
+     />
+</Head>
+
+<Heading text={<>Everybody Clap Your Hands (<Link href="/pdfs/cha-cha.pdf">pdf</Link>)</>} />
+
+Have you ever been at a wedding and thought, "You know what would really spice up this dance floor? Arbitrary computation!" this paper is for you. Today, was a busy day for me, so you will get a very short summary of a very silly paper. [Everybody Clap Your Hands: The Cha-Cha Slide is Turing Complete](/pdfs/cha-cha.pdf) by Harrison Goldstein.
+
+## Summary
+
+The Cha Cha slide is in fact turing complete. Show this relies on only a few well known features of the Casper slide part 2 and some perhaps, strange ways of interpreting what is going on.
+
+> The dance floor is always in one of two states, Funky or Not Funky, which correspond to the states F and N from the machine 𝑀. The DJ can memorize the current state if they wish, but if everyone is doing their job it should be obvious to all involved whether the room is Funky or not.
+
+Funkyness is perhaps my favorite aspect of this scheme. You may be thinking (as I was), I know how to make it funky, but how do you make it not funky? The obvious answer, "freeze"! Other than that, we get things like moving the tape by sliding. We get writing to the tape by hopping. The dancer in front of the DJ is in the hot seat and can signal their state by counting in binary on one hand.
+
+>  Since few people have 18 fingers, the count can be shown in binary as illustrated in Figure 2. To avoid being too rude, the original Turing machine might do well to avoid symbol 4 when possible. In any case, the important thing is that the hot-seat dancer communicates their cell’s content to the DJ.
+
+![A hand with each finger starting at the thumb labeled with powers of two](/images/hands.png)
+
+In general, the scheme makes sense. There are some extensions that might make things a bit easier to encode things, but I like my turing machine equivilants to be minimal.
+
+
+
+## Conclusion
+
+The paper ends with some discussion about the pointlessness of turing completeness as a metric. But honestly I don't think it needs it. The paper mentions internet trolls saying things about turing completeness. But I find that kind of discourse boring. Instead, I want to ask, is a freestyle cha cha slide a programming language? What if the dj (and the dancers) aren't trying to compute anything at all, they are just experimenting with dancing?
+
+When we have debates and say try to include something not traditionally thought of as a programming language into that category, does that same reasoning apply to these Cha Cha slide dancers? Do we want it to?
+
+export default function ChaCha({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

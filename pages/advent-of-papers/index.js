@@ -93,7 +93,12 @@ export const finishedPapers = [
         text: "Dec 18: The Structure and Legal Interpretation of Computer Programs",
         href: "/advent-of-papers/2024/dec-18-legal-interpretation",
         mdx: true,
-    }
+    },
+    {
+        text: "Dec 19: Everybody Clap Your Hands",
+        href: "/advent-of-papers/2024/dec-19-clap-your-hands",
+        mdx: true,
+    },
 ]
 
 const consideredPapers = [
@@ -102,7 +107,6 @@ const consideredPapers = [
     {text: "Adapting the Environment Instead of Oneself - David Kirsh"},
     {text: "Abstraction in Computer Science - Timothy Colburn and Gary Shute"},
     {text: "50,000,000,000 Instructions Per Second: Design and Implementation of a 256-Core BrainFuck Computer - Sang-Woo Jun"},
-    {text: "Everybody Clap Your Hands: The Cha-Cha Slide is Turing Complete - Harrison Goldstein"},
     {text: "Challenging the Computational Metaphor: Implications for How We Think - Lynn Andrea Stein"},
     {text: "On Reversible Subroutines and Computers That Run Backwards - E. D. Reilly, Jr. and F. D. Federighi"},
     {text: "Three Challenges to Chalmers on Computational Implementation - Mark Sprevak"},
