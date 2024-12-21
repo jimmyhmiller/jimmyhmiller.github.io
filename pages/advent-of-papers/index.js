@@ -99,6 +99,11 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-19-clap-your-hands",
         mdx: true,
     },
+    {
+        text: "Dec 20: Three Paradigms of Computer Science",
+        href: "/advent-of-papers/2024/dec-20-three-paradigms",
+        mdx: true,
+    }
 ]
 
 const consideredPapers = [

@@ -1,0 +1,61 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Three Paradigms of Computer Science</title>
+    <meta
+       name="og:description"
+       content="What is computer science isn't one unified thing, but actually three distinct disciplines?"
+     />
+</Head>
+
+<Heading text={<>Three Paradigms of Computer Science (<Link href="/pdfs/three_paradigms_of_computer_science.pdf">pdf</Link>)</>} />
+
+In late 2019, I was invited to give a talk at Rebase in Berlin during the summer of 2020. As you can imagine, that didn't happen at least not in person. Instead, I gave a pre-recorded talk. I tried over and over again to sit at a desk and give a talk as I'd seen many people do, but it just felt so lifeless. So I contacted a friend and I was able to access his company's studio. It was just me, my brother, and my friend. Socially distanced, and the two of them masked, as I gave [a talk about Thomas Kuhn and programming paradigms](https://www.youtube.com/watch?v=TkPy7aLTtAw).
+
+I think the talk was overall good. I fumbled a bit at the beginning, but I stand by the point I was trying to make. Programming Paradigms are not Kuhnian paradigms. (Perhaps I should write this up at some point). However, as part of this talk, I intentionally did not talk about the paradigms of computer science. When asked in the QA about that, I said, I'm an outsider so I don't really have any opinions on that. But anytime I say I don't have opinions, that's a lie.
+
+## Summary
+
+This paper by Amnon H Eden talks about what they take to be three Kuhnian Paradigms of computer science.
+
+> In his seminal work on scientific revolutions, Thomas Kuhn (1962) defines scientific paradigms as “some accepted examples of actual scientific practice… [that] provide models from which spring particular coherent traditions of scientific research.” The purpose of this paper is to investigate the paradigms of computer science and to expose their philosophical origins.
+
+I'm not quite sure they succeed. But before we get there, let's see what the paradigms are supposed to be.
+
+> (§2) The rationalist paradigm, which was common among theoretical computer scientists, defines the discipline as a branch of mathematics, treats programs on a par with mathematical objects, and seeks certain, a priori knowledge about their ‘correctness’ by means of deductive reasoning.
+
+>  (§3) The technocratic paradigm, promulgated mainly by software engineers, defines computer science as an engineering discipline, treats programs as mere data, and seeks probable, a posteriori knowledge about their reliability empirically using testing suites.
+
+> (§4) The scientific paradigm, prevalent in artificial intelligence, defines computer science as a natural (empirical) science, takes programs to be on a par with mental processes, and seeks a priori and a posteriori knowledge about them by combining formal deduction and scientific experimentation.
+
+Despite the title seeming to be simply descriptive, this paper actually argues for the scientific paradigm. I mean, who is surprised by that one? It is rather unusual for someone to name some "scientific" and then not endorse it. I must say, I think I understand the characterization of the rationalists and technocratics quite well. But I'm a bit lost as to what this "scientific" paradigm is supposed to be. Consider this statement of scientific ontology:
+
+> Program-scripts are on a par with DNA sequences, in particular with the genetic representation of human organs such as the brain, the product of whose execution—program-processes—are on a par with mental processes: temporal, non-physical, causal, metabolic, contingent upon a physical manifestation, and nonlinear entities.
+
+"Program-scripts" here just means the text of the code. Where "program-processes" means the running of that code. What are we supposed to take from this ontologically? DNA is a physical thing that has complex causal relationships. Written down DNA sequences may be thought of using the analogy of code. But how is code itself like molecules in a double helix structure? And why is code execution like a mental process if it is DNA? "Running DNA" doesn't result in a mental process. 
+
+I'm confused, is the ontology offered simply metaphors? Is there anything I'm supposed to take literally here? If you think I'm being weird and picky, contrast this with the ontology statement given for the rationalists.
+
+>  A program-script sp is a mathematical expression. A program p is that which is fully and precisely represented by sp. Hence, p is a mathematical object. Mathematical objects are platonic universals. Therefore, programs are universals.
+
+This is a straightforward ontological statement. The confusion for me continues throughout much of the section arguing for the scientific view.
+
+> But mathematical objects, such as turing machines, recursive functions, triangles, and numbers cannot be meaningfully said to metabolize nor have a causal effect on the physical reality in any immediate sense. It would be particular difficult to justify also a claim that mathematical objects have a specific lifespan or that they are contingent upon any specific physical manifestation (except possibly as mental artifacts). In this respect, rationalist ontology is inadequate.
+
+Since when do programs metabolize? The best we get is the assertion that the "program-process" consumes energy. There is nothing about that fact that is contrary to anything mentioned by the rationalist.
+
+### A Brief Note on Kuhn
+
+One point I was going to make is that part of why these aren't Kuhnian paradigms is that Kuhn's paradigms are not mutually comprehensible. Maybe the statements I made above actually lend evidence this is the case. But in general, I think that is one problem here for calling this Kuhnian. But the real major issue is that for Kuhn, a paradigm always wins. There is always progress and a singular dominant paradigm. If these point to anything, it is a pre-paradigm phase. Or I think more realistically, that computing isn't a science.
+
+## Conclusion
+
+As described, I'm not sure these views are quite right. I do think the paper has some interesting ideas and is worth a read. Personally, I find the contrast between the rationalist and technocratic views to be a bit of a false dichotomy. Perhaps, this is my suggestion, what do we get if we combine the various elements presented here? Can we mix and match and find our own paradigm that isn't one of these things, but perhaps parts of all of them?
+
+export default function Three({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}
