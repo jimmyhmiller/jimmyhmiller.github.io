@@ -1,0 +1,51 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>What is Conceptual Engineering and What Should It Be?</title>
+    <meta
+       name="og:description"
+       content="How can we fix our deficient concepts? When should we create new ones?"
+     />
+</Head>
+
+<Heading text={<>What is Conceptual Engineering and What Should It Be? (<Link href="/pdfs/engineering.pdf">pdf</Link>)</>} />
+
+I've loved choosing philosophy papers for this series. And so, I decided today to do the same. But before you click away, this one is incredibly applicable to software. In fact, David Chalmers thinks that Software Engineering helps address a worry about Conceptual Engineering.
+
+> Incidentally, I like the software engineering analogy because it addresses a worry about how conceptual engineering can work if concepts are abstract objects. It’s not obvious that you can engineer a new resident of the third realm. Exactly the same issues arise for software engineering. Programs are usually thought of as abstract objects, but we have no problem saying that programs are engineered.
+
+Chalmers is of course quite right that we engineer abstract objects ([see day 2](/advent-of-papers/2024/dec-2-abstract-artifact)), but I don't think he realized just how tied together conceptual engineering and software engineering are. But I guess we are getting a bit ahead of ourselves, so along with Chalmers we must ask. What is Conceptual Engineering? What should it be?
+
+## Summary
+
+Conceptual engineering is about "designing, implementing, and evaluating concepts". One great example given in the paper is Ned Block's distinctions between phenomenal consciousness and access consciousness. Leaving aside what these terms mean, Ned Block developed them as a way to distinguish two things that were both simply being called "consciousness" that were actually distinct phenomena. By giving us these terms, it made it easier to pick different aspects of "consciousness ".
+
+But this example might not be the best for programmers. So instead, think about MVC. The concepts of Model View and Controller were developed by Trygve Reenskaug at Xerox PARC. Many people (including myself) have many thoughts (not all good) about MVC. But there is no doubt that the concept of MVC has played an important role in software development since these concepts were "engineered".
+
+### De Novo Vs Conceptual Re-engineering
+
+In the philosophical world though, less attention has been paid to examples like MVC cases where new concepts are created (De Novo) and more attention has been paid to the fixing of deficient concepts. Conceptual engineering of this sort is often applied to societal issues around topics like race and gender. For these topics, we are not trying to create new concepts nor are we trying to ask how people actually use these concepts. Instead, we are asking "what should these concepts be?"
+
+What do we mean by what "should" these concepts be? Well, it may be that the concepts we have are inconsistent and should be replaced by consistent ones. It may be that the concepts are part of some unjust system of beliefs and we ought to revise them. There are a number of different reasons we may want to fix our concepts.
+
+Chlamers’ paper covers a lot more ground, talking about various questions in the philosophical landscape around conceptual engineering. What does it require to change a concept? When we create a concept, should we use the same word as an existing concept or pick a new word? How does conceptual engineering relate to disputes that are merely verbal? I think all of these are actually very interesting and relevant for us in software, but I will leave those details to those who wish to read the paper.
+
+### Conceptual Engineering in Software Engineering 
+
+What isn't talked about at all is the way in which conceptual engineering plays out in software. It's my contention that much of what we do day to day is conceptual engineering, but we never directly talk about it. If you are in an Object Oriented language, you have to pick class names. By their very nature, these classes add concepts to your program. The notion of a Customer in your code base is not the same as the general real-world notion of a customer. It is a custom, particular concept of customer, which stands in relation to the customer out there, but it isn't actually that real customer.
+
+As you continue to develop your codebase, you find that there is a new sort of (in the real world) customer that needs to be accounted for in your codebase. What do you do? Do you change the concept of Customer? Do you introduce a new concept of SpecialCustomer? Whatever your decision, your job in conceptual engineering doesn't stop there. Now that you have made this conceptual change, how do you get your fellow coworkers to adopt this new concept?
+
+These are concerns we have constantly as software engineers. We are surrounded by concepts in need of re-engineering. We are surrounded by problems in need of new concepts to help us understand them. Because we don't think of conceptual engineering as a first-class part of our job, we don't have tips and tricks for doing these conceptual engineering roles. We don't think about the fact that problems can be avoided merely by changing our concepts.
+
+## Conclusion
+
+There is so much more to say about conceptual engineering. If you are interested and want a full-length treatment (but warning, it is a philosophical text, not a software engineering one), I highly recommend [Fixing Language: An Essay on Conceptual Engineering](https://www.amazon.com/Fixing-Language-Essay-Conceptual-Engineering/dp/0198814712)
+
+export default function Engineering({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

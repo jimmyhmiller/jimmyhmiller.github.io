@@ -103,6 +103,11 @@ export const finishedPapers = [
         text: "Dec 20: Three Paradigms of Computer Science",
         href: "/advent-of-papers/2024/dec-20-three-paradigms",
         mdx: true,
+    },
+    {
+        text: "Dec 21: What is Conceptual Engineering and What Should It Be?",
+        href: "/advent-of-papers/2024/dec-21-conceptual-engineering",
+        mdx: true,
     }
 ]
 
