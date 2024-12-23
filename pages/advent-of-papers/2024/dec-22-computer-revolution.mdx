@@ -1,0 +1,31 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Once More—A Computer Revolution - Joseph Weizenbaum</title>
+    <meta
+       name="og:description"
+       content="In 1978, Joseph Weizenbaum asked if computers will really have a big impact, he was wrong in the most interesting way."
+     />
+</Head>
+
+<Heading text={<>Once More—A Computer Revolution - Joseph Weizenbaum (<Link href="/pdfs/computer-revolution.pdf">pdf</Link>)</>} />
+
+## Summary
+Ran out of time today.
+
+> Will the home computer be as pervasive as today's television se,s? The answer almost certainly is no. The home, pictured in the accounts of home computer advocates, is middle class, or even upper middle class. There are some appliances computers must control: the wall-to-wall carpeting must be cleaned by a robot, roasts are in the oven, the computer helps "the mother" pay the telephone bill, and so on and on.
+
+## Conclusion
+
+This is a fascinating critique. Completely wrong in its prediction but captures something all too true.
+
+> We may recall the euphoric dreams that were articulated by then Secretary of Commerce Herbert Hoover, at the dawn of commercial radio broadcasting, and again by others when mass television broadcasting was about to become a reality. It was foreseen that these media would exert an enormously benefcial influence on American culture. Americans would be exposed to correct English, to great literature, great drama, and so on. We all know what actually happened. The technological dream was more than realized, but the cultural dream was not.
+
+
+export default function ComputerRevolution({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

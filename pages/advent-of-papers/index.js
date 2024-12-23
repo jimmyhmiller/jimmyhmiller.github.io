@@ -108,7 +108,13 @@ export const finishedPapers = [
         text: "Dec 21: What is Conceptual Engineering and What Should It Be?",
         href: "/advent-of-papers/2024/dec-21-conceptual-engineering",
         mdx: true,
-    }
+    },
+    {
+        text: "Dec 22: Once More—A Computer Revolution",
+        href: "/advent-of-papers/2024/dec-22-computer-revolution",
+        mdx: true,
+    },
+    
 ]
 
 const consideredPapers = [
@@ -121,7 +127,6 @@ const consideredPapers = [
     {text: "On Reversible Subroutines and Computers That Run Backwards - E. D. Reilly, Jr. and F. D. Federighi"},
     {text: "Three Challenges to Chalmers on Computational Implementation - Mark Sprevak"},
     {text: "Content, Computation, and Externalism - Oron Shagrir"},
-    {text: "Once More—A Computer Revolution - Joseph Weizenbaum"},
 ]
 
 const Advent = () => (
