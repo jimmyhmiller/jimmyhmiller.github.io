@@ -1,0 +1,43 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Do Artifacts Have Politics?</title>
+    <meta
+       name="og:description"
+       content="Do Artifacts Have Politics? Surprisingly, Betteridge's law does not hold here!"
+     />
+</Head>
+
+<Heading text={<>Do Artifacts Have Politics? (<Link href="/pdfs/artifacts-politics.pdf">pdf</Link>)</>} />
+
+One question that I don't think gets asked enough is how "good code at work" differs from "good code at home"? For many years I didn't quite see the distinction between the two. Isn't it a fact of the matter what things make for good code? Why would code I write for myself have different best practices than code I write for work? Now one obvious answer may be context. At work, there are more people working on the code, so perhaps I need to consider approachability more. Or there are more eyeballs, so maintenance might be more likely to occur. Or tons of people already use this dependency, so I shouldn't be worried about taking a dependency.
+
+But as time has increased, I've become skeptical that these contextual differences should be my main focus. Instead, I've started to realize that the major difference is in the values I hold as an individual programmer versus the values implicit in the structure of the companies I work for.
+
+Today's article by Langdon Winner looks at these sorts of facts not necessarily in code, but the artificial, technological landscape we build.
+
+## Summary
+
+This paper is remarkably well-written. It is a joy to read, the points made are clear and nuanced. Winner talks about the standard reaction to the idea that artifacts have politics, which is that they are simply misplaced. People have politics and use artifacts to those ends. His response is a fantastic representation of the sort of writing throughout.
+
+> Hence, the stern advice commonly given to those who flirt with the notion that technical artifacts have political qualities: What matters is not technology itself, but the social or economic system in which it is embedded. This maxim, which in a number of variations is the central premise of a theory that can be called the social determination of technology, has an obvious wisdom. It serves as a needed corrective to those who focus uncritically on such things as "the computer and its social impacts" but who fail to look behind technical things to notice the social circumstances of their development, deployment, and use. This view provides an antidote to naive technological determinism, the idea that technology develops as the sole result of an internal dynamic, and then, unmediated by any other influence, molds society to fit its patterns. Those who have not recognized the ways in which technologies are shaped by social and economic forces have not gotten very far.
+>
+> But the corrective has its own shortcomings; taken literally, it suggests that technical things do not matter at all.
+
+Winner goes on to show in great detail how artifacts can shape the Forms of Order of a society. I think his most compelling example is the move to make cities more accessible for people with disabilities. The design of countless technologies limited (and still does limit) people with disabilities from participating fully in society. These are political implications of the technologies themselves. If don't find this particular example convincing, I highly recommend reading the paper as it is chock-full of examples.
+
+He next tackles the stronger notion that certain technologies are inherently political, that is by their nature they bring about certain political structures. The discussion here is far too involved and subtle for the time I have here but ultimately, Winner concludes this too is true.
+
+> It is still true that, in a world in which human beings make and maintain artificial systems, nothing is "required" in an absolute sense. Nevertheless, once a course of action is underway, once artifacts like nuclear power plants have been built and put in operation, the kinds of reasoning that justify the adaptation of social life to technical requirements pop up as spontaneously as flowers in the spring.
+
+## Conclusion
+
+This paper was a joy to read. It makes me think more deeply about my own code and the values implicit in it. My code at work is made with a structural goal of providing money for the company I work at. Its function supports certain social structures I may not fully agree with. The form the code takes necessitates a managerial structural system. And many more facts besides This value structure is completely lacking in the code I write for myself. Shouldn't that be reflected in the kind of code I write? I'm starting to feel this pull. A pull to rethink the values I hold about code, to find new ones that fit the sort of world I want to exist, that support the sort of structures I believe help the world. 
+
+export default function ArtifactsPolitics({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}
