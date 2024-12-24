@@ -114,6 +114,11 @@ export const finishedPapers = [
         href: "/advent-of-papers/2024/dec-22-computer-revolution",
         mdx: true,
     },
+    {
+        text: "Dec 23: Do Artifacts Have Politics?",
+        href: "/advent-of-papers/2024/dec-23-artifacts-politics",
+        mdx: true,
+    }
     
 ]
 
