@@ -1,5 +1,5 @@
 
-import { Code, Heading, GlobalLayout, LinkList, Link, LargeText, MediumText, Title, RandomList } from "../../utils";
+import { Code, Heading, GlobalLayout, LinkList, Link, LargeText, MediumText, Title, RandomList, List } from "../../utils";
 
 import Head from 'next/head';
 
@@ -118,6 +118,11 @@ export const finishedPapers = [
         text: "Dec 23: Do Artifacts Have Politics?",
         href: "/advent-of-papers/2024/dec-23-artifacts-politics",
         mdx: true,
+    },
+    {
+        text: "Dec 24: Against a Universal Definition of ‘type’",
+        href: "/advent-of-papers/2024/dec-24-against-types",
+        mdx: true,
     }
     
 ]
@@ -153,8 +158,8 @@ const Advent = () => (
             short amount of time and with reasonable clarity. Below are the papers I've written up and an unordered list of papers I'm considering.
         </MediumText>
         <LinkList headingSize={2} items={finishedPapers} title="Finished Papers" />
-        <Heading size={2} text="Potential Future Papers (Random Order)" />
-        <RandomList Elem={MediumText} items={consideredPapers} />
+        <Heading size={2} text="Papers considered, but didn't end up reading" />
+        <List Elem={MediumText} items={consideredPapers} />
     </GlobalLayout>
 )
 

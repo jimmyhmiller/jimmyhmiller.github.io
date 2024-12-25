@@ -1,0 +1,43 @@
+import { Heading, GlobalLayout, Title, Term, Image, BlockQuote, Note, Link } from "../../../utils";
+import Head from 'next/head';
+
+<Note Title={null}>This is part of an <Link href="/advent-of-papers">Advent Series</Link>.</Note>
+
+
+<Head>
+    <title>Against a universal definition of ‘type’</title>
+    <meta
+       name="og:description"
+       content="Is there a universal definition of 'type'? Do we need one?"
+     />
+</Head>
+
+<Heading text={<>Against a universal definition of ‘type’ (<Link href="/pdfs/against-types.pdf">pdf</Link>)</>} />
+
+This is the final entry in the series and I'll be honest, I'm a bit glad it's over. It's been hard to consistently find the time every day to 1) find a paper I'm truly interested in writing about 2) read that paper in a way I can summarize it 3) write something somewhat interesting about the paper. Honestly, I think finding the papers that fit my mood was the hardest part. I tried to frontload that by making this big list of papers, but I just couldn't be bothered to seriously read some of them. It's one of the reasons I slipped a few philosophy papers into the mix. It's so much easier for me to find a good philosophy paper than a good computer science paper.
+
+Another goal was to mostly read new papers. I'd say I did alright, but not great at that task. There were a few papers I hadn't fully read. Some that I had definitely read before. Today's paper is in the category of having read some of, but not completed the paper. It's a paper I'm quite fond of but have complicated feelings about. In this paper, Tomas Petricek argues against giving a universal definition of "type".
+
+## Summary
+
+The paper begins by exploring the ways in which our use of the word "type" has changed over time. Starting with Russell's theory of types to rule out paradoxes. He then goes on to discuss more modern uses of types like unsound types systems, dependent types, and type providers. Along the way, he points out how the old way of using types does not quite fit with this new way of using types. If you find this controversial, I highly suggest reading the paper as I think Petricek is rather convincing on this point.
+
+The rest of the paper explores the idea that we really shouldn't have a universal definition of type, because by not having one, we are allowing the concept to expand. This is actually a good thing. People are able to make use of this concept of a type, without immediately formalizing it. Allowing it to take on new shapes.
+
+> Looking at the history of science supports the main idea of this essay. That is, we should not require a precise definition of the notion of ‘type’. Requiring clarity means that we can only talk about things we already understand – perhaps in greater detail, with more generality, and in more elegant ways, but not about fundamentally new ideas.
+
+Petricek continues by showing ways we can live with the fact that types do not have a clear definition. All of his examples are borrowed from philosophers. The details are a bit too subtle here for me to repeat here so I will leave those to people who decide to read the paper. But they are certainly interesting suggestions.
+
+## Conclusion
+
+> If we want to talk about types outside of a narrow research programme, we need to find ways of dealing with types without a precise definition. I proposed three alternatives –those are based on how we use types (inspired by Wittgenstein’s language games), what is the conventional idea of type (based on Putnam’s stereotypes) and what we can do with types (inspired by Hacking’s new experimentalism). I believe that these provide worthwhile methods of inquiry that can provide interesting insights into what types are outside of a narrow boundary delimited by a particular formal definition.
+
+I think this is entirely right, if our choice is between a singular, formal definition of types and these suggestions, I choose the latter. But I want to quickly suggest that a formal definition isn't the only kind of definition we can give. Let's consider another word that lacks a universal definition in programming, abstraction. There are so many varied uses of abstraction. No formal definition could ever capture how we use the word abstraction. But I do think having a better, clearer, universal definition of an abstraction would benefit us. 
+
+How does "an abstraction" relate to things being "more abstract" or "less abstract"? Do abstractions come in levels? Is abstraction always information hiding? How do abstractions relate to notions like interfaces? I do feel these questions have answers and those answers would be illuminating. In the same way, I believe there is some (non-formal) unifier core behind these notions of types. When we create new applications for types, (e.g. type providers) they are new applications for "types" because of some shared underlying way of viewing types. 
+
+This is something I feel is completely lacking in software. We seem to think that there are two things, undefined things and formal definitions. Of course, in many ways, this paper is such an exploration of types. But it is largely historical, stopping short of trying to synthesize how we do talk about types. Meaning as use doesn't have to mean we just need to find more contexts of use. It can also mean, that if we look at the current way we use the words, we can discover their meanings. 
+
+export default function AgainstTypes({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

@@ -303,13 +303,22 @@ export const RandomList = ({ items, Elem }) => {
   return (
     <ul>
       {randomizedList.map((item, index) => (
-        <li><Elem key={index}>{item.text}</Elem></li>
+        <li key={index}><Elem>{item.text}</Elem></li>
       ))}
     </ul>
   );
 };
 
-export default RandomList;
+export const List = ({ items, Elem }) => {
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <li key={index}><Elem>{item.text}</Elem></li>
+      ))}
+    </ul>
+  );
+};
+
 
 
 const removeLeadingSlash = (str) => str.startsWith('/') ? str.slice(1) : str;
