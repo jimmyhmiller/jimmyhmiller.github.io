@@ -258,6 +258,7 @@ const NoteTitle = () => (
   <p style={{padding:0, margin: 0, color: "#79b8ff"}}><strong>ⓘ Note</strong></p>
 )
 
+
 // Like what you get on github when you do > [!NOTE]
 export const Note = ({children, Title=NoteTitle}) =>
   <div style={{
@@ -270,6 +271,29 @@ export const Note = ({children, Title=NoteTitle}) =>
     {Title && <Title />}
     {children}
   </div>
+
+
+export const Aside = ({children, title}) =>
+<details style={{color: "#999"}}>
+  <summary>
+    <span style={{padding:0, margin: 0, color: "#999"}}><strong>Aside {title}</strong></span>
+  </summary>
+  <div style={{
+    // Let's have a neutral gray background
+      backgroundColor: "#f6f8fa",
+      padding: 10,
+      border: "1px solid #e1e4e8",
+      borderRadius: 6,
+      // borderLeft: "0.25em solid #999",
+      color: "#666",
+    }}>
+
+      <div style={{paddingLeft: 20}}>
+        {children}
+      </div>
+
+    </div>
+</details>
 
 export const Attribution = ({children}) =>
   <p style={{

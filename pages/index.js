@@ -44,6 +44,11 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "Discovery Coding",
+    href: "/discovery-coding",
+    mdx: true,
+  },
+  {
     text: "Being Raised by the Internet",
     href: "/raised",
     mdx: true,
