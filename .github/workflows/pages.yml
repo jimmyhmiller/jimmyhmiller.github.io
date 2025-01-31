@@ -59,7 +59,7 @@ jobs:
       - name: Static HTML export with Next.js
         run: npx next build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
