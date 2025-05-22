@@ -1,0 +1,166 @@
+:root {
+  --code-background: rgba(255, 255, 255, 0.3);
+  --code-border: rgba(0, 0, 0, 0.05);
+  --code-text: #303030;
+  --code-comment: #9ea4aa;
+  --code-type: #9f3b4f;
+  --code-include: #8c3a94;
+  --code-string: #6959a1;
+  --code-class-name: #4968a8;
+  --code-numbers: #a58a2a;
+  --code-variables: #4689cc;
+  --code-functions: #cf5da8;
+  --code-literal: #db651c;
+
+  --dark-code-background: rgba(0, 0, 0, 0.4);
+  --dark-code-border: rgba(255, 255, 255, 0.08);
+  --dark-code-text: #F7F7F7;
+  --dark-code-comment: #80878D;
+  --dark-code-type: #EF98A8;
+  --dark-code-include: #C596C9;
+  --dark-code-string: #A59CC7;
+  --dark-code-class-name: #94A5CB;
+  --dark-code-numbers: #E8D670;
+  --dark-code-variables: #77B5E3;
+  --dark-code-functions: #DF8DC0;
+  --dark-code-literal: #F6B99A;
+}
+/* albert-sans-regular - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-regular.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-500 - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-500.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-500.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-500.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-600 - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-600.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-600.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-700 - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-700.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-700.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-800 - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-800.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-800.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-900 - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 900;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-900.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-900.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-italic - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-italic.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-italic.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-500italic - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: italic;
+  font-weight: 500;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-500italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-500italic.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-500italic.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-600italic - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-600italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-600italic.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-600italic.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-700italic - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-700italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-700italic.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-700italic.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-800italic - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-800italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-800italic.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-800italic.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+/* albert-sans-900italic - latin-ext_latin */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: italic;
+  font-weight: 900;
+  src: local(''),
+       url('fonts/albert-sans-v1-latin-ext_latin-900italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-900italic.woff') format('woff'), /* Modern Browsers */
+       url('fonts/albert-sans-v1-latin-ext_latin-900italic.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+[class*="layout-"] > div h1{
+    font-weight: 900;
+}
+[class*="layout-"] > div h2{
+    font-weight: 800;
+}
+[class*="layout-"] > div h3{
+    font-weight: 700;
+}
+[class*="layout-"] > div h4{
+    font-weight: 600;
+}
+
+
+h1+h2, h1+h3, h2+h3, h1+h1, h1+h3, h2+h3, h4+h5{
+    font-weight: 500;
+    margin-top -1em;
+}

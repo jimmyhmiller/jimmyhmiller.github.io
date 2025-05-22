@@ -1,0 +1,43 @@
+{
+  "Presets": [
+    {
+      "Name": "Default",
+      "TitleFont": "Albert Sans",
+      "BodyFont": "Albert Sans",
+      "Appearance" : "light",
+      "DarkBodyTextColor": "#000000b3",
+      "LightBodyTextColor": "#ffffffe6",
+      "DarkTitleTextColor": "#000000b3",
+      "LightTitleTextColor": "#ffffffe6",
+      "DarkBackgroundColor": "transparent",
+      "LightBackgroundColor": "transparent",
+      "DarkAccent1": "#E1EBE3",
+      "LightAccent1": "#6E9075",
+      "Accent1": "#f94144",
+      "Accent2": "#43aa8b",
+      "Accent3": "#f9c74f",
+      "Accent4": "#90be6d",
+      "Accent5": "#f8961e",
+      "Accent6": "#577590",
+      "LightBgGradient":[
+          "#D3E9D8",
+          "#C9DBD7",
+          "#D1D7DF",
+          "#DFD4E3",
+          "#E7DDE4",
+          "#E8DCDC",
+          "#E9E4DE"
+      ],
+      "DarkBgGradient":[
+          "#6E9075",
+          "#6E978B",
+          "#667189",
+          "#664F71",
+          "#725267",
+          "#7C6667",
+          "#7B7163"
+      ],
+    },
+
+  ]
+}

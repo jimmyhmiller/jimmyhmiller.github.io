@@ -1,0 +1,21 @@
+{
+  "Name": "Copenhagen",
+  "Version": 0.1,
+  "Author": "iA",
+  "ShortDescription": "Mit blik søger...",
+  "LongDescription": "...kun mod lyset.\n- Nordic \n- Different sizes for headlines\n- Simple color background\n- Default white on black\n- Default font: New York",
+  "Css": "copenhagen.css",
+  "TitleFont": "Albert Sans",
+  "BodyFont": "Albert Sans",
+  "CssClasses": "variable-size-headings",
+  "LayoutExamples":[
+   {
+        "Name": "Title (H1) and Background",
+        "Markdown": "/Theme/image2.jpg\nBackground: true\nopacity: 40%\n\n# TITLE\n#### with background",
+   },
+   {
+        "Name": "Title (H2) and Background",
+        "Markdown": "/Theme/image2.jpg\nBackground: true\nopacity: 40%\n\n## SUBTITLE\n#### with background",
+   }
+]
+}
