@@ -160,6 +160,15 @@ export const Ruby = ({ children }) =>
 const GlobalStyles = () =>
    <style global jsx>
    {`
+      .bit-table-wrapper {
+          overflow-x: auto;
+          max-width: 100%;
+      }
+      .bit-table-wrapper table {
+          min-width: 700px; /* or however wide your tables are */
+          border-collapse: collapse;
+          text-align: center;
+      }
       body {
         font-family: helvetica, sans-serif;
         color: #333;

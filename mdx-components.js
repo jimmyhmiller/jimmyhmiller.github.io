@@ -21,7 +21,7 @@ export function useMDXComponents(components) {
       return (<>{children}</>)
     },
     code: ({children, className}) => {
-      return (<Code source={children}  language={className?.replace("language-", "")} removeIndent={false}  />)
+      return (<Code source={children} language={className?.replace("language-", "")} removeIndent={false}  />)
     },
     ...components,
   }
