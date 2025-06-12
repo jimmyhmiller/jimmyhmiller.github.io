@@ -44,6 +44,11 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "Stuck? Build Your Language Backwards",
+    href: "/build-your-language-backwards",
+    mdx: true,
+  },
+  {
     text: "Machine Code Isn't Scary",
     href: "/machine-code-isnt-scary",
     mdx: true,
