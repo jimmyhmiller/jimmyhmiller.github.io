@@ -4,6 +4,7 @@ import NextLink from 'next/link';
 import { useState, useEffect } from 'react';
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-light";
 import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
+import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
 import haskell from 'react-syntax-highlighter/dist/esm/languages/prism/haskell';
 import clojure from 'react-syntax-highlighter/dist/esm/languages/prism/clojure';
 import ruby from 'react-syntax-highlighter/dist/esm/languages/prism/ruby';
@@ -50,6 +51,7 @@ clojure2.displayName = 'clojure'
 clojure2.aliases = []
 
 SyntaxHighlighter.registerLanguage('javascript', js);
+SyntaxHighlighter.registerLanguage('typescript', typescript);
 SyntaxHighlighter.registerLanguage('haskell', haskell);
 SyntaxHighlighter.registerLanguage('clojure', clojure2);
 SyntaxHighlighter.registerLanguage('ruby', ruby);

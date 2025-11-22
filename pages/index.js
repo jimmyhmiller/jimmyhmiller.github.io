@@ -44,6 +44,11 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "The Easiest Way to Build a Type Checker",
+    href: "/easiest-way-to-build-type-checker",
+    mdx: true,
+  },
+  {
     text: "The Overly Humble Programmer",
     href: "/overly-humble-programmer",
     mdx: true,
