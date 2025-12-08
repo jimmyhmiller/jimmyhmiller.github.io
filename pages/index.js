@@ -265,7 +265,7 @@ const contact = [
 
 const podcast = [
   {
-    text: "Feeling of Computer",
+    text: "Feeling of Computing",
     href: "https://feelingof.com",
   }
 ]
