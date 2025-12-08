@@ -948,7 +948,12 @@
 <script>
 Reveal.configure({
 progress:true,
-progress:true,
+keyboard: {
+  33: 'prev', // PageUp
+  34: 'next', // PageDown
+  38: 'prev', // ArrowUp
+  40: 'next', // ArrowDown
+},
 dependencies: [
   {
     src: "engine/highlight.js",
