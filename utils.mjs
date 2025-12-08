@@ -358,7 +358,7 @@ export const Heading = ({ color, text, size=1 }) => {
   if (!Elem) {
     throw new Error("Undefined Heading Size")
   }
-  const defaultColor = color || (isDark ? "#f7fafc" : "#999");
+  const defaultColor = color || (isDark ? "#f7fafc" : undefined);
   const headingStyle = {
     color: defaultColor,
     ...(isDark ? {
@@ -448,10 +448,12 @@ export const Aside = ({children, title}) => {
   )
 }
 
-export const Attribution = ({children}) =>
+export const Attribution = ({children}) => {
+  const { isDark } = useTheme();
+  return (
   <p style={{
     fontSize: 13,
-    color: "#666",
+    color: isDark ? "#a0aec0" : "#666",
     marginTop: -14,
     marginLeft: 12,
     fontWeight: "light",
@@ -459,6 +461,8 @@ export const Attribution = ({children}) =>
     —{" "}
     <span style={{textDecoration: "underline"}}>{children}</span>
   </p>
+  )
+}
 
 export const Title = ({ text }) =>
   <>
