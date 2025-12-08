@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script';
 import NextLink from 'next/link';
 
 import { useState, useEffect, createContext, useContext } from 'react';
@@ -557,6 +558,12 @@ const ThemeProvider = ({ children }) => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       setIsDark(true);
+    } else if (savedTheme === 'light') {
+      setIsDark(false);
+    } else {
+      // No saved preference, use system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDark(prefersDark);
     }
   }, []);
 
@@ -603,20 +610,6 @@ export const GlobalLayout = ({ children }) => {
         <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
         <meta name="author" content="Jimmy Miller" />
         <link rel="alternate" type="application/rss+xml" title="jimmyhmiller.github.io"  href="feed.xml" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme === 'dark') {
-                    document.documentElement.classList.add('dark-mode');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
         <style dangerouslySetInnerHTML={{
           __html: `
             html.dark-mode {
@@ -630,6 +623,24 @@ export const GlobalLayout = ({ children }) => {
           `
         }} />
       </Head>
+      <Script
+        id="theme-script"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              try {
+                var theme = localStorage.getItem('theme');
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark-mode');
+                } else if (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                  document.documentElement.classList.add('dark-mode');
+                }
+              } catch (e) {}
+            })();
+          `,
+        }}
+      />
       <GlobalStyles />
       <Container>
         <div style={{position: "relative"}}>
