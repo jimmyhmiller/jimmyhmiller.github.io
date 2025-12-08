@@ -48413,7 +48413,7 @@
     layout.style["font-size"] = null;
     let cells = Array.from(layout.children);
     let layoutOverflow = yield doesLayoutOverflow(layout, cells);
-    const MIN_FONT = window.matchMedia("(max-width: 600px)").matches ? 0.25 : 0.25;
+    const MIN_FONT = window.matchMedia("(max-width: 600px)").matches ? 0.1 : 0.1;
     const MAX_FONT = 1;
     let left = layoutOverflow ? MIN_FONT : 1;
     let right = layoutOverflow ? 1 : MAX_FONT;
@@ -48482,6 +48482,7 @@
   });
   var fitSlides = (slide) => __async(void 0, null, function* () {
     slidesAreLoaded = false;
+    //updatePaddingWithSafeArea('.slides section');
     if (slide) {
       fitSlide(slide);
     }
@@ -50337,10 +50338,12 @@
     }
     Promise.all(Array.from(document.querySelectorAll("[data-background-image]")).map((el) => new Promise(function(resolve, reject) {
       const image = new Image();
-      image.onload = function() {
-        document.body.removeChild(image);
-        setTimeout(() => resolve(), 200);
-      };
+    image.addEventListener("load", () => {
+      setTimeout(() => {
+        image.remove?.() || (image.parentNode && image.parentNode.removeChild(image));
+        resolve();
+      }, 200);
+    }, { once: true });
       if (el.dataset.backgroundImage) {
         image.src = el.dataset.backgroundImage;
         image.classList.add("bg-image-copy");
@@ -50351,13 +50354,21 @@
     }))).then(() => {
       BACKGROUND_IMAGES_LOADED = true;
     });
-    var mediaItems = document.querySelectorAll(`
+    /*var mediaItems = document.querySelectorAll(`
      .layout-grid > * > .videoWrapper:only-child,
      .layout-grid > * > img:only-child,
      .layout-grid > * > video:only-child,
      .layout-grid > * > figure:only-child,
+     .layout-columns > * > .videoWrapper:only-child,
+     .layout-columns > * > img:only-child,
+     .layout-columns > * > video:only-child,
+     .layout-columns > * > figure:only-child,
+     .layout-title-and-columns > * > .videoWrapper:only-child,
+     .layout-title-and-columns > * > img:only-child,
+     .layout-title-and-columns > * > video:only-child,
+     .layout-title-and-columns > * > figure:only-child,
      .layout-caption > * > img:only-child,
-      .layout-caption > * > figure:only-child,
+     .layout-caption > * > figure:only-child,
      .layout-full-image > * > figure:only-child,
      .layout-caption > * > video:only-child,
      .layout-caption > * > .videoWrapper:only-child,
@@ -50414,7 +50425,7 @@
       if (el.querySelector(".layout-grid, img, video, iframe")) {
         el.classList.add("media-grid");
       }
-    });
+    });*/
     section.querySelectorAll("span.math, span.inlinemath").forEach((span) => {
       if (!span.classList.contains("katex-rendered")) {
         var macros = {};
@@ -50424,7 +50435,7 @@
           {left: "$", right: "$", display: false},
           {left: "\\[", right: "\\]", display: true}
         ];
-        var mathExpression = span.innerText;
+        var mathExpression = span.textContent;
         var math = "";
         var display = false;
         for (var delimiter of delimiters) {
@@ -50450,7 +50461,7 @@
         span.classList.add("katex-rendered");
       }
     });
-    section.querySelectorAll("code").forEach((code) => {
+    section.querySelectorAll("pre > code").forEach((code) => {
       import_highlight.default.highlightBlock(code);
     });
     (0, import_generate_graphs.default)(section);
@@ -50574,6 +50585,42 @@
   };
 
   // src/js/index.js
+ /* function updatePaddingWithSafeArea(selector) {
+      if (document.body.classList.contains('has-safe-areas')  == false) {
+        return;
+      }
+    const section = document.querySelector(selector);
+    if (!section) return;
+
+    // Reset inline styles to use original computed paddings
+    section.style.paddingTop = '';
+    section.style.paddingBottom = '';
+    section.style.paddingLeft = '';
+    section.style.paddingRight = '';
+
+    const computedStyle = getComputedStyle(section);
+
+    const padLeft = parseFloat(computedStyle.paddingLeft) || 0;
+    const padRight = parseFloat(computedStyle.paddingRight) || 0;
+    const padTop = parseFloat(computedStyle.paddingTop) || 0;
+    const padBottom = parseFloat(computedStyle.paddingBottom) || 0;
+
+    const rootStyle = getComputedStyle(document.documentElement);
+    const safeLeft = parseFloat(rootStyle.getPropertyValue('--sa_left')) || 0;
+    const safeRight = parseFloat(rootStyle.getPropertyValue('--sa_right')) || 0;
+    const safeTop = parseFloat(rootStyle.getPropertyValue('--sa_top')) || 0;
+    const safeBottom = parseFloat(rootStyle.getPropertyValue('--sa_bottom')) || 0;
+
+    const finalPadX = Math.max(padLeft, padRight, safeLeft, safeRight);
+    const finalPadTop = Math.max(padTop, safeTop);
+    const finalPadBottom = Math.max(padBottom, safeBottom);
+
+    section.style.paddingTop = `${finalPadTop}px`;
+    section.style.paddingBottom = `${finalPadBottom}px`;
+    section.style.paddingLeft = `${finalPadX}px`;
+    section.style.paddingRight = `${finalPadX}px`;
+  }*/
+
   var import_lodash = __toModule(require_lodash());
   var resizeSlides = (slide) => {
     fitSlides(slide);

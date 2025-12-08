@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTheme } from '../utils';
 
 let ts = null;
 
@@ -7,6 +8,7 @@ export default function TypeCheckerDemo() {
   const [result, setResult] = useState(null);
   const [status, setStatus] = useState('idle');
   const [tsLoaded, setTsLoaded] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   useEffect(() => {
     // Load TypeScript from CDN
@@ -548,13 +550,55 @@ apply(double, "not a number")`
     setResult(null);
   };
 
+  const colors = isDark ? {
+    background: '#1a202c',
+    surface: '#2d3748',
+    surfaceLight: '#4a5568',
+    border: '#4a5568',
+    text: '#e2e8f0',
+    textMuted: '#a0aec0',
+    textareaBackground: '#2d3748',
+    textareaPlaceholder: '#718096',
+    buttonBackground: '#3182ce',
+    buttonHover: '#2c5282',
+    success: '#48bb78',
+    error: '#f56565',
+    exampleButton: '#374151',
+    exampleButtonBorder: '#4b5563',
+    exampleButtonHover: '#4b5563',
+    resultBackground: '#2d3748',
+    resultBorder: '#4a5568',
+    highlightBackground: '#374151',
+    highlightBorder: '#3182ce'
+  } : {
+    background: 'white',
+    surface: '#edf2f7',
+    surfaceLight: '#f7fafc',
+    border: '#e2e8f0',
+    text: '#2d3748',
+    textMuted: '#4a5568',
+    textareaBackground: '#fff',
+    textareaPlaceholder: '#a0aec0',
+    buttonBackground: '#4299e1',
+    buttonHover: '#3182ce',
+    success: '#38a169',
+    error: '#e53e3e',
+    exampleButton: '#edf2f7',
+    exampleButtonBorder: '#cbd5e0',
+    exampleButtonHover: '#e2e8f0',
+    resultBackground: '#f7fafc',
+    resultBorder: '#e2e8f0',
+    highlightBackground: '#fff',
+    highlightBorder: '#4299e1'
+  };
+
   return (
     <div style={{
       maxWidth: '900px',
       margin: '40px auto',
-      background: 'white',
+      background: colors.background,
       borderRadius: '8px',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+      boxShadow: isDark ? '0 2px 8px rgba(0,0,0,0.3)' : '0 2px 8px rgba(0,0,0,0.1)',
       overflow: 'hidden'
     }}>
       <div style={{ position: 'relative' }}>
@@ -569,9 +613,11 @@ apply(double, "not a number")`
             minHeight: '300px',
             resize: 'vertical',
             outline: 'none',
-            background: code ? '#fff' : '#f7fafc',
-            color: '#2d3748',
-            boxSizing: 'border-box'
+            background: code ? colors.textareaBackground : colors.surfaceLight,
+            color: colors.text,
+            boxSizing: 'border-box',
+            WebkitTextFillColor: colors.text,
+            opacity: 1
           }}
           value={code}
           onChange={(e) => {
@@ -588,21 +634,21 @@ apply(double, "not a number")`
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '12px 20px',
-        background: '#edf2f7',
-        borderTop: '1px solid #e2e8f0'
+        background: colors.surface,
+        borderTop: `1px solid ${colors.border}`
       }}>
         <div style={{
           flex: 1,
           fontSize: '14px',
           fontWeight: 500,
-          color: status === 'success' ? '#38a169' : status === 'error' ? '#e53e3e' : '#718096'
+          color: status === 'success' ? colors.success : status === 'error' ? colors.error : colors.textMuted
         }}>
           {'\u00A0'}
         </div>
         <button
           style={{
             padding: '8px 16px',
-            background: '#4299e1',
+            background: colors.buttonBackground,
             color: 'white',
             border: 'none',
             borderRadius: '4px',
@@ -610,6 +656,8 @@ apply(double, "not a number")`
             fontWeight: 500,
             cursor: 'pointer'
           }}
+          onMouseOver={(e) => e.target.style.background = colors.buttonHover}
+          onMouseOut={(e) => e.target.style.background = colors.buttonBackground}
           onClick={handleCheck}
         >
           Check Types
@@ -619,71 +667,84 @@ apply(double, "not a number")`
       {result && (
         <div style={{
           padding: '16px 20px',
-          background: '#f7fafc',
-          borderTop: '1px solid #e2e8f0',
+          background: colors.resultBackground,
+          borderTop: `1px solid ${colors.resultBorder}`,
           fontFamily: 'Monaco, Menlo, "Ubuntu Mono", Consolas, "source-code-pro", monospace',
           fontSize: '13px',
           maxHeight: '200px',
           overflowY: 'auto'
         }}>
           {result.success ? (
-            <div style={{ color: '#38a169' }}>
+            <div style={{ color: colors.success }}>
               <div>✓ Type check successful!</div>
               <div style={{
                 marginTop: '8px',
                 padding: '8px',
-                background: '#fff',
-                borderLeft: '3px solid #4299e1',
+                background: colors.highlightBackground,
+                borderLeft: `3px solid ${colors.highlightBorder}`,
                 borderRadius: '2px'
               }}>
                 <strong>Inferred Type:</strong> {result.type}
               </div>
             </div>
           ) : (
-            <div style={{ color: '#e53e3e', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+            <div style={{ color: colors.error, whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
               <strong>Error:</strong> {result.error}
             </div>
           )}
         </div>
       )}
 
-      <div style={{ padding: '20px', borderTop: '1px solid #e2e8f0' }}>
-        <h3 style={{ margin: '0 0 12px', fontSize: '16px', color: '#2d3748' }}>Try these examples:</h3>
+      <div style={{ padding: '20px', borderTop: `1px solid ${colors.border}` }}>
+        <h3 style={{ margin: '0 0 12px', fontSize: '16px', color: colors.text }}>Try these examples:</h3>
 
         <div style={{ marginBottom: '12px' }}>
-          <strong style={{ fontSize: '13px', color: '#4a5568' }}>✓ Valid Programs:</strong>
+          <strong style={{ fontSize: '13px', color: colors.textMuted }}>✓ Valid Programs:</strong>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '20px' }}>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.arithmetic)}>Arithmetic</button>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.comparison)}>Comparison</button>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.ifExpr)}>If Expression</button>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.multiParam)}>Multi-Param Function</button>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.stringConcat)}>String Concat</button>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.arithmetic)}>Arithmetic</ExampleButton>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.comparison)}>Comparison</ExampleButton>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.ifExpr)}>If Expression</ExampleButton>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.multiParam)}>Multi-Param Function</ExampleButton>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.stringConcat)}>String Concat</ExampleButton>
         </div>
 
         <div style={{ marginBottom: '12px' }}>
-          <strong style={{ fontSize: '13px', color: '#4a5568' }}>✗ Type Errors:</strong>
+          <strong style={{ fontSize: '13px', color: colors.textMuted }}>✗ Type Errors:</strong>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.wrongArgType)}>Wrong Arg Type</button>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.branchMismatch)}>Branch Mismatch</button>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.wrongArgCount)}>Wrong Arg Count</button>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.stringArithmetic)}>String Arithmetic</button>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.comparisonMismatch)}>Comparison Mismatch</button>
-          <button style={exampleButtonStyle} onClick={() => loadExample(examples.nestedError)}>Nested Error</button>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.wrongArgType)}>Wrong Arg Type</ExampleButton>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.branchMismatch)}>Branch Mismatch</ExampleButton>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.wrongArgCount)}>Wrong Arg Count</ExampleButton>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.stringArithmetic)}>String Arithmetic</ExampleButton>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.comparisonMismatch)}>Comparison Mismatch</ExampleButton>
+          <ExampleButton colors={colors} onClick={() => loadExample(examples.nestedError)}>Nested Error</ExampleButton>
         </div>
       </div>
     </div>
   );
 }
 
-const exampleButtonStyle = {
-  padding: '6px 12px',
-  background: '#edf2f7',
-  color: '#2d3748',
-  border: '1px solid #cbd5e0',
-  borderRadius: '4px',
-  fontSize: '13px',
-  cursor: 'pointer',
-  transition: 'all 0.2s'
-};
+function ExampleButton({ colors, onClick, children }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <button
+      style={{
+        padding: '6px 12px',
+        background: isHovered ? colors.exampleButtonHover : colors.exampleButton,
+        color: colors.text,
+        border: `1px solid ${colors.exampleButtonBorder}`,
+        borderRadius: '4px',
+        fontSize: '13px',
+        cursor: 'pointer',
+        transition: 'all 0.2s'
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}

@@ -7,9 +7,43 @@ export const specialPosts = [
   {
     text: "Advent of Papers (2024)",
     href: "/advent-of-papers",
-  }
+    nested: [
+      {
+        text: "Day 4: Is the Brain a Computer?",
+        href: "/advent-of-papers/2024/dec-4-brain-computer",
+        mdx: true,
+      },
+      {
+        text: "Day 15: Programming Languages as Technical Artifacts",
+        href: "/advent-of-papers/2024/dec-15-technical-artifacts",
+        mdx: true,
+      },
+    ]
+  },
 ]
 
+export const popularPosts = [
+  {
+    text: '"We ran out of columns" - The best, worst codebase',
+    href: "/ugliest-beautiful-codebase",
+    mdx: true,
+  },
+  {
+    text: "The Easiest Way to Build a Type Checker",
+    href: "/easiest-way-to-build-type-checker",
+    mdx: true,
+  },
+  {
+    text: "Machine Code Isn't Scary",
+    href: "/machine-code-isnt-scary",
+    mdx: true,
+  },
+  {
+    text: "Discovery Coding",
+    href: "/discovery-coding",
+    mdx: true,
+  },
+]
 
 export const postsForBeginners = [
   {
@@ -42,12 +76,8 @@ export const postsForBeginners = [
   },
 ];
 
+
 export const posts = [
-  {
-    text: "The Easiest Way to Build a Type Checker",
-    href: "/easiest-way-to-build-type-checker",
-    mdx: true,
-  },
   {
     text: "The Overly Humble Programmer",
     href: "/overly-humble-programmer",
@@ -59,23 +89,8 @@ export const posts = [
     mdx: true,
   },
   {
-    text: "Machine Code Isn't Scary",
-    href: "/machine-code-isnt-scary",
-    mdx: true,
-  },
-  {
-    text: "Discovery Coding",
-    href: "/discovery-coding",
-    mdx: true,
-  },
-  {
     text: "Being Raised by the Internet",
     href: "/raised",
-    mdx: true,
-  },
-  {
-    text: '"We ran out of columns" - The best, worst codebase',
-    href: "/ugliest-beautiful-codebase",
     mdx: true,
   },
   {
@@ -250,8 +265,8 @@ const contact = [
 
 const podcast = [
   {
-    text: "Future Of Coding",
-    href: "https://futureofcoding.org/episodes/",
+    text: "Feeling of Computer",
+    href: "https://feelingof.com",
   }
 ]
 
@@ -260,9 +275,10 @@ const Index = () => (
     <Head>
       <title>Jimmy Miller</title>
     </Head>
+    <LinkList title="Featured Posts" items={popularPosts} />
     <LinkList title="Special Posts" items={specialPosts} />
-    <LinkList title="Posts" items={posts} />
     <LinkList title="Podcast" items={podcast} />
+    <LinkList title="Posts" items={posts} />
     <LinkList title="Talks" items={talks} />
     <LinkList title="Posts For Beginners" items={postsForBeginners} />
     <LinkList title="Utilities" items={utilities} />
@@ -273,6 +289,154 @@ const Index = () => (
     <LinkList title="Personal Links" items={contact} />
   </GlobalLayout>
 );
+
+
+
+
+
+// RSS-only list that maintains the original order to avoid RSS reader issues
+export const rssPosts = [
+  {
+    text: "Variants Explained",
+    href: "/variants-explained",
+  },
+  {
+    text: "Variants and Protocols",
+    href: "/variants-and-protocols",
+  },
+  {
+    text: "Protomorphism",
+    href: "/protomorphism",
+  },
+  {
+    text: "Beautiful Code Through Simplicity",
+    href: "/beautiful-code",
+  },
+  {
+    text: "OOP from the Ground Up",
+    href: "/oop-ground-up",
+  },
+  {
+    text: "Side Effects, Complecting a la Carte",
+    href: "/side-effects-complect",
+  },
+  {
+    text: "Basic Functional Studies",
+    href: "/basic-functional-studies",
+  },
+  {
+    text: "The Easiest Way to Build a Type Checker",
+    href: "/easiest-way-to-build-type-checker",
+    mdx: true,
+  },
+  {
+    text: "The Overly Humble Programmer",
+    href: "/overly-humble-programmer",
+    mdx: true,
+  },
+  {
+    text: "Stuck? Build Your Language Backwards",
+    href: "/build-your-language-backwards",
+    mdx: true,
+  },
+  {
+    text: "Machine Code Isn't Scary",
+    href: "/machine-code-isnt-scary",
+    mdx: true,
+  },
+  {
+    text: "Discovery Coding",
+    href: "/discovery-coding",
+    mdx: true,
+  },
+  {
+    text: "Being Raised by the Internet",
+    href: "/raised",
+    mdx: true,
+  },
+  {
+    text: '"We ran out of columns" - The best, worst codebase',
+    href: "/ugliest-beautiful-codebase",
+    mdx: true,
+  },
+  {
+    text: "That Will Never Change. Not Here",
+    href: "/never-change",
+    mdx: true,
+  },
+  {
+    text: "Not Another Technical Debt Article",
+    href: "/not-another-technical-debt-article",
+    mdx: true,
+  },
+  {
+    text: "Being Stuck in Someone Else’s Theory",
+    href: "/stuck",
+    mdx: true,
+  },
+  {
+    text: "ChatGPT Doesn't Know Anything",
+    href: "/chatgpt",
+  },
+  {
+    text: "What Follows from Empirical Software Research?",
+    href: "/empirical",
+  },
+  {
+    text: "The Space Between Programs",
+    href: "/space-between",
+  },
+  {
+    text: "Social Programming Language Constructs",
+    href: "/social-language-constructs",
+  },
+  {
+    text: "My Experience Building an Editor in Rust",
+    href: "/editor-experience",
+  },
+  {
+    text: "Towards Aesthetic Elements of Programming",
+    href: "/aesthetic-elements",
+  },
+  {
+    text: "CDD and the Non-Linearity of Discovery",
+    href: "/cdd-non-linear",
+  },
+  {
+    text: "Conceptual Preservation",
+    href: "/conceptual-preservation",
+  },
+  {
+    text: "Conceptual Engineering",
+    href: "/conceptual-engineering",
+  },
+  {
+    text: "Building Meander in Meander",
+    href: "/building-meander-in-meander",
+  },
+  {
+    text: "Card Driven Development",
+    href: "/card-driven-development",
+  },
+  {
+    text: "Term Rewriting with Meander",
+    href: "/meander-rewriting",
+  },
+  {
+    text: "Meander for Practical Data Transformation",
+    href: "/meander-practical",
+  },
+  {
+    text: "Named Function Composition",
+    href: "/named-function-composition",
+  },
+  {
+    text: "Defending the Incommunicability of Programs",
+    href: "/incommunicability",
+  },
+];
+
+
 
 export const getStaticProps = async () => {
   if (process.env.NODE_ENV == "production") {

@@ -1,0 +1,13 @@
+{
+  "id": "project-1764033908313-4a41ff83",
+  "name": "jimmyhmiller.github.io",
+  "type": "embedded",
+  "rootPath": "/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io",
+  "description": "",
+  "createdAt": "2025-11-25T01:25:08.313Z",
+  "dashboards": [],
+  "settings": {
+    "allowFileAccess": true,
+    "cwd": "/Users/jimmyhmiller/Documents/Code/jimmyhmiller.github.io"
+  }
+}
