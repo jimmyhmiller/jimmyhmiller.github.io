@@ -517,7 +517,7 @@ const ThemeToggle = () => {
         cursor: 'pointer',
         padding: '0',
         position: 'absolute',
-        right: '-26px',
+        left: '-26px',
         top: '16px',
         opacity: 0.6,
         transition: 'opacity 0.2s ease, transform 0.2s ease',
@@ -655,7 +655,7 @@ export const GlobalLayout = ({ children }) => {
                        color="#999"
                        text="Jimmy Miller"/>
                 </Link>
-                <ThemeToggle />
+                {/* <ThemeToggle /> */}
               </div>
             </AbsolutePosition>
         </div>
