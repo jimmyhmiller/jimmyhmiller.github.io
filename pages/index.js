@@ -275,7 +275,7 @@ const Index = () => (
     <Head>
       <title>Jimmy Miller</title>
     </Head>
-    <LinkList title="Featured Posts" items={popularPosts} />
+    <LinkList title="Popular Posts" items={popularPosts} />
     <LinkList title="Special Posts" items={specialPosts} />
     <LinkList title="Podcast" items={podcast} />
     <LinkList title="Posts" items={posts} />
