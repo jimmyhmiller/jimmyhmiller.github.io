@@ -79,6 +79,11 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "AI Has Made it Easy to Own Your Tools",
+    href: "/ai-own-your-tools",
+    mdx: true,
+  },
+  {
     text: "The Overly Humble Programmer",
     href: "/overly-humble-programmer",
     mdx: true,
@@ -243,8 +248,8 @@ const project = [
 
 const readings = [
   {
-    text: "Programming Readings",
-    href: "/muse",
+    text: "Programming Papers",
+    href: "/readings",
   },
 ];
 
@@ -278,6 +283,7 @@ const Index = () => (
     <LinkList title="Popular Posts" items={popularPosts} />
     <LinkList title="Special Posts" items={specialPosts} />
     <LinkList title="Podcast" items={podcast} />
+    <LinkList title="Papers Archive" items={readings} />
     <LinkList title="Posts" items={posts} />
     <LinkList title="Talks" items={talks} />
     <LinkList title="Posts For Beginners" items={postsForBeginners} />
@@ -285,7 +291,6 @@ const Index = () => (
     <LinkList title="Old Libraries" items={libraries} />
     <LinkList title="Slides from Old Talks" items={slides} />
     <LinkList title="Projects on Hold" items={project} />
-    <LinkList title="Readings" items={readings} />
     <LinkList title="Personal Links" items={contact} />
   </GlobalLayout>
 );
@@ -433,6 +438,11 @@ export const rssPosts = [
   {
     text: "Defending the Incommunicability of Programs",
     href: "/incommunicability",
+  },
+  {
+    text: "AI Has Made it Easy to Own Your Tools",
+    href: "/ai-own-your-tools",
+    mdx: true,
   },
 ];
 
