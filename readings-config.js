@@ -21,8 +21,8 @@ export const config = {
     // Example: '7744a6100455ceb76e9eeb2567a229e316fa4203898a79ca7179b6d28992d44d',
   ],
 
-  // Path to the PDF index file (for metadata mapping)
-  pdfIndexPath: '/Users/jimmyhmiller/Documents/Code/PlayGround/claude-experiments/reading-tools/pdf-indexer/pdf-index-fixed.json',
+  // S3 key for the PDF index file (for metadata mapping)
+  pdfIndexKey: 'pdf-index.json',
 
   // Display name overrides (for when title-case doesn't look right)
   displayNames: {
