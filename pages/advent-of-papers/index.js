@@ -149,7 +149,7 @@ const Advent = () => (
         />
     </Head>
        <MediumText>
-            I spend quite a bit of time talking about papers on the the <Link href="https://futureofcoding.org/episodes">Future of Coding</Link> podcast.
+            I spend quite a bit of time talking about papers on the <Link href="https://feelingof.com/episodes">Feeling of Computer</Link> podcast.
             But there are so much papers we will never get to. So I thought it might be fun to do an advent of papers. I'm largely inspired by {" "}
             <Link href="https://blog.acolyer.org/">The Morning Paper</Link>. But I don't expect to be covering similar ground. In fact, I've kind of
             kept the choice of papers here to weirder papers. I don't right now plan on covering any classics. Though perhaps the amount of time I have
