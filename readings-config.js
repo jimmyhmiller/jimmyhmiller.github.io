@@ -14,6 +14,7 @@ export const config = {
     'ai',
     'interesting',
     'philosophy',
+    'shared',
   ],
 
   // Individual PDF hashes to exclude (use the SHA-256 hash without .pdf extension)
