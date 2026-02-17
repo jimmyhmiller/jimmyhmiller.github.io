@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import NextLink from 'next/link';
 
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect, useRef, createContext, useContext } from 'react';
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-light";
 import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
 import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
@@ -10,6 +10,9 @@ import haskell from 'react-syntax-highlighter/dist/esm/languages/prism/haskell';
 import clojure from 'react-syntax-highlighter/dist/esm/languages/prism/clojure';
 import ruby from 'react-syntax-highlighter/dist/esm/languages/prism/ruby';
 import rust from 'react-syntax-highlighter/dist/esm/languages/prism/rust';
+import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
+import diff from 'react-syntax-highlighter/dist/esm/languages/prism/diff';
+import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import { solarizedlight } from 'react-syntax-highlighter/dist/styles/prism';
 
 const ThemeContext = createContext();
@@ -34,9 +37,90 @@ const NoSsr = dynamic(() => Promise.resolve(NoSsrWrapper), {
 
 export const Link = NextLink;
 // export const Image = (props) => <img {...props} ;
+const Video = ({ src }) => {
+  const [playing, setPlaying] = useState(false);
+  const [hasAutoPlayed, setHasAutoPlayed] = useState(false);
+  const videoRef = useRef(null);
+  const containerRef = useRef(null);
+  const { isDark } = useTheme();
+  const mp4Src = src.replace(/\.gif$/, '.mp4');
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !hasAutoPlayed) {
+        const v = videoRef.current;
+        if (v) {
+          v.play();
+          setPlaying(true);
+          setHasAutoPlayed(true);
+        }
+      }
+    }, { threshold: 0.5 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [hasAutoPlayed]);
+
+  const toggle = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.paused) {
+      v.currentTime = 0;
+      v.play();
+      setPlaying(true);
+    } else {
+      v.pause();
+      setPlaying(false);
+    }
+  };
+
+  return (
+    <div ref={containerRef} style={{position: 'relative', cursor: 'pointer'}} onClick={toggle}>
+      <video
+        ref={videoRef}
+        src={mp4Src}
+        muted
+        playsInline
+        style={{width: '100%', display: 'block', borderRadius: '0.3em'}}
+        onEnded={() => setPlaying(false)}
+      />
+      {!playing && (
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: 64,
+          height: 64,
+          borderRadius: '50%',
+          backgroundColor: isDark ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <div style={{
+            width: 0,
+            height: 0,
+            borderTop: '14px solid transparent',
+            borderBottom: '14px solid transparent',
+            borderLeft: '22px solid white',
+            marginLeft: 4,
+          }} />
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const Image = ({ src }) => {
   const [fullScreen, setFullScreen] = useState(false);
   const { isDark } = useTheme();
+
+  if (src.endsWith('.gif')) {
+    return <Video src={src} />;
+  }
+
   const styles = !fullScreen ? {} : {position: "fixed", zIndex: 100, top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "80vw"}
   return (
     <>
@@ -68,6 +152,9 @@ SyntaxHighlighter.registerLanguage('haskell', haskell);
 SyntaxHighlighter.registerLanguage('clojure', clojure2);
 SyntaxHighlighter.registerLanguage('ruby', ruby);
 SyntaxHighlighter.registerLanguage('rust', rust);
+SyntaxHighlighter.registerLanguage('tsx', tsx);
+SyntaxHighlighter.registerLanguage('diff', diff);
+SyntaxHighlighter.registerLanguage('bash', bash);
 
 
 
@@ -214,8 +301,48 @@ export const darkTheme = {
   'logicVariable': { color: '#56b6c2' },
 }
 
+const Terminal = ({ source }) => {
+  const { isDark } = useTheme();
+  const bg = isDark ? '#2d3748' : '#fdf6e3';
+  const base = isDark ? '#e2e8f0' : '#657b83';
+  const prompt = isDark ? '#68d391' : '#859900';
+  const cmd = isDark ? '#63b3ed' : '#268bd2';
+  const comment = isDark ? '#718096' : '#93a1a1';
+
+  const lines = source.replace(/^\n/, '').replace(/\n$/, '').split('\n');
+  return (
+    <pre style={{
+      background: bg,
+      color: base,
+      fontFamily: 'Monaco, Consolas, "Courier New", monospace',
+      fontSize: '1em',
+      lineHeight: '1.5',
+      padding: '1em',
+      margin: '.5em 0',
+      overflow: 'auto',
+      borderRadius: '0.3em',
+      whiteSpace: 'pre',
+    }}>
+      <code>{lines.map((line, i) => {
+        const promptMatch = line.match(/^(❯\s*)(.*)/);
+        const commentMatch = line.match(/^(#.*)/);
+        if (promptMatch) {
+          return <span key={i}><span style={{color: prompt}}>{promptMatch[1]}</span><span style={{color: cmd}}>{promptMatch[2]}</span>{'\n'}</span>;
+        }
+        if (commentMatch) {
+          return <span key={i} style={{color: comment}}>{line}{'\n'}</span>;
+        }
+        return <span key={i}>{line}{'\n'}</span>;
+      })}</code>
+    </pre>
+  );
+};
+
 export const Code = ({ source, language, removeIndent=true }) => {
   const { isDark } = useTheme();
+  if (language === 'bash' && source.includes('❯')) {
+    return <Terminal source={removeIndent ? formatCode(source) : source} />;
+  }
   return (
     <SyntaxHighlighter
       language={language}

@@ -22,13 +22,14 @@ const generateRSS = () => {
     site_url: siteUrl,
   })
 
-  for (const post of rssPosts.concat(finishedPapers)) {
+  for (const post of [...rssPosts, ...finishedPapers]) {
      const description = getMarkupUp(post);
      feed.item({
       title: post.text,
       guid: post.href,
       url: siteUrl + post.href,
       description,
+      ...(post.date && { date: new Date(post.date) }),
     })
   }
 

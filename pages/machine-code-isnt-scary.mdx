@@ -35,7 +35,7 @@ Instructions are exactly what they sound like; they are the code that will run. 
 Here is an example of the instruction [add immediate](https://developer.arm.com/documentation/ddi0596/2021-03/Base-Instructions/ADD--immediate---Add--immediate--).
 
 <div className="bit-table-wrapper">
-<table border="1" cellspacing="0" cellpadding="4" style={{ borderCollapse: "collapse", textAlign: "center", width: "auto" }}>
+<table border="1" cellSpacing="0" cellPadding="4" style={{ borderCollapse: "collapse", textAlign: "center", width: "auto" }}>
    <thead>
       <tr>
          <th>31</th>
@@ -84,9 +84,9 @@ Here is an example of the instruction [add immediate](https://developer.arm.com/
          <td>1</td>
          <td>0</td>
          <td>sh</td>
-         <td colspan="12">imm12</td>
-         <td colspan="5">Rn</td>
-         <td colspan="5">Rd</td>
+         <td colSpan="12">imm12</td>
+         <td colSpan="5">Rn</td>
+         <td colSpan="5">Rd</td>
       </tr>
    </tbody>
 </table>
@@ -113,15 +113,15 @@ Our add instruction is really just a data structure where we put the right parts
 Registers are small places to store values. Every instruction set will have a different number of these registers, different sizes of registers, different kinds of registers, and different naming conventions for registers. For AArch64, there are 31 general-purpose registers numbered X0 through X30 for 64-bit registers. Let's say we want to add 42 to register X0 and store the result in X1; we use this binary number.
 
 <div className="bit-table-wrapper">
-<table border="1" cellspacing="0" cellpadding="4" style={{ borderCollapse: "collapse", textAlign: "center", width: "auto" }}>
+<table border="1" cellSpacing="0" cellPadding="4" style={{ borderCollapse: "collapse", textAlign: "center", width: "auto" }}>
     <thead>
       <tr>
          <th>sf</th>
-         <th colspan="8">operation</th>
+         <th colSpan="8">operation</th>
          <th>sh</th>
-         <th colspan="12">imm12</th>
-         <th colspan="5">Rn</th>
-         <th colspan="5">Rd</th>
+         <th colSpan="12">imm12</th>
+         <th colSpan="5">Rn</th>
+         <th colSpan="5">Rd</th>
       </tr>
   </thead>
    <tbody>
@@ -178,7 +178,7 @@ In order to feel cool, people usually write numbers in assembly as hex values. T
 The last piece we have to understand for machine code is memory. To understand what is going on with memory, we will look at an instruction that lets us store things in memory. This instruction is called [STR](https://developer.arm.com/documentation/ddi0602/2025-03/Base-Instructions/STR--immediate---Store-register--immediate--?lang=en#iclass_unsigned_offset) or not written in shorthand, store.
 
 <div className="bit-table-wrapper">
-<table border="1" cellspacing="0" cellpadding="4" style={{ borderCollapse: "collapse", textAlign: "center", width: "auto" }}>
+<table border="1" cellSpacing="0" cellPadding="4" style={{ borderCollapse: "collapse", textAlign: "center", width: "auto" }}>
    <thead>
       <tr>
          <th>31</th>
@@ -227,9 +227,9 @@ The last piece we have to understand for machine code is memory. To understand w
          <td>1</td>
          <td>0</td>
          <td>0</td>
-         <td colspan="12">imm12</td>
-         <td colspan="5">Rn</td>
-         <td colspan="5">Rt</td>
+         <td colSpan="12">imm12</td>
+         <td colSpan="5">Rn</td>
+         <td colSpan="5">Rt</td>
       </tr>
    </tbody>
 </table>
@@ -237,15 +237,15 @@ The last piece we have to understand for machine code is memory. To understand w
 Using this instruction, we are going to store some value (RT) into the address (RN) + some offset (imm12). So if we think about memory as a big array, this instruction is like writing into that array. <Term>array[offset] = value</Term>. The x here is like our sf before, it controls whether we are using 64-bit values or not. If we want to make this concrete, let's say we have a value in X2, we have an address of memory in X1 and we want to store a value 2 bytes offset from that. We would get this structure:
 
 <div className="bit-table-wrapper">
-<table border="1" cellspacing="0" cellpadding="4" style={{ borderCollapse: "collapse", textAlign: "center", width: "auto" }}>
+<table border="1" cellSpacing="0" cellPadding="4" style={{ borderCollapse: "collapse", textAlign: "center", width: "auto" }}>
    <thead>
       <tr>
          <th></th>
          <th>x</th>
-         <th colspan="8">operation</th>
-         <th colspan="12">imm12</th>
-         <th colspan="5">Rn</th>
-         <th colspan="5">Rt</th>
+         <th colSpan="8">operation</th>
+         <th colSpan="12">imm12</th>
+         <th colSpan="5">Rn</th>
+         <th colSpan="5">Rt</th>
       </tr>
    </thead>
    <tbody>
@@ -318,7 +318,7 @@ The first part is called the REX. This is a prefix that we can use to help us wi
 ### ModR/M
 
 <div className="bit-table-wrapper">
-<table border="1" cellspacing="0" cellpadding="4" className='bit-table-wrapper' style={{ borderCollapse: "collapse", textAlign: "center", width: "auto" }}>
+<table border="1" cellSpacing="0" cellPadding="4" className='bit-table-wrapper' style={{ borderCollapse: "collapse", textAlign: "center", width: "auto" }}>
   <thead>
     <tr>
       <th style= {{width: 30}}>7</th>
@@ -333,9 +333,9 @@ The first part is called the REX. This is a prefix that we can use to help us wi
   </thead>
   <tbody>
     <tr>
-      <td colspan="2">mod</td>
-      <td colspan="3">reg</td>
-      <td colspan="3">rm</td>
+      <td colSpan="2">mod</td>
+      <td colSpan="3">reg</td>
+      <td colSpan="3">rm</td>
     </tr>
   </tbody>
 </table>
