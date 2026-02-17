@@ -22,7 +22,10 @@ const generateRSS = () => {
     site_url: siteUrl,
   })
 
-  for (const post of [...rssPosts, ...finishedPapers]) {
+  const allPosts = [...rssPosts, ...finishedPapers]
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  for (const post of allPosts) {
      const description = getMarkupUp(post);
      feed.item({
       title: post.text,
