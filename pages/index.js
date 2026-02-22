@@ -294,7 +294,7 @@ const readings = [
 
 const contact = [
   {
-    text: "Blue Sky",
+    text: "Bluesky",
     href:"https://bsky.app/profile/jimmyhmiller.bsky.social",
   },
   {
