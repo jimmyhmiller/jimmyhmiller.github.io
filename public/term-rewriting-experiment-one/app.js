@@ -868,6 +868,7 @@ const ballExample = new Example(document.getElementById('sec-ball'), {
 // ── Page navigation (buttons) ──
 
 const pages = [
+  { el: document.getElementById('sec-intro'), example: null },
   { el: document.getElementById('sec-basics'), example: null },
   { el: document.getElementById('sec-meta-explain'), example: null },
   { el: document.getElementById('sec-fib'), example: fibExample },
