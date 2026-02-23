@@ -35,6 +35,9 @@ function EditorPanels({ tabs }) {
 
 export default function TermRewritingExperimentOne() {
   useEffect(() => {
+    const urlPath = encodeURIComponent(window.location.pathname.replace(/^\//, ''));
+    fetch(`https://github-sites-simple-stats-jimmyhmiller.vercel.app/api/${urlPath}`);
+
     const script = document.createElement('script');
     script.type = 'module';
     script.src = '/term-rewriting-experiment-one/app.js';
