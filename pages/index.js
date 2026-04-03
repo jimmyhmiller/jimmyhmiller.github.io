@@ -90,6 +90,12 @@ export const postsForBeginners = [
 
 export const posts = [
   {
+    text: "Legibility is Ruining You",
+    href: "/legibility-is-ruining-you",
+    mdx: true,
+    date: "2026-04-02",
+  },
+  {
     text: "Untapped Way to Learn a Codebase: Build a Visualizer",
     href: "/learn-codebase-visualizer",
     mdx: true,
