@@ -1,4 +1,4 @@
-import { GlobalLayout } from "../utils.mjs";
+import { GlobalLayout, useTheme } from "../utils.mjs";
 import Head from 'next/head';
 
 <Head>
@@ -70,6 +70,26 @@ Legible processes are impossible to escape if you work for a company. Maybe they
 You can choose to embrace the legible. As an IC, you can choose to value your work on the basis of these legible processes. You can set aside your own personal values about code and map your behavior to what the company cares about. As a manager, you can have your team follow the legible processes to create software that meets all "success" criteria, but still sucks.
 
 Or you can choose to truly care about something. You can choose to push back against the legible processes that are trying to make you an abstraction. Not because you are selfish and stubborn. Not because you think you know better than others. Not because you don't want to follow rules. But because you value something that can't be captured in simple metrics. Because you know the company will benefit from these things. As Sean tells us, illegible work is essential. So why not be essential?
+
+<SubtleBox>
+<strong>Edit:</strong>
+<br />
+Eli Mellen wrote a fantastic response to my post called [The Seed Beneath the Snow](https://eli.li/the-seed-beneath-the-snow). It looks at broad implications perhaps implicit in the argument I'm making here. It has given me a ton to think about. If this resonated with you, I highly recommend it next.
+</SubtleBox>
+
+export function SubtleBox({ children }) {
+  const { isDark } = useTheme();
+  return (
+    <div style={{
+      backgroundColor: isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.03)',
+      borderRadius: 6,
+      padding: '16px 20px',
+      marginTop: 48,
+    }}>
+      {children}
+    </div>
+  );
+}
 
 export default function LegibilityPage({ children }) {
   return <GlobalLayout>{children}</GlobalLayout>;
