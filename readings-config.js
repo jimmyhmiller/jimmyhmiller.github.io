@@ -6,15 +6,18 @@ export const config = {
   prefix: 'pdfs/',
   region: 'us-east-1',
 
-  // Categories to completely exclude from the site
-  excludeCategories: [
-    'garbage',
-    'not-article',
-    'books',
-    'ai',
-    'interesting',
-    'philosophy',
-    'shared',
+  // Whitelist: only categories in this list appear on /readings.
+  // Anything else in S3 (audiobook, unsorted, garbage, etc.) stays hidden.
+  // The loader logs any S3 categories that aren't on this list at build
+  // time, so new categories don't get silently added or dropped.
+  includeCategories: [
+    'computer-philosophy',
+    'db',
+    'foc-covered',
+    'foc-potential',
+    'historical',
+    'programming-languages',
+    'security',
   ],
 
   // Individual PDF hashes to exclude (use the SHA-256 hash without .pdf extension)
