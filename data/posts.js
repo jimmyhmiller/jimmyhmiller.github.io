@@ -65,6 +65,22 @@ export const posts = [
   { text: "Defending the Incommunicability of Programs",           href: "/incommunicability",                    date: "2018-12-28" },
 ];
 
+// Archive content — small utilities and old slide decks. Lives on /archive.
+export const utilities = [
+  { text: "Graph Maker",                href: "https://jimmyhmiller.github.io/graph-maker/" },
+  { text: "Finite State Machine Maker", href: "https://jimmyhmiller.github.io/fsm-maker/" },
+  { text: "EsLint Fixit",               href: "https://github.com/jimmyhmiller/eslint-fixit" },
+  { text: "Zoom Launcher",              href: "https://github.com/jimmyhmiller/zoom-cli" },
+];
+
+export const slides = [
+  { text: "The Future of Programming",        href: "https://future-of-programming.now.sh" },
+  { text: "What is a Monad?",                 href: "https://what-is-a-monad.now.sh" },
+  { text: "Practical Functional Refactoring", href: "https://practical-functional-refactoring.now.sh" },
+  { text: "Property Based Testing",           href: "https://generative-testing.now.sh" },
+  { text: "Datalog Lightning Talk",           href: "https://datalog.now.sh" },
+];
+
 const all = [...posts, ...popularPosts, ...postsForBeginners];
 
 export function findPostByPath(pathname) {

@@ -299,16 +299,12 @@ export const Aside = ({ children, title }) => (
   </details>
 );
 
+// Used inside MDX blockquotes:  > some quote   > <Attribution>name</Attribution>
+// Renders as <cite>, picking up the post stylesheet's blockquote cite styling
+// (uppercase mono, accent-muted, no underline). The `— ` dash is added here
+// so the attribution reads as a single block under the quote.
 export const Attribution = ({ children }) => (
-  <p style={{
-    fontSize: 13,
-    color: 'var(--ink-mute)',
-    marginTop: -14,
-    marginLeft: 12,
-    fontFamily: 'var(--mono)',
-  }}>
-    — <span style={{ textDecoration: 'underline' }}>{children}</span>
-  </p>
+  <cite>— {children}</cite>
 );
 
 // ─── Layout / Headings ──────────────────────────────────────────────

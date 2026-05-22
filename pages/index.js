@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
-import ThemeToggle from '../components/ThemeToggle';
 import { CodeBlock } from '../components/ProjectSection';
 import generateRSS from '../tools/build-rss';
 import { posts, popularPosts, postsForBeginners } from '../data/posts';
@@ -28,23 +27,8 @@ export const specialPosts = [
 ]
 
 const talks = [
-  { text: "Meander: Declarative Explorations at the Limits of FP",        href: "https://www.youtube.com/watch?v=9fhnJpCgtUw", venue: "Clojure/conj" },
-  { text: "Paradigms Without Progress: Kuhnian Reflections on Programming Practice", href: "https://www.youtube.com/watch?v=TkPy7aLTtAw", venue: "Strange Loop" },
-];
-
-const utilities = [
-  { text: "Graph Maker",              href: "https://jimmyhmiller.github.io/graph-maker/" },
-  { text: "Finite State Machine Maker", href: "https://jimmyhmiller.github.io/fsm-maker/" },
-  { text: "EsLint Fixit",             href: "https://github.com/jimmyhmiller/eslint-fixit" },
-  { text: "Zoom Launcher",            href: "https://github.com/jimmyhmiller/zoom-cli" },
-];
-
-const slides = [
-  { text: "The Future of Programming",         href: "https://future-of-programming.now.sh" },
-  { text: "What is a Monad?",                  href: "https://what-is-a-monad.now.sh" },
-  { text: "Practical Functional Refactoring",  href: "https://practical-functional-refactoring.now.sh" },
-  { text: "Property Based Testing",            href: "https://generative-testing.now.sh" },
-  { text: "Datalog Lightning Talk",            href: "https://datalog.now.sh" },
+  { text: "Meander: Declarative Explorations at the Limits of FP",        href: "https://www.youtube.com/watch?v=9fhnJpCgtUw", venue: "Strange Loop" },
+  { text: "Paradigms Without Progress: Kuhnian Reflections on Programming Practice", href: "https://www.youtube.com/watch?v=TkPy7aLTtAw", venue: "Rebase" },
 ];
 
 // Display-only overrides for the Popular section: an italic word per title,
@@ -69,31 +53,16 @@ const now = {
   updated: "2026-05-20",
 };
 
+// Highlight 6 of the 24 advent entries on the homepage — the longer/more
+// substantial ones, plus the two you used to call out on the old index
+// (Dec 4 and Dec 15). The "Full series →" foot link goes to the full archive.
 const advent = [
   { day: "01", title: "Elephant 2000",                                            href: "/advent-of-papers/2024/dec-1-elephant-2000" },
-  { day: "02", title: "Software is an Abstract Artifact",                         href: "/advent-of-papers/2024/dec-2-abstract-artifact" },
   { day: "03", title: "Google's Awful Paper on Technical Debt",                   href: "/advent-of-papers/2024/dec-3-awful-google-tech-debt" },
   { day: "04", title: "Is the Brain a Computer?",                                 href: "/advent-of-papers/2024/dec-4-brain-computer" },
   { day: "05", title: "Worlds: Mutability with Control",                          href: "/advent-of-papers/2024/dec-5-worlds" },
-  { day: "06", title: "Intuition in Software Development",                        href: "/advent-of-papers/2024/dec-6-intuition" },
-  { day: "07", title: "Implementation is Semantic Interpretation",                href: "/advent-of-papers/2024/dec-7-interpretation" },
-  { day: "08", title: "Beyond Being There: Making Remote Work Better",            href: "/advent-of-papers/2024/dec-8-beyond-being-there" },
-  { day: "09", title: "What is a Game?",                                          href: "/advent-of-papers/2024/dec-9-what-is-a-game" },
-  { day: "10", title: "Large Models of What?",                                    href: "/advent-of-papers/2024/dec-10-large-models-of-what" },
   { day: "11", title: "On Understanding Data Abstraction Revisited",              href: "/advent-of-papers/2024/dec-11-data-abstraction" },
-  { day: "12", title: "Lazy Evaluation of Transactions in Database Systems",      href: "/advent-of-papers/2024/dec-12-lazy-transactions" },
-  { day: "13", title: "What Knowledge Isn't",                                     href: "/advent-of-papers/2024/dec-13-knowledge" },
-  { day: "14", title: "Bidirectional Type Checking",                              href: "/advent-of-papers/2024/dec-14-bidirectional-type-checking" },
   { day: "15", title: "Programming Languages as Technical Artifacts",             href: "/advent-of-papers/2024/dec-15-technical-artifacts" },
-  { day: "16", title: "Will Computers Ever Become Easy to Use?",                  href: "/advent-of-papers/2024/dec-16-computers-easy" },
-  { day: "17", title: "The Cultural Part of Cognition",                           href: "/advent-of-papers/2024/dec-17-cultural-cognition" },
-  { day: "18", title: "The Structure and Legal Interpretation of Computer Programs", href: "/advent-of-papers/2024/dec-18-legal-interpretation" },
-  { day: "19", title: "Everybody Clap Your Hands",                                href: "/advent-of-papers/2024/dec-19-clap-your-hands" },
-  { day: "20", title: "Three Paradigms of Computer Science",                      href: "/advent-of-papers/2024/dec-20-three-paradigms" },
-  { day: "21", title: "What is Conceptual Engineering and What Should It Be?",    href: "/advent-of-papers/2024/dec-21-conceptual-engineering" },
-  { day: "22", title: "Once More — A Computer Revolution",                        href: "/advent-of-papers/2024/dec-22-computer-revolution" },
-  { day: "23", title: "Do Artifacts Have Politics?",                              href: "/advent-of-papers/2024/dec-23-artifacts-politics" },
-  { day: "24", title: "Against a Universal Definition of 'type'",                 href: "/advent-of-papers/2024/dec-24-against-types" },
 ];
 
 const yearOf = (d) => (d || '').slice(0, 4);
@@ -127,26 +96,23 @@ const Index = () => (
       <span className="topbar-mark" />
       <nav>
         <a className="a1" href="#popular">popular</a>
-        <a className="a2" href="#projects">projects</a>
+        <NextLink className="a2" href={`/projects/${projects[0].id}`}>projects</NextLink>
         <a className="a3" href="#posts">posts</a>
         <a className="a4" href="#advent">advent</a>
         <a href="#papers">papers</a>
         <a href="#talks">talks</a>
         <a href="https://github.com/jimmyhmiller" target="_blank" rel="noreferrer">github</a>
-        <ThemeToggle />
       </nav>
     </header>
 
     <section className="intro" id="intro">
       <div className="intro-inner">
         <div className="intro-text">
-          <p className="intro-kicker">essays · talks · tools</p>
           <h1 className="intro-name">Jimmy Miller</h1>
           <p className="intro-bio">
             I build compilers, editors, and tools mostly to learn things. I write
             about programming languages, the texture of working in old codebases,
-            and the <em>feeling</em> of computing — which is also the name of a
-            podcast I host.
+            and the <em>feeling</em> of computing.
           </p>
           <a className="intro-cta" href="#posts">read the essays</a>
         </div>
@@ -249,9 +215,9 @@ const Index = () => (
             The <span>feeling</span><br />of computing.
           </h2>
           <p className="podcast-text">
-            Conversations about what programming feels like — the part you can't
-            put on a slide. PL theory, tools, and the philosophy of software with
-            co-hosts and guests.
+            A podcast with an alternative take on computing. We try to explore
+            things around the edge of computing — looking back in history and
+            into the future of what computing has and could be.
           </p>
           <a className="podcast-cta" href="https://feelingof.com" target="_blank" rel="noreferrer">
             listen at feelingof.com
@@ -265,11 +231,11 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Essays */}
+    {/* Posts */}
     <section id="posts">
       <div className="wrap">
         <div className="twocol s-cyan">
-          <div className="col-label"><b>Essays</b></div>
+          <div className="col-label"><b>Posts</b></div>
           <div
             className="posts-list"
             style={{ gridTemplateRows: `repeat(${Math.ceil(posts.length / 2)}, auto)` }}
@@ -292,7 +258,9 @@ const Index = () => (
           <div className="kicker">2024</div>
           <h2>Advent of Papers</h2>
           <p>
-            Every day in December, a short writeup on a paper I keep coming back to.
+            I did an experiment where I tried to read a paper every day of
+            advent and write about it. Some days are more involved than others,
+            but I had a great time doing it.
           </p>
         </div>
         <div className="advent-list">
@@ -316,9 +284,9 @@ const Index = () => (
           <div className="col-label"><b>Papers</b></div>
           <div className="papers-block">
             <p>
-              A growing archive of papers and articles I've saved over the years —
-              programming languages, philosophy of computing, weird edges. Some I've
-              read, some I'm working through.
+              A collection of papers, some read, some not. Over time I plan on
+              revisiting and organizing this better — but I thought it was
+              worth sharing.
             </p>
             <p>
               <NextLink href="/readings" className="papers-cta">Browse the archive</NextLink>
@@ -349,43 +317,6 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Triplets */}
-    <section className="triplets">
-      <div className="t-orange">
-        <h3 className="triplet-head">For beginners</h3>
-        <div className="triplet-list">
-          {postsForBeginners.map((p) => (
-            <InternalOrExternal key={p.href} href={p.href} className="triplet-item">
-              <span>{p.text}</span>
-              <span className="meta">→</span>
-            </InternalOrExternal>
-          ))}
-        </div>
-      </div>
-      <div className="t-violet">
-        <h3 className="triplet-head">Utilities</h3>
-        <div className="triplet-list">
-          {utilities.map((u) => (
-            <a key={u.href} className="triplet-item" href={u.href} target="_blank" rel="noreferrer">
-              <span>{u.text}</span>
-              <span className="meta">↗</span>
-            </a>
-          ))}
-        </div>
-      </div>
-      <div className="t-cyan">
-        <h3 className="triplet-head">Older slides</h3>
-        <div className="triplet-list">
-          {slides.map((s) => (
-            <a key={s.href} className="triplet-item" href={s.href} target="_blank" rel="noreferrer">
-              <span>{s.text}</span>
-              <span className="meta">↗</span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-
     <footer className="site">
       <span>
         <a href="https://bsky.app/profile/jimmyhmiller.bsky.social" target="_blank" rel="noreferrer">bsky</a>
@@ -393,6 +324,9 @@ const Index = () => (
         <a href="https://hachyderm.io/@jimmyhmiller" target="_blank" rel="noreferrer">mastodon</a>
         &nbsp;·&nbsp;
         <a href="https://github.com/jimmyhmiller" target="_blank" rel="noreferrer">github</a>
+      </span>
+      <span>
+        <NextLink href="/archive">archive</NextLink>
       </span>
     </footer>
   </>

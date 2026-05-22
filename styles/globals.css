@@ -14,6 +14,10 @@
   --bg-paper-ink: #1c1a16;
 
   --ink:       #e6edf3;
+  /* Article body sits between full --ink and the softer --ink-soft so
+     paragraphs read with stronger contrast (~12.6:1) but <strong> at full
+     --ink (~16:1) still pops. */
+  --ink-body:  #d0d6dd;
   --ink-soft:  #b1bac4;
   --ink-mute:  #6e7681;
   --rule:      #21262d;
@@ -60,6 +64,7 @@
   --bg-paper-ink: #1c1a16;
 
   --ink:       #1a1814;
+  --ink-body:  #2f2a23;
   --ink-soft:  #4a443c;
   --ink-mute:  #8a8276;
   --rule:      #dcd6c7;
@@ -972,7 +977,7 @@ footer.site .end {
 .article ul,
 .article ol {
   margin: 0 0 1.25em;
-  color: var(--ink-soft);
+  color: var(--ink-body);
 }
 .article p { text-wrap: pretty; }
 .article p strong { color: var(--ink); font-weight: 500; }
@@ -1106,9 +1111,12 @@ footer.site .end {
   color: var(--ink);
 }
 
-/* Drop cap on the lede paragraph */
+/* Drop cap on the lede paragraph.
+   Auto-applied to the first paragraph only when it's followed by another
+   paragraph — skips posts that open with a short setup line right before a
+   list or heading, where the big initial letter looks broken. */
 .article .lede::first-letter,
-.article > p:first-of-type::first-letter {
+.article > p:first-of-type:has(+ p)::first-letter {
   font-family: var(--serif);
   font-weight: 400;
   font-size: 4.4em;
@@ -1945,4 +1953,51 @@ footer.site .end {
 .projpage-preface p em {
   font-style: italic;
   color: var(--accent);
+}
+
+
+/* ─── Needs-review markers (visible only in edit mode) ───────── */
+body[data-edit-mode="1"] [data-needs-review]:not([data-reviewed]) {
+  outline: 2px dashed #ef4444;
+  outline-offset: 4px;
+  border-radius: 2px;
+  position: relative;
+}
+body[data-edit-mode="1"] [data-needs-review]:not([data-reviewed])::after {
+  content: "needs review";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  z-index: 50;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #ef4444;
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: 2px;
+  pointer-events: none;
+}
+body[data-edit-mode="1"] [data-needs-review][data-reviewed] {
+  outline: 1px solid color-mix(in oklab, #4ade80 60%, transparent);
+  outline-offset: 4px;
+  border-radius: 2px;
+  position: relative;
+}
+body[data-edit-mode="1"] [data-needs-review][data-reviewed]::after {
+  content: "✓ reviewed";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  z-index: 50;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #4ade80;
+  color: #0a3b18;
+  padding: 1px 6px;
+  border-radius: 2px;
+  pointer-events: none;
 }

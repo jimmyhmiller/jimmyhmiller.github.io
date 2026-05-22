@@ -15,14 +15,13 @@ export default function Document() {
             __html: `
               (function(){
                 try {
-                  var t = localStorage.getItem('theme');
-                  if (t === 'light' || t === 'dark') {
-                    document.documentElement.dataset.theme = t;
-                  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                    document.documentElement.dataset.theme = 'light';
-                  } else {
-                    document.documentElement.dataset.theme = 'dark';
-                  }
+                  var mq = window.matchMedia('(prefers-color-scheme: light)');
+                  var apply = function() {
+                    document.documentElement.dataset.theme = mq.matches ? 'light' : 'dark';
+                  };
+                  apply();
+                  if (mq.addEventListener) mq.addEventListener('change', apply);
+                  else if (mq.addListener) mq.addListener(apply);
                 } catch(e) {
                   document.documentElement.dataset.theme = 'dark';
                 }

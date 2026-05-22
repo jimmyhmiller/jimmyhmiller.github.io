@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
-import ThemeToggle from '../../components/ThemeToggle';
 import { Artifact } from '../../components/ProjectSection';
 import { projects, findProject, projectSlugs } from '../../data/projects';
 
@@ -28,6 +27,9 @@ const repoLabel = (url) =>
 export default function ProjectPage({ project, prev, next }) {
   const { id, title, tagline, bg, fg, accent, blurb, writeup, repo } = project;
   const repoIsLink = repo && /^https?:\/\//.test(repo);
+  // Empty-string when a field doesn't need review so the attribute is omitted.
+  const needs = (field) =>
+    project.needsReview && project.needsReview.includes(field) ? '1' : undefined;
 
   return (
     <div className="projpage" style={{ '--proj-bg': bg, '--proj-fg': fg, '--accent': accent }}>
@@ -40,7 +42,6 @@ export default function ProjectPage({ project, prev, next }) {
         <NextLink href="/" className="topbar-mark">Jimmy Miller</NextLink>
         <nav>
           <a href="https://github.com/jimmyhmiller" target="_blank" rel="noreferrer">github</a>
-          <ThemeToggle />
         </nav>
       </header>
 
@@ -51,10 +52,11 @@ export default function ProjectPage({ project, prev, next }) {
         <div className="projpage-preface-inner">
           <span className="projpage-preface-label">On projects</span>
           <p>
-            My projects are mostly <em>experiments</em> — small pieces meant to
-            make some idea concrete. A few become things I use every day; most
-            stay in the workshop. The point isn't to ship, it's to know
-            something I didn't before.
+            My projects are mostly <em>experiments</em>. I am more interested
+            in exploring the ideas behind things to learn than I am in writing
+            production-ready software. Some eventually graduate to be tools I
+            use every day. But even those are mostly things I find useful, not
+            for others.
           </p>
         </div>
       </section>
@@ -63,8 +65,8 @@ export default function ProjectPage({ project, prev, next }) {
         <main className="projpage-main">
           <section className="projpage-hero">
             <h1 className="projpage-title">{title}</h1>
-            <p className="projpage-tagline">{tagline}</p>
-            <p className="projpage-blurb">{blurb}</p>
+            <p className="projpage-tagline" data-needs-review={needs('tagline')}>{tagline}</p>
+            <p className="projpage-blurb" data-needs-review={needs('blurb')}>{blurb}</p>
             {(repoIsLink || writeup) && (
               <ul className="projpage-links">
                 {repoIsLink && (
@@ -83,7 +85,12 @@ export default function ProjectPage({ project, prev, next }) {
             )}
           </section>
 
-          <section className="projpage-artifact">
+          <section
+            className="projpage-artifact"
+            data-needs-review={
+              ['code', 'arch', 'table', 'terminal', 'imageCaption'].some((k) => needs(k)) ? '1' : undefined
+            }
+          >
             <Artifact project={project} />
           </section>
 
