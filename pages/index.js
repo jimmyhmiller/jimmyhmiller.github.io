@@ -164,7 +164,6 @@ const Index = () => (
               </InternalOrExternal>
             ))}
           </div>
-          <div className="intro-now-foot">last updated {now.updated}</div>
         </aside>
       </div>
     </section>

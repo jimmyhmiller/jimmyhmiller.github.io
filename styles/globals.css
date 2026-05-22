@@ -723,6 +723,15 @@ a.intro-now-row:hover .v em { color: #f4f1e8; }
   color: var(--ink-mute);
 }
 .posts-year-row:hover .y { color: var(--c-cyan); }
+/* Uniform row height across the two columns. A long title wraps to two
+   lines, a short one keeps the empty space — every row reads as the same
+   block, matching the Advent rhythm. */
+.posts-year-row {
+  min-height: calc(17px * 1.3 * 2 + 32px);
+  line-height: 1.3;
+  align-items: start;
+}
+.posts-year-row > span:last-child { min-width: 0; }
 
 /* ─── PAPERS (archive band) ──────────────────────────────────── */
 .papers-block {
@@ -1816,6 +1825,10 @@ footer.site .end {
   position: sticky;
   top: clamp(72px, 11vh, 130px);
   align-self: start;
+  /* Drop the rail below the hero so it doesn't sit awkwardly next to
+     the title. Once the user scrolls, sticky takes over and it pins
+     to the top offset. */
+  margin-top: clamp(80px, 12vh, 140px);
   max-height: calc(100vh - 110px);
   overflow-y: auto;
   font-family: var(--mono);
@@ -1884,4 +1897,52 @@ footer.site .end {
 /* Hide rail on narrow viewports — the grid collapses to one column there */
 @media (max-width: 980px) {
   .projpage-rail { display: none; }
+}
+
+/* ─── Per-project preface (full-width band above main+rail) ──── */
+.projpage-preface {
+  padding: clamp(48px, 8vh, 90px) var(--gutter);
+  background: color-mix(in oklab, var(--proj-bg) 86%, #000 14%);
+  border-bottom: 1px solid var(--rule-local);
+}
+.projpage-preface-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: baseline;
+}
+@media (max-width: 760px) {
+  .projpage-preface-inner { grid-template-columns: 1fr; gap: 14px; }
+}
+.projpage-preface-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute-local);
+  position: relative;
+  padding-top: 14px;
+}
+.projpage-preface-label::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 36px; height: 2px;
+  background: var(--accent);
+}
+.projpage-preface p {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  color: color-mix(in oklab, var(--proj-fg) 88%, transparent);
+  max-width: 62ch;
+}
+.projpage-preface p em {
+  font-style: italic;
+  color: var(--accent);
 }

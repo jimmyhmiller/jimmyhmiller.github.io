@@ -39,11 +39,25 @@ export default function ProjectPage({ project, prev, next }) {
       <header className="topbar">
         <NextLink href="/" className="topbar-mark">Jimmy Miller</NextLink>
         <nav>
-          <NextLink href="/#projects">projects</NextLink>
           <a href="https://github.com/jimmyhmiller" target="_blank" rel="noreferrer">github</a>
           <ThemeToggle />
         </nav>
       </header>
+
+      {/* STUB: this preface is the same on every project page.
+          Replace the copy below with your real write-up on how you
+          approach projects. */}
+      <section className="projpage-preface">
+        <div className="projpage-preface-inner">
+          <span className="projpage-preface-label">On projects</span>
+          <p>
+            My projects are mostly <em>experiments</em> — small pieces meant to
+            make some idea concrete. A few become things I use every day; most
+            stay in the workshop. The point isn't to ship, it's to know
+            something I didn't before.
+          </p>
+        </div>
+      </section>
 
       <div className="projpage-layout">
         <main className="projpage-main">
