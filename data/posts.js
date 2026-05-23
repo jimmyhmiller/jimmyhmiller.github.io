@@ -38,13 +38,21 @@ export const postsForBeginners = [
   { text: "Basic Functional Studies",             href: "/basic-functional-studies",  date: "2018-11-12" },
 ];
 
+// Popular posts (those also surfaced in the homepage "Popular" section) are
+// inlined into this list in chronological order so they show up in the full
+// posts list too. The dedup in pages/index.js's RSS shim keeps the feed
+// from picking them up twice.
 export const posts = [
   { text: "Legibility is Ruining You",                            href: "/legibility-is-ruining-you",            mdx: true, date: "2026-04-02" },
   { text: "Untapped Way to Learn a Codebase: Build a Visualizer", href: "/learn-codebase-visualizer",            mdx: true, date: "2026-02-17" },
   { text: "AI Has Made it Easy to Own Your Tools",                href: "/ai-own-your-tools",                    mdx: true, date: "2025-12-26" },
+  { text: "The Easiest Way to Build a Type Checker",              href: "/easiest-way-to-build-type-checker",    mdx: true, date: "2025-11-22" },
   { text: "The Overly Humble Programmer",                          href: "/overly-humble-programmer",             mdx: true, date: "2025-11-12" },
   { text: "Stuck? Build Your Language Backwards",                  href: "/build-your-language-backwards",        mdx: true, date: "2025-06-12" },
+  { text: "Machine Code Isn't Scary",                              href: "/machine-code-isnt-scary",              mdx: true, date: "2025-06-02" },
+  { text: "Discovery Coding",                                      href: "/discovery-coding",                     mdx: true, date: "2025-01-28" },
   { text: "Being Raised by the Internet",                          href: "/raised",                               mdx: true, date: "2024-09-19" },
+  { text: '"We ran out of columns" — the best, worst codebase',    href: "/ugliest-beautiful-codebase",           mdx: true, date: "2024-08-02" },
   { text: "That Will Never Change. Not Here",                      href: "/never-change",                         mdx: true, date: "2024-02-24" },
   { text: "Not Another Technical Debt Article",                    href: "/not-another-technical-debt-article",   mdx: true, date: "2024-01-15" },
   { text: "Being Stuck in Someone Else's Theory",                  href: "/stuck",                                mdx: true, date: "2023-12-27" },
