@@ -1162,15 +1162,14 @@ footer.site .end {
 
 /* Tables in posts */
 .article table {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   margin: 1.8em 0;
   border-collapse: collapse;
   font-family: var(--mono);
   font-size: 14px;
   line-height: 1.55;
   color: var(--ink-soft);
-  display: block;
-  overflow-x: auto;
   border: 1px solid var(--rule);
   border-radius: 4px;
 }
