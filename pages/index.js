@@ -216,7 +216,7 @@ const Index = () => (
           </h2>
           <p className="podcast-text">
             A podcast with an alternative take on computing. We try to explore
-            things around the edge of computing — looking back in history and
+            things around the edge of computing, looking back in history and
             into the future of what computing has and could be.
           </p>
           <a className="podcast-cta" href="https://feelingof.com" target="_blank" rel="noreferrer">
