@@ -284,9 +284,9 @@ const Index = () => (
           <div className="col-label"><b>Papers</b></div>
           <div className="papers-block">
             <p>
-              A collection of papers, some read, some not. Over time I plan on
-              revisiting and organizing this better — but I thought it was
-              worth sharing.
+              A collection of papers I've gathered over time. Many I've read
+              but not all. Figured it was worth sharing. Plan on organizing
+              more over time.
             </p>
             <p>
               <NextLink href="/readings" className="papers-cta">Browse the archive</NextLink>
