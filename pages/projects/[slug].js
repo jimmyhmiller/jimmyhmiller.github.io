@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { Artifact } from '../../components/ProjectSection';
+import MobileProjectPager from '../../components/MobileProjectPager';
 import { projects, findProject, projectSlugs } from '../../data/projects';
 
 export async function getStaticPaths() {
@@ -129,6 +130,8 @@ export default function ProjectPage({ project, prev, next }) {
           </ol>
         </aside>
       </div>
+
+      <MobileProjectPager projects={projects} currentId={id} prev={prev} next={next} />
     </div>
   );
 }

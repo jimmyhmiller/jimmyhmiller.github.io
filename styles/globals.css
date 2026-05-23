@@ -1920,9 +1920,174 @@ footer.site .end {
   box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 25%, transparent);
 }
 
-/* Hide rail on narrow viewports — the grid collapses to one column there */
+/* Hide rail on narrow viewports — the grid collapses to one column there.
+   Mobile users get the .projpage-mobilepager (fixed bottom bar + sheet) instead. */
 @media (max-width: 980px) {
   .projpage-rail { display: none; }
+}
+
+/* ─── Mobile project pager (fixed bottom bar + bottom-sheet list) ── */
+.projpage-mobilepager { display: none; }
+@media (max-width: 980px) {
+  .projpage-mobilepager {
+    display: grid;
+    grid-template-columns: 56px 1fr 56px;
+    align-items: stretch;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 40;
+    background: color-mix(in oklab, var(--proj-bg) 88%, #000 12%);
+    border-top: 1px solid var(--rule-local);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    font-family: var(--mono);
+    color: var(--proj-fg);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  /* Lift the page foot above the fixed bar so prev/next isn't covered */
+  .projpage-foot { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+}
+.projpage-mobilepager .mp-side {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: var(--accent);
+  opacity: 0.9;
+  text-decoration: none;
+  min-height: 52px;
+}
+.projpage-mobilepager .mp-side.mp-disabled { opacity: 0.25; }
+.projpage-mobilepager .mp-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  border-left: 1px solid var(--rule-local);
+  border-right: 1px solid var(--rule-local);
+  color: var(--proj-fg);
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 10px 14px;
+  cursor: pointer;
+  min-height: 52px;
+  min-width: 0;
+}
+.projpage-mobilepager .mp-counter {
+  font-size: 11px;
+  color: var(--mute-local);
+  letter-spacing: 0.08em;
+}
+.projpage-mobilepager .mp-name {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.projpage-mobilepager .mp-caret {
+  font-size: 10px;
+  color: var(--mute-local);
+  margin-left: 2px;
+}
+
+.projpage-mobilesheet {
+  position: fixed; inset: 0;
+  z-index: 50;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.projpage-mobilesheet .mp-backdrop {
+  position: absolute; inset: 0;
+  background: color-mix(in oklab, var(--proj-bg) 50%, #000 50%);
+  opacity: 0.7;
+}
+.projpage-mobilesheet .mp-panel {
+  position: relative;
+  background: color-mix(in oklab, var(--proj-bg) 90%, #000 10%);
+  border-top: 1px solid var(--rule-local);
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  max-height: 75vh;
+  overflow-y: auto;
+  padding: 14px 18px calc(20px + env(safe-area-inset-bottom));
+  font-family: var(--mono);
+  color: var(--proj-fg);
+  animation: mp-rise 180ms ease-out;
+}
+@keyframes mp-rise {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+.projpage-mobilesheet .mp-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--rule-local);
+}
+.projpage-mobilesheet .mp-panel-title {
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mute-local);
+}
+.projpage-mobilesheet .mp-panel-title::before {
+  content: "";
+  display: inline-block;
+  width: 18px; height: 2px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.projpage-mobilesheet .mp-close {
+  background: none; border: none;
+  color: var(--mute-local);
+  font-size: 22px;
+  line-height: 1;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.projpage-mobilesheet .mp-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+.projpage-mobilesheet .mp-list li { margin: 0; }
+.projpage-mobilesheet .mp-list a {
+  display: grid;
+  grid-template-columns: 28px 12px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0;
+  color: color-mix(in oklab, var(--proj-fg) 75%, transparent);
+}
+.projpage-mobilesheet .mp-list .n {
+  font-size: 11px;
+  color: var(--mute-local);
+}
+.projpage-mobilesheet .mp-list .dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  background: var(--row-accent, var(--mute-local));
+  opacity: 0.85;
+}
+.projpage-mobilesheet .mp-list .name {
+  font-size: 14px;
+  line-height: 1.3;
+}
+.projpage-mobilesheet .mp-list .is-current a { color: var(--proj-fg); }
+.projpage-mobilesheet .mp-list .is-current .name {
+  color: var(--accent);
+  font-weight: 500;
+}
+.projpage-mobilesheet .mp-list .is-current .dot {
+  opacity: 1;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 25%, transparent);
 }
 
 /* ─── Per-project preface (full-width band above main+rail) ──── */
