@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { Newsreader, JetBrains_Mono } from 'next/font/google';
 
@@ -28,6 +29,9 @@ const CopyEditor = dynamic(() => import('../components/CopyEditor'), { ssr: fals
 export default function App({ Component, pageProps }) {
   return (
     <div className={`${serif.variable} ${mono.variable}`} style={{ display: 'contents' }}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      </Head>
       <Component {...pageProps} />
       <CopyEditor />
     </div>
