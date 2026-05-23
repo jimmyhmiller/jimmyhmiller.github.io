@@ -762,9 +762,13 @@ a.intro-now-row:hover .v em { color: #f4f1e8; }
   gap: 10px;
   font-family: var(--mono);
   font-size: 13px;
+  line-height: 1;
   border: 1px solid var(--rule);
   border-radius: 4px;
-  padding: 10px 16px;
+  /* Padding is symmetric here so the text reads centered. The
+     `.papers-block a` rule above adds padding-bottom: 1px (for the underline
+     baseline), which would otherwise nudge the label up by a pixel. */
+  padding: 11px 16px !important;
   color: var(--ink) !important;
   border-bottom: 1px solid var(--rule) !important;
   background: transparent;

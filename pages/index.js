@@ -114,7 +114,7 @@ const Index = () => (
             about programming languages, the texture of working in old codebases,
             and the <em>feeling</em> of computing.
           </p>
-          <a className="intro-cta" href="#posts">read the essays</a>
+          <a className="intro-cta" href="#posts">read the posts</a>
         </div>
 
         <aside className="intro-now" aria-label="What I'm up to right now">
