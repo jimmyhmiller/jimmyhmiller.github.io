@@ -1944,8 +1944,10 @@ footer.site .end {
     color: var(--proj-fg);
     padding-bottom: env(safe-area-inset-bottom);
   }
-  /* Lift the page foot above the fixed bar so prev/next isn't covered */
-  .projpage-foot { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+  /* The mobile pager already handles prev/next; hide the in-page foot
+     and pad the artifact section so its content clears the fixed bar. */
+  .projpage-foot { display: none; }
+  .projpage-artifact { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
 }
 .projpage-mobilepager .mp-side {
   display: flex; align-items: center; justify-content: center;
