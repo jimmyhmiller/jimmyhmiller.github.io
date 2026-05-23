@@ -94,7 +94,14 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-html { background: var(--bg); color: var(--ink); }
+html {
+  background: var(--bg);
+  color: var(--ink);
+  /* Prevent iOS Safari from autosizing text inside long <pre> blocks,
+     which made code-snippet lines render at inconsistent sizes on mobile. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 body {
   background: var(--bg);
   color: var(--ink);
