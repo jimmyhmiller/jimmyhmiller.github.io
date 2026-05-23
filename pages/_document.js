@@ -4,12 +4,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=JetBrains+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
-        />
+        {/* Fonts are loaded via next/font/google in _app.js — self-hosted at
+            build time, with auto-generated size-adjusted fallbacks. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `

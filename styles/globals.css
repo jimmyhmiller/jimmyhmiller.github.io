@@ -29,8 +29,11 @@
   --c-lime:    #a3e635;
   --c-green:   #0d7d3d;
 
-  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
-  --mono:  "JetBrains Mono", "Berkeley Mono", "SF Mono", ui-monospace, Menlo, monospace;
+  /* next/font (see pages/_app.js) injects --font-serif and --font-mono with
+     the self-hosted webfont + a size-adjusted fallback chain baked in.
+     We keep the public --serif/--mono names so existing rules don't change. */
+  --serif: var(--font-serif, "Newsreader", "Iowan Old Style", Georgia, serif);
+  --mono:  var(--font-mono,  "JetBrains Mono", "Berkeley Mono", "SF Mono", ui-monospace, Menlo, monospace);
 
   --max:    1180px;
   --col:    720px;
