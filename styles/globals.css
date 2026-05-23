@@ -1168,6 +1168,8 @@ footer.site .end {
   color: var(--ink-soft);
   display: block;
   overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
 }
 .article table thead { background: var(--bg-soft); }
 .article table th,
@@ -1175,8 +1177,11 @@ footer.site .end {
   padding: 9px 14px;
   text-align: left;
   border-bottom: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
   vertical-align: top;
 }
+.article table th:last-child,
+.article table td:last-child { border-right: 0; }
 .article table th {
   font-weight: 500;
   color: var(--ink);
