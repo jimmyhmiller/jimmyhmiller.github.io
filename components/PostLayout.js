@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context.shared-runtime';
 import { findPostByPath, adjacentPosts, formatPostDate } from '../data/posts';
-import { projects } from '../data/projects';
 
 // useRouter throws if there's no Next router in context (e.g. when this
 // component is rendered through ReactDOMServer.renderToStaticMarkup by
@@ -32,7 +31,7 @@ export default function PostLayout({ children, title, date, hideHead }) {
       <header className="topbar">
         <NextLink href="/" className="topbar-mark">Jimmy Miller</NextLink>
         <nav>
-          <NextLink href={`/projects/${projects[0].id}`} className="a2">projects</NextLink>
+          <NextLink href="/projects" className="a2">projects</NextLink>
           <NextLink href="/#posts" className="a3">posts</NextLink>
           <NextLink href="/#advent" className="a2">advent</NextLink>
           <NextLink href="/#talks" className="a4">talks</NextLink>

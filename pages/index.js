@@ -96,7 +96,7 @@ const Index = () => (
       <span className="topbar-mark" />
       <nav>
         <a className="a1" href="#popular">popular</a>
-        <NextLink className="a2" href={`/projects/${projects[0].id}`}>projects</NextLink>
+        <NextLink className="a2" href="/projects">projects</NextLink>
         <a className="a3" href="#posts">posts</a>
         <a className="a4" href="#advent">advent</a>
         <a href="#papers">papers</a>
