@@ -50,7 +50,7 @@ export default function ProjectPage({ project, prev, next }) {
           approach projects. */}
       <section className="projpage-preface">
         <div className="projpage-preface-inner">
-          <span className="projpage-preface-label">On projects</span>
+          <span className="projpage-preface-label">Projects</span>
           <p>
             My projects are mostly <em>experiments</em>. I am more interested
             in exploring the ideas behind things to learn than I am in writing
