@@ -49,7 +49,7 @@ fn main() {
         { label: "Algebraic effects",            body: "Built-in algebraic effects make it easy to control and test IO." },
         { label: "Live coding",                  body: "Redefine functions, structs, and enums while your code is running." },
         { label: "Async without function coloring", body: "Delimited continuations give you transparent asynchrony." },
-        { label: "Compiled",                     body: "No VM, no bytecode — straight to machine code." },
+        { label: "Compiled",                     body: "No VM, no bytecode, straight to machine code." },
       ],
     },
     layout: "wide",
