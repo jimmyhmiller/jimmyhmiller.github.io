@@ -124,6 +124,7 @@ function PerfTable({ table }) {
         );
       })}
       {table.caption && <div className="proj-perftable-caption">{table.caption}</div>}
+      {table.note && <div className="proj-perftable-note">{table.note}</div>}
     </div>
   );
 }

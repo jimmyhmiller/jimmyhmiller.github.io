@@ -63,32 +63,48 @@ fn main() {
     blurb: "I wanted to see how hard it would be to write a from-scratch DSL for GPT-2. I targeted only as much support as nanoGPT. Along the way I was able to get GPT-2 working. I learned more about the kinds of optimizations that apply to neural network workloads. And I was able to train some models and build a visualizer for the inner workings of simple ones. There will definitely be a write-up about how all this works at some point.",
     code: {
       lang: "tensor",
-      filename: "examples/gpt2.tl — the layernorm",
+      filename: "examples/gpt2.tensor",
       source: `fn layernorm(x, gamma, beta) {
-    let mean   = mul(sum(x, axis: 2), inv_d)
-    let xc     = sub(x, mean)
-    let var    = mul(sum(mul(xc, xc), axis: 2), inv_d)
-    let std    = sqrt(add(var, 0.00001))
+    let mean = mul(sum(x, axis: 2), inv_d)
+    let xc = sub(x, mean)
+    let var = mul(sum(mul(xc, xc), axis: 2), inv_d)
+    let std = sqrt(add(var, 0.00001))
     let normed = mul(xc, recip(std))
     add(mul(normed, gamma), beta)
 }
 
-// the unlock: ~95% of time was in index math (SDIV).
-// before:
-for oi in 0..total_size {
-    d0   = (oi / stride[0]) % shape[0]   // SDIV: 12-20 cycles
-    d1   = (oi / stride[1]) % shape[1]   // SDIV: 12-20 cycles
-    addr = d0 * input_stride_0 + d1 * input_stride_1
+fn clamp(x, lo, hi) {
+    // clamp(x, lo, hi) = max(min(x, hi), lo)
+    // min(a, b) = neg(max(neg(a), neg(b)))
+    let upper = neg(max(neg(x), neg(hi)))
+    max(upper, lo)
 }
-// after: nested loops. address falls out of the counters.
-for d0 in 0..shape[0] {
-    for d1 in 0..shape[1] {
-        addr = d0 * input_stride_0 + d1 * input_stride_1
-    }
+
+fn gelu(x) {
+    let x3 = mul(mul(x, x), x)
+    let inner = mul(0.7978845608028654, add(x, mul(0.044715, x3)))
+    // Clamp for numerically stable tanh (tanh(10) ≈ 1.0)
+    let clamped = clamp(inner, neg(10.0), 10.0)
+    let z2 = mul(clamped, 2.0)
+    let ez2 = exp(z2)
+    let tanh_val = mul(sub(ez2, 1.0), recip(add(ez2, 1.0)))
+    mul(mul(0.5, x), add(1.0, tanh_val))
+}
+
+fn linear(x, w, b) {
+    add(matmul(x, w), b)
+}
+
+fn softmax_attn(x) {
+    let m = max(x, axis: 3)
+    let e = exp(sub(x, m))
+    let s = sum(e, axis: 3)
+    mul(recip(s), e)
 }`,
     },
     table: {
       caption: "GPT-2 124M · 12 layers · T=16 · single-threaded · Apple Silicon",
+      note: "Some of the numbers above are fudged a bit because I didn't feel like getting exact numbers, the final numbers are real.",
       headers: ["pass", "time", "speedup"],
       rows: [
         ["baseline (old ARM backend)",     "3740 ms", "1.00x"],
@@ -119,7 +135,7 @@ for d0 in 0..shape[0] {
     tagline: "A language that makes it easy to write succinct SIMD code.",
     bg: "#0a0e1a", fg: "#dde7f5", accent: "#7fd1ff",
     kind: "code",
-    blurb: "Vectorized iteration with cross-iteration state. The stream, over, and carry keywords make SIMD code read like a normal loop. Hits ~73% of simdjson stage-1 throughput on M1 (~3.5 GB/s) and ~76% for full DOM parse (~1.15 GB/s).",
+    blurb: "I've been wanting to understand SIMD for a while and really see how much performance you can get with it. But I also find the code to write simd rather confusing. I was curious if you could write something much cleaner and get the performance difference expected. Here I was able to use MLIR and make a language that can implement SIMD JSON and get within 75% of the actual library, with way less code (simplified below).",
     code: {
       lang: "simd",
       filename: "examples/json_stage1.simd",

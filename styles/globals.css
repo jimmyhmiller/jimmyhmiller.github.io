@@ -1381,6 +1381,13 @@ footer.site .end {
   border-top: 1px solid var(--rule-local);
 }
 .proj-perftable-caption::before { content: "// "; color: var(--accent); opacity: 0.7; }
+.proj-perftable-note {
+  padding: 0 16px 10px;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--mute-local);
+  background: color-mix(in oklab, var(--proj-bg) 85%, #000 15%);
+}
 
 /* ─── Arch list ─────────────────────────────────────────────── */
 .proj-archlist {
