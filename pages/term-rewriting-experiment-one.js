@@ -242,8 +242,13 @@ export default function TermRewritingExperimentOne() {
         .cm-editor .cm-content {
           font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
           font-size: 13px;
+          color: #3a3025;
         }
-        .cm-editor .cm-gutters { background: #faf8f4; border-right: 1px solid #eae5dd; }
+        .cm-editor .cm-cursor { border-left-color: #3a3025; }
+        .cm-editor .cm-gutters {
+          background: #faf8f4; border-right: 1px solid #eae5dd;
+          color: #a09585;
+        }
         .cm-editor.cm-focused { outline: none; }
         .error {
           background: #fef2f2; color: #dc2626; border-radius: 8px;
