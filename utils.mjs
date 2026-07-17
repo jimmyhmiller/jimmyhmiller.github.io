@@ -311,10 +311,50 @@ export const Attribution = ({ children }) => (
 // These render plain HTML elements that pick up the article styles
 // defined in styles/globals.css (drop-cap, blue-rule h2, italic h3, mono h4).
 const sizeToElem = { 1: 'h1', 2: 'h2', 3: 'h3', 4: 'h4' };
+
+// Flatten arbitrary React children down to their plain-text content so we
+// can derive a stable slug for an in-page anchor (handles strings, arrays,
+// and nested elements like `## Some <code>thing</code>`).
+export const childrenToText = (children) => {
+  if (children == null || typeof children === 'boolean') return '';
+  if (typeof children === 'string' || typeof children === 'number') return String(children);
+  if (Array.isArray(children)) return children.map(childrenToText).join('');
+  if (children.props) return childrenToText(children.props.children);
+  return '';
+};
+
+export const slugify = (text) =>
+  String(text)
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')   // drop punctuation
+    .replace(/[\s_]+/g, '-')     // spaces/underscores -> hyphen
+    .replace(/-+/g, '-')          // collapse repeats
+    .replace(/^-+|-+$/g, '');     // trim leading/trailing hyphens
+
+// Renders a heading with an `id` slug and a trailing `#` link that jumps to
+// itself — the anchor is visually hidden until the heading is hovered
+// (styled under `.article .heading-anchor` in styles/globals.css).
+export const AnchoredHeading = ({ as: Elem, children }) => {
+  const slug = slugify(childrenToText(children));
+  return (
+    <Elem id={slug}>
+      {children}
+      {slug && (
+        <a href={`#${slug}`} className="heading-anchor" aria-label="Link to this section">
+          #
+        </a>
+      )}
+    </Elem>
+  );
+};
+
 export const Heading = ({ text, size = 1 }) => {
   const Elem = sizeToElem[size];
   if (!Elem) throw new Error('Undefined Heading Size');
-  return <Elem>{text}</Elem>;
+  // h1 is the post title band (rendered elsewhere) — leave it without an anchor.
+  if (size === 1) return <Elem>{text}</Elem>;
+  return <AnchoredHeading as={Elem}>{text}</AnchoredHeading>;
 };
 
 export const Title = ({ text }) => (

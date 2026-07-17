@@ -1160,6 +1160,46 @@ footer.site .end {
   margin: 1.8em 0 0.5em;
 }
 
+/* In-page anchor links: a `#` that appears to the left of a heading on
+   hover and links to that heading. `scroll-margin-top` keeps the target
+   from butting against the top of the viewport when jumped to. */
+.article h2,
+.article h3,
+.article h4 {
+  position: relative;
+  scroll-margin-top: 1.5em;
+}
+.article .heading-anchor {
+  position: absolute;
+  left: -0.85em;
+  top: 0;
+  padding-right: 0.35em;
+  border-bottom: none;
+  color: var(--ink-mute);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.12s ease-in-out;
+}
+.article h2:hover .heading-anchor,
+.article h3:hover .heading-anchor,
+.article h4:hover .heading-anchor,
+.article .heading-anchor:focus {
+  opacity: 0.55;
+}
+.article .heading-anchor:hover {
+  opacity: 1;
+  color: var(--c-blue);
+}
+@media (max-width: 640px) {
+  /* No hover on touch — keep the anchor faintly visible and inline. */
+  .article .heading-anchor {
+    position: static;
+    opacity: 0.4;
+    margin-left: 0.35em;
+    padding-right: 0;
+  }
+}
+
 .article figure { margin: 1.8em 0; }
 .article figure img,
 .article figure video,

@@ -1,4 +1,4 @@
-import { Image, BlockQuote, Code, Term } from "./utils.mjs";
+import { Image, BlockQuote, Code, Term, AnchoredHeading } from "./utils.mjs";
 
 // Map MDX elements to plain HTML — styling lives in styles/globals.css
 // under the `.article` scope (drop cap, blue rule on h2, italic h3, etc.).
@@ -9,9 +9,9 @@ import { Image, BlockQuote, Code, Term } from "./utils.mjs";
 export function useMDXComponents(components) {
   return {
     h1: () => null,
-    h2: ({ children }) => <h2>{children}</h2>,
-    h3: ({ children }) => <h3>{children}</h3>,
-    h4: ({ children }) => <h4>{children}</h4>,
+    h2: ({ children }) => <AnchoredHeading as="h2">{children}</AnchoredHeading>,
+    h3: ({ children }) => <AnchoredHeading as="h3">{children}</AnchoredHeading>,
+    h4: ({ children }) => <AnchoredHeading as="h4">{children}</AnchoredHeading>,
     img: (props) => <Image {...props} />,
     blockquote: (props) => <BlockQuote {...props} />,
     pre: ({ children }) => <>{children}</>,
