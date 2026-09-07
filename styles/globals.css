@@ -398,11 +398,6 @@ body, .topbar, .intro, .popular, .podcast-band, .advent, .talk-card,
   transition: padding-left 0.15s ease;
 }
 a.intro-now-row:hover { padding-left: 8px; }
-a.intro-now-row:hover .v em { color: #f4f1e8; }
-
-@media (prefers-color-scheme: light) {
-a.intro-now-row:hover .v em { color: #1a1814; }
-}
 
 @media (prefers-color-scheme: light) {
 .intro-now-row { border-bottom-color: rgba(26, 24, 20, 0.12); }
@@ -432,7 +427,6 @@ a.intro-now-row:hover .v em { color: #1a1814; }
 @media (prefers-color-scheme: light) {
 .intro-now-row .v { color: #1a1814; }
 }
-.intro-now-row .v em { font-style: italic; color: var(--c-orange); }
 .intro-now-foot {
   font-family: var(--mono);
   font-size: 10.5px;
@@ -554,16 +548,6 @@ a.intro-now-row:hover .v em { color: #1a1814; }
 @media (prefers-color-scheme: light) {
 .popular-item .t { color: #3a2a1a; }
 }
-.popular-item .t em {
-  font-style: italic;
-  color: var(--c-orange);
-  font-weight: 400;
-}
-.popular-item:hover .t em { color: #f0d8c0; }
-
-@media (prefers-color-scheme: light) {
-.popular-item:hover .t em { color: #3a2a1a; }
-}
 .popular-item .meta {
   font-family: var(--mono);
   font-size: 11.5px;
@@ -614,7 +598,6 @@ a.intro-now-row:hover .v em { color: #1a1814; }
   margin: 0 0 24px;
   color: var(--bg-paper-ink);
 }
-.podcast-headline span { font-style: normal; color: var(--c-green); }
 .podcast-text {
   font-family: var(--serif);
   font-size: 18px;
@@ -666,7 +649,6 @@ a.intro-now-row:hover .v em { color: #1a1814; }
   color: #f4f1e8;
   letter-spacing: -0.01em;
 }
-.podcast-art-text em { font-style: italic; color: #a3e635; }
 
 /* ─── ADVENT band ───────────────────────────────────────────── */
 .advent {
@@ -1133,21 +1115,21 @@ footer.site .end {
 
 .article h2 {
   font-family: var(--serif);
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(26px, 3vw, 32px);
   line-height: 1.15;
   letter-spacing: -0.015em;
-  margin: 2.4em 0 0.6em;
+  margin: 3rem 0 0.75rem;
   color: var(--ink);
 }
 .article h3 {
   font-family: var(--serif);
-  font-weight: 500;
-  font-style: italic;
-  font-size: clamp(20px, 2.2vw, 24px);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  margin: 2em 0 0.4em;
+  font-weight: 600;
+  font-style: normal;
+  font-size: clamp(19px, 2vw, 21px);
+  line-height: 1.25;
+  letter-spacing: 0;
+  margin: 2.25rem 0 0.625rem;
   color: var(--ink);
 }
 .article h4 {

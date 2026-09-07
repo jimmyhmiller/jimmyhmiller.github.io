@@ -31,13 +31,13 @@ const talks = [
   { text: "Paradigms Without Progress: Kuhnian Reflections on Programming Practice", href: "https://www.youtube.com/watch?v=TkPy7aLTtAw", venue: "Rebase" },
 ];
 
-// Display-only overrides for the Popular section: an italic word per title,
-// which the .popular-item .t em rule colors orange.
+// Display-only overrides for the Popular section — nicer typographic quotes
+// and dashes than the plain post title.
 const popularEmphasis = {
-  '/ugliest-beautiful-codebase':       <>“We ran out of <em>columns</em>” — the best, worst codebase</>,
-  '/easiest-way-to-build-type-checker': <>The <em>easiest</em> way to build a type checker</>,
-  '/machine-code-isnt-scary':           <>Machine code <em>isn’t</em> scary</>,
-  '/discovery-coding':                  <><em>Discovery</em> coding</>,
+  '/ugliest-beautiful-codebase':        "“We ran out of columns” — the best, worst codebase",
+  '/easiest-way-to-build-type-checker': "The easiest way to build a type checker",
+  '/machine-code-isnt-scary':           "Machine code isn’t scary",
+  '/discovery-coding':                  "Discovery coding",
 };
 
 // "Currently" panel — pulls from real site content. Each row links somewhere.
@@ -45,10 +45,10 @@ const popularEmphasis = {
 const now = {
   stamp: "may 2026",
   rows: [
-    { k: "building", v: <>a <em>tensor</em> compiler</>,        href: "/projects/tensor-lang" },
-    { k: "writing",  v: <><em>legibility</em> is ruining you</>, href: "/legibility-is-ruining-you" },
-    { k: "using",    v: <><em>keep-running</em>, daily</>,       href: "/projects/keep-running" },
-    { k: "talking",  v: <>the <em>feeling</em> of computing</>, href: "https://feelingof.com" },
+    { k: "building", v: "a tensor compiler",         href: "/projects/tensor-lang" },
+    { k: "writing",  v: "legibility is ruining you", href: "/legibility-is-ruining-you" },
+    { k: "using",    v: "keep-running, daily",       href: "/projects/keep-running" },
+    { k: "talking",  v: "the feeling of computing",  href: "https://feelingof.com" },
   ],
   updated: "2026-05-20",
 };
@@ -212,7 +212,7 @@ const Index = () => (
         <div>
           <div className="podcast-tag">podcast</div>
           <h2 className="podcast-headline">
-            The <span>feeling</span><br />of computing.
+            The feeling<br />of computing.
           </h2>
           <p className="podcast-text">
             A podcast with an alternative take on computing. We try to explore
@@ -225,7 +225,7 @@ const Index = () => (
         </div>
         <div className="podcast-art" aria-hidden="true">
           <div className="podcast-art-text">
-            The <em>feeling</em> of<br />computing
+            The feeling of<br />computing
           </div>
         </div>
       </div>
