@@ -1321,6 +1321,17 @@ footer.site .end {
 }
 
 /* Tables in posts */
+.article > .bit-table-wrapper {
+  max-width: 100%;
+  margin: 1.8em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.article > .bit-table-wrapper > table {
+  max-width: none;
+  margin: 0;
+}
 .article table {
   width: auto;
   max-width: 100%;
