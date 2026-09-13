@@ -1011,7 +1011,7 @@ footer.site .end {
 
 .article-head {
   width: 100%;
-  padding: clamp(72px, 11vh, 130px) var(--gutter) clamp(56px, 9vh, 90px);
+  padding: clamp(72px, 11vh, 130px) var(--gutter) clamp(32px, 5vh, 48px);
   border-bottom: 1px solid var(--rule);
   position: relative;
   overflow: hidden;
@@ -1081,7 +1081,7 @@ footer.site .end {
 .article {
   max-width: calc(var(--post-col) + 2 * var(--gutter));
   margin: 0 auto;
-  padding: clamp(48px, 8vh, 90px) var(--gutter) clamp(40px, 6vh, 70px);
+  padding: clamp(32px, 5vh, 48px) var(--gutter) clamp(40px, 6vh, 70px);
   font-size: 19px;
   line-height: 1.65;
 }
