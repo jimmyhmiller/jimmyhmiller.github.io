@@ -43,6 +43,7 @@ export const postsForBeginners = [
 // posts list too. The dedup in pages/index.js's RSS shim keeps the feed
 // from picking them up twice.
 export const posts = [
+  { text: "We Should be Able to Change our Languages",             href: "/change-our-languages",                 mdx: true, date: "2026-09-17" },
   { text: "The Chasm: The Shape of Unfinished AI Codebases",      href: "/shape-of-unfinished-ai-codebases",     mdx: true, date: "2026-09-07" },
   { text: "Legibility is Ruining You",                            href: "/legibility-is-ruining-you",            mdx: true, date: "2026-04-02" },
   { text: "Untapped Way to Learn a Codebase: Build a Visualizer", href: "/learn-codebase-visualizer",            mdx: true, date: "2026-02-17" },

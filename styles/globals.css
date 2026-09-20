@@ -1173,13 +1173,8 @@ footer.site .end {
   color: var(--c-blue);
 }
 @media (max-width: 640px) {
-  /* No hover on touch — keep the anchor faintly visible and inline. */
-  .article .heading-anchor {
-    position: static;
-    opacity: 0.4;
-    margin-left: 0.35em;
-    padding-right: 0;
-  }
+  /* No hover on touch, and there's no gutter to put it in — hide it. */
+  .article .heading-anchor { display: none; }
 }
 
 .article figure { margin: 1.8em 0; }
