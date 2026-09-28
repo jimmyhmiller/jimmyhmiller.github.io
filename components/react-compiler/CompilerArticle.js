@@ -117,26 +117,18 @@ export function CompilerTiming({id}) {
   const saved = article.saved.results[config.fixture];
   const local = runs[id];
   const maximum = Math.max(...config.variants.map(variant => saved.medians[variant]));
-  let caption = config.caption;
-  if (config.comparison) {
-    const {before, after, subject} = config.comparison;
-    const baseline = saved.medians[before], optimized = saved.medians[after];
-    const direction = optimized > baseline ? 'slower' : 'faster';
-    caption = `${subject} is ${(Math.max(baseline, optimized) / Math.min(baseline, optimized)).toFixed(1)}× ${direction} in this reference run.`;
-  }
   return <figure id={`widget-${id}`} className={`${styles.widget} ${styles.timingWidget} ${local ? styles.hasLocal : ''} ${id === 'lists' ? styles.listGroups : ''}`}>
     <div className={styles.timingHeading}>{article.fixtures[config.fixture].workload}</div>
     <RunControl id={id} specs={[{fixture:config.fixture, variants:[...new Set(['compiler', ...config.variants])]}]}>
       <div className={styles.results}>
         {local && <div className={styles.localLegend}><span>Reference</span><span>Your browser</span></div>}
-        {config.variants.map(variant => <div className={styles.resultRow} data-variant={variant} key={variant}>
+        {config.variants.map((variant, index) => <div className={styles.resultRow} data-variant={variant} data-series-index={index} key={variant}>
           <span className={styles.rowLabel}>{config.labels[variant]}</span>
           <div className={styles.track} aria-label={`Reference: ${saved.medians[variant].toFixed(1)} milliseconds`}><div className={styles.fill} style={{width:100 * saved.medians[variant] / maximum + '%'}} /></div>
           <span className={`${styles.time} ${local ? styles.referenceTime : ''}`}>{saved.medians[variant].toFixed(1)} ms</span>
           {local && <span className={`${styles.time} ${styles.localTime}`}>{local.medians[variant].toFixed(1)} ms</span>}
         </div>)}
       </div>
-      <figcaption className={styles.timingCaption}>{caption}</figcaption>
     </RunControl>
   </figure>;
 }
@@ -170,7 +162,7 @@ export function CompilerSummary() {
     <div className={styles.summaryLegend} aria-label="Chart series">{series.map(item => <span className={styles.summaryLegendItem} data-variant={item.id} key={item.id}><i />{item.label}</span>)}</div>
     <div className={styles.summaryChart}>
       <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} role="img" aria-labelledby="summary-title summary-description">
-        <title id="summary-title">Benchmark speedups across {rows.length} workloads</title>
+        <title id="summary-title">{`Benchmark speedups across ${rows.length} workloads`}</title>
         <desc id="summary-description">One grouped bar chart. Benchmarks are on the horizontal axis and speedup compared with no compiler is on the vertical axis. Each benchmark has bars for No compiler, React Compiler, and All prototypes. The red horizontal line marks 1×. The exact median timings are available in each bar's tooltip.</desc>
         {ticks.map(tick => <g key={tick} className={styles.summaryGrid}><line x1={left - 8} x2={width - 12} y1={y(tick)} y2={y(tick)} /><text x={left - 14} y={y(tick) + 4} textAnchor="end">{tick}×</text></g>)}
         <line className={styles.summaryBaseline} x1={left - 8} x2={width - 12} y1={y(1)} y2={y(1)} />
@@ -182,7 +174,7 @@ export function CompilerSummary() {
             {series.map((item, seriesIndex) => {
               const speedup = row.medians.plain / row.medians[item.id];
               return <rect className={styles.summaryBar} data-variant={item.id} x={groupX + seriesIndex * 11 + 6} y={y(speedup)} width="9" height={bottom - y(speedup)} key={item.id}>
-                <title>{row.label} · {item.label}: {row.medians[item.id].toFixed(1)} ms, {speedup.toFixed(1)}× baseline speed · median of {row.rounds ?? summaryBenchmarks.iterations} runs</title>
+                <title>{`${row.label} · ${item.label}: ${row.medians[item.id].toFixed(1)} ms, ${speedup.toFixed(1)}× baseline speed · median of ${row.rounds ?? summaryBenchmarks.iterations} runs`}</title>
               </rect>;
             })}
             <text className={styles.summaryValue} x={groupX + 34} y={y(row.medians.plain / row.medians.all) - 5} textAnchor="middle">{(row.medians.plain / row.medians.all).toFixed(1)}×</text>

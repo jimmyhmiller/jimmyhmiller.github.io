@@ -434,33 +434,23 @@
         "plain": "No compiler",
         "compiler": "React Compiler",
         "inline": "+ inlining"
-      },
-      "comparison": {
-        "before": "compiler",
-        "after": "inline",
-        "subject": "Inlining",
-        "direction": "slower"
       }
     },
     "blocks": {
       "fixture": "append",
       "variants": [
+        "plain",
         "compiler",
         "inline",
         "blocks",
         "inline-blocks"
       ],
       "labels": {
+        "plain": "No compiler",
         "compiler": "React Compiler",
         "inline": "+ inlining",
         "blocks": "+ blocks",
         "inline-blocks": "+ inlining + blocks"
-      },
-      "comparison": {
-        "before": "inline",
-        "after": "inline-blocks",
-        "subject": "Adding blocks",
-        "direction": "faster"
       }
     },
     "lists": {
@@ -476,60 +466,47 @@
         "compiler": "React Compiler",
         "lists": "+ list caching",
         "inline-blocks-lists": "+ inlining + blocks + list caching"
-      },
-      "caption": "List caching helps on its own, and also improves inlining + blocks."
+      }
     },
     "selection": {
       "fixture": "selection",
       "variants": [
+        "plain",
         "compiler",
         "inline-blocks",
         "inline-blocks-lists"
       ],
       "labels": {
+        "plain": "No compiler",
         "compiler": "React Compiler",
         "inline-blocks": "Inlining + blocks",
         "inline-blocks-lists": "+ selection-aware list caching"
-      },
-      "comparison": {
-        "before": "inline-blocks",
-        "after": "inline-blocks-lists",
-        "subject": "Selection-aware caching",
-        "direction": "faster"
       }
     },
     "context": {
       "fixture": "context",
       "variants": [
+        "plain",
         "compiler",
         "selectors"
       ],
       "labels": {
+        "plain": "No compiler",
         "compiler": "React Compiler",
         "selectors": "+ context selectors"
-      },
-      "comparison": {
-        "before": "compiler",
-        "after": "selectors",
-        "subject": "Context selectors",
-        "direction": "faster"
       }
     },
     "store": {
       "fixture": "store",
       "variants": [
+        "plain",
         "compiler",
         "selectors"
       ],
       "labels": {
+        "plain": "No compiler",
         "compiler": "React Compiler",
         "selectors": "+ store selectors"
-      },
-      "comparison": {
-        "before": "compiler",
-        "after": "selectors",
-        "subject": "Store selectors",
-        "direction": "faster"
       }
     },
     "summary": {
