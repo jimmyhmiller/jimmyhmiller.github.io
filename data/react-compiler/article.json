@@ -1,0 +1,864 @@
+{
+  "fixtures": {
+    "cache": {
+      "codeOnly": true,
+      "variants": [
+        "plain",
+        "compiler",
+        "no-outline"
+      ],
+      "source": "export function Thing() {\n  return <button onClick={() => console.log(\"click\")} />;\n}\nfunction clickHandler() { console.log(\"other click\"); }",
+      "builds": {
+        "plain": {
+          "generated": "export function Thing() {\n  return <button onClick={() => console.log(\"click\")} />;\n}\nfunction clickHandler() {\n  console.log(\"other click\");\n}"
+        },
+        "compiler": {
+          "generated": "import { c as _c } from \"react/compiler-runtime\";\nexport function Thing() {\n  const $ = _c(1);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = <button onClick={_temp} />;\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  return t0;\n}\nfunction _temp() {\n  return console.log(\"click\");\n}\nfunction clickHandler() {\n  console.log(\"other click\");\n}"
+        },
+        "no-outline": {
+          "generated": "import { c as _c } from \"react/compiler-runtime\";\nexport function Thing() {\n  const $ = _c(1);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = <button onClick={() => console.log(\"click\")} />;\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  return t0;\n}\nfunction clickHandler() {\n  console.log(\"other click\");\n}"
+        }
+      }
+    },
+    "conditional": {
+      "codeOnly": true,
+      "variants": [
+        "plain",
+        "compiler"
+      ],
+      "source": "export function Thing({thing, stuff}) {\n  if (thing === \"thing\") return \"my thing\";\n  return <button>{stuff}</button>;\n}",
+      "builds": {
+        "plain": {
+          "generated": "export function Thing({\n  thing,\n  stuff\n}) {\n  if (thing === \"thing\") return \"my thing\";\n  return <button>{stuff}</button>;\n}"
+        },
+        "compiler": {
+          "generated": "import { c as _c } from \"react/compiler-runtime\";\nexport function Thing(t0) {\n  const $ = _c(2);\n  const {\n    thing,\n    stuff\n  } = t0;\n  if (thing === \"thing\") {\n    return \"my thing\";\n  }\n  let t1;\n  if ($[0] !== stuff) {\n    t1 = <button>{stuff}</button>;\n    $[0] = stuff;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  return t1;\n}"
+        }
+      }
+    },
+    "mutation": {
+      "codeOnly": true,
+      "variants": [
+        "plain",
+        "compiler"
+      ],
+      "source": "function Toolbar({user, canEdit}) {\n  const actions = getActions(user);\n  if (canEdit) actions.push(\"Edit\");\n  return <Menu actions={actions} />;\n}",
+      "builds": {
+        "plain": {
+          "generated": "function Toolbar({\n  user,\n  canEdit\n}) {\n  const actions = getActions(user);\n  if (canEdit) actions.push(\"Edit\");\n  return <Menu actions={actions} />;\n}"
+        },
+        "compiler": {
+          "generated": "import { c as _c } from \"react/compiler-runtime\";\nfunction Toolbar(t0) {\n  const $ = _c(5);\n  const {\n    user,\n    canEdit\n  } = t0;\n  let actions;\n  if ($[0] !== canEdit || $[1] !== user) {\n    actions = getActions(user);\n    if (canEdit) {\n      actions.push(\"Edit\");\n    }\n    $[0] = canEdit;\n    $[1] = user;\n    $[2] = actions;\n  } else {\n    actions = $[2];\n  }\n  let t1;\n  if ($[3] !== actions) {\n    t1 = <Menu actions={actions} />;\n    $[3] = actions;\n    $[4] = t1;\n  } else {\n    t1 = $[4];\n  }\n  return t1;\n}"
+        }
+      }
+    },
+    "append": {
+      "label": "Append rows",
+      "workload": "2,000 rows, added one at a time",
+      "expectedRows": 2000,
+      "variants": [
+        "plain",
+        "compiler",
+        "inline",
+        "blocks",
+        "inline-blocks",
+        "lists",
+        "inline-blocks-lists",
+        "incremental",
+        "all"
+      ],
+      "source": "import {useRef, useState} from 'react';\n\nconst makeRows = start => [{id: start}];\n\nfunction Row({item}) {\n  return (\n    <li>\n      <span>{item.id}</span>\n      <strong>Item {item.id}</strong>\n    </li>\n  );\n}\n\nfunction List({items}) {\n  return <ul>{items.map(item => <Row key={item.id} item={item} />)}</ul>;\n}\n\nfunction App() {\n  const [items, setItems] = useState([]);\n  const addButtonRef = useRef(null);\n\n  async function add2000Rows() {\n    const button = addButtonRef.current;\n    if (button === null) return;\n    for (let i = 0; i < 2000; i++) {\n      button.click();\n      await null;\n    }\n  }\n\n  return (\n    <main>\n      <button ref={addButtonRef} onClick={\n          () => setItems(items => [...items, ...makeRows(items.length)])}>\n        Add one row\n      </button>\n      <button id=\"run-2000\" onClick={add2000Rows}>\n        Add 2,000 rows one at a time\n      </button>\n      <List items={items} />\n    </main>\n  );\n}\n",
+      "builds": {
+        "plain": {
+          "generated": "import { useRef, useState } from 'react';\nconst makeRows = start => [{\n  id: start\n}];\nfunction Row({\n  item\n}) {\n  return <li>\n      <span>{item.id}</span>\n      <strong>Item {item.id}</strong>\n    </li>;\n}\nfunction List({\n  items\n}) {\n  return <ul>{items.map(item => <Row key={item.id} item={item} />)}</ul>;\n}\nfunction App() {\n  const [items, setItems] = useState([]);\n  const addButtonRef = useRef(null);\n  async function add2000Rows() {\n    const button = addButtonRef.current;\n    if (button === null) return;\n    for (let i = 0; i < 2000; i++) {\n      button.click();\n      await null;\n    }\n  }\n  return <main>\n      <button ref={addButtonRef} onClick={() => setItems(items => [...items, ...makeRows(items.length)])}>\n        Add one row\n      </button>\n      <button id=\"run-2000\" onClick={add2000Rows}>\n        Add 2,000 rows one at a time\n      </button>\n      <List items={items} />\n    </main>;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/append-plain.js?v=93c77395d77b3076"
+        },
+        "compiler": {
+          "generated": "import { c as _c } from \"react/compiler-runtime\";\nimport { useRef, useState } from 'react';\nconst makeRows = start => [{\n  id: start\n}];\nfunction Row(t0) {\n  const $ = _c(2);\n  const {\n    item\n  } = t0;\n  let t1;\n  if ($[0] !== item.id) {\n    t1 = <li><span>{item.id}</span><strong>Item {item.id}</strong></li>;\n    $[0] = item.id;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  return t1;\n}\nfunction List(t0) {\n  const $ = _c(4);\n  const {\n    items\n  } = t0;\n  let t1;\n  if ($[0] !== items) {\n    t1 = items.map(_temp);\n    $[0] = items;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = <ul>{t1}</ul>;\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  return t2;\n}\nfunction _temp(item) {\n  return <Row key={item.id} item={item} />;\n}\nfunction App() {\n  const $ = _c(6);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = [];\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const [items, setItems] = useState(t0);\n  const addButtonRef = useRef(null);\n  let t1;\n  if ($[1] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = async function add2000Rows() {\n      const button = addButtonRef.current;\n      if (button === null) {\n        return;\n      }\n      for (let i = 0; i < 2000; i++) {\n        button.click();\n        await null;\n      }\n    };\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const add2000Rows = t1;\n  let t2;\n  let t3;\n  if ($[2] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button ref={addButtonRef} onClick={() => setItems(_temp2)}>Add one row</button>;\n    t3 = <button id=\"run-2000\" onClick={add2000Rows}>Add 2,000 rows one at a time</button>;\n    $[2] = t2;\n    $[3] = t3;\n  } else {\n    t2 = $[2];\n    t3 = $[3];\n  }\n  let t4;\n  if ($[4] !== items) {\n    t4 = <main>{t2}{t3}<List items={items} /></main>;\n    $[4] = items;\n    $[5] = t4;\n  } else {\n    t4 = $[5];\n  }\n  return t4;\n}\nfunction _temp2(items_0) {\n  return [...items_0, ...makeRows(items_0.length)];\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/append-compiler.js?v=ce4006142da9695c"
+        },
+        "inline": {
+          "generated": "import { c as _c } from \"react/compiler-runtime\";\nimport { useRef, useState } from 'react';\nconst makeRows = start => [{\n  id: start\n}];\nfunction Row(t0) {\n  const $ = _c(2);\n  const {\n    item\n  } = t0;\n  let t1;\n  if ($[0] !== item.id) {\n    t1 = <li><span>{item.id}</span><strong>Item {item.id}</strong></li>;\n    $[0] = item.id;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  return t1;\n}\nfunction List(t0) {\n  const $ = _c(4);\n  const {\n    items\n  } = t0;\n  let t1;\n  if ($[0] !== items) {\n    t1 = items.map(_temp);\n    $[0] = items;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = <ul>{t1}</ul>;\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  return t2;\n}\nfunction _temp(item) {\n  const item$0 = item;\n  return <li key={item.id}><span>{item$0.id}</span><strong>Item {item$0.id}</strong></li>;\n}\nfunction App() {\n  const $ = _c(8);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = [];\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const [items, setItems] = useState(t0);\n  const addButtonRef = useRef(null);\n  let t1;\n  if ($[1] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = async function add2000Rows() {\n      const button = addButtonRef.current;\n      if (button === null) {\n        return;\n      }\n      for (let i = 0; i < 2000; i++) {\n        button.click();\n        await null;\n      }\n    };\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const add2000Rows = t1;\n  let t2;\n  let t3;\n  if ($[2] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button ref={addButtonRef} onClick={() => setItems(_temp2)}>Add one row</button>;\n    t3 = <button id=\"run-2000\" onClick={add2000Rows}>Add 2,000 rows one at a time</button>;\n    $[2] = t2;\n    $[3] = t3;\n  } else {\n    t2 = $[2];\n    t3 = $[3];\n  }\n  const items$0 = items;\n  let t4;\n  if ($[4] !== items$0) {\n    t4 = items$0.map(_temp3);\n    $[4] = items$0;\n    $[5] = t4;\n  } else {\n    t4 = $[5];\n  }\n  let t5;\n  if ($[6] !== t4) {\n    t5 = <main>{t2}{t3}<ul>{t4}</ul></main>;\n    $[6] = t4;\n    $[7] = t5;\n  } else {\n    t5 = $[7];\n  }\n  return t5;\n}\nfunction _temp3(item) {\n  const item$0 = item;\n  return <li key={item.id}><span>{item$0.id}</span><strong>Item {item$0.id}</strong></li>;\n}\nfunction _temp2(items_0) {\n  return [...items_0, ...makeRows(items_0.length)];\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/append-inline.js?v=b4ac682c4c6405b9"
+        },
+        "blocks": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c } from \"react/compiler-runtime\";\nimport { useRef, useState } from 'react';\nconst _BlockTemplate = _createBlockTemplate([\"li\", null, null, [[\"span\", null, null, [{\n  \"s\": 0\n}]], [\"strong\", null, null, [\"Item \", {\n  \"s\": 1\n}]]]]);\nconst _BlockTemplate2 = _createBlockTemplate([\"ul\", null, null, [{\n  \"s\": 0\n}]]);\nconst _BlockTemplate3 = _createBlockTemplate([\"main\", null, null, [{\n  \"s\": 0\n}, [\"button\", {\n  \"id\": \"run-2000\"\n}, [[\"onClick\", 1]], [\"Add 2,000 rows one at a time\"]], {\n  \"s\": 2\n}]]);\nconst makeRows = start => [{\n  id: start\n}];\nfunction Row(t0) {\n  const $ = _c(4);\n  const {\n    item\n  } = t0;\n  let t1;\n  if ($[0] !== item.id) {\n    t1 = [item.id, item.id];\n    $[0] = item.id;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = <_BlockTemplate v={t1} />;\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  return t2;\n}\nfunction List(t0) {\n  const $ = _c(6);\n  const {\n    items\n  } = t0;\n  let t1;\n  if ($[0] !== items) {\n    t1 = items.map(_temp);\n    $[0] = items;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = [t1];\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  let t3;\n  if ($[4] !== t2) {\n    t3 = <_BlockTemplate2 v={t2} />;\n    $[4] = t2;\n    $[5] = t3;\n  } else {\n    t3 = $[5];\n  }\n  return t3;\n}\nfunction _temp(item) {\n  return <Row key={item.id} item={item} />;\n}\nfunction App() {\n  const $ = _c(7);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = [];\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const [items, setItems] = useState(t0);\n  const addButtonRef = useRef(null);\n  let t1;\n  if ($[1] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = async function add2000Rows() {\n      const button = addButtonRef.current;\n      if (button === null) {\n        return;\n      }\n      for (let i = 0; i < 2000; i++) {\n        button.click();\n        await null;\n      }\n    };\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const add2000Rows = t1;\n  let t2;\n  if ($[2] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button ref={addButtonRef} onClick={() => setItems(_temp2)}>Add one row</button>;\n    $[2] = t2;\n  } else {\n    t2 = $[2];\n  }\n  let t3;\n  if ($[3] !== items) {\n    t3 = [t2, add2000Rows, <List items={items} />];\n    $[3] = items;\n    $[4] = t3;\n  } else {\n    t3 = $[4];\n  }\n  let t4;\n  if ($[5] !== t3) {\n    t4 = <_BlockTemplate3 v={t3} />;\n    $[5] = t3;\n    $[6] = t4;\n  } else {\n    t4 = $[6];\n  }\n  return t4;\n}\nfunction _temp2(items_0) {\n  return [...items_0, ...makeRows(items_0.length)];\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/append-blocks.js?v=8b4bff068de520f4"
+        },
+        "inline-blocks": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c } from \"react/compiler-runtime\";\nimport { useRef, useState } from 'react';\nconst _BlockTemplate = _createBlockTemplate([\"li\", null, null, [[\"span\", null, null, [{\n  \"s\": 0\n}]], [\"strong\", null, null, [\"Item \", {\n  \"s\": 1\n}]]]]);\nconst _BlockTemplate2 = _createBlockTemplate([\"ul\", null, null, [{\n  \"s\": 0\n}]]);\nconst _BlockTemplate3 = _createBlockTemplate([\"main\", null, null, [{\n  \"s\": 0\n}, [\"button\", {\n  \"id\": \"run-2000\"\n}, [[\"onClick\", 1]], [\"Add 2,000 rows one at a time\"]], [\"ul\", null, null, [{\n  \"s\": 2\n}]]]]);\nconst makeRows = start => [{\n  id: start\n}];\nfunction Row(t0) {\n  const $ = _c(4);\n  const {\n    item\n  } = t0;\n  let t1;\n  if ($[0] !== item.id) {\n    t1 = [item.id, item.id];\n    $[0] = item.id;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = <_BlockTemplate v={t1} />;\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  return t2;\n}\nfunction List(t0) {\n  const $ = _c(6);\n  const {\n    items\n  } = t0;\n  let t1;\n  if ($[0] !== items) {\n    t1 = items.map(_temp);\n    $[0] = items;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = [t1];\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  let t3;\n  if ($[4] !== t2) {\n    t3 = <_BlockTemplate2 v={t2} />;\n    $[4] = t2;\n    $[5] = t3;\n  } else {\n    t3 = $[5];\n  }\n  return t3;\n}\nfunction _temp(item) {\n  const item$0 = item;\n  return <_BlockTemplate key={item.id} v={[item$0.id, item$0.id]} />;\n}\nfunction App() {\n  const $ = _c(9);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = [];\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const [items, setItems] = useState(t0);\n  const addButtonRef = useRef(null);\n  let t1;\n  if ($[1] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = async function add2000Rows() {\n      const button = addButtonRef.current;\n      if (button === null) {\n        return;\n      }\n      for (let i = 0; i < 2000; i++) {\n        button.click();\n        await null;\n      }\n    };\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const add2000Rows = t1;\n  let t2;\n  if ($[2] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button ref={addButtonRef} onClick={() => setItems(_temp2)}>Add one row</button>;\n    $[2] = t2;\n  } else {\n    t2 = $[2];\n  }\n  const items$0 = items;\n  let t3;\n  if ($[3] !== items$0) {\n    t3 = items$0.map(_temp3);\n    $[3] = items$0;\n    $[4] = t3;\n  } else {\n    t3 = $[4];\n  }\n  let t4;\n  if ($[5] !== t3) {\n    t4 = [t2, add2000Rows, t3];\n    $[5] = t3;\n    $[6] = t4;\n  } else {\n    t4 = $[6];\n  }\n  let t5;\n  if ($[7] !== t4) {\n    t5 = <_BlockTemplate3 v={t4} />;\n    $[7] = t4;\n    $[8] = t5;\n  } else {\n    t5 = $[8];\n  }\n  return t5;\n}\nfunction _temp3(item) {\n  const item$0 = item;\n  return <_BlockTemplate key={item.id} v={[item$0.id, item$0.id]} />;\n}\nfunction _temp2(items_0) {\n  return [...items_0, ...makeRows(items_0.length)];\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/append-inline-blocks.js?v=62965c47506323b3"
+        },
+        "lists": {
+          "generated": "import { c as _c, unstable_useListItemMemoCache as useListItemMemoCache } from \"react/compiler-runtime\";\nimport { useRef, useState } from 'react';\nconst makeRows = start => [{\n  id: start\n}];\nfunction Row(t0) {\n  const $ = _c(2);\n  const {\n    item\n  } = t0;\n  let t1;\n  if ($[0] !== item.id) {\n    t1 = <li><span>{item.id}</span><strong>Item {item.id}</strong></li>;\n    $[0] = item.id;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  return t1;\n}\nfunction List(t0) {\n  const $ = _c(5);\n  const _listItemCache = useListItemMemoCache();\n  const {\n    items\n  } = t0;\n  let t1;\n  if ($[0] !== items) {\n    let t2;\n    if ($[2] === Symbol.for(\"react.memo_cache_sentinel\")) {\n      t2 = item => {\n        const t3 = item.id;\n        const $0 = _listItemCache.next(3, t3);\n        let t4;\n        if ($0[0] !== item || $0[1] !== t3) {\n          t4 = <Row key={t3} item={item} />;\n          $0[0] = item;\n          $0[1] = t3;\n          $0[2] = t4;\n        } else {\n          t4 = $0[2];\n        }\n        return t4;\n      };\n      $[2] = t2;\n    } else {\n      t2 = $[2];\n    }\n    t1 = items.map(t2);\n    $[0] = items;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[3] !== t1) {\n    t2 = <ul>{t1}</ul>;\n    $[3] = t1;\n    $[4] = t2;\n  } else {\n    t2 = $[4];\n  }\n  return t2;\n}\nfunction App() {\n  const $ = _c(6);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = [];\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const [items, setItems] = useState(t0);\n  const addButtonRef = useRef(null);\n  let t1;\n  if ($[1] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = async function add2000Rows() {\n      const button = addButtonRef.current;\n      if (button === null) {\n        return;\n      }\n      for (let i = 0; i < 2000; i++) {\n        button.click();\n        await null;\n      }\n    };\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const add2000Rows = t1;\n  let t2;\n  let t3;\n  if ($[2] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button ref={addButtonRef} onClick={() => setItems(_temp)}>Add one row</button>;\n    t3 = <button id=\"run-2000\" onClick={add2000Rows}>Add 2,000 rows one at a time</button>;\n    $[2] = t2;\n    $[3] = t3;\n  } else {\n    t2 = $[2];\n    t3 = $[3];\n  }\n  let t4;\n  if ($[4] !== items) {\n    t4 = <main>{t2}{t3}<List items={items} /></main>;\n    $[4] = items;\n    $[5] = t4;\n  } else {\n    t4 = $[5];\n  }\n  return t4;\n}\nfunction _temp(items_0) {\n  return [...items_0, ...makeRows(items_0.length)];\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/append-lists.js?v=e51ee8a446e9420b"
+        },
+        "inline-blocks-lists": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c, unstable_useListItemMemoCache as useListItemMemoCache } from \"react/compiler-runtime\";\nimport { useRef, useState } from 'react';\nconst _BlockTemplate = _createBlockTemplate([\"li\", null, null, [[\"span\", null, null, [{\n  \"s\": 0\n}]], [\"strong\", null, null, [\"Item \", {\n  \"s\": 1\n}]]]]);\nconst _BlockTemplate2 = _createBlockTemplate([\"ul\", null, null, [{\n  \"s\": 0\n}]]);\nconst _BlockTemplate3 = _createBlockTemplate([\"main\", null, null, [{\n  \"s\": 0\n}, [\"button\", {\n  \"id\": \"run-2000\"\n}, [[\"onClick\", 1]], [\"Add 2,000 rows one at a time\"]], [\"ul\", null, null, [{\n  \"s\": 2\n}]]]]);\nconst makeRows = start => [{\n  id: start\n}];\nfunction Row(t0) {\n  const $ = _c(4);\n  const {\n    item\n  } = t0;\n  let t1;\n  if ($[0] !== item.id) {\n    t1 = [item.id, item.id];\n    $[0] = item.id;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = <_BlockTemplate v={t1} />;\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  return t2;\n}\nfunction List(t0) {\n  const $ = _c(7);\n  const _listItemCache = useListItemMemoCache();\n  const {\n    items\n  } = t0;\n  let t1;\n  if ($[0] !== items) {\n    let t2;\n    if ($[2] === Symbol.for(\"react.memo_cache_sentinel\")) {\n      t2 = item => {\n        const t4 = item.id;\n        const item$0 = item;\n        const t5 = item$0.id;\n        const t6 = item$0.id;\n        const $0 = _listItemCache.next(4, t4);\n        let t7;\n        if ($0[0] !== t4 || $0[1] !== t5 || $0[2] !== t6) {\n          t7 = <_BlockTemplate key={t4} v={[t5, t6]} />;\n          $0[0] = t4;\n          $0[1] = t5;\n          $0[2] = t6;\n          $0[3] = t7;\n        } else {\n          t7 = $0[3];\n        }\n        return t7;\n      };\n      $[2] = t2;\n    } else {\n      t2 = $[2];\n    }\n    t1 = items.map(t2);\n    $[0] = items;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[3] !== t1) {\n    t2 = [t1];\n    $[3] = t1;\n    $[4] = t2;\n  } else {\n    t2 = $[4];\n  }\n  let t3;\n  if ($[5] !== t2) {\n    t3 = <_BlockTemplate2 v={t2} />;\n    $[5] = t2;\n    $[6] = t3;\n  } else {\n    t3 = $[6];\n  }\n  return t3;\n}\nfunction App() {\n  const $ = _c(10);\n  const _listItemCache2 = useListItemMemoCache();\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = [];\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const [items, setItems] = useState(t0);\n  const addButtonRef = useRef(null);\n  let t1;\n  if ($[1] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = async function add2000Rows() {\n      const button = addButtonRef.current;\n      if (button === null) {\n        return;\n      }\n      for (let i = 0; i < 2000; i++) {\n        button.click();\n        await null;\n      }\n    };\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const add2000Rows = t1;\n  let t2;\n  if ($[2] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button ref={addButtonRef} onClick={() => setItems(_temp)}>Add one row</button>;\n    $[2] = t2;\n  } else {\n    t2 = $[2];\n  }\n  const items$0 = items;\n  let t3;\n  if ($[3] !== items$0) {\n    let t4;\n    if ($[5] === Symbol.for(\"react.memo_cache_sentinel\")) {\n      t4 = item => {\n        const t6 = item.id;\n        const item$0 = item;\n        const t7 = item$0.id;\n        const t8 = item$0.id;\n        const $0 = _listItemCache2.next(4, t6);\n        let t9;\n        if ($0[0] !== t6 || $0[1] !== t7 || $0[2] !== t8) {\n          t9 = <_BlockTemplate key={t6} v={[t7, t8]} />;\n          $0[0] = t6;\n          $0[1] = t7;\n          $0[2] = t8;\n          $0[3] = t9;\n        } else {\n          t9 = $0[3];\n        }\n        return t9;\n      };\n      $[5] = t4;\n    } else {\n      t4 = $[5];\n    }\n    t3 = items$0.map(t4);\n    $[3] = items$0;\n    $[4] = t3;\n  } else {\n    t3 = $[4];\n  }\n  let t4;\n  if ($[6] !== t3) {\n    t4 = [t2, add2000Rows, t3];\n    $[6] = t3;\n    $[7] = t4;\n  } else {\n    t4 = $[7];\n  }\n  let t5;\n  if ($[8] !== t4) {\n    t5 = <_BlockTemplate3 v={t4} />;\n    $[8] = t4;\n    $[9] = t5;\n  } else {\n    t5 = $[9];\n  }\n  return t5;\n}\nfunction _temp(items_0) {\n  return [...items_0, ...makeRows(items_0.length)];\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/append-inline-blocks-lists.js?v=8e8fe9c1806b36f4"
+        },
+        "incremental": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c, unstable_useListItemMemoCache as useListItemMemoCache } from \"react/compiler-runtime\";\nimport { useRef, useState } from 'react';\nconst _BlockTemplate = _createBlockTemplate([\"li\", null, null, [[\"span\", null, null, [{\n  \"s\": 0\n}]], [\"strong\", null, null, [\"Item \", {\n  \"s\": 1\n}]]]]);\nconst _BlockTemplate2 = _createBlockTemplate([\"ul\", null, null, [{\n  \"s\": 0\n}]]);\nconst _BlockTemplate3 = _createBlockTemplate([\"main\", null, null, [{\n  \"s\": 0\n}, [\"button\", {\n  \"id\": \"run-2000\"\n}, [[\"onClick\", 1]], [\"Add 2,000 rows one at a time\"]], [\"ul\", null, null, [{\n  \"s\": 2\n}]]]]);\nconst makeRows = start => [{\n  id: start\n}];\nfunction Row(t0) {\n  const $ = _c(4);\n  const {\n    item\n  } = t0;\n  let t1;\n  if ($[0] !== item.id) {\n    t1 = [item.id, item.id];\n    $[0] = item.id;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = <_BlockTemplate v={t1} />;\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  return t2;\n}\nfunction List(t0) {\n  const $ = _c(9);\n  const _listItemCache = useListItemMemoCache();\n  const {\n    items\n  } = t0;\n  let t1;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = item => {\n      const item$0 = item;\n      return <_BlockTemplate key={item.id} v={[item$0.id, item$0.id]} />;\n    };\n    $[0] = t1;\n  } else {\n    t1 = $[0];\n  }\n  let t2;\n  if ($[1] !== _listItemCache || $[2] !== items || $[3] !== t1) {\n    t2 = _listItemCache.mapIncremental(items, t1, []);\n    $[1] = _listItemCache;\n    $[2] = items;\n    $[3] = t1;\n    $[4] = t2;\n  } else {\n    t2 = $[4];\n  }\n  let t3;\n  if ($[5] !== t2) {\n    t3 = [t2];\n    $[5] = t2;\n    $[6] = t3;\n  } else {\n    t3 = $[6];\n  }\n  let t4;\n  if ($[7] !== t3) {\n    t4 = <_BlockTemplate2 v={t3} />;\n    $[7] = t3;\n    $[8] = t4;\n  } else {\n    t4 = $[8];\n  }\n  return t4;\n}\nfunction App() {\n  const $ = _c(12);\n  const _listItemCache2 = useListItemMemoCache();\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = [];\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const [items, setItems] = useState(t0);\n  const addButtonRef = useRef(null);\n  let t1;\n  if ($[1] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = async function add2000Rows() {\n      const button = addButtonRef.current;\n      if (button === null) {\n        return;\n      }\n      for (let i = 0; i < 2000; i++) {\n        button.click();\n        await null;\n      }\n    };\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const add2000Rows = t1;\n  let t2;\n  if ($[2] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button ref={addButtonRef} onClick={() => setItems(_temp)}>Add one row</button>;\n    $[2] = t2;\n  } else {\n    t2 = $[2];\n  }\n  const items$0 = items;\n  let t3;\n  if ($[3] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t3 = item => {\n      const item$0 = item;\n      return <_BlockTemplate key={item.id} v={[item$0.id, item$0.id]} />;\n    };\n    $[3] = t3;\n  } else {\n    t3 = $[3];\n  }\n  let t4;\n  if ($[4] !== _listItemCache2 || $[5] !== items$0 || $[6] !== t3) {\n    t4 = _listItemCache2.mapIncremental(items$0, t3, []);\n    $[4] = _listItemCache2;\n    $[5] = items$0;\n    $[6] = t3;\n    $[7] = t4;\n  } else {\n    t4 = $[7];\n  }\n  let t5;\n  if ($[8] !== t4) {\n    t5 = [t2, add2000Rows, t4];\n    $[8] = t4;\n    $[9] = t5;\n  } else {\n    t5 = $[9];\n  }\n  let t6;\n  if ($[10] !== t5) {\n    t6 = <_BlockTemplate3 v={t5} />;\n    $[10] = t5;\n    $[11] = t6;\n  } else {\n    t6 = $[11];\n  }\n  return t6;\n}\nfunction _temp(items_0) {\n  return [...items_0, ...makeRows(items_0.length)];\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/append-incremental.js?v=12ff9b99c6bb8411"
+        },
+        "all": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c, unstable_useListItemMemoCache as useListItemMemoCache } from \"react/compiler-runtime\";\nimport { useRef, useState } from 'react';\nconst _BlockTemplate = _createBlockTemplate([\"li\", null, null, [[\"span\", null, null, [{\n  \"s\": 0\n}]], [\"strong\", null, null, [\"Item \", {\n  \"s\": 1\n}]]]]);\nconst _BlockTemplate2 = _createBlockTemplate([\"ul\", null, null, [{\n  \"s\": 0\n}]]);\nconst _BlockTemplate3 = _createBlockTemplate([\"main\", null, null, [{\n  \"s\": 0\n}, [\"button\", {\n  \"id\": \"run-2000\"\n}, [[\"onClick\", 1]], [\"Add 2,000 rows one at a time\"]], [\"ul\", null, null, [{\n  \"s\": 2\n}]]]]);\nconst makeRows = start => [{\n  id: start\n}];\nfunction Row(t0) {\n  const $ = _c(4);\n  const {\n    item\n  } = t0;\n  let t1;\n  if ($[0] !== item.id) {\n    t1 = [item.id, item.id];\n    $[0] = item.id;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = <_BlockTemplate v={t1} />;\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  return t2;\n}\nfunction List(t0) {\n  const $ = _c(9);\n  const _listItemCache = useListItemMemoCache();\n  const {\n    items\n  } = t0;\n  let t1;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = item => {\n      const item$0 = item;\n      return <_BlockTemplate key={item.id} v={[item$0.id, item$0.id]} />;\n    };\n    $[0] = t1;\n  } else {\n    t1 = $[0];\n  }\n  let t2;\n  if ($[1] !== _listItemCache || $[2] !== items || $[3] !== t1) {\n    t2 = _listItemCache.mapIncremental(items, t1, []);\n    $[1] = _listItemCache;\n    $[2] = items;\n    $[3] = t1;\n    $[4] = t2;\n  } else {\n    t2 = $[4];\n  }\n  let t3;\n  if ($[5] !== t2) {\n    t3 = [t2];\n    $[5] = t2;\n    $[6] = t3;\n  } else {\n    t3 = $[6];\n  }\n  let t4;\n  if ($[7] !== t3) {\n    t4 = <_BlockTemplate2 v={t3} />;\n    $[7] = t3;\n    $[8] = t4;\n  } else {\n    t4 = $[8];\n  }\n  return t4;\n}\nfunction App() {\n  const $ = _c(12);\n  const _listItemCache2 = useListItemMemoCache();\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = [];\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const [items, setItems] = useState(t0);\n  const addButtonRef = useRef(null);\n  let t1;\n  if ($[1] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = async function add2000Rows() {\n      const button = addButtonRef.current;\n      if (button === null) {\n        return;\n      }\n      for (let i = 0; i < 2000; i++) {\n        button.click();\n        await null;\n      }\n    };\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const add2000Rows = t1;\n  let t2;\n  if ($[2] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button ref={addButtonRef} onClick={() => setItems(_temp)}>Add one row</button>;\n    $[2] = t2;\n  } else {\n    t2 = $[2];\n  }\n  const items$0 = items;\n  let t3;\n  if ($[3] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t3 = item => {\n      const item$0 = item;\n      return <_BlockTemplate key={item.id} v={[item$0.id, item$0.id]} />;\n    };\n    $[3] = t3;\n  } else {\n    t3 = $[3];\n  }\n  let t4;\n  if ($[4] !== _listItemCache2 || $[5] !== items$0 || $[6] !== t3) {\n    t4 = _listItemCache2.mapIncremental(items$0, t3, []);\n    $[4] = _listItemCache2;\n    $[5] = items$0;\n    $[6] = t3;\n    $[7] = t4;\n  } else {\n    t4 = $[7];\n  }\n  let t5;\n  if ($[8] !== t4) {\n    t5 = [t2, add2000Rows, t4];\n    $[8] = t4;\n    $[9] = t5;\n  } else {\n    t5 = $[9];\n  }\n  let t6;\n  if ($[10] !== t5) {\n    t6 = <_BlockTemplate3 v={t5} />;\n    $[10] = t5;\n    $[11] = t6;\n  } else {\n    t6 = $[11];\n  }\n  return t6;\n}\nfunction _temp(items_0) {\n  return [...items_0, ...makeRows(items_0.length)];\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/append-all.js?v=12ff9b99c6bb8411"
+        }
+      }
+    },
+    "selection": {
+      "label": "Select a row",
+      "workload": "200 selections across 2,000 rows",
+      "expectedRows": 2000,
+      "expectedSelected": "199",
+      "variants": [
+        "plain",
+        "compiler",
+        "inline-blocks",
+        "inline-blocks-lists",
+        "incremental",
+        "all"
+      ],
+      "source": "import {useState} from 'react';\nconst items = Array.from({length:2000}, (_,id) => ({id}));\nfunction App() {\n  const [selectedId, setSelectedId] = useState(-1);\n  async function run() {\n    for (let id=0; id<200; id++) {\n      document.getElementById('row-'+id).click();\n      await null;\n    }\n  }\n  return <main><button id=\"run\" onClick={run}>Select 200 rows</button><ul>{items.map(item =>\n    <li id={'row-'+item.id} key={item.id} className={item.id === selectedId ? 'selected' : ''}\n      onClick={() => setSelectedId(item.id)}><span>{item.id}</span><strong>Item {item.id}</strong></li>\n  )}</ul></main>;\n}",
+      "builds": {
+        "plain": {
+          "generated": "import { useState } from 'react';\nconst items = Array.from({\n  length: 2000\n}, (_, id) => ({\n  id\n}));\nfunction App() {\n  const [selectedId, setSelectedId] = useState(-1);\n  async function run() {\n    for (let id = 0; id < 200; id++) {\n      document.getElementById('row-' + id).click();\n      await null;\n    }\n  }\n  return <main><button id=\"run\" onClick={run}>Select 200 rows</button><ul>{items.map(item => <li id={'row-' + item.id} key={item.id} className={item.id === selectedId ? 'selected' : ''} onClick={() => setSelectedId(item.id)}><span>{item.id}</span><strong>Item {item.id}</strong></li>)}</ul></main>;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/selection-plain.js?v=81151aca0ee51b05"
+        },
+        "compiler": {
+          "generated": "import { c as _c } from \"react/compiler-runtime\";\nimport { useState } from 'react';\nconst items = Array.from({\n  length: 2000\n}, (_, id) => ({\n  id\n}));\nfunction App() {\n  const $ = _c(5);\n  const [selectedId, setSelectedId] = useState(-1);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    const run = async function run() {\n      for (let id = 0; id < 200; id++) {\n        document.getElementById(\"row-\" + id).click();\n        await null;\n      }\n    };\n    t0 = <button id=\"run\" onClick={run}>Select 200 rows</button>;\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  let t1;\n  if ($[1] !== selectedId) {\n    t1 = items.map(item => <li id={\"row-\" + item.id} key={item.id} className={item.id === selectedId ? \"selected\" : \"\"} onClick={() => setSelectedId(item.id)}><span>{item.id}</span><strong>Item {item.id}</strong></li>);\n    $[1] = selectedId;\n    $[2] = t1;\n  } else {\n    t1 = $[2];\n  }\n  let t2;\n  if ($[3] !== t1) {\n    t2 = <main>{t0}<ul>{t1}</ul></main>;\n    $[3] = t1;\n    $[4] = t2;\n  } else {\n    t2 = $[4];\n  }\n  return t2;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/selection-compiler.js?v=f706c4ec9dbf612d"
+        },
+        "inline-blocks": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c } from \"react/compiler-runtime\";\nimport { useState } from 'react';\nconst _BlockTemplate = _createBlockTemplate([\"main\", null, null, [[\"button\", {\n  \"id\": \"run\"\n}, [[\"onClick\", 0]], [\"Select 200 rows\"]], [\"ul\", null, null, [{\n  \"s\": 1\n}]]]]);\nconst _BlockTemplate2 = _createBlockTemplate([\"li\", null, [[\"id\", 0], [\"className\", 1], [\"onClick\", 2]], [[\"span\", null, null, [{\n  \"s\": 3\n}]], [\"strong\", null, null, [\"Item \", {\n  \"s\": 4\n}]]]]);\nconst items = Array.from({\n  length: 2000\n}, (_, id) => ({\n  id\n}));\nfunction App() {\n  const $ = _c(7);\n  const [selectedId, setSelectedId] = useState(-1);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = async function run() {\n      for (let id = 0; id < 200; id++) {\n        document.getElementById(\"row-\" + id).click();\n        await null;\n      }\n    };\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const run = t0;\n  let t1;\n  if ($[1] !== selectedId) {\n    t1 = items.map(item => <_BlockTemplate2 key={item.id} v={[\"row-\" + item.id, item.id === selectedId ? \"selected\" : \"\", () => setSelectedId(item.id), item.id, item.id]} />);\n    $[1] = selectedId;\n    $[2] = t1;\n  } else {\n    t1 = $[2];\n  }\n  let t2;\n  if ($[3] !== t1) {\n    t2 = [run, t1];\n    $[3] = t1;\n    $[4] = t2;\n  } else {\n    t2 = $[4];\n  }\n  let t3;\n  if ($[5] !== t2) {\n    t3 = <_BlockTemplate v={t2} />;\n    $[5] = t2;\n    $[6] = t3;\n  } else {\n    t3 = $[6];\n  }\n  return t3;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/selection-inline-blocks.js?v=8a1e15e97c9d93e8"
+        },
+        "inline-blocks-lists": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c, unstable_useListItemMemoCache as useListItemMemoCache } from \"react/compiler-runtime\";\nimport { useState } from 'react';\nconst _BlockTemplate = _createBlockTemplate([\"main\", null, null, [[\"button\", {\n  \"id\": \"run\"\n}, [[\"onClick\", 0]], [\"Select 200 rows\"]], [\"ul\", null, null, [{\n  \"s\": 1\n}]]]]);\nconst _BlockTemplate2 = _createBlockTemplate([\"li\", null, [[\"id\", 0], [\"className\", 1], [\"onClick\", 2]], [[\"span\", null, null, [{\n  \"s\": 3\n}]], [\"strong\", null, null, [\"Item \", {\n  \"s\": 4\n}]]]]);\nconst items = Array.from({\n  length: 2000\n}, (_, id) => ({\n  id\n}));\nfunction App() {\n  const $ = _c(11);\n  const _listItemCache = useListItemMemoCache();\n  const [selectedId, setSelectedId] = useState(-1);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = async function run() {\n      for (let id = 0; id < 200; id++) {\n        document.getElementById(\"row-\" + id).click();\n        await null;\n      }\n    };\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const run = t0;\n  let t1;\n  if ($[1] !== _listItemCache) {\n    t1 = item => {\n      const t6 = \"row-\" + item.id;\n      const t5 = item.id;\n      const t7 = _listItemCache.is(0, item.id) ? \"selected\" : \"\";\n      const t8 = item.id;\n      const t9 = item.id;\n      const $0 = _listItemCache.next(8, t5);\n      let t10;\n      if ($0[0] !== item || $0[1] !== setSelectedId || $0[2] !== t5 || $0[3] !== t6 || $0[4] !== t7 || $0[5] !== t8 || $0[6] !== t9) {\n        t10 = <_BlockTemplate2 key={t5} v={[t6, t7, () => setSelectedId(item.id), t8, t9]} />;\n        $0[0] = item;\n        $0[1] = setSelectedId;\n        $0[2] = t5;\n        $0[3] = t6;\n        $0[4] = t7;\n        $0[5] = t8;\n        $0[6] = t9;\n        $0[7] = t10;\n      } else {\n        t10 = $0[7];\n      }\n      return t10;\n    };\n    $[1] = _listItemCache;\n    $[2] = t1;\n  } else {\n    t1 = $[2];\n  }\n  let t2;\n  if ($[3] !== _listItemCache || $[4] !== selectedId || $[5] !== t1) {\n    t2 = _listItemCache.map(items, t1, [selectedId]);\n    $[3] = _listItemCache;\n    $[4] = selectedId;\n    $[5] = t1;\n    $[6] = t2;\n  } else {\n    t2 = $[6];\n  }\n  let t3;\n  if ($[7] !== t2) {\n    t3 = [run, t2];\n    $[7] = t2;\n    $[8] = t3;\n  } else {\n    t3 = $[8];\n  }\n  let t4;\n  if ($[9] !== t3) {\n    t4 = <_BlockTemplate v={t3} />;\n    $[9] = t3;\n    $[10] = t4;\n  } else {\n    t4 = $[10];\n  }\n  return t4;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/selection-inline-blocks-lists.js?v=973c60c3904eb402"
+        },
+        "incremental": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c, unstable_useListItemMemoCache as useListItemMemoCache } from \"react/compiler-runtime\";\nimport { useState } from 'react';\nconst _BlockTemplate = _createBlockTemplate([\"main\", null, null, [[\"button\", {\n  \"id\": \"run\"\n}, [[\"onClick\", 0]], [\"Select 200 rows\"]], [\"ul\", null, null, [{\n  \"s\": 1\n}]]]]);\nconst _BlockTemplate2 = _createBlockTemplate([\"li\", null, [[\"id\", 0], [\"className\", 1], [\"onClick\", 2]], [[\"span\", null, null, [{\n  \"s\": 3\n}]], [\"strong\", null, null, [\"Item \", {\n  \"s\": 4\n}]]]]);\nconst items = Array.from({\n  length: 2000\n}, (_, id) => ({\n  id\n}));\nfunction App() {\n  const $ = _c(11);\n  const _listItemCache = useListItemMemoCache();\n  const [selectedId, setSelectedId] = useState(-1);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = async function run() {\n      for (let id = 0; id < 200; id++) {\n        document.getElementById(\"row-\" + id).click();\n        await null;\n      }\n    };\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const run = t0;\n  let t1;\n  if ($[1] !== _listItemCache) {\n    t1 = item => {\n      const t6 = \"row-\" + item.id;\n      const t5 = item.id;\n      const t7 = _listItemCache.is(0, item.id) ? \"selected\" : \"\";\n      const t8 = item.id;\n      const t9 = item.id;\n      const $0 = _listItemCache.next(8, t5);\n      let t10;\n      if ($0[0] !== item || $0[1] !== setSelectedId || $0[2] !== t5 || $0[3] !== t6 || $0[4] !== t7 || $0[5] !== t8 || $0[6] !== t9) {\n        t10 = <_BlockTemplate2 key={t5} v={[t6, t7, () => setSelectedId(item.id), t8, t9]} />;\n        $0[0] = item;\n        $0[1] = setSelectedId;\n        $0[2] = t5;\n        $0[3] = t6;\n        $0[4] = t7;\n        $0[5] = t8;\n        $0[6] = t9;\n        $0[7] = t10;\n      } else {\n        t10 = $0[7];\n      }\n      return t10;\n    };\n    $[1] = _listItemCache;\n    $[2] = t1;\n  } else {\n    t1 = $[2];\n  }\n  let t2;\n  if ($[3] !== _listItemCache || $[4] !== selectedId || $[5] !== t1) {\n    t2 = _listItemCache.map(items, t1, [selectedId]);\n    $[3] = _listItemCache;\n    $[4] = selectedId;\n    $[5] = t1;\n    $[6] = t2;\n  } else {\n    t2 = $[6];\n  }\n  let t3;\n  if ($[7] !== t2) {\n    t3 = [run, t2];\n    $[7] = t2;\n    $[8] = t3;\n  } else {\n    t3 = $[8];\n  }\n  let t4;\n  if ($[9] !== t3) {\n    t4 = <_BlockTemplate v={t3} />;\n    $[9] = t3;\n    $[10] = t4;\n  } else {\n    t4 = $[10];\n  }\n  return t4;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/selection-incremental.js?v=973c60c3904eb402"
+        },
+        "all": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c, unstable_useListItemMemoCache as useListItemMemoCache } from \"react/compiler-runtime\";\nimport { useState } from 'react';\nconst _BlockTemplate = _createBlockTemplate([\"main\", null, null, [[\"button\", {\n  \"id\": \"run\"\n}, [[\"onClick\", 0]], [\"Select 200 rows\"]], [\"ul\", null, null, [{\n  \"s\": 1\n}]]]]);\nconst _BlockTemplate2 = _createBlockTemplate([\"li\", null, [[\"id\", 0], [\"className\", 1], [\"onClick\", 2]], [[\"span\", null, null, [{\n  \"s\": 3\n}]], [\"strong\", null, null, [\"Item \", {\n  \"s\": 4\n}]]]]);\nconst items = Array.from({\n  length: 2000\n}, (_, id) => ({\n  id\n}));\nfunction App() {\n  const $ = _c(11);\n  const _listItemCache = useListItemMemoCache();\n  const [selectedId, setSelectedId] = useState(-1);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = async function run() {\n      for (let id = 0; id < 200; id++) {\n        document.getElementById(\"row-\" + id).click();\n        await null;\n      }\n    };\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const run = t0;\n  let t1;\n  if ($[1] !== _listItemCache) {\n    t1 = item => {\n      const t6 = \"row-\" + item.id;\n      const t5 = item.id;\n      const t7 = _listItemCache.is(0, item.id) ? \"selected\" : \"\";\n      const t8 = item.id;\n      const t9 = item.id;\n      const $0 = _listItemCache.next(8, t5);\n      let t10;\n      if ($0[0] !== item || $0[1] !== setSelectedId || $0[2] !== t5 || $0[3] !== t6 || $0[4] !== t7 || $0[5] !== t8 || $0[6] !== t9) {\n        t10 = <_BlockTemplate2 key={t5} v={[t6, t7, () => setSelectedId(item.id), t8, t9]} />;\n        $0[0] = item;\n        $0[1] = setSelectedId;\n        $0[2] = t5;\n        $0[3] = t6;\n        $0[4] = t7;\n        $0[5] = t8;\n        $0[6] = t9;\n        $0[7] = t10;\n      } else {\n        t10 = $0[7];\n      }\n      return t10;\n    };\n    $[1] = _listItemCache;\n    $[2] = t1;\n  } else {\n    t1 = $[2];\n  }\n  let t2;\n  if ($[3] !== _listItemCache || $[4] !== selectedId || $[5] !== t1) {\n    t2 = _listItemCache.map(items, t1, [selectedId]);\n    $[3] = _listItemCache;\n    $[4] = selectedId;\n    $[5] = t1;\n    $[6] = t2;\n  } else {\n    t2 = $[6];\n  }\n  let t3;\n  if ($[7] !== t2) {\n    t3 = [run, t2];\n    $[7] = t2;\n    $[8] = t3;\n  } else {\n    t3 = $[8];\n  }\n  let t4;\n  if ($[9] !== t3) {\n    t4 = <_BlockTemplate v={t3} />;\n    $[9] = t3;\n    $[10] = t4;\n  } else {\n    t4 = $[10];\n  }\n  return t4;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/selection-all.js?v=973c60c3904eb402"
+        }
+      }
+    },
+    "context": {
+      "label": "Update context",
+      "workload": "200 typing updates, 2,000 messages",
+      "expectedRows": 2000,
+      "expectedText": "Typing: 200",
+      "variants": [
+        "plain",
+        "compiler",
+        "selectors",
+        "all"
+      ],
+      "source": "import {createContext, useContext, useState} from 'react';\nconst ChatContext = createContext({currentUserId:0, typingUsers:0, unreadCount:0});\nconst messages = Array.from({length:2000}, (_,id) => ({id, authorId:id%5, text:'Message '+id}));\nfunction Message({message}) {\n  const chat = useContext(ChatContext);\n  const isMine = message.authorId === chat.currentUserId;\n  return <li className={isMine ? 'mine' : ''}>{message.text}</li>;\n}\nfunction MessageList({messages}) { return <ul>{messages.map(m => <Message key={m.id} message={m} />)}</ul>; }\nfunction App() {\n  const [typingUsers, setTypingUsers] = useState(0);\n  async function run() {\n    for (let i=0; i<200; i++) { document.getElementById('typing').click(); await null; }\n  }\n  return <ChatContext.Provider value={{currentUserId:0, typingUsers, unreadCount:0}}>\n    <button id=\"typing\" onClick={() => setTypingUsers(n => n+1)}>Someone is typing</button>\n    <button id=\"run\" onClick={run}>Send 200 typing updates</button><p>Typing: {typingUsers}</p>\n    <MessageList messages={messages} />\n  </ChatContext.Provider>;\n}",
+      "builds": {
+        "plain": {
+          "generated": "import { createContext, useContext, useState } from 'react';\nconst ChatContext = createContext({\n  currentUserId: 0,\n  typingUsers: 0,\n  unreadCount: 0\n});\nconst messages = Array.from({\n  length: 2000\n}, (_, id) => ({\n  id,\n  authorId: id % 5,\n  text: 'Message ' + id\n}));\nfunction Message({\n  message\n}) {\n  const chat = useContext(ChatContext);\n  const isMine = message.authorId === chat.currentUserId;\n  return <li className={isMine ? 'mine' : ''}>{message.text}</li>;\n}\nfunction MessageList({\n  messages\n}) {\n  return <ul>{messages.map(m => <Message key={m.id} message={m} />)}</ul>;\n}\nfunction App() {\n  const [typingUsers, setTypingUsers] = useState(0);\n  async function run() {\n    for (let i = 0; i < 200; i++) {\n      document.getElementById('typing').click();\n      await null;\n    }\n  }\n  return <ChatContext.Provider value={{\n    currentUserId: 0,\n    typingUsers,\n    unreadCount: 0\n  }}>\n    <button id=\"typing\" onClick={() => setTypingUsers(n => n + 1)}>Someone is typing</button>\n    <button id=\"run\" onClick={run}>Send 200 typing updates</button><p>Typing: {typingUsers}</p>\n    <MessageList messages={messages} />\n  </ChatContext.Provider>;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/context-plain.js?v=bbaa9062abba2c94"
+        },
+        "compiler": {
+          "generated": "import { c as _c } from \"react/compiler-runtime\";\nimport { createContext, useContext, useState } from 'react';\nconst ChatContext = createContext({\n  currentUserId: 0,\n  typingUsers: 0,\n  unreadCount: 0\n});\nconst messages = Array.from({\n  length: 2000\n}, (_, id) => ({\n  id,\n  authorId: id % 5,\n  text: 'Message ' + id\n}));\nfunction Message(t0) {\n  const $ = _c(3);\n  const {\n    message\n  } = t0;\n  const chat = useContext(ChatContext);\n  const isMine = message.authorId === chat.currentUserId;\n  const t1 = isMine ? \"mine\" : \"\";\n  let t2;\n  if ($[0] !== message.text || $[1] !== t1) {\n    t2 = <li className={t1}>{message.text}</li>;\n    $[0] = message.text;\n    $[1] = t1;\n    $[2] = t2;\n  } else {\n    t2 = $[2];\n  }\n  return t2;\n}\nfunction MessageList(t0) {\n  const $ = _c(4);\n  const {\n    messages\n  } = t0;\n  let t1;\n  if ($[0] !== messages) {\n    t1 = messages.map(_temp);\n    $[0] = messages;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = <ul>{t1}</ul>;\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  return t2;\n}\nfunction _temp(m) {\n  return <Message key={m.id} message={m} />;\n}\nfunction App() {\n  const $ = _c(11);\n  const [typingUsers, setTypingUsers] = useState(0);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = async function run() {\n      for (let i = 0; i < 200; i++) {\n        document.getElementById(\"typing\").click();\n        await null;\n      }\n    };\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const run = t0;\n  let t1;\n  if ($[1] !== typingUsers) {\n    t1 = {\n      currentUserId: 0,\n      typingUsers,\n      unreadCount: 0\n    };\n    $[1] = typingUsers;\n    $[2] = t1;\n  } else {\n    t1 = $[2];\n  }\n  let t2;\n  let t3;\n  if ($[3] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button id=\"typing\" onClick={() => setTypingUsers(_temp2)}>Someone is typing</button>;\n    t3 = <button id=\"run\" onClick={run}>Send 200 typing updates</button>;\n    $[3] = t2;\n    $[4] = t3;\n  } else {\n    t2 = $[3];\n    t3 = $[4];\n  }\n  let t4;\n  if ($[5] !== typingUsers) {\n    t4 = <p>Typing: {typingUsers}</p>;\n    $[5] = typingUsers;\n    $[6] = t4;\n  } else {\n    t4 = $[6];\n  }\n  let t5;\n  if ($[7] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t5 = <MessageList messages={messages} />;\n    $[7] = t5;\n  } else {\n    t5 = $[7];\n  }\n  let t6;\n  if ($[8] !== t1 || $[9] !== t4) {\n    t6 = <ChatContext.Provider value={t1}>{t2}{t3}{t4}{t5}</ChatContext.Provider>;\n    $[8] = t1;\n    $[9] = t4;\n    $[10] = t6;\n  } else {\n    t6 = $[10];\n  }\n  return t6;\n}\nfunction _temp2(n) {\n  return n + 1;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/context-compiler.js?v=2f76d33b518fbec4"
+        },
+        "selectors": {
+          "generated": "import { c as _c, unstable_useContextPaths } from \"react/compiler-runtime\";\nimport { createContext, useContext, useState } from 'react';\nconst ChatContext = createContext({\n  currentUserId: 0,\n  typingUsers: 0,\n  unreadCount: 0\n});\nconst messages = Array.from({\n  length: 2000\n}, (_, id) => ({\n  id,\n  authorId: id % 5,\n  text: 'Message ' + id\n}));\nfunction Message(t0) {\n  const $ = _c(5);\n  const {\n    message\n  } = t0;\n  let t1;\n  if ($[0] !== message.authorId) {\n    t1 = [[1, message.authorId, \"currentUserId\"]];\n    $[0] = message.authorId;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const chat = unstable_useContextPaths(ChatContext, t1);\n  const isMine = message.authorId === chat.currentUserId;\n  const t2 = isMine ? \"mine\" : \"\";\n  let t3;\n  if ($[2] !== message.text || $[3] !== t2) {\n    t3 = <li className={t2}>{message.text}</li>;\n    $[2] = message.text;\n    $[3] = t2;\n    $[4] = t3;\n  } else {\n    t3 = $[4];\n  }\n  return t3;\n}\nfunction MessageList(t0) {\n  const $ = _c(4);\n  const {\n    messages\n  } = t0;\n  let t1;\n  if ($[0] !== messages) {\n    t1 = messages.map(_temp);\n    $[0] = messages;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== t1) {\n    t2 = <ul>{t1}</ul>;\n    $[2] = t1;\n    $[3] = t2;\n  } else {\n    t2 = $[3];\n  }\n  return t2;\n}\nfunction _temp(m) {\n  return <Message key={m.id} message={m} />;\n}\nfunction App() {\n  const $ = _c(11);\n  const [typingUsers, setTypingUsers] = useState(0);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = async function run() {\n      for (let i = 0; i < 200; i++) {\n        document.getElementById(\"typing\").click();\n        await null;\n      }\n    };\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const run = t0;\n  let t1;\n  if ($[1] !== typingUsers) {\n    t1 = {\n      currentUserId: 0,\n      typingUsers,\n      unreadCount: 0\n    };\n    $[1] = typingUsers;\n    $[2] = t1;\n  } else {\n    t1 = $[2];\n  }\n  let t2;\n  let t3;\n  if ($[3] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button id=\"typing\" onClick={() => setTypingUsers(_temp2)}>Someone is typing</button>;\n    t3 = <button id=\"run\" onClick={run}>Send 200 typing updates</button>;\n    $[3] = t2;\n    $[4] = t3;\n  } else {\n    t2 = $[3];\n    t3 = $[4];\n  }\n  let t4;\n  if ($[5] !== typingUsers) {\n    t4 = <p>Typing: {typingUsers}</p>;\n    $[5] = typingUsers;\n    $[6] = t4;\n  } else {\n    t4 = $[6];\n  }\n  let t5;\n  if ($[7] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t5 = <MessageList messages={messages} />;\n    $[7] = t5;\n  } else {\n    t5 = $[7];\n  }\n  let t6;\n  if ($[8] !== t1 || $[9] !== t4) {\n    t6 = <ChatContext.Provider value={t1}>{t2}{t3}{t4}{t5}</ChatContext.Provider>;\n    $[8] = t1;\n    $[9] = t4;\n    $[10] = t6;\n  } else {\n    t6 = $[10];\n  }\n  return t6;\n}\nfunction _temp2(n) {\n  return n + 1;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/context-selectors.js?v=84669e0f74d3fc81"
+        },
+        "all": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c, unstable_useContextPaths, unstable_useListItemMemoCache as useListItemMemoCache } from \"react/compiler-runtime\";\nimport { createContext, useContext, useState } from 'react';\nconst _BlockTemplate = _createBlockTemplate([\"ul\", null, null, [{\n  \"s\": 0\n}]]);\nconst ChatContext = createContext({\n  currentUserId: 0,\n  typingUsers: 0,\n  unreadCount: 0\n});\nconst messages = Array.from({\n  length: 2000\n}, (_, id) => ({\n  id,\n  authorId: id % 5,\n  text: 'Message ' + id\n}));\nfunction Message(t0) {\n  const $ = _c(5);\n  const {\n    message\n  } = t0;\n  let t1;\n  if ($[0] !== message.authorId) {\n    t1 = [[1, message.authorId, \"currentUserId\"]];\n    $[0] = message.authorId;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const chat = unstable_useContextPaths(ChatContext, t1);\n  const isMine = message.authorId === chat.currentUserId;\n  const t2 = isMine ? \"mine\" : \"\";\n  let t3;\n  if ($[2] !== message.text || $[3] !== t2) {\n    t3 = <li className={t2}>{message.text}</li>;\n    $[2] = message.text;\n    $[3] = t2;\n    $[4] = t3;\n  } else {\n    t3 = $[4];\n  }\n  return t3;\n}\nfunction MessageList(t0) {\n  const $ = _c(9);\n  const _listItemCache = useListItemMemoCache();\n  const {\n    messages\n  } = t0;\n  let t1;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = m => <Message key={m.id} message={m} />;\n    $[0] = t1;\n  } else {\n    t1 = $[0];\n  }\n  let t2;\n  if ($[1] !== _listItemCache || $[2] !== messages || $[3] !== t1) {\n    t2 = _listItemCache.mapIncremental(messages, t1, []);\n    $[1] = _listItemCache;\n    $[2] = messages;\n    $[3] = t1;\n    $[4] = t2;\n  } else {\n    t2 = $[4];\n  }\n  let t3;\n  if ($[5] !== t2) {\n    t3 = [t2];\n    $[5] = t2;\n    $[6] = t3;\n  } else {\n    t3 = $[6];\n  }\n  let t4;\n  if ($[7] !== t3) {\n    t4 = <_BlockTemplate v={t3} />;\n    $[7] = t3;\n    $[8] = t4;\n  } else {\n    t4 = $[8];\n  }\n  return t4;\n}\nfunction App() {\n  const $ = _c(11);\n  const [typingUsers, setTypingUsers] = useState(0);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = async function run() {\n      for (let i = 0; i < 200; i++) {\n        document.getElementById(\"typing\").click();\n        await null;\n      }\n    };\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const run = t0;\n  let t1;\n  if ($[1] !== typingUsers) {\n    t1 = {\n      currentUserId: 0,\n      typingUsers,\n      unreadCount: 0\n    };\n    $[1] = typingUsers;\n    $[2] = t1;\n  } else {\n    t1 = $[2];\n  }\n  let t2;\n  let t3;\n  if ($[3] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t2 = <button id=\"typing\" onClick={() => setTypingUsers(_temp)}>Someone is typing</button>;\n    t3 = <button id=\"run\" onClick={run}>Send 200 typing updates</button>;\n    $[3] = t2;\n    $[4] = t3;\n  } else {\n    t2 = $[3];\n    t3 = $[4];\n  }\n  let t4;\n  if ($[5] !== typingUsers) {\n    t4 = <p>Typing: {typingUsers}</p>;\n    $[5] = typingUsers;\n    $[6] = t4;\n  } else {\n    t4 = $[6];\n  }\n  let t5;\n  if ($[7] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t5 = <MessageList messages={messages} />;\n    $[7] = t5;\n  } else {\n    t5 = $[7];\n  }\n  let t6;\n  if ($[8] !== t1 || $[9] !== t4) {\n    t6 = <ChatContext.Provider value={t1}>{t2}{t3}{t4}{t5}</ChatContext.Provider>;\n    $[8] = t1;\n    $[9] = t4;\n    $[10] = t6;\n  } else {\n    t6 = $[10];\n  }\n  return t6;\n}\nfunction _temp(n) {\n  return n + 1;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/context-all.js?v=12f51132d22b10d4"
+        }
+      }
+    },
+    "store": {
+      "label": "Update a store",
+      "workload": "200 selections across 2,000 Zustand cards",
+      "expectedRows": 2000,
+      "expectedSelected": "199",
+      "variants": [
+        "plain",
+        "compiler",
+        "selectors",
+        "all"
+      ],
+      "source": "import {create} from 'zustand';\nconst useCardStore = create(set => ({selectedId:null, select:id => set({selectedId:id})}));\nconst ids = Array.from({length:2000}, (_,id) => id);\nfunction Card({id}) {\n  const selectedId = useCardStore(state => state.selectedId);\n  const select = useCardStore(state => state.select);\n  const isSelected = id === selectedId;\n  return <li id={'row-'+id} className={isSelected ? 'selected' : ''} onClick={() => select(id)}>Card {id}</li>;\n}\nfunction App() {\n  async function run() {\n    for (let id=0; id<200; id++) { document.getElementById('row-'+id).click(); await null; }\n  }\n  return <main><button id=\"run\" onClick={run}>Select 200 cards</button><ul>{ids.map(id => <Card key={id} id={id} />)}</ul></main>;\n}",
+      "builds": {
+        "plain": {
+          "generated": "import { create } from 'zustand';\nconst useCardStore = create(set => ({\n  selectedId: null,\n  select: id => set({\n    selectedId: id\n  })\n}));\nconst ids = Array.from({\n  length: 2000\n}, (_, id) => id);\nfunction Card({\n  id\n}) {\n  const selectedId = useCardStore(state => state.selectedId);\n  const select = useCardStore(state => state.select);\n  const isSelected = id === selectedId;\n  return <li id={'row-' + id} className={isSelected ? 'selected' : ''} onClick={() => select(id)}>Card {id}</li>;\n}\nfunction App() {\n  async function run() {\n    for (let id = 0; id < 200; id++) {\n      document.getElementById('row-' + id).click();\n      await null;\n    }\n  }\n  return <main><button id=\"run\" onClick={run}>Select 200 cards</button><ul>{ids.map(id => <Card key={id} id={id} />)}</ul></main>;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/store-plain.js?v=209073e5ce5dfbed"
+        },
+        "compiler": {
+          "generated": "import { c as _c } from \"react/compiler-runtime\";\nimport { create } from 'zustand';\nconst useCardStore = create(set => ({\n  selectedId: null,\n  select: id => set({\n    selectedId: id\n  })\n}));\nconst ids = Array.from({\n  length: 2000\n}, (_, id) => id);\nfunction Card(t0) {\n  const $ = _c(8);\n  const {\n    id\n  } = t0;\n  const selectedId = useCardStore(_temp);\n  const select = useCardStore(_temp2);\n  const isSelected = id === selectedId;\n  const t1 = \"row-\" + id;\n  const t2 = isSelected ? \"selected\" : \"\";\n  let t3;\n  if ($[0] !== id || $[1] !== select) {\n    t3 = () => select(id);\n    $[0] = id;\n    $[1] = select;\n    $[2] = t3;\n  } else {\n    t3 = $[2];\n  }\n  let t4;\n  if ($[3] !== id || $[4] !== t1 || $[5] !== t2 || $[6] !== t3) {\n    t4 = <li id={t1} className={t2} onClick={t3}>Card {id}</li>;\n    $[3] = id;\n    $[4] = t1;\n    $[5] = t2;\n    $[6] = t3;\n    $[7] = t4;\n  } else {\n    t4 = $[7];\n  }\n  return t4;\n}\nfunction _temp2(state_0) {\n  return state_0.select;\n}\nfunction _temp(state) {\n  return state.selectedId;\n}\nfunction App() {\n  const $ = _c(1);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    const run = async function run() {\n      for (let id = 0; id < 200; id++) {\n        document.getElementById(\"row-\" + id).click();\n        await null;\n      }\n    };\n    t0 = <main><button id=\"run\" onClick={run}>Select 200 cards</button><ul>{ids.map(_temp3)}</ul></main>;\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  return t0;\n}\nfunction _temp3(id_0) {\n  return <Card key={id_0} id={id_0} />;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/store-compiler.js?v=12c0f6398c51176b"
+        },
+        "selectors": {
+          "generated": "import { c as _c, unstable_registerStoreHook, unstable_selectHookPaths, unstable_startSelectedHook } from \"react/compiler-runtime\";\nimport { create } from 'zustand';\nconst useCardStore = create(set => ({\n  selectedId: null,\n  select: id => set({\n    selectedId: id\n  })\n}));\nunstable_registerStoreHook(useCardStore);\nconst ids = Array.from({\n  length: 2000\n}, (_, id) => id);\nfunction Card(t0) {\n  const $ = _c(10);\n  const {\n    id\n  } = t0;\n  let t1;\n  if ($[0] !== id) {\n    t1 = [[1, id]];\n    $[0] = id;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const _selectedHook = unstable_startSelectedHook(useCardStore);\n  const t2 = useCardStore(_temp);\n  unstable_selectHookPaths(_selectedHook, t2, useCardStore, t1);\n  const selectedId = t2;\n  const select = useCardStore(_temp2);\n  const isSelected = id === selectedId;\n  const t3 = \"row-\" + id;\n  const t4 = isSelected ? \"selected\" : \"\";\n  let t5;\n  if ($[2] !== id || $[3] !== select) {\n    t5 = () => select(id);\n    $[2] = id;\n    $[3] = select;\n    $[4] = t5;\n  } else {\n    t5 = $[4];\n  }\n  let t6;\n  if ($[5] !== id || $[6] !== t3 || $[7] !== t4 || $[8] !== t5) {\n    t6 = <li id={t3} className={t4} onClick={t5}>Card {id}</li>;\n    $[5] = id;\n    $[6] = t3;\n    $[7] = t4;\n    $[8] = t5;\n    $[9] = t6;\n  } else {\n    t6 = $[9];\n  }\n  return t6;\n}\nfunction _temp2(state_0) {\n  return state_0.select;\n}\nfunction _temp(state) {\n  return state.selectedId;\n}\nfunction App() {\n  const $ = _c(1);\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    const run = async function run() {\n      for (let id = 0; id < 200; id++) {\n        document.getElementById(\"row-\" + id).click();\n        await null;\n      }\n    };\n    t0 = <main><button id=\"run\" onClick={run}>Select 200 cards</button><ul>{ids.map(_temp3)}</ul></main>;\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  return t0;\n}\nfunction _temp3(id_0) {\n  return <Card key={id_0} id={id_0} />;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/store-selectors.js?v=28a91011c79cb261"
+        },
+        "all": {
+          "generated": "import { unstable_createBlockTemplate as _createBlockTemplate } from \"react-dom\";\nimport { c as _c, unstable_registerStoreHook, unstable_selectHookPaths, unstable_skipStoreHook1, unstable_startSelectedHook, unstable_useListItemMemoCache as useListItemMemoCache } from \"react/compiler-runtime\";\nimport { create } from 'zustand';\nconst _BlockTemplate = _createBlockTemplate([\"main\", null, null, [[\"button\", {\n  \"id\": \"run\"\n}, [[\"onClick\", 0]], [\"Select 200 cards\"]], [\"ul\", null, null, [{\n  \"s\": 1\n}]]]]);\nconst useCardStore = create(set => ({\n  selectedId: null,\n  select: id => set({\n    selectedId: id\n  })\n}));\nunstable_registerStoreHook(useCardStore);\nconst ids = Array.from({\n  length: 2000\n}, (_, id) => id);\nfunction Card(t0) {\n  const $ = _c(10);\n  const {\n    id\n  } = t0;\n  let t1;\n  if ($[0] !== id) {\n    t1 = [[1, id]];\n    $[0] = id;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  const _selectedHook = unstable_startSelectedHook(useCardStore);\n  const _skippedHook = unstable_skipStoreHook1(_selectedHook, useCardStore, _temp);\n  const t2 = _skippedHook !== useCardStore ? _skippedHook : useCardStore(_temp);\n  unstable_selectHookPaths(_selectedHook, t2, useCardStore, t1);\n  const selectedId = t2;\n  const _selectedHook2 = unstable_startSelectedHook(useCardStore);\n  const _skippedHook2 = unstable_skipStoreHook1(_selectedHook2, useCardStore, _temp2);\n  const t3 = _skippedHook2 !== useCardStore ? _skippedHook2 : useCardStore(_temp2);\n  unstable_selectHookPaths(_selectedHook2, t3, useCardStore, null);\n  const select = t3;\n  const isSelected = id === selectedId;\n  const t4 = \"row-\" + id;\n  const t5 = isSelected ? \"selected\" : \"\";\n  let t6;\n  if ($[2] !== id || $[3] !== select) {\n    t6 = () => select(id);\n    $[2] = id;\n    $[3] = select;\n    $[4] = t6;\n  } else {\n    t6 = $[4];\n  }\n  let t7;\n  if ($[5] !== id || $[6] !== t4 || $[7] !== t5 || $[8] !== t6) {\n    t7 = <li id={t4} className={t5} onClick={t6}>Card {id}</li>;\n    $[5] = id;\n    $[6] = t4;\n    $[7] = t5;\n    $[8] = t6;\n    $[9] = t7;\n  } else {\n    t7 = $[9];\n  }\n  return t7;\n}\nfunction _temp2(state_0) {\n  return state_0.select;\n}\nfunction _temp(state) {\n  return state.selectedId;\n}\nfunction App() {\n  const $ = _c(9);\n  const _listItemCache = useListItemMemoCache();\n  let t0;\n  if ($[0] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t0 = async function run() {\n      for (let id = 0; id < 200; id++) {\n        document.getElementById(\"row-\" + id).click();\n        await null;\n      }\n    };\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  const run = t0;\n  let t1;\n  if ($[1] === Symbol.for(\"react.memo_cache_sentinel\")) {\n    t1 = id_0 => <Card key={id_0} id={id_0} />;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  let t2;\n  if ($[2] !== _listItemCache || $[3] !== t1) {\n    t2 = _listItemCache.mapIncremental(ids, t1, []);\n    $[2] = _listItemCache;\n    $[3] = t1;\n    $[4] = t2;\n  } else {\n    t2 = $[4];\n  }\n  let t3;\n  if ($[5] !== t2) {\n    t3 = [run, t2];\n    $[5] = t2;\n    $[6] = t3;\n  } else {\n    t3 = $[6];\n  }\n  let t4;\n  if ($[7] !== t3) {\n    t4 = <_BlockTemplate v={t3} />;\n    $[7] = t3;\n    $[8] = t4;\n  } else {\n    t4 = $[8];\n  }\n  return t4;\n}\nexport default App;",
+          "bundleUrl": "/react-compiler/store-all.js?v=8d821463ffd2ce90"
+        }
+      }
+    }
+  },
+  "variants": [
+    {
+      "id": "plain",
+      "label": "Compiler off",
+      "environment": null
+    },
+    {
+      "id": "compiler",
+      "label": "React Compiler",
+      "environment": {}
+    },
+    {
+      "id": "no-outline",
+      "label": "Without outlining",
+      "environment": {
+        "enableFunctionOutlining": false
+      }
+    },
+    {
+      "id": "inline",
+      "label": "Inlining",
+      "environment": {
+        "enableComponentInlining": true
+      },
+      "experimental": true
+    },
+    {
+      "id": "blocks",
+      "label": "Blocks",
+      "environment": {
+        "enableJsxBlocks": true
+      }
+    },
+    {
+      "id": "inline-blocks",
+      "label": "Inlining + blocks",
+      "environment": {
+        "enableComponentInlining": true,
+        "enableJsxBlocks": true
+      },
+      "experimental": true
+    },
+    {
+      "id": "lists",
+      "label": "List memoization",
+      "environment": {
+        "enableListItemMemoization": true
+      },
+      "experimental": true
+    },
+    {
+      "id": "inline-blocks-lists",
+      "label": "+ list memoization",
+      "environment": {
+        "enableComponentInlining": true,
+        "enableJsxBlocks": true,
+        "enableListItemMemoization": true
+      },
+      "experimental": true
+    },
+    {
+      "id": "incremental",
+      "label": "+ incremental mapping",
+      "environment": {
+        "enableComponentInlining": true,
+        "enableJsxBlocks": true,
+        "enableListItemMemoization": true,
+        "enableIncrementalListMapping": true
+      },
+      "experimental": true
+    },
+    {
+      "id": "selectors",
+      "label": "Context / store selectors",
+      "environment": {
+        "enableContextSelectors": true
+      },
+      "experimental": true
+    },
+    {
+      "id": "all",
+      "label": "All prototypes",
+      "environment": {
+        "enableComponentInlining": true,
+        "enableJsxBlocks": true,
+        "enableListItemMemoization": true,
+        "enableIncrementalListMapping": true,
+        "enableContextSelectors": true,
+        "enableUpdateSlicing": true
+      },
+      "experimental": true
+    }
+  ],
+  "placements": {
+    "cache": {
+      "fixture": "cache",
+      "mode": "code",
+      "panels": [
+        {
+          "label": "You write",
+          "build": "source",
+          "functions": [
+            "Thing"
+          ],
+          "code": "export function Thing() {\n  return (\n    <button\n      onClick={() => console.log(\"click\")}\n    />\n  );\n}"
+        },
+        {
+          "label": "Compiler output",
+          "build": "compiler",
+          "functions": [
+            "Thing",
+            "_temp"
+          ],
+          "code": "export function Thing() {\n  const $ = _c(1);\n  let t0;\n  if (\n    $[0] ===\n    Symbol.for(\"react.memo_cache_sentinel\")\n  ) {\n    t0 = <button onClick={_temp} />;\n    $[0] = t0;\n  } else {\n    t0 = $[0];\n  }\n  return t0;\n}\n\nfunction _temp() {\n  return console.log(\"click\");\n}"
+        }
+      ],
+      "emphasis": [
+        "const $ = _c",
+        "if ($",
+        "function _temp"
+      ],
+      "caption": "One cache slot saves the element. The click handler moves outside the component.",
+      "aside": {
+        "build": "no-outline",
+        "expression": "onClick",
+        "label": "With enableFunctionOutlining: false, the handler stays inline:",
+        "code": "() => console.log(\"click\")"
+      }
+    },
+    "conditional": {
+      "fixture": "conditional",
+      "mode": "code",
+      "panels": [
+        {
+          "label": "You write",
+          "build": "source",
+          "functions": [
+            "Thing"
+          ],
+          "code": "export function Thing({ thing, stuff }) {\n  if (thing === \"thing\") return \"my thing\";\n  return <button>{stuff}</button>;\n}"
+        },
+        {
+          "label": "Compiler output",
+          "build": "compiler",
+          "functions": [
+            "Thing"
+          ],
+          "code": "export function Thing(t0) {\n  const $ = _c(2);\n  const { thing, stuff } = t0;\n  if (thing === \"thing\") {\n    return \"my thing\";\n  }\n  let t1;\n  if ($[0] !== stuff) {\n    t1 = <button>{stuff}</button>;\n    $[0] = stuff;\n    $[1] = t1;\n  } else {\n    t1 = $[1];\n  }\n  return t1;\n}"
+        }
+      ],
+      "emphasis": [
+        "const $ = _c",
+        "if (thing",
+        "if ($"
+      ],
+      "caption": "Acquire the cache before the early return; create the button only when it is needed."
+    },
+    "mutation": {
+      "fixture": "mutation",
+      "mode": "code",
+      "panels": [
+        {
+          "label": "You write",
+          "build": "source",
+          "functions": [
+            "Toolbar"
+          ],
+          "code": "function Toolbar({ user, canEdit }) {\n  const actions = getActions(user);\n  if (canEdit) actions.push(\"Edit\");\n  return <Menu actions={actions} />;\n}"
+        },
+        {
+          "label": "Compiler output",
+          "build": "compiler",
+          "functions": [
+            "Toolbar"
+          ],
+          "code": "function Toolbar(t0) {\n  const $ = _c(5);\n  const { user, canEdit } = t0;\n  let actions;\n  if ($[0] !== canEdit || $[1] !== user) {\n    actions = getActions(user);\n    if (canEdit) {\n      actions.push(\"Edit\");\n    }\n    $[0] = canEdit;\n    $[1] = user;\n    $[2] = actions;\n  } else {\n    actions = $[2];\n  }\n  let t1;\n  if ($[3] !== actions) {\n    t1 = <Menu actions={actions} />;\n    $[3] = actions;\n    $[4] = t1;\n  } else {\n    t1 = $[4];\n  }\n  return t1;\n}"
+        }
+      ],
+      "emphasis": [
+        "if ($[0]",
+        "actions = getActions",
+        "actions.push"
+      ],
+      "caption": "The same cache boundary contains both creating the array and mutating it."
+    },
+    "inline-code": {
+      "fixture": "append",
+      "mode": "code",
+      "panels": [
+        {
+          "label": "React Compiler · map callback",
+          "build": "compiler",
+          "functions": [
+            "_temp"
+          ],
+          "code": "function _temp(item) {\n  return <Row key={item.id} item={item} />;\n}"
+        },
+        {
+          "label": "With inlining · map callback",
+          "build": "inline",
+          "functions": [
+            "_temp3"
+          ],
+          "code": "function _temp3(item) {\n  const item$0 = item;\n  return (\n    <li key={item.id}>\n      <span>{item$0.id}</span>\n      <strong>Item {item$0.id}</strong>\n    </li>\n  );\n}"
+        }
+      ],
+      "emphasis": [
+        "return <li"
+      ],
+      "caption": "Inlining returns the row JSX directly, bypassing Row and its per-row cache.",
+      "excerpt": true
+    },
+    "inlining": {
+      "fixture": "append",
+      "variants": [
+        "plain",
+        "compiler",
+        "inline"
+      ],
+      "labels": {
+        "plain": "No compiler",
+        "compiler": "React Compiler",
+        "inline": "+ inlining"
+      },
+      "comparison": {
+        "before": "compiler",
+        "after": "inline",
+        "subject": "Inlining",
+        "direction": "slower"
+      }
+    },
+    "blocks": {
+      "fixture": "append",
+      "variants": [
+        "compiler",
+        "inline",
+        "blocks",
+        "inline-blocks"
+      ],
+      "labels": {
+        "compiler": "React Compiler",
+        "inline": "+ inlining",
+        "blocks": "+ blocks",
+        "inline-blocks": "+ inlining + blocks"
+      },
+      "comparison": {
+        "before": "inline",
+        "after": "inline-blocks",
+        "subject": "Adding blocks",
+        "direction": "faster"
+      }
+    },
+    "lists": {
+      "fixture": "append",
+      "variants": [
+        "plain",
+        "compiler",
+        "lists",
+        "inline-blocks-lists"
+      ],
+      "labels": {
+        "plain": "No compiler",
+        "compiler": "React Compiler",
+        "lists": "+ list caching",
+        "inline-blocks-lists": "+ inlining + blocks + list caching"
+      },
+      "caption": "List caching helps on its own, and also improves inlining + blocks."
+    },
+    "selection": {
+      "fixture": "selection",
+      "variants": [
+        "compiler",
+        "inline-blocks",
+        "inline-blocks-lists"
+      ],
+      "labels": {
+        "compiler": "React Compiler",
+        "inline-blocks": "Inlining + blocks",
+        "inline-blocks-lists": "+ selection-aware list caching"
+      },
+      "comparison": {
+        "before": "inline-blocks",
+        "after": "inline-blocks-lists",
+        "subject": "Selection-aware caching",
+        "direction": "faster"
+      }
+    },
+    "context": {
+      "fixture": "context",
+      "variants": [
+        "compiler",
+        "selectors"
+      ],
+      "labels": {
+        "compiler": "React Compiler",
+        "selectors": "+ context selectors"
+      },
+      "comparison": {
+        "before": "compiler",
+        "after": "selectors",
+        "subject": "Context selectors",
+        "direction": "faster"
+      }
+    },
+    "store": {
+      "fixture": "store",
+      "variants": [
+        "compiler",
+        "selectors"
+      ],
+      "labels": {
+        "compiler": "React Compiler",
+        "selectors": "+ store selectors"
+      },
+      "comparison": {
+        "before": "compiler",
+        "after": "selectors",
+        "subject": "Store selectors",
+        "direction": "faster"
+      }
+    },
+    "summary": {
+      "summary": true,
+      "variants": [
+        "plain",
+        "compiler",
+        "all"
+      ],
+      "labels": {
+        "plain": "No compiler",
+        "compiler": "React Compiler",
+        "all": "All prototypes"
+      }
+    }
+  },
+  "saved": {
+    "environment": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+    "label": "Chrome · macOS · headless local run",
+    "results": {
+      "append": {
+        "fixture": "append",
+        "rounds": 3,
+        "orders": [
+          [
+            "inline-blocks-lists",
+            "incremental",
+            "compiler",
+            "all",
+            "inline-blocks",
+            "blocks",
+            "plain",
+            "lists",
+            "inline"
+          ],
+          [
+            "incremental",
+            "compiler",
+            "all",
+            "inline-blocks",
+            "blocks",
+            "plain",
+            "lists",
+            "inline",
+            "inline-blocks-lists"
+          ],
+          [
+            "compiler",
+            "all",
+            "inline-blocks",
+            "blocks",
+            "plain",
+            "lists",
+            "inline",
+            "inline-blocks-lists",
+            "incremental"
+          ]
+        ],
+        "samples": {
+          "plain": [
+            1346.6999998092651,
+            1376.4000000953674,
+            1369
+          ],
+          "compiler": [
+            444.1000003814697,
+            438.09999990463257,
+            453.19999980926514
+          ],
+          "inline": [
+            1013.5999999046326,
+            1038.0999999046326,
+            1366.8000001907349
+          ],
+          "blocks": [
+            405.40000009536743,
+            409.90000009536743,
+            410.8999996185303
+          ],
+          "inline-blocks": [
+            162.09999990463257,
+            164.19999980926514,
+            164.7000002861023
+          ],
+          "lists": [
+            286.90000009536743,
+            295.5,
+            294.59999990463257
+          ],
+          "inline-blocks-lists": [
+            160.7000002861023,
+            158.80000019073486,
+            153.80000019073486
+          ],
+          "incremental": [
+            84.89999961853027,
+            85.80000019073486,
+            81.90000009536743
+          ],
+          "all": [
+            84.5,
+            84.59999990463257,
+            88.5
+          ]
+        },
+        "medians": {
+          "plain": 1369,
+          "compiler": 444.1000003814697,
+          "inline": 1038.0999999046326,
+          "blocks": 409.90000009536743,
+          "inline-blocks": 164.19999980926514,
+          "lists": 294.59999990463257,
+          "inline-blocks-lists": 158.80000019073486,
+          "incremental": 84.89999961853027,
+          "all": 84.59999990463257
+        },
+        "domVerified": true,
+        "recorded": "2026-09-27T13:57:27.258Z",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "runtime": "19.3.0",
+        "frame": {
+          "width": 1280,
+          "height": 190
+        },
+        "method": "fresh mount; one untimed warm-up per build; click to committed DOM and final layout; paint excluded"
+      },
+      "selection": {
+        "fixture": "selection",
+        "rounds": 3,
+        "orders": [
+          [
+            "all",
+            "inline-blocks",
+            "incremental",
+            "compiler",
+            "inline-blocks-lists",
+            "plain"
+          ],
+          [
+            "inline-blocks",
+            "incremental",
+            "compiler",
+            "inline-blocks-lists",
+            "plain",
+            "all"
+          ],
+          [
+            "incremental",
+            "compiler",
+            "inline-blocks-lists",
+            "plain",
+            "all",
+            "inline-blocks"
+          ]
+        ],
+        "samples": {
+          "plain": [
+            264.40000009536743,
+            245,
+            249.7000002861023
+          ],
+          "compiler": [
+            249.7999997138977,
+            253.90000009536743,
+            269.40000009536743
+          ],
+          "inline-blocks": [
+            46.5,
+            48.90000009536743,
+            48.59999990463257
+          ],
+          "inline-blocks-lists": [
+            5.400000095367432,
+            4.900000095367432,
+            5.599999904632568
+          ],
+          "incremental": [
+            4.900000095367432,
+            4.900000095367432,
+            5.099999904632568
+          ],
+          "all": [
+            4.900000095367432,
+            5.199999809265137,
+            4.5
+          ]
+        },
+        "medians": {
+          "plain": 249.7000002861023,
+          "compiler": 253.90000009536743,
+          "inline-blocks": 48.59999990463257,
+          "inline-blocks-lists": 5.400000095367432,
+          "incremental": 4.900000095367432,
+          "all": 4.900000095367432
+        },
+        "domVerified": true,
+        "recorded": "2026-09-27T13:57:31.160Z",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "runtime": "19.3.0",
+        "frame": {
+          "width": 1280,
+          "height": 190
+        },
+        "method": "fresh mount; one untimed warm-up per build; click to committed DOM and final layout; paint excluded"
+      },
+      "context": {
+        "fixture": "context",
+        "rounds": 3,
+        "orders": [
+          [
+            "selectors",
+            "plain",
+            "compiler",
+            "all"
+          ],
+          [
+            "plain",
+            "compiler",
+            "all",
+            "selectors"
+          ],
+          [
+            "compiler",
+            "all",
+            "selectors",
+            "plain"
+          ]
+        ],
+        "samples": {
+          "plain": [
+            103.59999990463257,
+            102.59999990463257,
+            106.40000009536743
+          ],
+          "compiler": [
+            82.90000009536743,
+            80,
+            79.09999990463257
+          ],
+          "selectors": [
+            11.599999904632568,
+            12,
+            11.700000286102295
+          ],
+          "all": [
+            11.400000095367432,
+            11.299999713897705,
+            11.099999904632568
+          ]
+        },
+        "medians": {
+          "plain": 103.59999990463257,
+          "compiler": 80,
+          "selectors": 11.700000286102295,
+          "all": 11.299999713897705
+        },
+        "domVerified": true,
+        "recorded": "2026-09-27T13:57:32.930Z",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "runtime": "19.3.0",
+        "frame": {
+          "width": 1280,
+          "height": 190
+        },
+        "method": "fresh mount; one untimed warm-up per build; click to committed DOM and final layout; paint excluded"
+      },
+      "store": {
+        "fixture": "store",
+        "rounds": 3,
+        "orders": [
+          [
+            "compiler",
+            "all",
+            "selectors",
+            "plain"
+          ],
+          [
+            "all",
+            "selectors",
+            "plain",
+            "compiler"
+          ],
+          [
+            "selectors",
+            "plain",
+            "compiler",
+            "all"
+          ]
+        ],
+        "samples": {
+          "plain": [
+            450.1000003814697,
+            509.30000019073486,
+            474.59999990463257
+          ],
+          "compiler": [
+            310.2000002861023,
+            319.09999990463257,
+            311.5
+          ],
+          "selectors": [
+            48.90000009536743,
+            47.40000009536743,
+            49.90000009536743
+          ],
+          "all": [
+            46.59999990463257,
+            53.09999990463257,
+            50.200000286102295
+          ]
+        },
+        "medians": {
+          "plain": 474.59999990463257,
+          "compiler": 311.5,
+          "selectors": 48.90000009536743,
+          "all": 50.200000286102295
+        },
+        "domVerified": true,
+        "recorded": "2026-09-27T13:57:37.358Z",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "runtime": "19.3.0",
+        "frame": {
+          "width": 1280,
+          "height": 190
+        },
+        "method": "fresh mount; one untimed warm-up per build; click to committed DOM and final layout; paint excluded"
+      }
+    }
+  },
+  "generated": "2026-09-27T15:14:02.376Z",
+  "runtime": "19.3.0"
+}

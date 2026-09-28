@@ -2,7 +2,7 @@
 //
 // Activation: Cmd+Shift+E (mac) / Ctrl+Shift+E (win/linux).
 // Once active, hovering any text element outlines it; click to edit inline.
-// Press Enter or click outside to commit; Esc to cancel one edit.
+// Press Cmd/Ctrl+Enter or click outside to commit; Esc to cancel one edit.
 // The floating panel "Copy edits" button writes a structured diff to the
 // clipboard so you can paste it back to chat — page URL + a selector hint
 // + before/after text per change.
@@ -10,6 +10,20 @@
 import { useEffect, useRef, useState } from 'react';
 
 const HOST_OK = (h) => h === 'localhost' || h === '127.0.0.1' || h === '0.0.0.0';
+const EDITS_LS_KEY = 'copyeditor.edits.v2';
+
+// A location that survives a reload, unlike the DOM element reference used
+// while the page is open. The saved original text guards against applying a
+// draft to a different element after the article structure changes.
+const pathForEl = (el) => {
+  const parts = [];
+  for (let node = el; node && node !== document.body; node = node.parentElement) {
+    const siblings = Array.from(node.parentElement.children).filter((sibling) => sibling.tagName === node.tagName);
+    parts.unshift(`${node.tagName.toLowerCase()}:nth-of-type(${siblings.indexOf(node) + 1})`);
+    if (node.matches('article.article')) break;
+  }
+  return parts.join(' > ');
+};
 
 // True if the element has at least one direct text-node child with content.
 const hasDirectText = (el) => {
@@ -44,13 +58,90 @@ export default function CopyEditor() {
   // When true, links work normally and text editing is paused. Toggle via the
   // panel button or pressing `L` while edit mode is open.
   const [followLinks, setFollowLinks] = useState(false);
-  const [edits, setEdits] = useState([]); // [{ page, where, before, after }]
+  const [edits, setEdits] = useState([]); // [{ page, where, before, after, element }]
+  const editsRef = useRef([]);
+  const [storageError, setStorageError] = useState(false);
   const [hoverEl, setHoverEl] = useState(null);
   const [editingEl, setEditingEl] = useState(null);
-  const [savedBefore, setSavedBefore] = useState(null);
-  const [savedContentEditable, setSavedContentEditable] = useState(null);
+  const editingSessionRef = useRef(null);
   const [toast, setToast] = useState(null);
   const panelRef = useRef(null);
+
+  const persistEdits = (next) => {
+    editsRef.current = next;
+    setEdits(next);
+    try {
+      localStorage.setItem(EDITS_LS_KEY, JSON.stringify(next.map(({element, ...record}) => record)));
+      setStorageError(false);
+    } catch (_) {
+      setStorageError(true);
+    }
+  };
+
+  const editIndex = (page, path) => editsRef.current.findIndex((edit) => edit.page === page && edit.path === path);
+
+  const saveCurrentText = (session, after, committed) => {
+    const index = editIndex(session.page, session.path);
+    const existing = index === -1 ? null : editsRef.current[index];
+    const before = existing?.before ?? session.before;
+    const next = [...editsRef.current];
+    if (after === before) {
+      if (index !== -1) next.splice(index, 1);
+    } else {
+      const record = {
+        page: session.page,
+        path: session.path,
+        where: existing?.where ?? describeEl(session.el),
+        before,
+        after,
+        committed,
+        element: session.el,
+      };
+      if (index === -1) next.push(record);
+      else next[index] = record;
+    }
+    persistEdits(next);
+  };
+
+  // Restore both completed copy edits and an in-progress draft after a reload.
+  // A draft is shown in the panel so it can be continued or copied immediately.
+  useEffect(() => {
+    if (!HOST_OK(window.location.hostname)) return;
+    let restored = [];
+    try {
+      const raw = JSON.parse(localStorage.getItem(EDITS_LS_KEY) || '[]');
+      if (Array.isArray(raw)) {
+        restored = raw.filter((record) => record && typeof record.page === 'string' && typeof record.path === 'string' && typeof record.before === 'string' && typeof record.after === 'string');
+      }
+    } catch (_) {
+      setStorageError(true);
+    }
+    editsRef.current = restored;
+    setEdits(restored);
+    if (restored.some((record) => !record.committed)) setActive(true);
+
+    let scheduled = false;
+    const applySavedText = () => {
+      scheduled = false;
+      for (const record of editsRef.current) {
+        if (record.page.split(/[?#]/)[0] !== window.location.pathname) continue;
+        const el = document.querySelector(record.path);
+        if (!el || (editingSessionRef.current && editingSessionRef.current.el === el)) continue;
+        if (el.textContent === record.before) el.textContent = record.after;
+        if (el.textContent === record.after) record.element = el;
+      }
+    };
+    applySavedText();
+    const observer = new MutationObserver(() => {
+      if (!scheduled) {
+        scheduled = true;
+        requestAnimationFrame(applySavedText);
+      }
+    });
+    observer.observe(document.querySelector('#__next') || document.body, {childList:true, subtree:true});
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Persisted "I've reviewed this" set across reloads.
   // Stored in localStorage; key per element = page + selector + text snippet.
@@ -142,19 +233,19 @@ export default function CopyEditor() {
           }
         }
       }
-      if (e.key === 'Escape' && active) {
-        // Cancel current edit if any
-        if (editingEl) {
-          editingEl.textContent = savedBefore;
-          finishEditing(false);
-          e.preventDefault();
-        }
+      if (active && editingSessionRef.current && e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        finishEditing(true);
+      }
+      if (active && editingSessionRef.current && e.key === 'Escape') {
+        e.preventDefault();
+        finishEditing(false);
       }
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active, editingEl, savedBefore, hoverEl]);
+  }, [active, editingEl, hoverEl]);
 
   // When toggled on, mark body so hover outlines kick in.
   useEffect(() => {
@@ -163,11 +254,8 @@ export default function CopyEditor() {
       document.body.dataset.editMode = '1';
     } else {
       delete document.body.dataset.editMode;
-      // If we leave the mode mid-edit, just cancel.
-      if (editingEl && savedBefore !== null) {
-        editingEl.textContent = savedBefore;
-        finishEditing(false);
-      }
+      // Closing the panel must not discard text that was just typed.
+      if (editingSessionRef.current) finishEditing(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
@@ -205,15 +293,15 @@ export default function CopyEditor() {
         e.preventDefault();
         e.stopPropagation();
       }
+      const current = editingSessionRef.current?.el;
+      // Clicking within the current element keeps its caret and selection.
+      if (current && current.contains(t)) return;
+      if (current) finishEditing(true);
       if (!editable(t)) return;
-      // If clicking the currently-editing element, leave it be
-      if (editingEl && t === editingEl) return;
       if (!link) {
         e.preventDefault();
         e.stopPropagation();
       }
-      // If already editing something else, commit it first
-      if (editingEl) finishEditing(true);
       startEditing(t);
     };
     document.addEventListener('mouseover', onOver);
@@ -226,6 +314,21 @@ export default function CopyEditor() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, editingEl, followLinks]);
+
+  // `input` fires for typing, deletion, paste, and composition. Persist the
+  // current text synchronously before a reload or hot update can erase it.
+  useEffect(() => {
+    if (!active) return;
+    const onInput = (event) => {
+      const session = editingSessionRef.current;
+      if (session && event.target === session.el) {
+        saveCurrentText(session, session.el.textContent, false);
+      }
+    };
+    document.addEventListener('input', onInput, true);
+    return () => document.removeEventListener('input', onInput, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active]);
 
   // Apply outline classes on hover/editing element via inline style — keeps
   // CSS small and avoids needing globals.css changes.
@@ -253,8 +356,13 @@ export default function CopyEditor() {
 
   const startEditing = (el) => {
     const before = el.textContent;
-    setSavedBefore(before);
-    setSavedContentEditable(el.contentEditable);
+    const page = window.location.pathname + window.location.search + window.location.hash;
+    const path = pathForEl(el);
+    const index = editIndex(page, path);
+    editingSessionRef.current = {
+      el, before, page, path, contentEditable:el.contentEditable,
+      previousRecord:index === -1 ? null : {...editsRef.current[index]},
+    };
     el.contentEditable = 'plaintext-only';
     el.spellcheck = true;
     el.focus();
@@ -266,43 +374,29 @@ export default function CopyEditor() {
     r.collapse(false);
     sel.addRange(r);
     setEditingEl(el);
-
-    const onKeyInEl = (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        finishEditing(true);
-      }
-    };
-    el.addEventListener('keydown', onKeyInEl);
-    el.__copyEditorCleanup = () => el.removeEventListener('keydown', onKeyInEl);
   };
 
   const finishEditing = (commit) => {
-    const el = editingEl;
-    if (!el) return;
+    const session = editingSessionRef.current;
+    if (!session) return;
+    editingSessionRef.current = null;
+    const {el, before, contentEditable} = session;
     const after = el.textContent;
-    const before = savedBefore;
-    if (el.__copyEditorCleanup) el.__copyEditorCleanup();
-    el.contentEditable = savedContentEditable || 'inherit';
+    el.contentEditable = contentEditable || 'inherit';
     el.style.outline = '';
     el.style.outlineOffset = '';
     el.style.cursor = '';
-    if (commit && before !== null && after !== before) {
-      setEdits((prev) => ([
-        ...prev,
-        {
-          page: window.location.pathname + window.location.search + window.location.hash,
-          where: describeEl(el),
-          before,
-          after,
-        },
-      ]));
-    } else if (!commit && before !== null) {
+    if (commit) {
+      saveCurrentText(session, after, true);
+    } else {
       el.textContent = before;
+      const index = editIndex(session.page, session.path);
+      const next = [...editsRef.current];
+      if (index !== -1) next.splice(index, 1);
+      if (session.previousRecord) next.push(session.previousRecord);
+      persistEdits(next);
     }
     setEditingEl(null);
-    setSavedBefore(null);
-    setSavedContentEditable(null);
     setHoverEl(null);
   };
 
@@ -343,7 +437,7 @@ export default function CopyEditor() {
     setTimeout(() => setToast(null), 1200);
   };
 
-  const clearAll = () => setEdits([]);
+  const clearAll = () => persistEdits([]);
 
   // Render nothing if not on localhost. Use state-driven check to avoid SSR
   // mismatch — render the panel always, but it only opens on localhost.
@@ -455,10 +549,13 @@ export default function CopyEditor() {
       </div>
 
       <div style={{ color: '#6e7681', marginBottom: 10, lineHeight: 1.45 }}>
-        Hover any text and click to edit. <kbd style={kbdStyle}>Enter</kbd> commits, <kbd style={kbdStyle}>Esc</kbd> cancels.
+        Hover any text and click to edit. Changes save locally as you type and return after a reload. <kbd style={kbdStyle}>⌘/Ctrl</kbd>+<kbd style={kbdStyle}>Enter</kbd> commits, <kbd style={kbdStyle}>Esc</kbd> cancels.
         Hover a red <span style={{ color: '#ef4444' }}>needs-review</span> element and press <kbd style={kbdStyle}>R</kbd> to mark it reviewed (persists across reloads).
         Toggle the panel with <kbd style={kbdStyle}>⌘/Ctrl</kbd>+<kbd style={kbdStyle}>⇧</kbd>+<kbd style={kbdStyle}>E</kbd>.
       </div>
+      {storageError && <div role="alert" style={{ color: '#ef4444', marginBottom: 10 }}>
+        Local autosave failed. Copy your edits before leaving this page.
+      </div>}
 
       {reviewed.size > 0 && (
         <div style={{ display: 'flex', gap: 8, marginBottom: 8 }}>

@@ -1,0 +1,33 @@
+{
+  "sourcePath": "/Users/jimmyhmiller/Documents/Code/PlayGround/writings/What Does the React Compiler Even Do.md",
+  "sourceSha256": "b9f80a7ba4fbe036b7deba107376ed5ac0546ca7e1549f094850a6bcd6010d42",
+  "sourceBytes": 23514,
+  "preservedExactly": false,
+  "editedInSite": true,
+  "title": "Can we Make React Faster using the React Compiler?",
+  "bundles": {
+    "append-plain.js": "93c77395d77b307632ba8afd740aa84db4ceaeed8301aa4eb8ea0efccbc6ccca",
+    "append-compiler.js": "ce4006142da9695ce805dc25b7c949c4178ba6e68afd146fa9ab5d7c5885498e",
+    "append-inline.js": "b4ac682c4c6405b9c8a0418a9348614456ba27dffc9546c0ef5035e6c9c90560",
+    "append-blocks.js": "8b4bff068de520f4a3350c81d7e9f08c3c4596fe85a7d56f5cadefbb555adbcb",
+    "append-inline-blocks.js": "62965c47506323b391012d2b0da3553df5fc316a15452101093b7a0db151acc8",
+    "append-lists.js": "e51ee8a446e9420bbbda5c2e051c747741624724111d6854a85ed1d2ba02fca1",
+    "append-inline-blocks-lists.js": "8e8fe9c1806b36f45a2be7a35dc894e149dfad80b3688792a3f2b7b4e9302a14",
+    "append-incremental.js": "12ff9b99c6bb84119e21f3027f80c2cd55bd509e5ac99b1428b5baeeddfd0b47",
+    "append-all.js": "12ff9b99c6bb84119e21f3027f80c2cd55bd509e5ac99b1428b5baeeddfd0b47",
+    "selection-plain.js": "81151aca0ee51b0576bfcd9f1cd9af1386309b7a503c7ef66ec6683dd30b7bf0",
+    "selection-compiler.js": "f706c4ec9dbf612da5d9075eaa38a8866bf7ec49622ecfee1ff4a48a3f63cb1a",
+    "selection-inline-blocks.js": "8a1e15e97c9d93e820633878b5d16a86c43f74cff056990cf9fb8aa7b6c2223f",
+    "selection-inline-blocks-lists.js": "973c60c3904eb40253a71384e13cf44a54b67b8ed24d3fc2dceeb13e8ef8ffad",
+    "selection-incremental.js": "973c60c3904eb40253a71384e13cf44a54b67b8ed24d3fc2dceeb13e8ef8ffad",
+    "selection-all.js": "973c60c3904eb40253a71384e13cf44a54b67b8ed24d3fc2dceeb13e8ef8ffad",
+    "context-plain.js": "bbaa9062abba2c94314e79d6375f18cd7877d7d42a437138dfc18b1cc071c81f",
+    "context-compiler.js": "2f76d33b518fbec4650abac5effae32db57f051736e1431e21608b363228783c",
+    "context-selectors.js": "84669e0f74d3fc81c015242d3860de2fc1f1322861c4cf57739f4ed184a95560",
+    "context-all.js": "12f51132d22b10d496ff2e0e3b8f3d33983f446042a4933262d486bef5bba724",
+    "store-plain.js": "209073e5ce5dfbed9726543ce5a4e3f1a2aced79b43bfd5b3076e2893edc6cdd",
+    "store-compiler.js": "12c0f6398c51176b5eaf8391fd95b42699af3bbfc934a0dcf03784da5c3d944b",
+    "store-selectors.js": "28a91011c79cb261ba1df05d0462be20e4cd5c3f6faeb2b2423e86b2da4e5071",
+    "store-all.js": "8d821463ffd2ce90042203b4b483565264c27b4b03bfc309662ebe198fd201da"
+  }
+}

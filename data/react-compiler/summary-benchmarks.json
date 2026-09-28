@@ -1,0 +1,520 @@
+{
+  "source": "react/.worktrees/inline-blocks/compiler/apps/todomvc-benchmark/results/2026-09-24T04-43-17-457Z.json",
+  "date": "2026-09-24T04:43:17.458Z",
+  "browser": "153.0.8010.12",
+  "iterations": 10,
+  "warmup": 2,
+  "minimumImprovementOverCompiler": 1.5,
+  "variants": {
+    "plain": "local/no-compiler",
+    "compiler": "local/compiler",
+    "all": "local/map-inlining-all"
+  },
+  "results": [
+    {
+      "step": "minimal-add-2000/add-2000",
+      "label": "Minimal list · add 2,000",
+      "medians": {
+        "plain": 1133.5499999523163,
+        "compiler": 475.34999990463257,
+        "all": 110.04999995231628
+      },
+      "shortLabel": "List · add 2k"
+    },
+    {
+      "step": "todomvc-100/add-100",
+      "label": "todomvc 100 · add 100",
+      "medians": {
+        "plain": 43.25000023841858,
+        "compiler": 34.85000014305115,
+        "all": 34.99999976158142
+      }
+    },
+    {
+      "step": "todomvc-100/complete-each",
+      "label": "todomvc 100 · complete each",
+      "medians": {
+        "plain": 28.049999952316284,
+        "compiler": 13.850000143051147,
+        "all": 14.050000190734863
+      }
+    },
+    {
+      "step": "todomvc-100/delete-each",
+      "label": "todomvc 100 · delete each",
+      "medians": {
+        "plain": 15.399999856948853,
+        "compiler": 12.5,
+        "all": 12.849999904632568
+      }
+    },
+    {
+      "step": "add-1000/add-1000",
+      "label": "TodoMVC · add 1,000",
+      "medians": {
+        "plain": 982.5499999523163,
+        "compiler": 203.40000009536743,
+        "all": 109.54999995231628
+      },
+      "shortLabel": "Todo · add 1k"
+    },
+    {
+      "step": "toggle-200-of-1000/toggle-200",
+      "label": "TodoMVC · toggle 200 of 1,000",
+      "medians": {
+        "plain": 385.5,
+        "compiler": 67.59999990463257,
+        "all": 25.84999990463257
+      },
+      "shortLabel": "Todo · toggle 200"
+    },
+    {
+      "step": "toggle-all-1000/toggle-all-x20",
+      "label": "TodoMVC · toggle all ×20",
+      "medians": {
+        "plain": 50.40000009536743,
+        "compiler": 42.25,
+        "all": 24
+      }
+    },
+    {
+      "step": "filter-cycle-1000/filter-cycle-x10",
+      "label": "TodoMVC · filter cycle ×10",
+      "medians": {
+        "plain": 97.75,
+        "compiler": 78.44999980926514,
+        "all": 52.19999980926514
+      }
+    },
+    {
+      "step": "edit-one-of-1000/edit-type-save",
+      "label": "TodoMVC · edit one",
+      "medians": {
+        "plain": 14.599999904632568,
+        "compiler": 11.599999904632568,
+        "all": 8.200000047683716
+      }
+    },
+    {
+      "step": "clear-completed-1000/clear-completed",
+      "label": "TodoMVC · clear completed",
+      "medians": {
+        "plain": 9.59999966621399,
+        "compiler": 5.549999952316284,
+        "all": 10.549999713897705
+      }
+    },
+    {
+      "step": "rows-create-1k/create-1k",
+      "label": "Rows · create 1,000",
+      "medians": {
+        "plain": 30,
+        "compiler": 30.799999713897705,
+        "all": 24.100000143051147
+      }
+    },
+    {
+      "step": "rows-replace-1k/replace-1k-x5",
+      "label": "Rows · replace 1,000 ×5",
+      "medians": {
+        "plain": 69.54999995231628,
+        "compiler": 70.5,
+        "all": 38.40000009536743
+      }
+    },
+    {
+      "step": "rows-partial-update/update-every-10th-x10",
+      "label": "Rows · update every 10th ×10",
+      "medians": {
+        "plain": 28.59999990463257,
+        "compiler": 14.050000190734863,
+        "all": 6.599999904632568
+      },
+      "shortLabel": "Rows · partial update"
+    },
+    {
+      "step": "rows-select/select-x20",
+      "label": "Rows · select ×20",
+      "medians": {
+        "plain": 45.450000047683716,
+        "compiler": 12.250000238418579,
+        "all": 2.8499999046325684
+      },
+      "shortLabel": "Rows · select"
+    },
+    {
+      "step": "rows-swap/swap-x10",
+      "label": "Rows · swap ×10",
+      "medians": {
+        "plain": 68.04999995231628,
+        "compiler": 46.299999952316284,
+        "all": 6.600000381469727
+      },
+      "shortLabel": "Rows · swap"
+    },
+    {
+      "step": "rows-remove/remove-x10",
+      "label": "Rows · remove ×10",
+      "medians": {
+        "plain": 32.64999985694885,
+        "compiler": 14.099999904632568,
+        "all": 10.299999713897705
+      }
+    },
+    {
+      "step": "rows-create-10k/create-10k",
+      "label": "Rows · create 10,000",
+      "medians": {
+        "plain": 396.39999985694885,
+        "compiler": 397.0499999523163,
+        "all": 226.09999990463257
+      }
+    },
+    {
+      "step": "rows-append-1k/append-1k",
+      "label": "Rows · append 1,000",
+      "medians": {
+        "plain": 30.75,
+        "compiler": 32.69999980926514,
+        "all": 31.59999990463257
+      }
+    },
+    {
+      "step": "rows-clear-1k/clear-1k",
+      "label": "Rows · clear 1,000",
+      "medians": {
+        "plain": 4.900000095367432,
+        "compiler": 4.849999904632568,
+        "all": 2.549999952316284
+      }
+    },
+    {
+      "step": "board-context/select-card/select-x20",
+      "label": "Board · Context · select card",
+      "medians": {
+        "plain": 73.45000004768372,
+        "compiler": 22.90000009536743,
+        "all": 13.350000143051147
+      },
+      "shortLabel": "Context · select"
+    },
+    {
+      "step": "board-context/notifications/notifications-x50",
+      "label": "Board · Context · notifications",
+      "medians": {
+        "plain": 155,
+        "compiler": 36.85000014305115,
+        "all": 15.049999952316284
+      },
+      "shortLabel": "Context · notify"
+    },
+    {
+      "step": "board-context/presence/presence-x50",
+      "label": "Board · Context · presence",
+      "medians": {
+        "plain": 154.849999666214,
+        "compiler": 38.05000019073486,
+        "all": 16
+      },
+      "shortLabel": "Context · presence"
+    },
+    {
+      "step": "board-context/toggle-theme/theme-x10",
+      "label": "Board · Context · toggle theme",
+      "medians": {
+        "plain": 46.950000047683716,
+        "compiler": 28.200000286102295,
+        "all": 27.59999990463257
+      },
+      "shortLabel": "Context · other"
+    },
+    {
+      "step": "board-context/filter/filter-type-delete",
+      "label": "Board · Context · filter",
+      "medians": {
+        "plain": 74.95000004768372,
+        "compiler": 67.69999980926514,
+        "all": 64.70000004768372
+      },
+      "shortLabel": "Context · other"
+    },
+    {
+      "step": "board-context/star/star-x20",
+      "label": "Board · Context · star",
+      "medians": {
+        "plain": 75.14999985694885,
+        "compiler": 25.15000009536743,
+        "all": 16.15000009536743
+      },
+      "shortLabel": "Context · star"
+    },
+    {
+      "step": "board-context/move-card/move-x20",
+      "label": "Board · Context · move card",
+      "medians": {
+        "plain": 83.69999980926514,
+        "compiler": 36.35000014305115,
+        "all": 28
+      },
+      "shortLabel": "Context · move"
+    },
+    {
+      "step": "board-context/rename/rename-typing-x30",
+      "label": "Board · Context · rename",
+      "medians": {
+        "plain": 97.40000009536743,
+        "compiler": 31.950000047683716,
+        "all": 22.299999713897705
+      },
+      "shortLabel": "Context · rename"
+    },
+    {
+      "step": "board-context/only-mine/only-mine-x10",
+      "label": "Board · Context · only mine",
+      "medians": {
+        "plain": 108.5,
+        "compiler": 108.05000019073486,
+        "all": 96.5
+      },
+      "shortLabel": "Context · other"
+    },
+    {
+      "step": "board-zustand/select-card/select-x20",
+      "label": "Board · Zustand · select card",
+      "medians": {
+        "plain": 131.25,
+        "compiler": 71.54999995231628,
+        "all": 14
+      },
+      "shortLabel": "Zustand · select"
+    },
+    {
+      "step": "board-zustand/notifications/notifications-x50",
+      "label": "Board · Zustand · notifications",
+      "medians": {
+        "plain": 17,
+        "compiler": 16.549999952316284,
+        "all": 14.5
+      },
+      "shortLabel": "Zustand · notify"
+    },
+    {
+      "step": "board-zustand/presence/presence-x50",
+      "label": "Board · Zustand · presence",
+      "medians": {
+        "plain": 18.09999990463257,
+        "compiler": 17.450000047683716,
+        "all": 15.799999713897705
+      },
+      "shortLabel": "Zustand · presence"
+    },
+    {
+      "step": "board-zustand/toggle-theme/theme-x10",
+      "label": "Board · Zustand · toggle theme",
+      "medians": {
+        "plain": 78.45000004768372,
+        "compiler": 52.90000009536743,
+        "all": 53.09999990463257
+      },
+      "shortLabel": "Zustand · other"
+    },
+    {
+      "step": "board-zustand/filter/filter-type-delete",
+      "label": "Board · Zustand · filter",
+      "medians": {
+        "plain": 94.59999990463257,
+        "compiler": 81.35000014305115,
+        "all": 77.15000009536743
+      },
+      "shortLabel": "Zustand · other"
+    },
+    {
+      "step": "board-zustand/star/star-x20",
+      "label": "Board · Zustand · star",
+      "medians": {
+        "plain": 123.10000014305115,
+        "compiler": 71.19999980926514,
+        "all": 16.149999856948853
+      },
+      "shortLabel": "Zustand · star"
+    },
+    {
+      "step": "board-zustand/move-card/move-x20",
+      "label": "Board · Zustand · move card",
+      "medians": {
+        "plain": 140.95000004768372,
+        "compiler": 79.29999995231628,
+        "all": 28.450000047683716
+      },
+      "shortLabel": "Zustand · move"
+    },
+    {
+      "step": "board-zustand/rename/rename-typing-x30",
+      "label": "Board · Zustand · rename",
+      "medians": {
+        "plain": 187.04999995231628,
+        "compiler": 88.20000004768372,
+        "all": 22.59999990463257
+      },
+      "shortLabel": "Zustand · rename"
+    },
+    {
+      "step": "board-zustand/only-mine/only-mine-x10",
+      "label": "Board · Zustand · only mine",
+      "medians": {
+        "plain": 132.40000009536743,
+        "compiler": 130.70000004768372,
+        "all": 124.29999995231628
+      },
+      "shortLabel": "Zustand · other"
+    },
+    {
+      "step": "board-redux/select-card/select-x20",
+      "label": "Board · Redux · select card",
+      "medians": {
+        "plain": 17.09999990463257,
+        "compiler": 17.600000143051147,
+        "all": 17.549999952316284
+      },
+      "shortLabel": "Redux · select"
+    },
+    {
+      "step": "board-redux/notifications/notifications-x50",
+      "label": "Board · Redux · notifications",
+      "medians": {
+        "plain": 21.950000047683716,
+        "compiler": 22.899999618530273,
+        "all": 22.149999856948853
+      },
+      "shortLabel": "Redux · notify"
+    },
+    {
+      "step": "board-redux/presence/presence-x50",
+      "label": "Board · Redux · presence",
+      "medians": {
+        "plain": 24.84999990463257,
+        "compiler": 25.200000047683716,
+        "all": 24.950000047683716
+      },
+      "shortLabel": "Redux · presence"
+    },
+    {
+      "step": "board-redux/toggle-theme/theme-x10",
+      "label": "Board · Redux · toggle theme",
+      "medians": {
+        "plain": 112.2000002861023,
+        "compiler": 75.25,
+        "all": 75.40000009536743
+      },
+      "shortLabel": "Redux · other"
+    },
+    {
+      "step": "board-redux/filter/filter-type-delete",
+      "label": "Board · Redux · filter",
+      "medians": {
+        "plain": 113.59999990463257,
+        "compiler": 96.75,
+        "all": 88.85000014305115
+      },
+      "shortLabel": "Redux · other"
+    },
+    {
+      "step": "board-redux/star/star-x20",
+      "label": "Board · Redux · star",
+      "medians": {
+        "plain": 19.09999990463257,
+        "compiler": 19.50000023841858,
+        "all": 19
+      },
+      "shortLabel": "Redux · star"
+    },
+    {
+      "step": "board-redux/move-card/move-x20",
+      "label": "Board · Redux · move card",
+      "medians": {
+        "plain": 225.84999990463257,
+        "compiler": 129,
+        "all": 47.19999980926514
+      },
+      "shortLabel": "Redux · move"
+    },
+    {
+      "step": "board-redux/rename/rename-typing-x30",
+      "label": "Board · Redux · rename",
+      "medians": {
+        "plain": 297.65000009536743,
+        "compiler": 175.10000014305115,
+        "all": 44.450000047683716
+      },
+      "shortLabel": "Redux · rename"
+    },
+    {
+      "step": "board-redux/only-mine/only-mine-x10",
+      "label": "Board · Redux · only mine",
+      "medians": {
+        "plain": 145.14999985694885,
+        "compiler": 149.95000004768372,
+        "all": 138.60000014305115
+      },
+      "shortLabel": "Redux · other"
+    },
+    {
+      "step": "docs/search/search-type-delete",
+      "label": "docs · search · search type delete",
+      "medians": {
+        "plain": 32.450000047683716,
+        "compiler": 8.899999856948853,
+        "all": 10.950000047683716
+      }
+    },
+    {
+      "step": "docs/theme/theme-x10",
+      "label": "docs · theme · theme x10",
+      "medians": {
+        "plain": 25.90000009536743,
+        "compiler": 5.1000001430511475,
+        "all": 5.950000047683716
+      }
+    },
+    {
+      "step": "docs/copy/copy-x20-feedback",
+      "label": "docs · copy · copy x20 feedback",
+      "medians": {
+        "plain": 6.25,
+        "compiler": 4.799999952316284,
+        "all": 4.950000047683716
+      }
+    }
+  ],
+  "minimumOverallSpeedup": 4,
+  "maxResults": 13,
+  "featured": [
+    {
+      "fixture": "selection",
+      "label": "Select a row · 200 selections across 2,000 rows",
+      "shortLabel": "Select · 200",
+      "rounds": 3
+    },
+    {
+      "fixture": "append",
+      "label": "Append rows · 2,000 added one at a time",
+      "shortLabel": "Append · 2k",
+      "rounds": 3
+    },
+    {
+      "fixture": "context",
+      "label": "Update context",
+      "shortLabel": "Context update",
+      "rounds": 3
+    },
+    {
+      "fixture": "store",
+      "label": "Update a store",
+      "shortLabel": "Store update",
+      "rounds": 3
+    }
+  ],
+  "excludeSteps": [
+    "minimal-add-2000/add-2000"
+  ]
+}

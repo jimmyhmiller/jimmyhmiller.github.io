@@ -1,0 +1,468 @@
+import { GlobalLayout } from "../utils.mjs";
+import { CompilerArticleProvider, CompilerSourcePair, CompilerCode, CompilerTiming, CompilerSummary } from "../components/react-compiler/CompilerArticle";
+import Head from "next/head";
+
+export const description = "I prototyped a number of optimizations as a way to learn more about the React Compiler and got some significant improvements.";
+
+<Head>
+  <link rel="canonical" href="https://jimmyhmiller.github.io/what-does-the-react-compiler-even-do" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Jimmy Miller" />
+  <meta property="og:url" content="https://jimmyhmiller.github.io/what-does-the-react-compiler-even-do" />
+  <meta property="og:title" content="Can we Make React Faster using the React Compiler?" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Can we Make React Faster using the React Compiler?" />
+  {description && <>
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:description" content={description} />
+  </>}
+</Head>
+
+# Can we Make React Faster using the React Compiler?
+
+As you can see from the graph below, the answer is yes. We can indeed make React a lot faster using React Compiler. But also, as I hope you can see from the graph, these speedups are purely prototypes. In this article, you won't find big proposals for the right way to speed up React. This is instead a project I started to learn more about the React Compiler. Time and time again I've found that if I want to learn something well, the best way for me to do that is to explain it to others. That is what this article is. I will walk through what React Compiler does, some optimizations I tried out, and hopefully get you as excited as I am for what React Compiler can ultimately do for React.
+
+<CompilerSummary />
+
+## The Output
+
+I have never found starting at `main` to be helpful. I know some people like to understand every part of something to understand the whole, but that just doesn't work for me. In fact, I've found over and over again that the way I learn things is always with certain gaps. My way of learning doesn't tend to give me the best ways of talking with others about it.
+
+ For example, when I read books, I never know character names. I can read whole books, whole series, tell you all about what I read, what the characters did, but not tell you their names. I just don't pronounce them in my head. Even before the AI era, I could never tell you where something is in the file structure of a codebase. I could never remember the names of structs or classes. I could functionally work through the code. I had a good mental grasp of where to make changes, what to grep for. But it was never put into words I could easily communicate to others.
+
+My [way of learning a codebase](https://jimmyhmiller.com/learn-codebase-visualizer) always starts by exploring the output. Not the internals. The internals will come as I need to solve a problem; until I see the output, I don't know what the problem might be.
+
+So let's start with our easiest input that will show us some meaningful output:
+
+<CompilerSourcePair>
+
+```jsx
+export function Thing() {
+  return <button onClick={() => console.log("click") } />
+}
+
+function clickHandler() {
+  console.log("other click")
+}
+```
+
+```jsx
+import { c as _c } from "react/compiler-runtime";
+export function Thing() {
+  const $ = _c(1);
+  let t0;
+  if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
+    t0 = <button onClick={_temp} />;
+    $[0] = t0;
+  } else {
+    t0 = $[0];
+  }
+  return t0;
+}
+function _temp() {
+  return console.log("click");
+}
+```
+
+</CompilerSourcePair>
+
+Here we encounter code that is a hallmark of compiler output, things that have no meaningful names and feel way more complicated than the code ought to feel. These kinds of outputs are almost always because this verbose style lets us do something more optimal. In this case, we can split the cases in two: first, the initialization phase, and second, the already constructed phase. So let's walk through what this code actually mechanically does.
+
+_c is a function that lets us get cache slots for our component. So in this case, we just need one slot. The other thing to notice is the "outlining" (opposite of inlining) of the function, turning it from an inline handler to a top-level function. `Symbol.for("react.memo_cache_sentinel"))` is basically the zero value of the cache. The first `if` just asks if the cache slot is empty. If it is, we are going to construct our jsx object (i.e., call the jsx function), get its return value, and save it. Otherwise, return what is in the cache.
+
+If you are used to React code, this can feel a bit like overkill. It would be like writing memo for everything.
+
+```jsx
+import { useMemo } from "react";
+
+export function Thing() {
+  const memod = useMemo(() => <button />, []);
+  return memod;
+}
+```
+
+But as silly as this may seem, it gives a more optimal pattern. One where, at scale, we see performance improvements. And if you are a compiler, why not write the most optimal thing?
+
+## Limitations of Hooks the Compiler Gets Around
+
+Let's keep exploring more optimizations before we dive into our own.
+
+<CompilerSourcePair>
+
+```jsx
+function Thing({ thing, stuff }) {
+  if (thing === "thing") {
+    return "my thing";
+  }
+  return <button>{stuff}</button>
+}
+
+```
+
+```jsx
+import { c as _c } from "react/compiler-runtime";
+export function Thing(t0) {
+  const $ = _c(2);
+  const { thing, stuff } = t0;
+  if (thing === "thing") {
+    return "my thing";
+  }
+  let t1;
+  if ($[0] !== stuff) {
+    t1 = <button>{stuff}</button>;
+    $[0] = stuff;
+    $[1] = t1;
+  } else {
+    t1 = $[1];
+  }
+  return t1;
+}
+```
+
+</CompilerSourcePair>
+
+If you are familiar with the [rules of hooks](https://react.dev/reference/rules/rules-of-hooks) you might see that this kind of code doesn't allow for useMemo easily. We can't put it after the first if, because this fires conditionally. If we put it before the if, we are making something that is unnecessary for the early return case. But this much lower level api for React gives more flexibility in getting these exact optimizations. But this kind of code is annoying to read. It isn't surprising that this isn't the interface chosen by React to expose to end-users. But it makes a fantastic compile target.
+
+## Mutate Together
+
+Let's look at one final interesting output.
+
+<CompilerSourcePair>
+
+
+```jsx
+function Toolbar({ user, canEdit }) {
+  const actions = getActions(user);
+
+  if (canEdit) {
+    actions.push("Edit");
+  }
+
+  return <Menu actions={actions} />;
+}
+```
+
+```jsx
+import { c as _c } from "react/compiler-runtime";
+function Toolbar(t0) {
+  const $ = _c(5);
+  const { user, canEdit } = t0;
+  let actions;
+  if ($[0] !== canEdit || $[1] !== user) {
+    actions = getActions(user);
+
+    if (canEdit) {
+      actions.push("Edit");
+    }
+    $[0] = canEdit;
+    $[1] = user;
+    $[2] = actions;
+  } else {
+    actions = $[2];
+  }
+  let t1;
+  if ($[3] !== actions) {
+    t1 = <Menu actions={actions} />;
+    $[3] = actions;
+    $[4] = t1;
+  } else {
+    t1 = $[4];
+  }
+  return t1;
+}
+
+```
+
+</CompilerSourcePair>
+
+The React Compiler hasn't simply split every single variable into distinct potential cases. It knows which values mutate together. It understands the relationship implicit in the code between user, canEdit, and actions. Because it can determine what values change together, it can write more optimal code for us.
+
+## How does it do all of this?
+
+If you aren't familiar with optimizing compilers, I'm not sure how much of this will make sense. But at the most basic level, react compiler turns code into a format that is very easy to do analysis on called SSA or static single assignment. Once it has it in this format, it does a ton of different passes that transform this representation of the code into one with more information, or moves bits of code around until we have something where we know all the information we need to know. Here is the simplest of those passes.
+
+```rust
+pub fn optimize_props_method_calls(func: &mut HirFunction, env: &Environment) {
+    for (_block_id, block) in &func.body.blocks {
+        let instruction_ids: Vec<_> = block.instructions.clone();
+        for instr_id in instruction_ids {
+            let instr = &mut func.instructions[instr_id.0 as usize];
+            let should_replace = matches!(
+                &instr.value,
+                InstructionValue::MethodCall { receiver, .. }
+                    if {
+                        let identifier = &env.identifiers[receiver.identifier.0 as usize];
+                        let ty = &env.types[identifier.type_.0 as usize];
+                        is_props_type(ty)
+                    }
+            );
+            if should_replace {
+                // Take the old value out, replacing with a temporary.
+                // The if-let is guaranteed to match since we checked above.
+                let old =
+                    std::mem::replace(&mut instr.value, InstructionValue::Debugger { loc: None });
+                match old {
+                    InstructionValue::MethodCall {
+                        property,
+                        args,
+                        loc,
+                        ..
+                    } => {
+                        instr.value = InstructionValue::CallExpression {
+                            callee: property,
+                            args,
+                            loc,
+                        };
+                    }
+                    _ => unreachable!(),
+                }
+            }
+        }
+    }
+}
+```
+
+This code looks more complicated than its actual behavior. All it does is take code that looks like this `props.method_call()` and turns it into 
+
+```tsx
+let f = props.method_call;
+f()
+```
+
+Why? Because doing these kinds of simplifications is useful for making transformations simpler. We want to normalize code as much as we can so that it is easier to apply transformations to it. In the actual representation of the code, you can see this in this diff.
+
+```diff
+@@ -1,10 +1,10 @@
+ function Component
+ Component(<unknown> props$10:TObject<BuiltInProps>): <unknown> $9:TObject<BuiltInJsx>
+ bb0 (block):
+   [1] <unknown> $11:TObject<BuiltInProps> = LoadLocal <unknown> props$10:TObject<BuiltInProps>
+   [2] <unknown> $12:TFunction = PropertyLoad <unknown> $11:TObject<BuiltInProps>.method_call
+-  [3] <unknown> $13 = MethodCall <unknown> $11:TObject<BuiltInProps>.<unknown> $12:TFunction()
++  [3] <unknown> $13 = Call <unknown> $12:TFunction()
+   [4] <unknown> $15 = StoreLocal Const <unknown> message$14 = <unknown> $13
+   [5] <unknown> $16 = LoadLocal <unknown> message$14
+   [6] <unknown> $17:TObject<BuiltInJsx> = JSX <h1>{<unknown> $16}</h1>
+   [7] Return Explicit <unknown> $17:TObject<BuiltInJsx>
+
+```
+
+Each pass will make these kinds of changes so we can learn more about the program and do the transformations we want to do. Each pass either 1) simplifies the language, 2) infers more information about it, or 3) transforms it to make it more optimal. So after seeing what the React compiler already does for certain cases, are there clear optimizations left on the table?
+
+## Can We Make React Faster?
+
+The answer is yes. Plain and simple, the React Compiler already does optimizations that can make React faster. But that isn't the exciting answer. I want to make React faster myself. But I want to be very clear about one thing. I am concerned with proof of concepts for my own understanding. I am not at all worried (here) about things being production-ready. Optimizations that make certain microbenchmarks faster aren't always the optimizations we want at scale. I am not at all claiming React should adopt these optimizations. I am just exploring the React compiler through them.
+
+So with that out of the way, how can we make things faster? Well, I have a few ideas. Let's play with them and see where they lead us.
+
+### Inlining
+
+Inlining is one of the simplest and oldest tricks in compiler optimization techniques. If you have two functions A and B, and A calls B, instead of making a function call, you can copy the body of B into A. So, for example:
+
+```typescript
+function A() {
+  let result = B();
+  if (result == 1) {
+    return "yay!"
+  }
+  return "no :("
+}
+
+function B() {
+  return 1;
+}
+```
+
+If we copy B into A, we have now made our job easier. Rather than having to go across functions and track every caller, etc., we can do local analysis and simple constant propagation and simplify our code greatly.
+
+```typescript
+function A() {
+  let result = 1;
+  if (result == 1) {
+    return "yay!"
+  }
+  return "no :("
+}
+// do some basic constant propagation and the code greatly simplifies
+// ...
+function A() {
+  return "yay!"
+}
+```
+
+Where we've combined inlining with other optimizations to truly get the benefit. What we haven't discovered yet is whether this is something we need to do for React Compiler. Would inlining all by itself help? Or is it the start of a pipeline for which we need to add more? So we have two questions to find the answers to
+
+1. Can we use the React Compiler to do the inlining in a safe manner? 
+2. Does it gain us anything?
+
+### Inline React Components
+
+To explore what impact we will have, we need a working example.
+
+```tsx preview=inline-components blocks-preview=block-inline-components stack-preview=optimization-stack scenarios=final benchmark=single-row
+import {useRef, useState} from 'react';
+
+const makeRows = start => [{id: start}];
+
+function Row({item}) {
+  return (
+    <li>
+      <span>{item.id}</span>
+      <strong>Item {item.id}</strong>
+    </li>
+  );
+}
+
+function List({items}) {
+  return <ul>{items.map(item => <Row key={item.id} item={item} />)}</ul>;
+}
+
+function App() {
+  const [items, setItems] = useState([]);
+  const addButtonRef = useRef(null);
+
+  async function add2000Rows() {
+    const button = addButtonRef.current;
+    if (button === null) return;
+    for (let i = 0; i < 2000; i++) {
+      button.click();
+      await null;
+    }
+  }
+
+  return (
+    <main>
+      <button ref={addButtonRef} onClick={
+          () => setItems(items => [...items, ...makeRows(items.length)])}>
+        Add one row
+      </button>
+      <button id="run-2000" onClick={add2000Rows}>
+        Add 2,000 rows one at a time
+      </button>
+      <List items={items} />
+    </main>
+  );
+}
+```
+
+Here we have a simple list of items and the ability to add 2000 rows. When you run this with and without the compiler, you can see how the compiler already makes these quite a bit faster. (Exact numbers depend on your machine, browser, etc.) So we have our baseline and need to do our inlining. But what do we inline? Everything? What are valid inlining targets to inline into?
+
+Luckily for us, this is a proof of concept for a blog post, not production-ready software. So we don't have to be exact here. We have to just do something somewhat reasonable. For the implementation in question, we did a number of different rules that all involve, essentially, making sure this is a simple component (no self-reference, no redefinition, etc.). But we are going to ignore the exact details here because they are probably not quite right. What I instead want to focus on is the simplest possible case. 1) a "stateless" component inlined into 2) a direct call site.
+
+What do I mean by this? Consider `List` above. List does not have any state of its own. It is called in jsx just by a direct tag. So List is a great candidate for inlining. What about Row? Well, that is a bit tricky. The map and callback here could complicate things. But for now, let's just assume we are going to inline that as well. So if we do that, and run it through our compiler, what do we get?
+
+<CompilerCode id="inline-code" />
+
+I don't expect most of you to read this compiler output. So let's get to the results. Here you can run the without compiler, with compiler, and with inlining results.
+
+<CompilerTiming id="inlining" />
+
+And as you can see, we've made things way worse. This is, in my opinion, one of the beautiful things about inlining. Inlining is a precursor for future things. Sometimes it can make things faster by itself but often times it make things worse. In this case, it made things worse because now we don't get a cache for each row. Before we inlined the rows, they'd have a cache themselves, and we wouldn't rerender the row body unless that cache was dirty.
+
+### Making Inlined Components Faster (Blocks)
+
+One of my favorite things about optimizations is that there is so much prior art; you rarely ever have to invent things yourself. For this first fix, I took a page out of the million js book and implemented [a block DOM setup](https://old.million.dev/blog/virtual-dom) using the React Compiler. I won't go over the details of the optimization, as those have been written about elsewhere. But the key is that we split things between the static and dynamic parts of the graph. We are then able to isolate things into blocks, and the big trick is that we don't do graph diffing, but state diffing and update the parts that need to change.
+
+<CompilerTiming id="blocks" />
+
+As you can see, this leads to quite a big speedup, and now you can finally see why inlining helps rather than hurts! Once we are doing this block grouping, the more we inline things, the larger the static boundaries get and the easier it is for us to optimize things.
+
+### List Memoization
+
+Adding in blocks gives us back more performance than we lost from inlining. But it doesn't actually tackle the problem that made the inline slower. We may have blocks that can rerender themselves in a nice optimal way, but we have still eliminated the nice cache boundary that Row served. Rather than just relying on our other optimizations to optimize this downside away, we can tackle it directly. For each of the elements in our list, we can add our own cache. Now in the map, we will only rerender a row if it has changed. This might seem like we are only undoing what we caused, but the numbers show otherwise.
+
+<CompilerTiming id="lists" />
+
+Even without inlining, list memoizing gives us faster times on this benchmark. Does that mean we should do it? No, benchmarks like this are specifically targeted to find the nice case. We also have to think about other tradeoffs like memory. But it is still amazing to see that at least for this one workload, we can still make things faster.
+
+### Optimizing List Selection
+
+But adding lists of rows isn't the only operation we are going to be doing. Consider the ability to select a row in our list.
+
+If we think about how this renders in React, it is not super efficient. Each of our elements depends on this selectedId, so they need to re-render. But only one of them will actually change. So we have this big wasted work. How could we do better? Well, as with many optimizations, we can make a trade-off using memory. Intuitively, we all know which rows have to change. The ones whose id matched the previous value and the ones that match the current value. If we just record this information, this now becomes trivial to compute and change only the rows that changed.
+
+This is not a new invention. If you are familiar with [Solid's createSelector](https://docs.solidjs.com/reference/secondary-primitives/create-selector), this should be very familiar. We are doing the exact same thing here, but just automatically inferring it. The beautiful thing about this setup is it generalizes not just to a single selection but to many as well. Again, do I know this is a good default? Of course not. We are showing a speedup on one workload. But it would be really neat to have proper heuristics around this and guarantee that we only apply it where it is a performance improvement.
+
+<CompilerTiming id="selection" />
+
+### Optimizing Context
+
+This next optimization has quite a bit of history. It ultimately [didn't get included as part of React.](https://github.com/react/react/pull/31806). I add it in part to be clear that finding an immediate win on a benchmark is not a sufficient reason for always shpping an optimization. What works on a microscale can actually be worse in production. But why should this stop us from exploring and understanding it? Maybe one day we will find that our workloads have changed. Or we will realize a better way to implement it that gets rid of the downsides we found.
+
+In React, one way to have global (or semi-global) state is to use Context. But Context can cause way more re-renders than you expect. Imagine we had something like this.
+
+```tsx
+const ChatContext = createContext({currentUserId, typingUsers, unreadCount});
+
+function Message({message}) {
+  const chat = useContext(ChatContext);
+  const isMine = message.authorId === chat.currentUserId;
+  return <li className={isMine ? 'mine' : ''}>{message.text}</li>;
+}
+
+export function MessageList({messages}) {
+  return <ul>{messages.map(m => <Message key={m.id} message={m} />)}</ul>;
+}
+```
+
+Now, we've made a massive amount of rerenders. Every time a user starts typing, we need to invalidate all these messages and attempt to rerender because they depend on the full context, even though they actually only read currentUserId. Using our compiler, we can figure out this relationship. And as you can see from the example below, we can massively reduce the number of rerenders we make. 
+
+<CompilerTiming id="context" />
+
+### Speeding up External Stores
+
+It's amazing how many different state libraries exist for React. The reason we have so many is that they are coupling of two things: 1) opinions about how to organize your state and the abstractions for accessing it, and 2) tradeoffs around performance of state updates. In the ideal world of the "sufficiently smart compiler", the latter is not something you ever need to worry about. While almost certainly not achievable, it would be great to get to that point. 
+
+Consider this code:
+
+```tsx
+import {create} from 'zustand';
+
+const useCardStore = create(set => ({
+  selectedId: null,
+  select: id => set({selectedId: id}),
+}));
+
+function Card({id}) {
+  const selectedId = useCardStore(state => state.selectedId);
+  const select = useCardStore(state => state.select);
+  const isSelected = id === selectedId;
+
+  return (
+    <li
+      className={isSelected ? 'card selected' : 'card'}
+      onClick={() => select(id)}>
+      Card {id}
+    </li>
+  );
+}
+
+```
+
+This code is actually a suboptimal usage of Zustand. With a very small change, I've seen >3x improvement in performance for this code. What is this change?
+
+```tsx
+const isSelected = useCardStore(state => state.selectedId === id);
+const select = useCardStore(state => state.select);
+```
+
+By simply moving the === inside the selector, we now rerender way less frequently. This is the kind of surprising difference that people often don't think about. But we can solve this. This is the exact kind of analysis React Compiler excels at. There is no reason we can't compile this into more efficient calls. What are the correct abstractions for all of this? What are the best primitives? That is where the difficult work lies.
+
+<CompilerTiming id="store" />
+
+## Other Optimizations
+
+There are so many more optimizations we can explore. Below, is the graph we starteed with, where you can see the before and after on a number of workloads that include all the optimizations I prototyped for this blog post. These include things like optimizing store updates, incrementally rendering lists, and skipping selector reruns when we know they are safe.
+
+These were all optimizations that I could prototype in this short amount of time for writing the blog post, but we can certainly take this further. We didn't at all focus on making server-side rendering faster. We didn't focus on making the server-to-client communication more efficient. We didn't look at minimizing time spent hydrating. We didn't consider more advanced lints or cross-component optimizations.
+
+Once you have a compiler that has as much information as React Compiler, you can do quite a lot. I won't pretend they are all trivial. So much of the work is in the validation rather than the prototyping. Understanding your true workloads, figuring out what the ecosystem as a whole will benefit from, talking with others, and understanding the future plans for the library. But regardless of what path React Compiler takes, I've had a great time exploring what kinds of things it is capable of.
+
+
+<CompilerSummary />
+
+
+export default function ReactCompilerPage({ children }) {
+  return <GlobalLayout title={"Can we Make React Faster using the React Compiler?"}><CompilerArticleProvider>{children}</CompilerArticleProvider></GlobalLayout>;
+}

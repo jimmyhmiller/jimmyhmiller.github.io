@@ -805,9 +805,9 @@ a.intro-now-row:hover { padding-left: 8px; }
   font-family: var(--serif);
   font-size: 17px;
   color: var(--ink);
-  transition: padding-left 0.15s ease;
+  transition: transform 0.15s ease;
 }
-.posts-year-row:hover { padding-left: 6px; }
+.posts-year-row:hover { transform: translateX(6px); }
 
 @media (prefers-color-scheme: light) {
 .posts-year-row {

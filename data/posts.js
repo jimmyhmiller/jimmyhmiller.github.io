@@ -43,6 +43,7 @@ export const postsForBeginners = [
 // posts list too. The dedup in pages/index.js's RSS shim keeps the feed
 // from picking them up twice.
 export const posts = [
+  { text: "Can we Make React Faster using the React Compiler?", href: "/what-does-the-react-compiler-even-do", mdx: true, date: "2026-09-27" },
   { text: "We Should be Able to Change our Languages",             href: "/change-our-languages",                 mdx: true, date: "2026-09-17" },
   { text: "The Chasm: The Shape of Unfinished AI Codebases",      href: "/shape-of-unfinished-ai-codebases",     mdx: true, date: "2026-09-07" },
   { text: "Legibility is Ruining You",                            href: "/legibility-is-ruining-you",            mdx: true, date: "2026-04-02" },
