@@ -1,0 +1,57 @@
+import { GlobalLayout } from "../utils.mjs";
+import Head from 'next/head';
+
+<Head>
+    <meta
+       name="og:description"
+       content="TODO"
+     />
+</Head>
+
+# Writing isn’t Thinking
+
+> Writing is thinking. To write well is to think clearly. That’s why it’s so hard. - David McCullough.
+
+I can't think of a single more destructive idea for my own writing than the idea that writing is thinking. Well, other than "formal writing" and the five paragraph essay. In many ways, I saw writing as thinking as the antidote to the kind of writing I had been taught in school. And when I set down to write, I could feel its power. I gained new insights. I had more ways in which to bolster my argument. What I produced was abundantly clear. It was well reasoned. It was precise and correct. 
+
+But it was incredibly annoying to read. It turns out, my thoughts aren't all that fun. What I think about when I'm writing isn't what others want to read. It was only when I realized nobody cares about my thoughts that I finally wrote things people enjoyed.
+
+## New Thoughts
+
+Half-truths are the most enticing falsehoods. Writing involves a kind of thinking that is quite dissimilar to other activities. When I sit down to write, I can feel this pull to think in a different way. The process of putting your thoughts into writing requires a linearity that thoughts rarely have. Deciding each word can be difficult. Writing transition sentences, mixing up the length of your sentences, deciding on tone and tense, considering when to follow grammatical conventions and when to ignore them. All of these things require thought we don't ordinarily think of in our own head.
+
+But this can't be what is meant by writing is thinking. This would instead be that writing requires thought. No doubt it does as much as any endeavor. What is meant by writing is thinking is put most clearly by Paul Graham in his "Putting Ideas Into Words".
+
+> Half the ideas that end up in an essay will be ones you thought of while you were writing it. Indeed, that's why I write them.
+
+> Once you publish something, the convention is that whatever you wrote was what you thought before you wrote it. These were your ideas, and now you've expressed them. But you know this isn't true. You know that putting your ideas into words changed them. 
+
+Writing is not an act of expression; it is an act of generation (or so the advocates of this view claim). The act of writing is how we come up with the ideas we write down. What an attractive idea. There is nothing I love more than a good thought. Nothing I enjoy more than the feeling of insight when you uncover something you didn't understand before. If this is what writing offers, I ought to devote much more time to it.
+
+### Writing what you think
+
+Armed with this new motivation, I sat down many times to write and found exactly what I was told to expect. As the words came out, I would find new connections, new caveats, new objections that might be raised. What had once felt unclear felt clear. The process was working. I had not read Paul Graham's essay at this point, but it turns out I followed his advice to a T.
+
+> You have to pretend to be a neutral reader who knows nothing of what's in your head, only what you wrote. When he reads what you wrote, does it seem correct? Does it seem complete? If you make an effort, you can read your writing as if you were a complete stranger, and when you do the news is usually bad. It takes me many cycles before I can get an essay past the stranger. But the stranger is rational, so you always can, if you ask him what he needs. If he's not satisfied because you failed to mention x or didn't qualify some sentence sufficiently, then you mention x or add more qualifications. Happy now? It may cost you some nice sentences, but you have to resign yourself to that.
+
+As I read back my own writing, I would see even more qualifications. Even more ways in which my argument was insufficient. I would refine it until every caveat was covered. Every qualification was made. If writing is thinking, this was the clearest, most complete version of my thoughts. You, the reader, would know every little bit of my thought. My writing had captured all of its edges and corners. My reader would know exactly what I thought. But why would they want to read that?
+
+### Writing that isn't my thought
+
+My most popular posts have the largest diff from my own thoughts. My thoughts are tedious. I love the detail of the deep interconnection of ideas. I love endlessly rabbit holing. I love giving caveats, spending time establishing every presumption I have before making my main point. But who wants to read this? No one. Writers who teach that writing is thinking are too good at writing to give advice to others. Communicating in writing is still a skill I struggle with. I do not instinctively know its contours, how to use it to get the effect I want from my readers. How to keep their attention. Writing my thoughts will never achieve that.
+
+This kind of curse affects us all. Have you ever talked to someone who knows how to cook and asked them how they do it? What they tell you will never help you. They don't follow any method; they don't have any tricks. They just throw things together, no recipe. They have an instinctive feel for the time something takes. They know how much salt something needs. They don't burn things despite cooking on way higher heat than you and finish cooking three times faster than you. Watching them is no use either.
+
+I have no doubt that for many great writers, writing is thinking. They have gone past the hurdles of knowing how to string together sentences that aren't awkward to read. They have a good feel for how to compose the structure of an essay, a novel, or whatever it is they write. But telling the rest of us to do this is like telling a beginner cook to just let your feel tell you how much of a spice to add. It is right for you; it isn't helpful. So I will instead offer the frame I wish others had made clear to me.
+
+## What Writing Is
+
+Writing is communication. This is a truism I ignored. I am not talking to the stranger (who is me, every bit as pedantic and annoying). I am instead writing to others each with their own motivations, preconceived ideas, and limited tolerance for what I have to say. My readers are not here for my thoughts. They are here to gain something. Perhaps that something is an article that articulates clearly something they want to share with their coworkers who disagree. Perhaps it is the entertainment of my own suffering. Perhaps it is learning an area of software they didn't know before.
+
+In all of these things, what matters is the way in which I communicate, not how clear my thoughts are. My thoughts are not in my blog. They are in my head. Writing them down does not capture them, no matter how many caveats I give. No matter how many qualifications I make. The more I try to get them out, the more I alienate my readers.
+
+When I sit down to write, the process that works best is not one of generation. I have orders of magnitude more ideas in my head than I will ever get to write down. The process is instead selection, curation, deletion. I don't need to share my thoughts with you. I need to find a way to communicate. I need to remove the extra qualifications; I need to say something incomplete, something where you can fill in the blanks. The stranger knows something. They know lots of things. Remove the caveats. Remove the detail. Your reader can fill it in.
+
+export default function WritingIsntThinking({ children }) {
+  return <GlobalLayout>{children}</GlobalLayout>;
+}

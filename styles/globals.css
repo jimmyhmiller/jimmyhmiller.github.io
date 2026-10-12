@@ -561,93 +561,64 @@ a.intro-now-row:hover { padding-left: 8px; }
 
 /* ─── PODCAST band ──────────────────────────────────────────── */
 .podcast-band {
-  background: var(--bg-paper);
-  color: var(--bg-paper-ink);
-  padding: clamp(80px, 13vh, 140px) var(--gutter);
+  --podcast-bg: #f5faf8;
+  --podcast-ink: #021810;
+  --podcast-link: #009966;
+  background: var(--podcast-bg);
+  color: var(--podcast-ink);
+  padding: clamp(64px, 10vh, 112px) var(--gutter);
   border-bottom: 1px solid var(--rule);
-  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+@media (prefers-color-scheme: dark) {
+  .podcast-band {
+    --podcast-bg: #021810;
+    --podcast-ink: #f5faf8;
+    --podcast-link: #00cc88;
+  }
 }
 .podcast-band-inner {
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   gap: clamp(40px, 6vw, 90px);
   align-items: center;
 }
-@media (max-width: 760px) {
-  .podcast-band-inner { grid-template-columns: 1fr; }
-}
-.podcast-tag {
-  font-family: var(--mono);
-  font-size: 11.5px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--c-green);
-  margin-bottom: 22px;
-}
-.podcast-tag::before { content: "● "; }
-.podcast-headline {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(40px, 6vw, 76px);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
-  margin: 0 0 24px;
-  color: var(--bg-paper-ink);
-}
 .podcast-text {
-  font-family: var(--serif);
   font-size: 18px;
-  line-height: 1.55;
-  color: color-mix(in oklab, var(--bg-paper-ink) 70%, transparent);
-  margin: 0 0 28px;
-  max-width: 38ch;
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 44ch;
 }
 .podcast-cta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--bg-paper-ink);
-  padding: 12px 18px;
-  border: 1px solid var(--bg-paper-ink);
-  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--podcast-link);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
-.podcast-cta:hover { background: var(--c-green); color: var(--bg-paper); border-color: var(--c-green); }
+.podcast-cta:hover { text-decoration-line: underline; }
+.podcast-cta:focus-visible {
+  outline: 3px solid var(--podcast-link);
+  outline-offset: 6px;
+}
 .podcast-cta::after { content: "→"; }
-/* The art block is the same "album cover" in both themes:
-   dark base, green/orange glows, cream italic text. Don't invert it. */
 .podcast-art {
-  aspect-ratio: 1 / 1;
-  max-width: 380px;
-  margin: 0 auto;
+  display: block;
   width: 100%;
-  background:
-    radial-gradient(ellipse at 30% 30%, color-mix(in oklab, #0d7d3d 70%, transparent), transparent 55%),
-    radial-gradient(ellipse at 70% 70%, color-mix(in oklab, #fb923c 35%, transparent), transparent 60%),
-    #1c1a16;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
+  height: auto;
+  max-width: 380px;
+  aspect-ratio: 1;
+  margin: 0 auto;
 }
-.podcast-art::after {
-  content: "";
-  position: absolute; inset: 0;
-  background-image: repeating-linear-gradient(0deg, rgba(244,241,232,0.04) 0 1px, transparent 1px 5px);
-}
-.podcast-art-text {
-  position: absolute;
-  bottom: 24px; left: 24px; right: 24px;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.1;
-  color: #f4f1e8;
-  letter-spacing: -0.01em;
+@media (max-width: 760px) {
+  .podcast-band-inner { grid-template-columns: minmax(0, 1fr); }
+  .podcast-art { max-width: 320px; }
 }
 
 /* ─── ADVENT band ───────────────────────────────────────────── */

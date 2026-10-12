@@ -207,27 +207,19 @@ const Index = () => (
     </section>
 
     {/* Podcast */}
-    <section className="podcast-band">
+    <section className="podcast-band" id="podcast-title" aria-label="Feeling of Computing">
       <div className="podcast-band-inner">
         <div>
-          <div className="podcast-tag">podcast</div>
-          <h2 className="podcast-headline">
-            The feeling<br />of computing.
-          </h2>
           <p className="podcast-text">
             A podcast with an alternative take on computing. We try to explore
             things around the edge of computing, looking back in history and
             into the future of what computing has and could be.
           </p>
-          <a className="podcast-cta" href="https://feelingof.com" target="_blank" rel="noreferrer">
-            listen at feelingof.com
+          <a className="podcast-cta" href="https://feelingof.com/episodes" target="_blank" rel="noreferrer">
+            Listen to the podcast
           </a>
         </div>
-        <div className="podcast-art" aria-hidden="true">
-          <div className="podcast-art-text">
-            The feeling of<br />computing
-          </div>
-        </div>
+        <img className="podcast-art" src="/images/feeling-of/square.svg" alt="Feeling of Computing" width="1000" height="1000" loading="lazy" />
       </div>
     </section>
 
