@@ -110,9 +110,9 @@ const Index = () => (
         <div className="intro-text">
           <h1 className="intro-name">Jimmy Miller</h1>
           <p className="intro-bio">
-            I build compilers, editors, and tools mostly to learn things. I write
-            about programming languages, the texture of working in old codebases,
-            and the <em>feeling</em> of computing.
+            I'm obsessed with building editors. 
+            I am always working on at least 3 new programming languages ideas.
+            I wish I knew how to make things look good.
           </p>
           <a className="intro-cta" href="#posts">read the posts</a>
         </div>
