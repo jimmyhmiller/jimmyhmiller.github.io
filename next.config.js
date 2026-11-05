@@ -14,11 +14,11 @@ const withMDX = createMDX({
 const nextConfig = (phase) => {
   const dev = phase === PHASE_DEVELOPMENT_SERVER
   return {
-    // The site is a static export. The dev server alone also serves
-    // `*.dev.js` pages: the paper dev tools' save endpoint
-    // (pages/api/paper-preferences.dev.js), which writes into this repo.
+    // The site is a static export. Under `next dev` it is served normally so
+    // the paper dev tools' save endpoint (pages/api/paper-preferences.js)
+    // can write into this repo; static export leaves API routes out.
     output: dev ? undefined : 'export',
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx', ...(dev ? ['dev.js'] : [])],
+    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
     transpilePackages: ["react-syntax-highlighter"],
     // Paper renderer shaders are imported as strings (lib/paper/paper-scene.js).
     webpack(config) {

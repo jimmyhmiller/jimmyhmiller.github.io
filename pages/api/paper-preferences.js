@@ -1,4 +1,4 @@
-// Dev-server only (see next.config.js): saves the section explorer's
+// Dev server only — the static export has no API routes. Saves the section explorer's
 // "Save choices for review" report into paper-preferences/ in this repo so a
 // coding session can read exactly what was chosen. Mirrors
 // tools/serve-paper-homepage.py from paper-test.
@@ -50,6 +50,7 @@ async function atomicWrite(file, text) {
 }
 
 export default async function handler(req, res) {
+  if (process.env.NODE_ENV !== 'development') { res.status(404).end(); return; }
   if (req.method !== 'POST') { res.status(405).end(); return; }
   const origin = req.headers.origin ? new URL(req.headers.origin) : null;
   if (!origin || !['localhost', '127.0.0.1'].includes(origin.hostname)) { res.status(403).send('Use the local dev server to save choices'); return; }
