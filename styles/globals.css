@@ -116,11 +116,23 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 .project-links a:hover { text-decoration: none; }
 .home-feature-code { align-self: start; min-width: 0; padding: 20px 17px 24px; color: var(--cream); }
 
-.home-projects-list { border-top: 1px solid var(--line); }
-.home-projects-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 10px; width: 100%; padding: 18px 0; align-items: baseline; text-align: left; border-bottom: 1px solid var(--line); }
+.home-projects-body { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 44px; padding: 32px 0 6px; }
+.home-projects-list { align-self: start; display: flex; flex-direction: column; }
+.home-projects-row { display: block; width: 100%; padding: 11px 0; text-align: left; border-bottom: 1px solid var(--line); }
+.home-projects-row:first-child { padding-top: 0; }
 .home-projects-row:last-child { border-bottom: 0; }
-.home-projects-row .name { font: 21px/1.2 var(--serif); }
-.home-projects-row .tag { font: 12px/1.5 var(--sans); color: var(--quiet); }
+.home-projects-row .name { font: 19px/1.2 var(--serif); }
+/* The stage: the current project plus invisible copies of every project's
+   prose in one grid cell, so its height never changes between projects. */
+.home-feature { display: grid; }
+.home-feature > .home-feature-body { grid-area: 1/1; padding: 0; }
+.home-feature-sizer { visibility: hidden; }
+.home-feature .home-feature-text h3 { margin-top: 0; }
+.home-feature .home-feature-code { align-self: stretch; min-height: 360px; }
+.home-feature-code.is-fixed { position: relative; padding: 0; }
+.well-scroll { position: absolute; inset: 20px 17px 24px; overflow: auto; overscroll-behavior: contain; }
+.well-scroll .proj-imgblock { height: 100%; }
+.well-scroll .proj-imgblock img, .well-scroll .proj-imgblock video { flex: 1 1 auto; min-height: 0; object-fit: contain; }
 .home-projects-row:hover .name { text-decoration: underline; text-underline-offset: 4px; }
 .home-projects-row[aria-pressed=true] .name { font-style: italic; }
 
@@ -505,8 +517,10 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
   .projpage-layout { grid-template-columns: 1fr; }
   .projpage-rail { position: static; }
 }
-@media (max-width: 1000px) and (min-width: 701px) {
-  .home-projects-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
+@media (max-width: 1000px) {
+  .home-projects-body { grid-template-columns: 1fr; gap: 26px; }
+  .home-projects-list { flex-direction: row; flex-wrap: wrap; gap: 6px 20px; }
+  .home-projects-row { width: auto; padding: 0; border-bottom: 0; }
 }
 
 @media (max-width: 700px) {
@@ -537,9 +551,8 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
   .home-feature-text .desc { font-size: 14px; line-height: 1.65; }
   .home-feature-code { padding: 18px 12px; width: 100%; }
   .proj-codeblock-pre, .proj-terminal { font-size: 10px; }
-  .home-projects-row { grid-template-columns: minmax(0, 1fr); gap: 6px 10px; padding: 17px 0; }
-  .home-projects-row .name { font-size: 21px; }
-  .home-projects-row .tag { font-size: 12px; }
+  .home-projects-row .name { font-size: 18px; }
+  .home-feature .home-feature-code { min-height: 0; height: 340px; }
   .podcast-band { margin: 45px 0; padding: 28px 25px; }
   .podcast-band-inner { grid-template-columns: 1fr; gap: 25px; }
   .podcast-text { font-size: 27px; }

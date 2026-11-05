@@ -79,8 +79,7 @@ const InternalOrExternal = ({ href, className, children, ...rest }) => {
 function Projects() {
   const [currentId, setCurrentId] = useState(projects[0].id);
   const paper = usePaper();
-  const index = projects.findIndex((p) => p.id === currentId);
-  const current = projects[index];
+  const current = projects.find((p) => p.id === currentId);
   useBrowserLayoutEffect(() => { paper.refresh(); }, [currentId, paper]);
 
   return (
@@ -89,23 +88,29 @@ function Projects() {
         <div className="home-projects-head">
           <h2 className="h-title">Projects</h2>
         </div>
-        <div className="home-feature" id="project-feature" aria-live="polite">
-          <ProjectFeature key={current.id} project={current} />
-        </div>
-        <div className="home-projects-list">
-          {projects.map((p) => (
-            <button
-              type="button"
-              key={p.id}
-              className="home-projects-row"
-              aria-pressed={p.id === current.id}
-              aria-controls="project-feature"
-              onClick={() => setCurrentId(p.id)}
-            >
-              <span className="name">{p.title}</span>
-              <span className="tag">{p.tagline}</span>
-            </button>
-          ))}
+        <div className="home-projects-body">
+          <div className="home-projects-list">
+            {projects.map((p) => (
+              <button
+                type="button"
+                key={p.id}
+                className="home-projects-row"
+                aria-pressed={p.id === current.id}
+                aria-controls="project-feature"
+                onClick={() => setCurrentId(p.id)}
+              >
+                <span className="name">{p.title}</span>
+              </button>
+            ))}
+          </div>
+          {/* Every project's prose is laid out invisibly in the same cell, so
+              the stage is always as tall as the tallest project. */}
+          <div className="home-feature" id="project-feature" aria-live="polite">
+            <ProjectFeature key={current.id} project={current} secondary={false} fixed />
+            {projects.map((p) => (
+              <ProjectFeature key={`sizer-${p.id}`} project={p} secondary={false} sizer />
+            ))}
+          </div>
         </div>
       </div>
     </section>
