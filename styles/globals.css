@@ -88,10 +88,10 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 .col-label h2, .home-projects-head h2 { font: 12px/1.4 var(--sans); }
 .popular .col-label { margin-bottom: 34px; }
 .popular-list { display: grid; gap: 0; }
-.popular-item { display: grid; grid-template-columns: 30px 1fr 30px; gap: 6px; position: relative; padding: 15px 0 21px; min-height: 76px; }
+.popular-item { display: grid; grid-template-columns: 1fr 30px; gap: 6px; position: relative; padding: 15px 0 21px; min-height: 76px; }
 .popular-item:first-child { padding-top: 0; }
-.popular-item:not(:last-child):after { content: ''; position: absolute; left: 36px; right: 25px; bottom: 7px; height: 1px; background: #ffefae33; }
-.popular-item .n, .popular-item .meta { font: 10px/1.6 var(--sans); }
+.popular-item:not(:last-child):after { content: ''; position: absolute; left: 0; right: 36px; bottom: 7px; height: 1px; background: #ffefae33; }
+.popular-item .meta { font: 10px/1.6 var(--sans); }
 .popular-item .meta { text-align: right; opacity: .65; }
 .popular-item .t { font: clamp(21px, 2vw, 28px)/1.12 var(--serif); letter-spacing: -.02em; }
 .intro { padding: 36px 40px; color: var(--ink); }
@@ -397,7 +397,7 @@ html:not([data-lighting=ready]) .lighting-panel .lighting-range input[type=range
   .topbar nav { gap: 15px; font-size: 11px; }
   .hero { gap: 35px; }
   .popular { padding: 24px; }
-  .popular-item { grid-template-columns: 23px 1fr; }
+  .popular-item { grid-template-columns: 1fr; }
   .popular-item .meta { display: none; }
   .intro { padding: 30px; }
   .intro-name { font-size: 66px; }
@@ -441,9 +441,9 @@ html:not([data-lighting=ready]) .lighting-panel .lighting-range input[type=range
   .intro-cta { margin-top: 24px; }
   .popular { padding: 26px 25px 22px; }
   .popular .col-label { margin-bottom: 28px; }
-  .popular-item { min-height: 76px; grid-template-columns: 25px 1fr; }
+  .popular-item { min-height: 76px; grid-template-columns: 1fr; }
   .popular-item .t { font-size: 24px; }
-  .popular-item:not(:last-child):after { left: 31px; right: 0; }
+  .popular-item:not(:last-child):after { left: 0; right: 0; }
   .section-heading { font-size: 10px; gap: 15px; }
   .home-projects { margin-top: 45px; padding: 26px 25px; }
   .home-feature-body { grid-template-columns: 1fr; gap: 30px; padding: 28px 0; }

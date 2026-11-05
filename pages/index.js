@@ -145,9 +145,8 @@ const Index = () => (
               <div className="twocol">
                 <div className="col-label"><h2>Popular</h2></div>
                 <div className="popular-list">
-                  {popularPosts.map((p, i) => (
+                  {popularPosts.map((p) => (
                     <InternalOrExternal key={p.href} href={p.href} className="popular-item">
-                      <span className="n">{String(i + 1).padStart(2, '0')}</span>
                       <span className="t">{popularEmphasis[p.href] || p.text}</span>
                       <span className="meta">{yearOf(p.date)}</span>
                     </InternalOrExternal>
