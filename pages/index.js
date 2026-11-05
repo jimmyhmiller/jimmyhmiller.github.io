@@ -100,12 +100,7 @@ function Projects() {
               className="home-projects-row"
               aria-pressed={p.id === current.id}
               aria-controls="project-feature"
-              onClick={() => {
-                setCurrentId(p.id);
-                // The rows sit below the sheet; bring its new contents into view.
-                const section = document.getElementById('projects');
-                if (section.getBoundingClientRect().top < 0) section.scrollIntoView({ block: 'start' });
-              }}
+              onClick={() => setCurrentId(p.id)}
             >
               <span className="n">{String(i + 1).padStart(2, '0')}</span>
               <span className="name">{p.title}</span>
