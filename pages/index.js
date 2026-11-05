@@ -93,7 +93,7 @@ function Projects() {
           <ProjectFeature key={current.id} project={current} />
         </div>
         <div className="home-projects-list">
-          {projects.map((p, i) => (
+          {projects.map((p) => (
             <button
               type="button"
               key={p.id}
@@ -102,7 +102,6 @@ function Projects() {
               aria-controls="project-feature"
               onClick={() => setCurrentId(p.id)}
             >
-              <span className="n">{String(i + 1).padStart(2, '0')}</span>
               <span className="name">{p.title}</span>
               <span className="tag">{p.tagline}</span>
             </button>

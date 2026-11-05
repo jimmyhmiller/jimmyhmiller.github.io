@@ -117,16 +117,12 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 .home-feature-code { align-self: start; min-width: 0; padding: 20px 17px 24px; color: var(--cream); }
 
 .home-projects-list { border-top: 1px solid var(--line); }
-.home-projects-row { display: grid; grid-template-columns: 26px minmax(0, 1fr) minmax(0, 1.5fr); gap: 10px; width: 100%; padding: 18px 0; align-items: baseline; text-align: left; border-bottom: 1px solid var(--line); }
+.home-projects-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 10px; width: 100%; padding: 18px 0; align-items: baseline; text-align: left; border-bottom: 1px solid var(--line); }
 .home-projects-row:last-child { border-bottom: 0; }
-.home-projects-row .n { font-size: 10px; }
 .home-projects-row .name { font: 21px/1.2 var(--serif); }
 .home-projects-row .tag { font: 12px/1.5 var(--sans); color: var(--quiet); }
 .home-projects-row:hover .name { text-decoration: underline; text-underline-offset: 4px; }
 .home-projects-row[aria-pressed=true] .name { font-style: italic; }
-.home-projects-row[aria-pressed=true] .n::before { content: '→'; margin-right: 2px; }
-.home-projects-row[aria-pressed=true] .n { font-size: 0; }
-.home-projects-row[aria-pressed=true] .n::before { font-size: 12px; }
 
 /* Project artifacts. Wells are dark pigment; ink is cream. */
 .proj-codeblock-bar { display: flex; justify-content: space-between; gap: 12px; font: 10px/1.3 var(--sans); border-bottom: 1px solid #ffefae33; padding: 0 3px 12px; margin-bottom: 15px; }
@@ -314,8 +310,7 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 .projpage-rail { position: sticky; top: 24px; padding: 24px 24px 18px; }
 .projpage-rail-head { font: 12px/1.4 var(--sans); margin-bottom: 16px; }
 .projpage-rail ol { list-style: none; margin: 0; padding: 0; }
-.projpage-rail a { display: grid; grid-template-columns: 24px 1fr; gap: 6px; align-items: baseline; padding: 9px 0; border-top: 1px solid var(--line); font: 17px/1.2 var(--serif); }
-.projpage-rail .n { font: 10px/1 var(--sans); }
+.projpage-rail a { display: block; padding: 9px 0; border-top: 1px solid var(--line); font: 17px/1.2 var(--serif); }
 .projpage-rail a[aria-current=page] .name { font-style: italic; }
 
 /* ═══ LIGHTING PANEL (rendered paper; lib/paper/lighting-panel.js) ═ */
@@ -426,7 +421,7 @@ html:not([data-lighting=ready]) .lighting-panel .lighting-range input[type=range
   .projpage-rail { position: static; }
 }
 @media (max-width: 1000px) and (min-width: 701px) {
-  .home-projects-row { grid-template-columns: 24px minmax(0, 1fr) minmax(0, 1.3fr); }
+  .home-projects-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); }
 }
 
 @media (max-width: 700px) {
@@ -457,9 +452,9 @@ html:not([data-lighting=ready]) .lighting-panel .lighting-range input[type=range
   .home-feature-text .desc { font-size: 14px; line-height: 1.65; }
   .home-feature-code { padding: 18px 12px; width: 100%; }
   .proj-codeblock-pre, .proj-terminal { font-size: 10px; }
-  .home-projects-row { grid-template-columns: 22px minmax(0, 1fr); gap: 6px 10px; padding: 17px 0; }
+  .home-projects-row { grid-template-columns: minmax(0, 1fr); gap: 6px 10px; padding: 17px 0; }
   .home-projects-row .name { font-size: 21px; }
-  .home-projects-row .tag { grid-column: 2; font-size: 12px; }
+  .home-projects-row .tag { font-size: 12px; }
   .podcast-band { margin: 45px 0; padding: 28px 25px; }
   .podcast-band-inner { grid-template-columns: 1fr; gap: 25px; }
   .podcast-text { font-size: 27px; }

@@ -68,10 +68,9 @@ export default function ProjectPage({ id }) {
           <nav className="projpage-rail" data-paper="project-rail" aria-label="All projects">
             <h2 className="projpage-rail-head">Projects</h2>
             <ol>
-              {projects.map((p, i) => (
+              {projects.map((p) => (
                 <li key={p.id}>
                   <NextLink href={`/projects/${p.id}`} aria-current={p.id === id ? 'page' : undefined}>
-                    <span className="n">{String(i + 1).padStart(2, '0')}</span>
                     <span className="name">{p.title}</span>
                   </NextLink>
                 </li>
