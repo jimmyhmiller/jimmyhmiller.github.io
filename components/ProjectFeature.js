@@ -6,13 +6,12 @@ const repoLabel = (url) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 // One project's sheet contents: prose and links on the left, its artifact in
 // a recessed well on the right. The surrounding section supplies the sheet
 // (`data-paper="project:<id>"`); the well is `project-well:<id>`.
-export default function ProjectFeature({ project, index, count, headingLevel = 'h3' }) {
+export default function ProjectFeature({ project, headingLevel = 'h3' }) {
   const Heading = headingLevel;
   const repoIsLink = project.repo && /^https?:\/\//.test(project.repo);
   return (
     <div className="home-feature-body">
       <div className="home-feature-text">
-        <span className="kicker">{String(index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}</span>
         <Heading>{project.title}</Heading>
         <p className="tag">{project.tagline}</p>
         <p className="desc">{project.blurb}</p>

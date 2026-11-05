@@ -48,7 +48,7 @@ export default function ProjectPage({ id }) {
 
         <div className="projpage-layout">
           <section className="home-projects projpage-sheet" data-paper={`project:${project.id}`}>
-            <ProjectFeature project={project} index={index} count={projects.length} headingLevel="h1" />
+            <ProjectFeature project={project} headingLevel="h1" />
             <nav className="projpage-foot" aria-label="More projects">
               {prev ? (
                 <NextLink href={`/projects/${prev.id}`} className="prev">

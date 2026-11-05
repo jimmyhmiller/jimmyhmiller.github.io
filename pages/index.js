@@ -90,7 +90,7 @@ function Projects() {
           <h2 className="h-title">Projects</h2>
         </div>
         <div className="home-feature" id="project-feature" aria-live="polite">
-          <ProjectFeature key={current.id} project={current} index={index} count={projects.length} />
+          <ProjectFeature key={current.id} project={current} />
         </div>
         <div className="home-projects-list">
           {projects.map((p, i) => (
