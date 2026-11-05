@@ -28,7 +28,7 @@ export default function Archive() {
 
       <SiteHeader />
 
-      <main className="archive-page">
+      <main className="archive-page" data-paper-page="archive">
         <header className="page-head">
           <div className="article-date">Archive</div>
           <h1 className="article-title">Older bits</h1>

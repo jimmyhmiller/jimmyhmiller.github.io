@@ -89,3 +89,6 @@ out/
 
 
 .worktrees
+
+# Paper dev tools: saved choices for review (pages/api/paper-preferences.dev.js)
+/paper-preferences/

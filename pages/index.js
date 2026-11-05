@@ -122,7 +122,7 @@ const Index = () => (
 
     <HomeHeader />
 
-    <main>
+    <main data-paper-page="home">
       <div className="hero">
         <div className="hero-intro">
           <section className="intro" data-paper="intro" id="intro">

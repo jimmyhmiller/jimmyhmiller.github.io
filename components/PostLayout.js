@@ -30,7 +30,7 @@ export default function PostLayout({ children, title, date, hideHead }) {
 
       <SiteHeader />
 
-      <main className="post-page">
+      <main className="post-page" data-paper-page="post">
         <div className="post-sheet" data-paper="sheet">
           {!hideHead && resolvedTitle && (
             <header className="article-head">

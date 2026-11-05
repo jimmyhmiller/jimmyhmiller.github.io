@@ -31,7 +31,7 @@ export default function ProjectPage({ id }) {
 
       <SiteHeader />
 
-      <main className="projpage">
+      <main className="projpage" data-paper-page="project">
         {/* STUB: this preface is the same on every project page.
             Replace the copy below with your real write-up on how you
             approach projects. */}
