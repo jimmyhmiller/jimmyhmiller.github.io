@@ -1,5 +1,5 @@
-// Renders one project's artifact (code / terminal / image / video / table / arch).
-// Used by /projects/[slug] inside its own page chrome.
+// Renders one project's artifacts (code / terminal / image / video / table / arch).
+// Used by the homepage project switcher and /projects/[slug].
 
 const KEYWORDS = {
   beagle:  /\b(fn|let|use|as|loop|if|else|break|return|null|true|false|match|enum|struct|extend|with|handle|perform|resume)\b/g,
@@ -148,29 +148,30 @@ function ArchList({ arch }) {
   );
 }
 
-export function Artifact({ project }) {
+// The primary artifact sits in the project's recessed well (code, terminal,
+// screenshot or video). Tables and architecture notes are secondary and sit
+// with the prose.
+export function PrimaryArtifact({ project }) {
   const { kind } = project;
-  if (kind === 'code')        return <CodeBlock code={project.code} />;
-  if (kind === 'code+table')  return <div className="stack-artifact"><CodeBlock code={project.code} /><PerfTable table={project.table} /></div>;
-  if (kind === 'code+arch')   return <div className="stack-artifact"><CodeBlock code={project.code} /><ArchList arch={project.arch} /></div>;
-  if (kind === 'terminal')    return <TerminalBlock lines={project.terminal} id={project.id} />;
-  if (kind === 'image')       return (
-    <figure className="proj-imgblock">
+  if (kind === 'code' || kind === 'code+table' || kind === 'code+arch') return <CodeBlock code={project.code} />;
+  if (kind === 'terminal') return <TerminalBlock lines={project.terminal} id={project.id} />;
+  if (kind === 'image' || kind === 'image-phone') return (
+    <figure className={'proj-imgblock' + (kind === 'image-phone' ? ' proj-imgblock-phone' : '')}>
       <img src={project.image} alt={project.title} />
       {project.imageCaption && <figcaption>{project.imageCaption}</figcaption>}
     </figure>
   );
-  if (kind === 'image-phone') return (
-    <figure className="proj-imgblock proj-imgblock-phone">
-      <img src={project.image} alt={project.title} />
-      {project.imageCaption && <figcaption>{project.imageCaption}</figcaption>}
-    </figure>
-  );
-  if (kind === 'video')       return (
+  if (kind === 'video') return (
     <figure className="proj-imgblock">
       <video src={project.video} autoPlay loop muted playsInline />
       {project.videoCaption && <figcaption>{project.videoCaption}</figcaption>}
     </figure>
   );
+  throw new Error(`Project "${project.id}" has unknown artifact kind "${kind}"`);
+}
+
+export function SecondaryArtifact({ project }) {
+  if (project.kind === 'code+table') return <PerfTable table={project.table} />;
+  if (project.kind === 'code+arch') return <ArchList arch={project.arch} />;
   return null;
 }

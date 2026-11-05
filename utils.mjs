@@ -134,8 +134,7 @@ SyntaxHighlighter.registerLanguage('diff', diff);
 SyntaxHighlighter.registerLanguage('bash', bash);
 
 // Single Prism theme that reads colors from CSS variables defined in
-// globals.css. Light/dark switching happens via [data-theme="light"] there —
-// no JS theme detection, no SSR flash.
+// globals.css (`.post-sheet` sets the --tok-* palette for printed code).
 export const prismTheme = {
   'code[class*="language-"]': { color: 'var(--tok-text)', fontFamily: 'var(--mono)', textShadow: 'none' },
   'pre[class*="language-"]':  { color: 'var(--tok-text)', fontFamily: 'var(--mono)', textShadow: 'none' },
@@ -173,8 +172,10 @@ export const prismTheme = {
   'logicVariable': { color: 'var(--tok-function)' },
 };
 
+// The site renders reading surfaces on light paper (`data-theme="light"` in
+// pages/_document.js), so start light to match the server render.
 function useThemeMode() {
-  const [mode, setMode] = useState('dark');
+  const [mode, setMode] = useState('light');
   useEffect(() => {
     const read = () => setMode(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
     read();

@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
-import { CodeBlock } from '../components/ProjectSection';
+import { useState } from 'react';
+import ProjectFeature from '../components/ProjectFeature';
+import { HomeHeader, SiteFooter } from '../components/SiteChrome';
+import { usePaper, useBrowserLayoutEffect } from '../components/PaperDesk';
 import generateRSS from '../tools/build-rss';
 import { posts, popularPosts, postsForBeginners } from '../data/posts';
 import { projects } from '../data/projects';
@@ -40,19 +43,6 @@ const popularEmphasis = {
   '/discovery-coding':                  "Discovery coding",
 };
 
-// "Currently" panel — pulls from real site content. Each row links somewhere.
-// Tweak when life changes; rows render as anchors.
-const now = {
-  stamp: "may 2026",
-  rows: [
-    { k: "building", v: "a tensor compiler",         href: "/projects/tensor-lang" },
-    { k: "writing",  v: "legibility is ruining you", href: "/legibility-is-ruining-you" },
-    { k: "using",    v: "keep-running, daily",       href: "/projects/keep-running" },
-    { k: "talking",  v: "the feeling of computing",  href: "https://feelingof.com" },
-  ],
-  updated: "2026-05-20",
-};
-
 // Highlight 6 of the 24 advent entries on the homepage — the longer/more
 // substantial ones, plus the two you used to call out on the old index
 // (Dec 4 and Dec 15). The "Full series →" foot link goes to the full archive.
@@ -84,6 +74,50 @@ const InternalOrExternal = ({ href, className, children, ...rest }) => {
   );
 };
 
+// Projects switch in place: choosing a row swaps the sheet's contents and its
+// paper (pigment, height, edges, artifact well) — see lib/paper/materials.js.
+function Projects() {
+  const [currentId, setCurrentId] = useState(projects[0].id);
+  const paper = usePaper();
+  const index = projects.findIndex((p) => p.id === currentId);
+  const current = projects[index];
+  useBrowserLayoutEffect(() => { paper.refresh(); }, [currentId, paper]);
+
+  return (
+    <section className="home-projects" data-paper={`project:${current.id}`} id="projects">
+      <div className="home-projects-wrap">
+        <div className="home-projects-head">
+          <h2 className="h-title">Projects</h2>
+        </div>
+        <div className="home-feature" id="project-feature" aria-live="polite">
+          <ProjectFeature key={current.id} project={current} index={index} count={projects.length} />
+        </div>
+        <div className="home-projects-list">
+          {projects.map((p, i) => (
+            <button
+              type="button"
+              key={p.id}
+              className="home-projects-row"
+              aria-pressed={p.id === current.id}
+              aria-controls="project-feature"
+              onClick={() => {
+                setCurrentId(p.id);
+                // The rows sit below the sheet; bring its new contents into view.
+                const section = document.getElementById('projects');
+                if (section.getBoundingClientRect().top < 0) section.scrollIntoView({ block: 'start' });
+              }}
+            >
+              <span className="n">{String(i + 1).padStart(2, '0')}</span>
+              <span className="name">{p.title}</span>
+              <span className="tag">{p.tagline}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const Index = () => (
   <>
     <Head>
@@ -92,235 +126,149 @@ const Index = () => (
       <meta name="author" content="Jimmy Miller" />
     </Head>
 
-    <header className="topbar">
-      <span className="topbar-mark" />
-      <nav>
-        <a className="a1" href="#popular">popular</a>
-        <NextLink className="a2" href="/projects">projects</NextLink>
-        <a className="a3" href="#posts">posts</a>
-        <a className="a4" href="#advent">advent</a>
-        <a href="#papers">papers</a>
-        <a href="#talks">talks</a>
-        <a href="https://github.com/jimmyhmiller" target="_blank" rel="noreferrer">github</a>
-      </nav>
-    </header>
+    <HomeHeader />
 
-    <section className="intro" id="intro">
-      <div className="intro-inner">
-        <div className="intro-text">
-          <h1 className="intro-name">Jimmy Miller</h1>
-          <p className="intro-bio">
-            I'm obsessed with building editors. 
-            I am always working on at least 3 new programming languages ideas.
-            I wish I knew how to make things look good.
-          </p>
-          <a className="intro-cta" href="#posts">read the posts</a>
-        </div>
-
-        <aside className="intro-now" aria-label="What I'm up to right now">
-          <div className="intro-now-tag">
-            <span>currently</span>
-            <span className="stamp">{now.stamp}</span>
-          </div>
-          <div className="intro-now-list">
-            {now.rows.map((r) => (
-              <InternalOrExternal key={r.k} href={r.href} className="intro-now-row">
-                <span className="k">{r.k}</span>
-                <span className="v">{r.v}</span>
-              </InternalOrExternal>
-            ))}
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    {/* Popular */}
-    <section className="popular" id="popular">
-      <div className="wrap">
-        <div className="twocol s-orange" style={{ border: 0, padding: 0 }}>
-          <div className="col-label"><b>Popular</b></div>
-          <div className="popular-list">
-            {popularPosts.map((p, i) => (
-              <InternalOrExternal key={p.href} href={p.href} className="popular-item">
-                <span className="n">{String(i + 1).padStart(2, '0')}</span>
-                <span className="t">{popularEmphasis[p.href] || p.text}</span>
-                <span className="meta">{yearOf(p.date)}</span>
-              </InternalOrExternal>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    {/* Projects — workshop / terminal aesthetic, distinct from Popular */}
-    <section className="home-projects" id="projects">
-      <div className="home-projects-wrap">
-        <div className="home-projects-head">
-          <b className="h-title">Projects</b>
-        </div>
-
-        <div
-          className="home-feature"
-          style={{ '--feat-accent': projects[0].accent }}
-        >
-          <div className="home-feature-bar">
-            <span className="dots"><i /><i /><i /></span>
-            <span className="crumb"><b>{projects[0].title}</b></span>
-            <span style={{ width: 36 }} />
-          </div>
-          <div className="home-feature-body">
-            <div className="home-feature-text">
-              <span className="kicker">featured</span>
-              <h3>
-                <NextLink href={`/projects/${projects[0].id}`}>{projects[0].title}</NextLink>
-              </h3>
-              <p className="tag">{projects[0].tagline}</p>
-              <p className="desc">{projects[0].blurb}</p>
-              <NextLink href={`/projects/${projects[0].id}`} className="cta">
-                open project
-              </NextLink>
-            </div>
-            {projects[0].code && (
-              <div className="home-feature-code">
-                <CodeBlock code={projects[0].code} />
+    <main>
+      <div className="hero">
+        <div className="hero-intro">
+          <section className="intro" data-paper="intro" id="intro">
+            <div className="intro-inner">
+              <div className="intro-text">
+                <h1 className="intro-name">Jimmy Miller</h1>
+                <p className="intro-bio">
+                  I'm obsessed with building editors. 
+                  I am always working on at least 3 new programming languages ideas.
+                  I wish I knew how to make things look good.
+                </p>
+                <a className="intro-cta" href="#posts">read the posts</a>
               </div>
-            )}
+            </div>
+          </section>
+        </div>
+        <div className="hero-popular">
+          <section className="popular" data-paper="popular" id="popular">
+            <div className="wrap">
+              <div className="twocol">
+                <div className="col-label"><h2>Popular</h2></div>
+                <div className="popular-list">
+                  {popularPosts.map((p, i) => (
+                    <InternalOrExternal key={p.href} href={p.href} className="popular-item">
+                      <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                      <span className="t">{popularEmphasis[p.href] || p.text}</span>
+                      <span className="meta">{yearOf(p.date)}</span>
+                    </InternalOrExternal>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <Projects />
+
+      <section className="podcast-band" data-paper="podcast" id="podcast-title" aria-label="Feeling of Computing">
+        <div className="podcast-band-inner">
+          <div>
+            <p className="podcast-text">
+              A podcast with an alternative take on computing. We try to explore
+              things around the edge of computing, looking back in history and
+              into the future of what computing has and could be.
+            </p>
+            <a className="podcast-cta" href="https://feelingof.com/episodes" target="_blank" rel="noreferrer">
+              Listen to the podcast
+            </a>
+          </div>
+          <img className="podcast-art" src="/images/feeling-of/feeling-of-computing-mark.svg" alt="Feeling of Computing" width="1000" height="1000" loading="lazy" />
+        </div>
+      </section>
+
+      <div className="section-heading writing-heading">
+        <NextLink href="/archive">The complete archive ↗</NextLink>
+      </div>
+      <section data-paper="posts" id="posts">
+        <div className="wrap">
+          <div className="twocol">
+            <div className="col-label"><h2>Posts</h2></div>
+            <div className="posts-list">
+              {posts.map((p) => (
+                <InternalOrExternal key={p.href} href={p.href} className="posts-year-row">
+                  <span className="y">{yearOf(p.date)}</span>
+                  <span>{p.text}</span>
+                </InternalOrExternal>
+              ))}
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="home-projects-list">
-          {projects.slice(1).map((p, i) => (
-            <NextLink
-              key={p.id}
-              href={`/projects/${p.id}`}
-              className="home-projects-row"
-              style={{ '--row-accent': p.accent }}
-            >
-              <span className="n">{String(i + 2).padStart(2, '0')}</span>
-              <span className="dot" />
-              <span className="name">{p.title}</span>
-              <span className="tag">{p.tagline}</span>
-            </NextLink>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* Podcast */}
-    <section className="podcast-band" id="podcast-title" aria-label="Feeling of Computing">
-      <div className="podcast-band-inner">
-        <div>
-          <p className="podcast-text">
-            A podcast with an alternative take on computing. We try to explore
-            things around the edge of computing, looking back in history and
-            into the future of what computing has and could be.
-          </p>
-          <a className="podcast-cta" href="https://feelingof.com/episodes" target="_blank" rel="noreferrer">
-            Listen to the podcast
-          </a>
-        </div>
-        <img className="podcast-art" src="/images/feeling-of/square.svg" alt="Feeling of Computing" width="1000" height="1000" loading="lazy" />
-      </div>
-    </section>
-
-    {/* Posts */}
-    <section id="posts">
-      <div className="wrap">
-        <div className="twocol s-cyan">
-          <div className="col-label"><b>Posts</b></div>
-          <div
-            className="posts-list"
-            style={{ gridTemplateRows: `repeat(${Math.ceil(posts.length / 2)}, auto)` }}
-          >
-            {posts.map((p) => (
-              <InternalOrExternal key={p.href} href={p.href} className="posts-year-row">
-                <span className="y">{yearOf(p.date)}</span>
-                <span>{p.text}</span>
+      <section className="advent" data-paper="advent" id="advent">
+        <div className="advent-wrap">
+          <div className="advent-intro">
+            <div className="kicker">2024</div>
+            <h2>Advent of Papers</h2>
+            <p>
+              I did an experiment where I tried to read a paper every day of
+              advent and write about it. Some days are more involved than others,
+              but I had a great time doing it.
+            </p>
+          </div>
+          <div className="advent-list">
+            {advent.map((a) => (
+              <InternalOrExternal key={a.href} href={a.href} className="advent-item">
+                <span className="day">{a.day}</span>
+                <b>{a.title}</b>
               </InternalOrExternal>
             ))}
+            <div className="advent-foot">
+              Full series → <NextLink href="/advent-of-papers">advent-of-papers</NextLink>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* Advent of Papers */}
-    <section className="advent" id="advent">
-      <div className="advent-wrap">
-        <div className="advent-intro">
-          <div className="kicker">2024</div>
-          <h2>Advent of Papers</h2>
-          <p>
-            I did an experiment where I tried to read a paper every day of
-            advent and write about it. Some days are more involved than others,
-            but I had a great time doing it.
-          </p>
-        </div>
-        <div className="advent-list">
-          {advent.map((a) => (
-            <InternalOrExternal key={a.href} href={a.href} className="advent-item">
-              <span className="day">{a.day}</span>
-              <b>{a.title}</b>
-            </InternalOrExternal>
-          ))}
-          <div className="advent-foot">
-            Full series → <NextLink href="/advent-of-papers">advent-of-papers</NextLink>
+      <div className="reference-grid">
+        <section data-paper="papers" id="papers">
+          <div className="wrap">
+            <div className="twocol">
+              <div className="col-label"><h2>Papers</h2></div>
+              <div className="papers-block">
+                <p>
+                  A collection of papers I've gathered over time. Many I've read
+                  but not all. Figured it was worth sharing. Plan on organizing
+                  more over time.
+                </p>
+                <p>
+                  <NextLink href="/readings" className="papers-cta">Browse the archive</NextLink>
+                </p>
+                <p className="papers-aside">
+                  I wrote about <NextLink href="/ai-own-your-tools">how this archive came together</NextLink>.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    {/* Paper archive */}
-    <section id="papers">
-      <div className="wrap">
-        <div className="twocol s-blue">
-          <div className="col-label"><b>Papers</b></div>
-          <div className="papers-block">
-            <p>
-              A collection of papers I've gathered over time. Many I've read
-              but not all. Figured it was worth sharing. Plan on organizing
-              more over time.
-            </p>
-            <p>
-              <NextLink href="/readings" className="papers-cta">Browse the archive</NextLink>
-            </p>
-            <p className="papers-aside">
-              I wrote about <NextLink href="/ai-own-your-tools">how this archive came together</NextLink>.
-            </p>
+        <section data-paper="talks" id="talks">
+          <div className="wrap">
+            <div className="twocol">
+              <div className="col-label"><h2>Talks</h2></div>
+              <div className="talks-grid">
+                {talks.map((t) => (
+                  <a key={t.href} className="talk-card" href={t.href} target="_blank" rel="noreferrer">
+                    <span className="play">watch</span>
+                    <b>{t.text}</b>
+                    <span className="venue">{t.venue}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
       </div>
-    </section>
+    </main>
 
-    {/* Talks */}
-    <section id="talks">
-      <div className="wrap">
-        <div className="twocol s-lime">
-          <div className="col-label"><b>Talks</b></div>
-          <div className="talks-grid">
-            {talks.map((t) => (
-              <a key={t.href} className="talk-card" href={t.href} target="_blank" rel="noreferrer">
-                <span className="play">watch</span>
-                <b>{t.text}</b>
-                <span className="venue">{t.venue}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer className="site">
-      <span>
-        <a href="https://bsky.app/profile/jimmyhmiller.bsky.social" target="_blank" rel="noreferrer">bsky</a>
-        &nbsp;·&nbsp;
-        <a href="https://hachyderm.io/@jimmyhmiller" target="_blank" rel="noreferrer">mastodon</a>
-        &nbsp;·&nbsp;
-        <a href="https://github.com/jimmyhmiller" target="_blank" rel="noreferrer">github</a>
-      </span>
-      <span>
-        <NextLink href="/archive">archive</NextLink>
-      </span>
-    </footer>
+    <SiteFooter />
   </>
 );
 

@@ -506,3 +506,6 @@ export default function TermRewritingExperimentOne() {
     </>
   );
 }
+
+// A self-contained interactive book with its own full-viewport styling.
+TermRewritingExperimentOne.paperDesk = false;
