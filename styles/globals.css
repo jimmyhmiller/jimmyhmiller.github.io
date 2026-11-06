@@ -272,12 +272,14 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 .article figure { margin: 1.8em 0; }
 .article figure img, .article figure video, .article p > img, .article > img { display: block; width: 100%; height: auto; }
 .article figcaption { font: 12px/1.5 var(--sans); color: var(--ink-soft); margin-top: 8px; text-align: center; }
-.article blockquote { margin: 1.8em 0; padding: 0 0 0 24px; border-left: 2px solid currentColor; font-style: italic; font-size: 21px; line-height: 1.5; }
+/* Quotes, code blocks, tables and notes also sit on their own paper
+   (lib/paper/materials.js postPapers); their spacing leaves room for it. */
+.article blockquote { margin: 1.8em 0 2.5em; padding: .6em; border-left: 2px solid currentColor; background-image: linear-gradient(color-mix(in srgb, #476267 10%, transparent), color-mix(in srgb, #476267 10%, transparent)); font-style: italic; font-size: 21px; line-height: 1.5; }
 .article blockquote p { margin: 0 0 .6em; }
 .article blockquote p:last-child { margin-bottom: 0; }
 .article blockquote cite { display: block; margin-top: 10px; font: normal 11px/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
 .article code { font-family: var(--mono); font-size: .8em; background: var(--bg-code); padding: 1px 5px; border-radius: 2px; }
-.article pre { background: var(--bg-code); border-radius: 2px; padding: 18px 20px; overflow-x: auto; margin: 1.6em 0; font: 13.5px/1.6 var(--mono); }
+.article pre { background: var(--bg-code); border: 0; border-radius: 2px; padding: 1.1em; overflow-x: auto; margin: 2em 0 1.6em; font: 13.5px/1.6 var(--mono); }
 .article pre code { background: none; padding: 0; font-size: inherit; }
 .article hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5em 0; }
 .article .lede::first-letter,
@@ -398,8 +400,10 @@ html:not([data-lighting=ready]) .lighting-panel .lighting-range input[type=range
 
 /* ═══ DEV TOOLS (window.devTools.show(); lib/paper/devtools) ═══ */
 html:not([data-dev-tools="visible"]) :is(#open-paper-editor, #paper-editor, #open-section-explorer, #section-explorer, .green-lab, .post-ink-lab, #open-type-editor, #type-editor) { display: none !important; }
-[data-paper-node] { background: var(--surface-color); }
-html[data-lighting=ready] [data-paper-node] { background: transparent; }
+/* A paper node's flat color stands in until the renderer lights it. Only the
+   color: a tint (a background image) stays printed on top of the paper. */
+[data-paper-node] { background-color: var(--surface-color); }
+html[data-lighting=ready] [data-paper-node] { background-color: transparent; }
 #open-paper-editor, #open-section-explorer { position: fixed; bottom: 20px; z-index: 61; padding: 11px 16px; border: 1px solid #9aa9a3; border-radius: 3px; background: #f0ead8; color: #304c52; font: 12px/1.2 var(--sans); box-shadow: 0 2px 12px #172b3233; }
 #open-paper-editor { right: 20px; }
 #open-section-explorer { left: 20px; }

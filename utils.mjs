@@ -271,11 +271,9 @@ const NoteTitle = () => (
 );
 
 export const Note = ({ children, Title = NoteTitle }) => (
+  // Sits on its own paper (lib/paper/materials.js postPapers).
   <div className="post-note" style={{
-    background: 'color-mix(in oklab, var(--c-blue) 12%, transparent)',
-    border: '1px solid color-mix(in oklab, var(--c-blue) 35%, transparent)',
-    borderLeft: '3px solid var(--c-blue)',
-    padding: '12px 14px',
+    padding: '1em',
     borderRadius: 4,
     margin: '1.6em 0',
   }}>
