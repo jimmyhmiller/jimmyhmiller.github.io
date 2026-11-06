@@ -73,7 +73,10 @@ html[data-lighting=ready] [data-paper] { background: transparent; }
 .wordmark:hover { text-decoration: none; }
 .topbar nav { display: flex; align-items: center; gap: 23px; font-size: 12px; }
 
-.lighting-sun { position: static; flex: 0 0 auto; display: grid; place-items: center; width: 28px; height: 28px; color: var(--desk-ink); border: 1px solid transparent; border-radius: 50%; transition: background .15s, border-color .15s; }
+/* Sized from the nav text beside it; the hit area extends past the drawing. */
+.lighting-sun { position: relative; flex: 0 0 auto; display: grid; place-items: center; width: 2.1em; height: 2.1em; color: var(--desk-ink); border: 1px solid transparent; border-radius: 50%; transition: background .15s, border-color .15s; }
+.lighting-sun svg { width: 1.5em; height: 1.5em; }
+.lighting-sun::after { content: ''; position: absolute; inset: -8px; }
 .lighting-sun:hover, .lighting-sun[aria-expanded=true] { background: #ffefae12; border-color: #ffefae55; }
 .lighting-sun:focus-visible { outline-offset: 3px; }
 
@@ -568,7 +571,6 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
   .topbar nav { width: auto; justify-content: flex-end; flex-wrap: wrap; gap: 10px; font-size: 10px; }
   .topbar-page { gap: 14px; }
   .wordmark { font-size: 26px; }
-  .lighting-sun { width: 24px; height: 24px; }
   .hero { grid-template-columns: 1fr; gap: 40px; padding-top: 26px; }
   .hero-intro { grid-column: 1; grid-row: 1; }
   .hero-popular { grid-column: 1; grid-row: 2; }
@@ -639,7 +641,6 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
 
 @media (max-width: 360px) {
   .topbar nav { gap: 7px; font-size: 9px; }
-  .lighting-sun svg { width: 22px; height: 22px; }
   .lighting-card-title { font-size: 10px; gap: 5px; }
 }
 
