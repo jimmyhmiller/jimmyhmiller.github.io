@@ -446,7 +446,7 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
 .section-explorer { width: 370px; }
 #open-type-editor { position: fixed; bottom: 20px; right: 132px; z-index: 61; padding: 11px 16px; border: 1px solid #9aa9a3; border-radius: 3px; background: #f0ead8; color: #304c52; font: 12px/1.2 var(--sans); box-shadow: 0 2px 12px #172b3233; }
 #open-type-editor[hidden] { display: none; }
-.type-editor { width: 360px; }
+.type-editor { width: 400px; }
 .type-editor .editor-toolbar button:first-child { flex: 1; }
 .type-variations { display: flex; flex-wrap: wrap; gap: 6px; }
 .type-variations button { font-size: 11px; }
@@ -454,7 +454,11 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
 .type-save-row { display: flex; gap: 7px; margin-top: 8px; }
 .type-save-row input { flex: 1; }
 .type-group { font: 600 10px/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: #41585c; margin: 18px 0 4px !important; padding-top: 12px; border-top: 1px solid #304c522b; }
-.type-row { display: grid; grid-template-columns: 1fr 150px 22px; gap: 8px; align-items: center; margin: 6px 0; }
+.type-row { display: grid; grid-template-columns: 1fr 140px 22px 56px; gap: 6px; align-items: center; margin: 6px 0; }
+.type-lock { padding: 3px 6px !important; font-size: 10px; }
+.type-clear[hidden] { display: block !important; visibility: hidden; }
+.type-random { margin-top: 12px; }
+.type-random button, .type-editor .explore-actions button { flex: 1; }
 .type-row .type-label { font-size: 11px; }
 .type-row .type-label output { float: right; font-size: 10px; color: #41585c; }
 .type-row[data-overridden=true] .type-label { font-weight: 700; }
