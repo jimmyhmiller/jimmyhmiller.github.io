@@ -271,7 +271,7 @@ const NoteTitle = () => (
 );
 
 export const Note = ({ children, Title = NoteTitle }) => (
-  <div style={{
+  <div className="post-note" style={{
     background: 'color-mix(in oklab, var(--c-blue) 12%, transparent)',
     border: '1px solid color-mix(in oklab, var(--c-blue) 35%, transparent)',
     borderLeft: '3px solid var(--c-blue)',
@@ -285,7 +285,7 @@ export const Note = ({ children, Title = NoteTitle }) => (
 );
 
 export const Aside = ({ children, title }) => (
-  <details style={{
+  <details className="post-aside" style={{
     margin: '1.6em 0',
     padding: '10px 14px',
     border: '1px solid var(--rule)',

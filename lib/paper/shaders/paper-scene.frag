@@ -21,6 +21,7 @@ uniform int lightCount;
 uniform float depth;
 uniform float grain;
 uniform float maximumElevation;
+uniform float textRaise; // tallest raised text above its paper, for ray bounds
 // MATERIAL_KERNELS
 uniform sampler2D geometryMap;
 uniform sampler2D microMap;
@@ -44,7 +45,7 @@ float rayMaximum(vec2 p,vec2 end){
  for(int i=0;i<MAX_PAPER_SURFACES;i++){
   if(i>=surfaceCount)break;
   vec4 r=surfaceRects[i];
-  if(all(greaterThanEqual(hi,r.xy))&&all(lessThanEqual(lo,r.xy+r.zw)))maximum=max(maximum,surfaceProperties[i].x);
+  if(all(greaterThanEqual(hi,r.xy))&&all(lessThanEqual(lo,r.xy+r.zw)))maximum=max(maximum,surfaceProperties[i].x+textRaise);
  }
  return maximum*depth;
 }

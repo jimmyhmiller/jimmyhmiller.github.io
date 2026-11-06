@@ -5,13 +5,32 @@
 import { mkdir, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
+import { validTypography } from '../../lib/paper/typography';
 
 const OUTPUT = path.join(process.cwd(), 'paper-preferences');
 
 export const config = { api: { bodyParser: { sizeLimit: '1mb' } } };
 
+// Type editor reports (lib/paper/devtools/type.js): the typography state.
+function validateTypography(report) {
+  if (!validTypography(report.typography)) throw new Error('Invalid typography state');
+  if (!report.palette || typeof report.palette !== 'object') throw new Error('Missing palette');
+  return report;
+}
+
+function typographySummary(report) {
+  const lines = ['# Post type choices', '', `Saved: ${report.createdAt ?? ''}`, `Page: ${report.page ?? ''}`, ''];
+  const elements = Object.entries(report.typography.elements);
+  if (elements.length === 0) lines.push('No element differs from the stylesheet.', '');
+  for (const [key, props] of elements) lines.push(`## ${key}`, '', '```json', JSON.stringify(props, null, 2), '```', '');
+  const saved = Object.entries(report.typography.saved);
+  if (saved.length) lines.push('## Saved variations', '', '```json', JSON.stringify(report.typography.saved, null, 2), '```', '');
+  return lines.join('\n');
+}
+
 function validate(report) {
   if (!report || typeof report !== 'object' || report.version !== 1) throw new Error('Unsupported preference report');
+  if (report.kind === 'typography') return validateTypography(report);
   if (!Array.isArray(report.sections) || report.sections.length === 0) throw new Error('Expected at least one section');
   for (const section of report.sections) {
     if (typeof section?.id !== 'string' || typeof section.reviewed !== 'boolean' || typeof section.allLocked !== 'boolean') throw new Error('Invalid section');
@@ -59,6 +78,6 @@ export default async function handler(req, res) {
   const data = `${JSON.stringify(report, null, 2)}\n`;
   await atomicWrite(path.join(OUTPUT, 'history', `${randomUUID()}.json`), data);
   await atomicWrite(path.join(OUTPUT, 'latest.json'), data);
-  await atomicWrite(path.join(OUTPUT, 'latest.md'), summary(report));
+  await atomicWrite(path.join(OUTPUT, 'latest.md'), report.kind === 'typography' ? typographySummary(report) : summary(report));
   res.status(200).json({ saved: true });
 }
