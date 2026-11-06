@@ -57,13 +57,14 @@ html[data-lighting=ready] [data-paper] { background: transparent; }
 [data-paper=posts], [data-paper^="project-well:"] { --surface-color: var(--code); }
 [data-paper=advent], [data-paper="project:beagle"] { --surface-color: var(--recess); }
 [data-paper=podcast] { --surface-color: #021810; }
-[data-paper=papers], [data-paper=archive-c], [data-paper="project:turbopack-visualizer"] { --surface-color: var(--mist); }
+[data-paper=papers], [data-paper=sheet], [data-paper=archive-c], [data-paper="project:turbopack-visualizer"] { --surface-color: var(--mist); }
 [data-paper=talks], [data-paper=archive-b], [data-paper="project:tensor-lang"] { --surface-color: var(--sage); }
-[data-paper=sheet], [data-paper=archive-a], [data-paper="project:bevy-whiteboard"] { --surface-color: var(--cream); }
+[data-paper=archive-a], [data-paper="project:bevy-whiteboard"] { --surface-color: var(--cream); }
 [data-paper="project:simd-lang"] { --surface-color: var(--flax); }
 [data-paper="project:datalog-db"] { --surface-color: var(--ink); }
 [data-paper="project:keep-running"] { --surface-color: #021810; }
-[data-paper=sheet-foot], [data-paper=project-rail] { --surface-color: var(--recess); }
+[data-paper=sheet-foot] { --surface-color: #476267; }
+[data-paper=project-rail] { --surface-color: var(--recess); }
 
 /* ─── Masthead ───────────────────────────────────────────────── */
 .topbar { display: flex; align-items: center; justify-content: flex-end; gap: 28px; padding: 36px 0 28px; border-bottom: 1px solid #ffefae44; }
@@ -217,7 +218,7 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 .talk-card .venue { color: var(--quiet); }
 
 /* ═══ POSTS ═════════════════════════════════════════════════════
-   An article is one raised butter-paper sheet on the desk. Inside it,
+   An article is one raised mist-paper sheet on the desk. Inside it,
    text is the sheet's ink (set by the renderer for contrast); code,
    quotes and tables are printed tints on the same paper.            */
 .post-page { padding-top: 56px; }
