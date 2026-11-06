@@ -46,8 +46,7 @@ section[id] { scroll-margin-top: 35px; }
 .site-content > main { flex: 1 0 auto; }
 /* Baked material and DOM share the same scrolling plane, including rubber-band. */
 #paper-background { grid-area: 1/1; position: relative; align-self: stretch; min-width: 0; overflow: hidden; z-index: 0; pointer-events: none; }
-#paper-background[hidden] { display: none; }
-#paper-background > img { position: absolute; left: 0; width: 100%; max-width: none; pointer-events: none; }
+#paper-background > .paper-tile { position: absolute; left: 0; width: 100%; max-width: none; pointer-events: none; }
 .paper-bake-worker { position: absolute; left: 0; width: 100%; visibility: hidden; pointer-events: none; }
 
 /* Material colors are readable even before JavaScript or WebGL initializes. */
