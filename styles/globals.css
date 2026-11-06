@@ -48,23 +48,13 @@ section[id] { scroll-margin-top: 35px; }
 #paper-background { grid-area: 1/1; position: relative; align-self: stretch; min-width: 0; overflow: hidden; z-index: 0; pointer-events: none; }
 #paper-background > .paper-tile { position: absolute; left: 0; width: 100%; max-width: none; pointer-events: none; }
 .paper-bake-worker { position: absolute; left: 0; width: 100%; visibility: hidden; pointer-events: none; }
+#paper-fallback { grid-area: 1/1; position: relative; align-self: stretch; min-width: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+#paper-fallback > div { position: absolute; }
 
-/* Material colors are readable even before JavaScript or WebGL initializes. */
+/* Material colors are readable even before JavaScript or WebGL initializes;
+   each paper's color, ink and shadow come from lib/paper/fallback.js. */
 [data-paper] { background: var(--surface-color, var(--cream)); }
 html[data-lighting=ready] [data-paper] { background: transparent; }
-[data-paper=intro], [data-paper=project-preface] { --surface-color: var(--desk); }
-[data-paper=popular] { --surface-color: #476267; }
-[data-paper=posts], [data-paper^="project-well:"] { --surface-color: var(--code); }
-[data-paper=advent], [data-paper="project:beagle"] { --surface-color: var(--recess); }
-[data-paper=podcast] { --surface-color: #021810; }
-[data-paper=papers], [data-paper=sheet], [data-paper=archive-c], [data-paper="project:turbopack-visualizer"] { --surface-color: var(--mist); }
-[data-paper=talks], [data-paper=archive-b], [data-paper="project:tensor-lang"] { --surface-color: var(--sage); }
-[data-paper=archive-a], [data-paper="project:bevy-whiteboard"] { --surface-color: var(--cream); }
-[data-paper="project:simd-lang"] { --surface-color: var(--flax); }
-[data-paper="project:datalog-db"] { --surface-color: var(--ink); }
-[data-paper="project:keep-running"] { --surface-color: #021810; }
-[data-paper=sheet-foot] { --surface-color: #476267; }
-[data-paper=project-rail] { --surface-color: var(--recess); }
 
 /* ─── Masthead ───────────────────────────────────────────────── */
 .topbar { display: flex; align-items: center; justify-content: flex-end; gap: 28px; padding: 36px 0 28px; border-bottom: 1px solid #ffefae44; }

@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
+import { fallbackCss } from '../lib/paper/fallback';
 
 // `data-paper-boot="pending"` keeps the content and the unpainted canvas
 // invisible (without changing layout) until the paper scene draws its first
@@ -14,6 +15,8 @@ export default function Document() {
     <Html lang="en" data-paper-boot="pending" data-theme="light">
       <Head>
         <style dangerouslySetInnerHTML={{ __html: bootStyle }} />
+        {/* Paper without the renderer (lib/paper/fallback.js). */}
+        <style id="paper-fallback-css" dangerouslySetInnerHTML={{ __html: fallbackCss() }} />
         <noscript>
           <style dangerouslySetInnerHTML={{ __html: noscriptStyle }} />
         </noscript>
