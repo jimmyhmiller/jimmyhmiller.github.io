@@ -378,12 +378,7 @@ html:not([data-lighting=ready]) .lighting-panel .lighting-range input[type=range
 .lighting-surface summary::-webkit-details-marker { display: none; }
 .lighting-surface summary span { font-size: 15px; color: #718476; }
 .lighting-surface[open] summary span { transform: rotate(45deg); }
-.lighting-surface-controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 0 16px; }
-.lighting-palette { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 10px; border-top: 1px solid #304c521a; padding-top: 15px; font-size: 11px; }
-.lighting-palette #material-balance { width: 100%; padding: 7px; font-size: 11px; background: #fff9; border: 1px solid #304c5244; color: var(--panel-ink); }
-.palette-swatches { display: grid; grid-column: 1/-1; grid-template-columns: repeat(6, 1fr); gap: 8px; margin: 8px 0; }
-.swatch { font-size: 8px; }
-.swatch > span { display: block; height: 22px; border: 1px solid #304c5222; margin-bottom: 4px; }
+.lighting-surface-controls { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 0 16px; }
 .lighting-footer { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid #b9c1ae88; padding-top: 15px; font-size: 10px; }
 .lighting-footer #reset-lighting { margin: 0; color: #647674; }
 .lighting-footer #reset-lighting:hover { text-decoration: underline; }
@@ -624,7 +619,6 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
   .lighting-card-actions { gap: 7px; }
   .lighting-surface-controls { gap: 12px; }
   .lighting-coordinates { font-size: 8px; }
-  .palette-swatches { grid-template-columns: repeat(3, 1fr); }
   .lighting-page { padding: 7px; gap: 4px; }
   .lighting-page > div { height: 16px; }
 }
