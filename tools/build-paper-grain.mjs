@@ -1,5 +1,5 @@
-// Builds the paper grain: one small tile that repeats under every paper and
-// the desk (public/paper/grain-dark.png and grain-light.png).
+// Builds the paper grain: one small tile that repeats over every paper and
+// the desk (public/paper/grain-*.png; the sets are in materials.js GRAIN).
 //
 // The renderer's grain is `shade += grain * .4 * h` (lib/paper/shaders/
 // paper-scene.frag): a brightness factor of about ±3% from the height noise
@@ -7,7 +7,8 @@
 // tiles made them incompressible noise, so the bake leaves it out and the
 // page lays this tile over the light instead. The factor m = 1 + .4·grain·h
 // is split into a multiply layer (the darkening part) and a color-dodge
-// layer (cb / (1 - s) brightens by exactly m), both exact in 8 bits.
+// layer (cb / (1 - s) brightens by exactly m). Each set is the same pattern
+// at another strength; opacity scales a layer's strength linearly.
 //
 // The noise is the shader's, with its lattice wrapped so the tile repeats:
 // over a period of 140 noise units every octave needs a whole number of
@@ -49,14 +50,24 @@ function height(x, y, seed) {
 }
 
 const SEED = 14483; // the shader's pressed-paper seed
-const dark = Buffer.alloc(PIXELS * PIXELS), light = Buffer.alloc(PIXELS * PIXELS);
-let low = Infinity, high = -Infinity;
+const heights = new Float64Array(PIXELS * PIXELS);
 for (let j = 0; j < PIXELS; j++) for (let i = 0; i < PIXELS; i++) {
   // Pixel centers, like gl_FragCoord.
-  const m = 1 + 0.4 * defaultLighting.grain * height((i + 0.5) / PIXELS * PERIOD, (j + 0.5) / PIXELS * PERIOD, SEED);
-  low = Math.min(low, m); high = Math.max(high, m);
-  dark[j * PIXELS + i] = Math.round(255 * Math.min(1, m));
-  light[j * PIXELS + i] = Math.round(255 * (1 - 1 / Math.max(1, m)));
+  heights[j * PIXELS + i] = height((i + 0.5) / PIXELS * PERIOD, (j + 0.5) / PIXELS * PERIOD, SEED);
+}
+// The brightness factor at a strength: 1 is the renderer's grain; a negative
+// strength divides it back out (a paper less textured than what is beneath).
+function layers(strength) {
+  const dark = Buffer.alloc(PIXELS * PIXELS), light = Buffer.alloc(PIXELS * PIXELS);
+  let low = Infinity, high = -Infinity;
+  heights.forEach((h, index) => {
+    const grain = 1 + 0.4 * defaultLighting.grain * Math.abs(strength) * h;
+    const m = strength < 0 ? 1 / grain : grain;
+    low = Math.min(low, m); high = Math.max(high, m);
+    dark[index] = Math.round(255 * Math.min(1, m));
+    light[index] = Math.round(255 * (1 - 1 / Math.max(1, m)));
+  });
+  return { dark, light, low, high };
 }
 
 const crcTable = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });
@@ -81,10 +92,12 @@ function png(pixels) {
 }
 
 mkdirSync(new URL('../public/paper/', import.meta.url), { recursive: true });
-for (const [name, pixels] of [['dark', dark], ['light', light]]) {
-  const file = new URL(`../public${GRAIN[name]}`, import.meta.url);
-  const data = png(pixels);
-  writeFileSync(file, data);
-  console.log(`${GRAIN[name]}: ${PIXELS}×${PIXELS}, ${(data.length / 1024).toFixed(1)} KB`);
+for (const set of [GRAIN.plain, GRAIN.strong, GRAIN.inverse]) {
+  const built = layers(set.strength);
+  for (const name of ['dark', 'light']) {
+    const data = png(built[name]);
+    writeFileSync(new URL(`../public${set[name]}`, import.meta.url), data);
+    console.log(`${set[name]}: ${PIXELS}×${PIXELS}, ${(data.length / 1024).toFixed(1)} KB`);
+  }
+  console.log(`  strength ${set.strength}: brightness factor ${built.low.toFixed(4)}–${built.high.toFixed(4)}`);
 }
-console.log(`brightness factor ${low.toFixed(4)}–${high.toFixed(4)}`);

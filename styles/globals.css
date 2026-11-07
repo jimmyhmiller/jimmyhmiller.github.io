@@ -57,6 +57,12 @@ section[id] { scroll-margin-top: 35px; }
 #paper-grain::before, #paper-grain::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
 #paper-grain::before { mix-blend-mode: multiply; }
 #paper-grain::after { mix-blend-mode: color-dodge; }
+/* A paper whose grain strength differs from what is beneath it: the same
+   pattern, aligned to the page, adding or taking away the difference. */
+#paper-grain > div { position: absolute; overflow: hidden; }
+#paper-grain > div > div { position: absolute; inset: 0; background-repeat: repeat; background-size: var(--grain-tile) auto; }
+#paper-grain .grain-dark { mix-blend-mode: multiply; }
+#paper-grain .grain-light { mix-blend-mode: color-dodge; }
 
 /* Material colors are readable even before JavaScript or WebGL initializes;
    each paper's color, ink and shadow come from lib/paper/fallback.js. */
