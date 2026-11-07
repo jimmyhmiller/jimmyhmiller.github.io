@@ -337,8 +337,9 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 /* ═══ LIGHTING PANEL (rendered paper; lib/paper/lighting-panel.js) ═ */
 #paper-settings.lighting-panel { --light-0: #476b70; --light-1: #8c8956; --light-2: #747b9a; --light-3: #8a6f82; --panel-ink: #304c52; position: fixed; inset: 66px 22px auto auto; margin: 0; width: min(540px, calc(100vw - 36px)); max-height: calc(100svh - 88px); overflow: auto; padding: 0; border: 0; border-radius: 18px; background: transparent; color: var(--panel-ink); font: 12px/1.4 var(--sans); box-shadow: 0 14px 34px rgba(16,30,34,.38), 0 2px 5px rgba(16,30,34,.22); overscroll-behavior: contain; }
 /* All content and its paper canvas scroll together (lib/paper/lighting-panel.js). */
-.lighting-sheet { position: relative; isolation: isolate; padding: 27px 30px 21px; background: #dfe8e5; }
-.lighting-heading { cursor: grab; touch-action: none; }
+.lighting-sheet { --sheet-top: 27px; --sheet-side: 30px; position: relative; isolation: isolate; padding: var(--sheet-top) var(--sheet-side) 21px; background: #dfe8e5; }
+/* The drag handle reaches the sheet's top and side edges. */
+.lighting-heading { margin: calc(-1 * var(--sheet-top)) calc(-1 * var(--sheet-side)) 0; padding-top: var(--sheet-top); padding-left: var(--sheet-side); padding-right: var(--sheet-side); cursor: grab; touch-action: none; }
 .lighting-heading:active { cursor: grabbing; }
 html:not([data-lighting=ready]) #paper-settings.lighting-panel { background: #dfe8e5; }
 #paper-settings.lighting-panel::backdrop { background: transparent; }
@@ -623,7 +624,7 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
   .projpage-foot .next { text-align: left; }
 
   #paper-settings.lighting-panel { inset: 58px 12px auto auto; width: calc(100vw - 24px); max-height: calc(100svh - 72px); }
-  .lighting-sheet { padding: 22px 18px 17px; }
+  .lighting-sheet { --sheet-top: 22px; --sheet-side: 18px; padding-bottom: 17px; }
   .lighting-map { min-height: 175px; }
   .lighting-cards { gap: 9px; }
   .lighting-card { padding: 12px 11px 10px; }
