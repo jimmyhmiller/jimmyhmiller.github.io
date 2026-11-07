@@ -50,6 +50,13 @@ section[id] { scroll-margin-top: 35px; }
 .paper-bake-worker { position: absolute; left: 0; width: 100%; visibility: hidden; pointer-events: none; }
 #paper-fallback { grid-area: 1/1; position: relative; align-self: stretch; min-width: 0; overflow: hidden; z-index: 0; pointer-events: none; }
 #paper-fallback > div { position: absolute; }
+/* The grain, blended over the light and the desk: its own stacking context
+   would hide what is beneath from the blends, so it has no z-index. Images
+   and size come from lib/paper/fallback.js. */
+#paper-grain { grid-area: 1/1; position: relative; align-self: stretch; min-width: 0; pointer-events: none; }
+#paper-grain::before, #paper-grain::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
+#paper-grain::before { mix-blend-mode: multiply; }
+#paper-grain::after { mix-blend-mode: color-dodge; }
 
 /* Material colors are readable even before JavaScript or WebGL initializes;
    each paper's color, ink and shadow come from lib/paper/fallback.js. */
@@ -327,7 +334,7 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 .lighting-sheet { position: relative; isolation: isolate; padding: 27px 30px 21px; background: #dfe8e5; }
 .lighting-heading { cursor: grab; touch-action: none; }
 .lighting-heading:active { cursor: grabbing; }
-html:not([data-lighting=ready]) #paper-settings.lighting-panel { background: #ffefae; }
+html:not([data-lighting=ready]) #paper-settings.lighting-panel { background: #dfe8e5; }
 #paper-settings.lighting-panel::backdrop { background: transparent; }
 .lighting-panel h2, .lighting-panel h3, .lighting-panel p { margin: 0; font-weight: 400; }
 .lighting-panel button { color: inherit; }

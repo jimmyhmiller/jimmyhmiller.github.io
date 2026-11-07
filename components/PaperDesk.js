@@ -60,6 +60,8 @@ export default function PaperDesk({ children }) {
     <PaperContext.Provider value={value}>
       <div className="paper-desk">
         <canvas ref={canvasRef} id="paper-lighting" aria-hidden="true" />
+        {/* The paper grain over the light, below the content (lib/paper/fallback.js). */}
+        <div id="paper-grain" aria-hidden="true" />
         <div ref={rootRef} className="site-content">
           {children}
         </div>

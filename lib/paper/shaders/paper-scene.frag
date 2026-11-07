@@ -156,9 +156,12 @@ void main(){
  }
  vec2 uv=(p+worldOffset)/1.1;
  int seed=14483; // round(0.221 * 65535), the native pressed-paper seed.
- float h;
- vec2 micro;
- if(useMicroCache){
+ float h=0.;
+ vec2 micro=vec2(0.);
+ // Without grain (the page lays a grain tile over the light instead), skip
+ // the texture entirely.
+ if(grain<=0.){
+ }else if(useMicroCache){
   vec2 worldPixel=(p+worldOffset)*pixelsPerPoint;
   ivec2 q=ivec2(floor(worldPixel.x)-microOriginX,int(mod(floor(worldPixel.y),microRows)));
   vec3 detail=texelFetch(microMap,q,0).rgb;
