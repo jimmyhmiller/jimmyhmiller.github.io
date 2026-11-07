@@ -24,7 +24,7 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; }
-body { background: var(--desk); color: var(--desk-ink); -webkit-font-smoothing: antialiased; }
+body { background: var(--desk); color: var(--desk-ink); -webkit-font-smoothing: antialiased; overflow-wrap: break-word; }
 a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
 button { color: inherit; cursor: pointer; border: 0; background: none; padding: 0; }
@@ -118,7 +118,7 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 .project-links { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 8px; font: 12px/1.5 var(--sans); }
 .project-links li { display: flex; gap: 14px; }
 .project-links .k { min-width: 40px; text-transform: uppercase; letter-spacing: .08em; font-size: 10px; line-height: 18px; opacity: .7; }
-.project-links a { border-bottom: 1px solid currentColor; }
+.project-links a { overflow-wrap: anywhere; border-bottom: 1px solid currentColor; }
 .project-links a:hover { text-decoration: none; }
 .home-feature-code { align-self: start; min-width: 0; padding: 20px 17px 24px; color: var(--cream); }
 
@@ -194,7 +194,7 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 #posts { padding: 30px 36px 35px; color: var(--cream); }
 #posts .col-label { margin-bottom: 30px; }
 .posts-list { column-count: 2; column-gap: 60px; }
-.posts-year-row { display: grid; grid-template-columns: 38px 1fr; gap: 14px; break-inside: avoid; padding: 13px 0; border-bottom: 1px solid #ffefae2b; font: 22px/1.2 var(--serif); letter-spacing: -.015em; }
+.posts-year-row { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 14px; break-inside: avoid; padding: 13px 0; border-bottom: 1px solid #ffefae2b; font: 22px/1.2 var(--serif); letter-spacing: -.015em; }
 .posts-year-row .y { font: 10px/1.5 var(--sans); opacity: .65; padding-top: 3px; }
 .advent { margin-top: 65px; color: var(--ink); padding: 40px; }
 .advent-wrap { display: grid; grid-template-columns: .75fr 1fr; gap: 75px; }
@@ -600,7 +600,7 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
   .podcast-cta { font-size: 10px; }
   .posts-list { column-count: 1; }
   #posts { padding: 26px 25px; }
-  .posts-year-row { font-size: 22px; grid-template-columns: 31px 1fr; gap: 10px; padding: 15px 0; }
+  .posts-year-row { font-size: 22px; grid-template-columns: 31px minmax(0, 1fr); gap: 10px; padding: 15px 0; }
   .advent { margin-top: 45px; padding: 28px 25px; }
   .advent-wrap { grid-template-columns: 1fr; gap: 30px; }
   .advent-intro h2 { font-size: 46px; }
@@ -635,6 +635,17 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
   .lighting-coordinates { font-size: 8px; }
   .lighting-page { padding: 7px; gap: 4px; }
   .lighting-page > div { height: 16px; }
+}
+
+/* Below 390px titles shrink with the column so their longest words still
+   fit on a line, never larger than on wider phones. A post's column is the
+   viewport less 92px of page and sheet padding and holds 8em of title (a
+   17-letter word); a project card's is the viewport less 98px and holds
+   4.6em of name ("whiteboard"). */
+@media (max-width: 389px) {
+  .article-title { font-size: min(38px, calc((100vw - 92px) / 8)); }
+  .post-sheet h1:not(.article-title) { font-size: min(2em, calc((100vw - 92px) / 8)); }
+  .home-feature-text h1, .home-feature-text h3 { font-size: min(56px, calc((100vw - 98px) / 4.6)); }
 }
 
 @media (max-width: 360px) {
