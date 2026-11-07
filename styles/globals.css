@@ -258,9 +258,9 @@ footer.site { display: flex; justify-content: space-between; padding: 32px 0 40p
 .article h2 { font: 400 clamp(26px, 3vw, 32px)/1.15 var(--serif); letter-spacing: -.02em; margin: 2.6em 0 .7em; }
 .article h3 { font: 400 italic clamp(20px, 2vw, 23px)/1.25 var(--serif); margin: 2.2em 0 .6em; }
 .article h4 { font: 11px/1.4 var(--sans); letter-spacing: .1em; text-transform: uppercase; margin: 2em 0 .6em; color: var(--ink-soft); }
-.article h2, .article h3, .article h4 { position: relative; scroll-margin-top: 1.5em; }
+.article h1, .article h2, .article h3, .article h4 { position: relative; scroll-margin-top: 1.5em; }
 .article .heading-anchor { position: absolute; left: -.85em; top: 0; padding-right: .35em; border-bottom: none; color: var(--ink-mute); opacity: 0; transition: opacity .12s ease-in-out; }
-.article h2:hover .heading-anchor, .article h3:hover .heading-anchor, .article h4:hover .heading-anchor, .article .heading-anchor:focus { opacity: .55; }
+.article h1:hover .heading-anchor, .article h2:hover .heading-anchor, .article h3:hover .heading-anchor, .article h4:hover .heading-anchor, .article .heading-anchor:focus { opacity: .55; }
 .article .heading-anchor:hover { opacity: 1; background: none; }
 .article figure { margin: 1.8em 0; }
 .article figure img, .article figure video, .article p > img, .article > img { display: block; width: 100%; height: auto; }
