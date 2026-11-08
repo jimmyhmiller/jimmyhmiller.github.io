@@ -45,8 +45,10 @@ section[id] { scroll-margin-top: 35px; }
 .site-content { grid-area: 1/1; width: 100%; min-height: 100vh; display: flex; flex-direction: column; position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 0 clamp(24px, 4.7vw, 72px); }
 .site-content > main { flex: 1 0 auto; }
 /* Baked material and DOM share the same scrolling plane, including rubber-band. */
-#paper-background { grid-area: 1/1; position: relative; align-self: stretch; min-width: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+#paper-background { grid-area: 1/1; position: relative; align-self: stretch; min-width: 0; overflow: hidden; z-index: 0; pointer-events: none; background: var(--desk); }
 #paper-background > .paper-tile { position: absolute; left: 0; width: 100%; max-width: none; pointer-events: none; }
+#paper-background > .paper-underlay { position: absolute; inset: 0; }
+.paper-underlay > div { position: absolute; }
 /* The bake's WebGL canvas, in a layer of its own: Safari composites a WebGL
    canvas separately, and a blend in the same layer as one is not blended. */
 #paper-bake { grid-area: 1/1; position: relative; align-self: stretch; min-width: 0; overflow: hidden; z-index: 0; pointer-events: none; visibility: hidden; }
@@ -55,12 +57,12 @@ section[id] { scroll-margin-top: 35px; }
 #paper-fallback > div { position: absolute; }
 /* The grain, blended over the light and the desk: its own stacking context
    would hide what is beneath from the blends, so it has no z-index. Images
-   and size come from lib/paper/fallback.js. #paper-grain covers the unlit
-   page; once lit, the baked tiles carry their own (#paper-background >
-   .paper-grain), since Safari does not blend across composited layers and
-   the live canvas is one. */
+   and size come from lib/paper/fallback.js. #paper-grain covers the page
+   without the renderer; from the moment the renderer starts, only the baked
+   tiles carry grain (#paper-background > .paper-grain), since Safari does not
+   blend across composited layers and the live canvas is one. */
 #paper-grain { grid-area: 1/1; position: relative; align-self: stretch; min-width: 0; pointer-events: none; }
-html[data-lighting=ready] #paper-grain { display: none; }
+html[data-lighting]:not([data-lighting=unavailable]) #paper-grain { display: none; }
 #paper-background > .paper-grain { position: absolute; inset: 0; }
 .paper-grain::before, .paper-grain::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
 .paper-grain::before { mix-blend-mode: multiply; }
