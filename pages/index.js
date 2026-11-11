@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import NextLink from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import ProjectFeature from '../components/ProjectFeature';
 import { HomeHeader, SiteFooter } from '../components/SiteChrome';
 import { usePaper, useBrowserLayoutEffect } from '../components/PaperDesk';
@@ -80,7 +81,17 @@ function Projects() {
   const [currentId, setCurrentId] = useState(projects[0].id);
   const paper = usePaper();
   const current = projects.find((p) => p.id === currentId);
+  const stage = useRef(null);
   useBrowserLayoutEffect(() => { paper.refresh(); }, [currentId, paper]);
+  // The old project stays on screen until the new one's paper is lit and its
+  // artifact decoded, then both appear at once.
+  const choose = (id) => id !== currentId && paper.transition(() => {
+    flushSync(() => setCurrentId(id));
+    const images = stage.current.querySelectorAll('.home-feature-body:not(.home-feature-sizer) img');
+    return Promise.all([...images].map((image) => image.decode().catch(() => {
+      // A broken image shows as broken either way; it need not hold the switch.
+    })));
+  });
 
   return (
     <section className="home-projects" data-paper={`project:${current.id}`} id="projects">
@@ -97,7 +108,7 @@ function Projects() {
                 className="home-projects-row"
                 aria-pressed={p.id === current.id}
                 aria-controls="project-feature"
-                onClick={() => setCurrentId(p.id)}
+                onClick={() => choose(p.id)}
               >
                 <span className="name">{p.title}</span>
               </button>
@@ -105,7 +116,7 @@ function Projects() {
           </div>
           {/* Every project's prose is laid out invisibly in the same cell, so
               the stage is always as tall as the tallest project. */}
-          <div className="home-feature" id="project-feature" aria-live="polite">
+          <div className="home-feature" id="project-feature" aria-live="polite" ref={stage}>
             <ProjectFeature key={current.id} project={current} secondary={false} fixed />
             {projects.map((p) => (
               <ProjectFeature key={`sizer-${p.id}`} project={p} secondary={false} sizer />
@@ -169,9 +180,7 @@ const Index = () => (
         <div className="podcast-band-inner">
           <div>
             <p className="podcast-text">
-              A podcast with an alternative take on computing. We try to explore
-              things around the edge of computing, looking back in history and
-              into the future of what computing has and could be.
+              A podcast with an alternative take on computing.
             </p>
             <a className="podcast-cta" href="https://feelingof.com/episodes" target="_blank" rel="noreferrer">
               Listen to the podcast

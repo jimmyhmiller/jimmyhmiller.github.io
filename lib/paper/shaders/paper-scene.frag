@@ -131,7 +131,12 @@ vec3 greenInk(vec3 stock,vec2 p,int material){
  }
  float fleck=tex_hash(int(floor(local.x/2.)),int(floor(local.y/2.)),seed+983);
  ink*=mix(1.,smoothstep(.15+variation.w*.6,.3+variation.w*.6,fleck),variation.w);
- float tear=tex_hash(int(floor(local.x/mix(28.,85.,packet))),int(floor(float(row)/2.)),seed+1709);
+ // Each row pair gets its own cell phase; otherwise every row has a cell
+ // boundary at local.x=0 and the tears line up into a vertical seam.
+ int tearRow=int(floor(float(row)/2.));
+ float tearWidth=mix(28.,85.,packet);
+ float tearPhase=tex_hash(tearRow,59,seed+2203)*tearWidth;
+ float tear=tex_hash(int(floor((local.x+tearPhase)/tearWidth)),tearRow,seed+1709);
  ink*=mix(1.,smoothstep(inkStructure.x*.65,inkStructure.x*.65+.12,tear),inkStructure.x);
  return mix(stock,vec3(0.,.8,.533333333),clamp(ink*effect.y,0.,1.));
 }

@@ -1,14 +1,19 @@
-import { findProject } from '../../data/projects';
-import ProjectPage from './[slug]';
+import Head from 'next/head';
+import { useEffect } from 'react';
 
-const ALIAS_SLUG = 'beagle';
+export default function ProjectsRedirect() {
+  useEffect(() => {
+    window.location.replace('/#projects');
+  }, []);
 
-export async function getStaticProps() {
-  const project = findProject(ALIAS_SLUG);
-  if (!project) {
-    throw new Error(`/projects alias target "${ALIAS_SLUG}" not found in data/projects`);
-  }
-  return { props: { id: project.id } };
+  return (
+    <>
+      <Head>
+        <title>Projects — Jimmy Miller</title>
+        <meta httpEquiv="refresh" content="0;url=/#projects" />
+        <link rel="canonical" href="https://jimmyhmiller.com/#projects" />
+      </Head>
+      <p>Redirecting to <a href="/#projects">projects on the homepage</a>…</p>
+    </>
+  );
 }
-
-export default ProjectPage;

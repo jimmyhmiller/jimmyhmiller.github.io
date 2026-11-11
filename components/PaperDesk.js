@@ -54,7 +54,12 @@ export default function PaperDesk({ children }) {
     if (!runtimeRef.current) return;
     runtimeRef.current.openLighting();
   }, []);
-  const value = useMemo(() => ({ refresh, openLighting }), [refresh, openLighting]);
+  // Swaps content and its paper together (PaperRuntime.transition).
+  const transition = useCallback((update) => {
+    const runtime = runtimeRef.current;
+    return runtime ? runtime.transition(update) : Promise.resolve(update());
+  }, []);
+  const value = useMemo(() => ({ refresh, openLighting, transition }), [refresh, openLighting, transition]);
 
   return (
     <PaperContext.Provider value={value}>

@@ -668,3 +668,7 @@ html.paper-picking .site-content, html.paper-picking .site-content *, html.paper
   .lighting-sun, .lighting-toggle, .lighting-toggle:after { transition: none; }
   .proj-terminal-caret { animation: none; }
 }
+
+/* Paper transitions (lib/paper/runtime.js transition) hold the old frame until
+   the new content is lit, then cut to it, as an ordinary DOM change would. */
+::view-transition-group(root), ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
